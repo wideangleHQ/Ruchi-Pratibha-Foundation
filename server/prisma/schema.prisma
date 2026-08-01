@@ -7,6 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ─── Shared Enums ────────────────────────────────────────────────────────────
+
 enum Role {
   SUPER_ADMIN
   ADMIN
@@ -20,6 +22,144 @@ enum EntityStatus {
   ARCHIVED
   PENDING
 }
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum BloodGroup {
+  A_POSITIVE
+  A_NEGATIVE
+  B_POSITIVE
+  B_NEGATIVE
+  AB_POSITIVE
+  AB_NEGATIVE
+  O_POSITIVE
+  O_NEGATIVE
+  UNKNOWN
+}
+
+enum IdentityDocumentType {
+  AADHAAR
+  PAN
+  VOTER_ID
+  DRIVING_LICENSE
+  PASSPORT
+}
+
+enum IdentityVerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum VolunteerStatus {
+  PENDING_VERIFICATION
+  VERIFIED
+  REJECTED
+  SUSPENDED
+  INACTIVE
+}
+
+enum VerificationAction {
+  APPROVED
+  REJECTED
+}
+
+enum EventType {
+  AWARD
+  CULTURAL
+  COMMUNITY
+  CSR
+  HEALTHCARE
+  EDUCATION
+  ENVIRONMENT
+  SOCIAL
+  VOLUNTEER
+  WORKSHOP
+  OTHER
+}
+
+enum EditionStatus {
+  DRAFT
+  PUBLISHED
+  REGISTRATION_OPEN
+  REGISTRATION_CLOSED
+  ONGOING
+  COMPLETED
+  CANCELLED
+  ARCHIVED
+}
+
+enum EditionVisibility {
+  PUBLIC
+  PRIVATE
+  INVITE_ONLY
+}
+
+enum VenueType {
+  INDOOR
+  OUTDOOR
+  HYBRID
+}
+
+enum VenueStatus {
+  ACTIVE
+  INACTIVE
+  UNDER_MAINTENANCE
+}
+
+enum ShiftStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  WITHDRAWN
+  EXPIRED
+}
+
+enum SelectionStatus {
+  PENDING
+  SHORTLISTED
+  SELECTED
+  WAITLISTED
+  REJECTED
+}
+
+enum AssignmentStatus {
+  ASSIGNED
+  CONFIRMED
+  DECLINED
+  REASSIGNED
+  CANCELLED
+}
+
+enum DeploymentStatus {
+  EXPECTED
+  CONFIRMED
+  CANCELLED
+  NO_SHOW
+}
+
+enum ParticipationStatus {
+  PENDING
+  REPORTED
+  COMPLETED
+  NOT_COMPLETED
+  NO_SHOW
+  CANCELLED
+}
+
+// ─── User ────────────────────────────────────────────────────────────────────
 
 model User {
   id        String       @id @default(uuid()) @db.Uuid
@@ -36,8 +176,553 @@ model User {
   updatedBy String?      @map("updated_by") @db.Uuid
   deletedBy String?      @map("deleted_by") @db.Uuid
 
+  verifications    VolunteerVerification[]
+  createdEvents    Event[]
+  createdEditions  EventEdition[]
+
   @@index([email])
   @@index([status])
   @@index([deletedAt])
   @@map("users")
+}
+
+// ─── Volunteer ───────────────────────────────────────────────────────────────
+
+model Volunteer {
+  id              String          @id @default(uuid()) @db.Uuid
+  volunteerCode   String          @unique @map("volunteer_code")
+  firstName       String          @map("first_name")
+  lastName        String          @map("last_name")
+  email           String          @unique
+  phone           String          @unique
+  dateOfBirth     DateTime        @map("date_of_birth") @db.Date
+  gender          Gender
+  bloodGroup      BloodGroup      @default(UNKNOWN) @map("blood_group")
+  occupation      String?
+  organization    String?
+  addressLine1    String          @map("address_line_1")
+  addressLine2    String?         @map("address_line_2")
+  city            String
+  state           String
+  pincode         String
+  country         String          @default("India")
+  profilePhotoKey String?         @map("profile_photo_key")
+  emergencyName   String?         @map("emergency_name")
+  emergencyPhone  String?         @map("emergency_phone")
+  motivation      String?         @db.Text
+  skills          String[]        @default([])
+  languages       String[]        @default([])
+  availableDays   String[]        @default([]) @map("available_days")
+  volunteerStatus VolunteerStatus @default(PENDING_VERIFICATION) @map("volunteer_status")
+  status          EntityStatus    @default(PENDING)
+  version         Int             @default(1)
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+  deletedAt       DateTime?       @map("deleted_at")
+  createdBy       String?         @map("created_by") @db.Uuid
+  updatedBy       String?         @map("updated_by") @db.Uuid
+  deletedBy       String?         @map("deleted_by") @db.Uuid
+
+  identities     VolunteerIdentity[]
+  verifications  VolunteerVerification[]
+  applications   VolunteerApplication[]
+  assignments    VolunteerAssignment[]
+  deployments    VolunteerDeployment[]
+  participations VolunteerParticipation[]
+
+  @@index([volunteerCode])
+  @@index([email])
+  @@index([phone])
+  @@index([status])
+  @@index([volunteerStatus])
+  @@index([city, state])
+  @@index([deletedAt])
+  @@map("volunteers")
+}
+
+// ─── Volunteer Identity ──────────────────────────────────────────────────────
+
+model VolunteerIdentity {
+  id                 String                     @id @default(uuid()) @db.Uuid
+  volunteerId        String                     @map("volunteer_id") @db.Uuid
+  documentType       IdentityDocumentType       @map("document_type")
+  documentNumber     String                     @map("document_number")
+  documentFileKey    String?                    @map("document_file_key")
+  verificationStatus IdentityVerificationStatus @default(PENDING) @map("verification_status")
+  verifiedAt         DateTime?                  @map("verified_at")
+  verifiedBy         String?                    @map("verified_by") @db.Uuid
+  rejectionReason    String?                    @map("rejection_reason")
+  version            Int                        @default(1)
+  createdAt          DateTime                   @default(now()) @map("created_at")
+  updatedAt          DateTime                   @updatedAt @map("updated_at")
+  deletedAt          DateTime?                  @map("deleted_at")
+
+  volunteer Volunteer @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+
+  @@unique([volunteerId, documentType])
+  @@index([volunteerId])
+  @@index([documentType])
+  @@index([verificationStatus])
+  @@index([deletedAt])
+  @@map("volunteer_identities")
+}
+
+// ─── Volunteer Verification (Audit Trail) ────────────────────────────────────
+
+model VolunteerVerification {
+  id               String             @id @default(uuid()) @db.Uuid
+  volunteerId      String             @map("volunteer_id") @db.Uuid
+  action           VerificationAction
+  previousStatus   VolunteerStatus    @map("previous_status")
+  currentStatus    VolunteerStatus    @map("current_status")
+  remarks          String?            @db.Text
+  verifiedById     String             @map("verified_by_id") @db.Uuid
+  verificationDate DateTime           @default(now()) @map("verification_date")
+  ipAddress        String?            @map("ip_address")
+  userAgent        String?            @map("user_agent") @db.Text
+  createdAt        DateTime           @default(now()) @map("created_at")
+
+  volunteer  Volunteer @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  verifiedBy User      @relation(fields: [verifiedById], references: [id])
+
+  @@index([volunteerId])
+  @@index([verifiedById])
+  @@index([action])
+  @@index([verificationDate])
+  @@map("volunteer_verifications")
+}
+
+// ─── Event (Institutional Program) ──────────────────────────────────────────
+
+model Event {
+  id                 String    @id @default(uuid()) @db.Uuid
+  eventCode          String    @unique @map("event_code")
+  slug               String    @unique
+  title              String
+  shortDescription   String    @map("short_description") @db.VarChar(500)
+  detailedDescription String?  @map("detailed_description") @db.Text
+  eventType          EventType @map("event_type")
+  logoAssetKey       String?   @map("logo_asset_key")
+  defaultBannerKey   String?   @map("default_banner_key")
+  primaryColor       String?   @map("primary_color") @db.VarChar(7)
+  secondaryColor     String?   @map("secondary_color") @db.VarChar(7)
+  themeConfig        Json?     @map("theme_config")
+  isRecurring        Boolean   @default(true) @map("is_recurring")
+  isActive           Boolean   @default(true) @map("is_active")
+  sortOrder          Int       @default(0) @map("sort_order")
+  seoTitle           String?   @map("seo_title") @db.VarChar(70)
+  seoDescription     String?   @map("seo_description") @db.VarChar(160)
+  seoKeywords        String[]  @default([]) @map("seo_keywords")
+  version            Int       @default(1)
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  deletedAt          DateTime? @map("deleted_at")
+  createdById        String?   @map("created_by_id") @db.Uuid
+  updatedBy          String?   @map("updated_by") @db.Uuid
+  deletedBy          String?   @map("deleted_by") @db.Uuid
+
+  createdByUser User?          @relation(fields: [createdById], references: [id])
+  editions      EventEdition[]
+
+  @@index([eventCode])
+  @@index([slug])
+  @@index([eventType])
+  @@index([isActive])
+  @@index([sortOrder])
+  @@index([deletedAt])
+  @@map("events")
+}
+
+// ─── Event Edition (Occurrence) ─────────────────────────────────────────────
+
+model EventEdition {
+  id                    String           @id @default(uuid()) @db.Uuid
+  eventId               String           @map("event_id") @db.Uuid
+  editionCode           String           @unique @map("edition_code")
+  editionName           String           @map("edition_name")
+  year                  Int
+  editionNumber         Int              @default(1) @map("edition_number")
+  slug                  String           @unique
+  theme                 String?
+  shortDescription      String           @map("short_description") @db.VarChar(500)
+  detailedDescription   String?          @map("detailed_description") @db.Text
+  venue                 String
+  venueAddress          String?          @map("venue_address") @db.Text
+  googleMapsUrl         String?          @map("google_maps_url")
+  registrationOpens     DateTime?        @map("registration_opens")
+  registrationCloses    DateTime?        @map("registration_closes")
+  eventStarts           DateTime         @map("event_starts")
+  eventEnds             DateTime         @map("event_ends")
+  volunteerCapacity     Int              @default(0) @map("volunteer_capacity")
+  maxRegistrations      Int              @default(0) @map("max_registrations")
+  bannerImageKey        String?          @map("banner_image_key")
+  coverImageKey         String?          @map("cover_image_key")
+  isFeatured            Boolean          @default(false) @map("is_featured")
+  visibility            EditionVisibility @default(PUBLIC)
+  editionStatus         EditionStatus    @default(DRAFT) @map("edition_status")
+  registrationEnabled   Boolean          @default(false) @map("registration_enabled")
+  attendanceEnabled     Boolean          @default(false) @map("attendance_enabled")
+  certificateEnabled    Boolean          @default(false) @map("certificate_enabled")
+  version               Int              @default(1)
+  createdAt             DateTime         @default(now()) @map("created_at")
+  updatedAt             DateTime         @updatedAt @map("updated_at")
+  deletedAt             DateTime?        @map("deleted_at")
+  createdById           String?          @map("created_by_id") @db.Uuid
+  updatedBy             String?          @map("updated_by") @db.Uuid
+  deletedBy             String?          @map("deleted_by") @db.Uuid
+
+  venueId               String?          @map("venue_id") @db.Uuid
+
+  event         Event  @relation(fields: [eventId], references: [id])
+  createdByUser User?  @relation(fields: [createdById], references: [id])
+  venueRef      Venue? @relation(fields: [venueId], references: [id])
+  shifts         EventShift[]
+  applications   VolunteerApplication[]
+  assignments    VolunteerAssignment[]
+  deployments    VolunteerDeployment[]
+  participations VolunteerParticipation[]
+
+  @@index([eventId])
+  @@index([editionCode])
+  @@index([slug])
+  @@index([year])
+  @@index([editionStatus])
+  @@index([isFeatured])
+  @@index([visibility])
+  @@index([eventStarts])
+  @@index([registrationOpens, registrationCloses])
+  @@index([venueId])
+  @@index([deletedAt])
+  @@map("event_editions")
+}
+
+// ─── Venue ──────────────────────────────────────────────────────────────────
+
+model Venue {
+  id                   String      @id @default(uuid()) @db.Uuid
+  venueCode            String      @unique @map("venue_code")
+  name                 String
+  description          String?     @db.Text
+  address              String      @db.Text
+  district             String?
+  state                String
+  country              String      @default("India")
+  latitude             Float?
+  longitude            Float?
+  googleMapsUrl        String?     @map("google_maps_url")
+  capacity             Int         @default(0)
+  venueType            VenueType   @default(INDOOR) @map("venue_type")
+  accessibilityDetails String?     @map("accessibility_details") @db.Text
+  parkingInfo          String?     @map("parking_info") @db.Text
+  emergencyContact     String?     @map("emergency_contact")
+  venueStatus          VenueStatus @default(ACTIVE) @map("venue_status")
+  version              Int         @default(1)
+  createdAt            DateTime    @default(now()) @map("created_at")
+  updatedAt            DateTime    @updatedAt @map("updated_at")
+  deletedAt            DateTime?   @map("deleted_at")
+  createdBy            String?     @map("created_by") @db.Uuid
+  updatedBy            String?     @map("updated_by") @db.Uuid
+  deletedBy            String?     @map("deleted_by") @db.Uuid
+
+  editions    EventEdition[]
+  assignments VolunteerAssignment[]
+
+  @@index([venueCode])
+  @@index([venueStatus])
+  @@index([venueType])
+  @@index([deletedAt])
+  @@map("venues")
+}
+
+// ─── Event Department ───────────────────────────────────────────────────────
+
+model EventDepartment {
+  id              String       @id @default(uuid()) @db.Uuid
+  departmentCode  String       @unique @map("department_code")
+  title           String
+  description     String?      @db.Text
+  color           String?      @db.VarChar(7)
+  status          EntityStatus @default(ACTIVE)
+  version         Int          @default(1)
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+  deletedAt       DateTime?    @map("deleted_at")
+  createdBy       String?      @map("created_by") @db.Uuid
+  updatedBy       String?      @map("updated_by") @db.Uuid
+  deletedBy       String?      @map("deleted_by") @db.Uuid
+
+  roles        VolunteerRole[]
+  applications VolunteerApplication[]
+  assignments  VolunteerAssignment[]
+
+  @@index([departmentCode])
+  @@index([status])
+  @@index([deletedAt])
+  @@map("event_departments")
+}
+
+// ─── Volunteer Role ─────────────────────────────────────────────────────────
+
+model VolunteerRole {
+  id              String       @id @default(uuid()) @db.Uuid
+  roleCode        String       @unique @map("role_code")
+  departmentId    String       @map("department_id") @db.Uuid
+  title           String
+  description     String?      @db.Text
+  requiredSkills  String[]     @default([]) @map("required_skills")
+  minVolunteers   Int          @default(1) @map("min_volunteers")
+  maxVolunteers   Int          @default(10) @map("max_volunteers")
+  priority        Int          @default(0)
+  color           String?      @db.VarChar(7)
+  iconAssetKey    String?      @map("icon_asset_key")
+  status          EntityStatus @default(ACTIVE)
+  version         Int          @default(1)
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+  deletedAt       DateTime?    @map("deleted_at")
+  createdBy       String?      @map("created_by") @db.Uuid
+  updatedBy       String?      @map("updated_by") @db.Uuid
+  deletedBy       String?      @map("deleted_by") @db.Uuid
+
+  department   EventDepartment @relation(fields: [departmentId], references: [id])
+  applications VolunteerApplication[]
+  assignments  VolunteerAssignment[]
+
+  @@index([roleCode])
+  @@index([departmentId])
+  @@index([status])
+  @@index([priority])
+  @@index([deletedAt])
+  @@map("volunteer_roles")
+}
+
+// ─── Event Shift ────────────────────────────────────────────────────────────
+
+model EventShift {
+  id          String      @id @default(uuid()) @db.Uuid
+  shiftCode   String      @unique @map("shift_code")
+  editionId   String      @map("edition_id") @db.Uuid
+  name        String
+  description String?     @db.Text
+  startTime   DateTime    @map("start_time")
+  endTime     DateTime    @map("end_time")
+  status      ShiftStatus @default(ACTIVE)
+  version     Int         @default(1)
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  deletedAt   DateTime?   @map("deleted_at")
+  createdBy   String?     @map("created_by") @db.Uuid
+  updatedBy   String?     @map("updated_by") @db.Uuid
+  deletedBy   String?     @map("deleted_by") @db.Uuid
+
+  edition      EventEdition @relation(fields: [editionId], references: [id])
+  applications VolunteerApplication[]
+  assignments  VolunteerAssignment[]
+
+  @@index([shiftCode])
+  @@index([editionId])
+  @@index([status])
+  @@index([startTime, endTime])
+  @@index([deletedAt])
+  @@map("event_shifts")
+}
+
+// ─── Volunteer Application ─────────────────────────────────────────────────
+
+model VolunteerApplication {
+  id                    String            @id @default(uuid()) @db.Uuid
+  applicationCode       String            @unique @map("application_code")
+  volunteerId           String            @map("volunteer_id") @db.Uuid
+  editionId             String            @map("edition_id") @db.Uuid
+  applicationStatus     ApplicationStatus @default(DRAFT) @map("application_status")
+  motivation            String?           @db.Text
+  relevantExperience    String?           @map("relevant_experience") @db.Text
+  skills                String[]          @default([])
+  languages             String[]          @default([])
+  medicalConditions     String?           @map("medical_conditions") @db.Text
+  emergencyContactName  String            @map("emergency_contact_name")
+  emergencyContactPhone String            @map("emergency_contact_phone")
+  availabilityNotes     String?           @map("availability_notes") @db.Text
+  preferredShiftId      String?           @map("preferred_shift_id") @db.Uuid
+  preferredDepartmentId String?           @map("preferred_department_id") @db.Uuid
+  preferredRoleId       String?           @map("preferred_role_id") @db.Uuid
+  expectedHours         Int?              @map("expected_hours")
+  termsAccepted         Boolean           @default(false) @map("terms_accepted")
+  adminRemarks          String?           @map("admin_remarks") @db.Text
+  submittedAt           DateTime?         @map("submitted_at")
+  reviewedAt            DateTime?         @map("reviewed_at")
+  version               Int               @default(1)
+  createdAt             DateTime          @default(now()) @map("created_at")
+  updatedAt             DateTime          @updatedAt @map("updated_at")
+  deletedAt             DateTime?         @map("deleted_at")
+  createdBy             String?           @map("created_by") @db.Uuid
+  updatedBy             String?           @map("updated_by") @db.Uuid
+  deletedBy             String?           @map("deleted_by") @db.Uuid
+
+  volunteer             Volunteer            @relation(fields: [volunteerId], references: [id])
+  edition               EventEdition         @relation(fields: [editionId], references: [id])
+  preferredShift        EventShift?          @relation(fields: [preferredShiftId], references: [id])
+  preferredDepartment   EventDepartment?     @relation(fields: [preferredDepartmentId], references: [id])
+  preferredRole         VolunteerRole?       @relation(fields: [preferredRoleId], references: [id])
+  selection             VolunteerSelection?
+
+  @@unique([volunteerId, editionId], map: "uq_volunteer_edition_application")
+  @@index([applicationCode])
+  @@index([volunteerId])
+  @@index([editionId])
+  @@index([applicationStatus])
+  @@index([submittedAt])
+  @@index([preferredDepartmentId])
+  @@index([preferredRoleId])
+  @@index([preferredShiftId])
+  @@index([deletedAt])
+  @@map("volunteer_applications")
+}
+
+// ─── Volunteer Selection ──────────────────────────────────────────────────
+
+model VolunteerSelection {
+  id                  String          @id @default(uuid()) @db.Uuid
+  selectionCode       String          @unique @map("selection_code")
+  applicationId       String          @unique @map("application_id") @db.Uuid
+  selectionScore      Float?          @map("selection_score")
+  recommendationScore Float?          @map("recommendation_score")
+  selectionStatus     SelectionStatus @default(PENDING) @map("selection_status")
+  selectionNotes      String?         @map("selection_notes") @db.Text
+  selectedBy          String?         @map("selected_by") @db.Uuid
+  selectedAt          DateTime?       @map("selected_at")
+  version             Int             @default(1)
+  createdAt           DateTime        @default(now()) @map("created_at")
+  updatedAt           DateTime        @updatedAt @map("updated_at")
+  createdBy           String?         @map("created_by") @db.Uuid
+  updatedBy           String?         @map("updated_by") @db.Uuid
+
+  application VolunteerApplication @relation(fields: [applicationId], references: [id])
+  assignment  VolunteerAssignment?
+
+  @@index([selectionCode])
+  @@index([applicationId])
+  @@index([selectionStatus])
+  @@index([recommendationScore])
+  @@index([selectedBy])
+  @@index([selectedAt])
+  @@map("volunteer_selections")
+}
+
+// ─── Volunteer Assignment ─────────────────────────────────────────────────
+
+model VolunteerAssignment {
+  id                    String           @id @default(uuid()) @db.Uuid
+  assignmentCode        String           @unique @map("assignment_code")
+  selectionId           String           @unique @map("selection_id") @db.Uuid
+  volunteerId           String           @map("volunteer_id") @db.Uuid
+  editionId             String           @map("edition_id") @db.Uuid
+  departmentId          String           @map("department_id") @db.Uuid
+  roleId                String           @map("role_id") @db.Uuid
+  shiftId               String           @map("shift_id") @db.Uuid
+  venueId               String           @map("venue_id") @db.Uuid
+  reportingManager      String?          @map("reporting_manager")
+  reportingInstructions String?          @map("reporting_instructions") @db.Text
+  reportingTime         DateTime?        @map("reporting_time")
+  assignmentStatus      AssignmentStatus @default(ASSIGNED) @map("assignment_status")
+  version               Int              @default(1)
+  createdAt             DateTime         @default(now()) @map("created_at")
+  updatedAt             DateTime         @updatedAt @map("updated_at")
+  createdBy             String?          @map("created_by") @db.Uuid
+  updatedBy             String?          @map("updated_by") @db.Uuid
+
+  selection  VolunteerSelection  @relation(fields: [selectionId], references: [id])
+  volunteer  Volunteer           @relation(fields: [volunteerId], references: [id])
+  edition    EventEdition        @relation(fields: [editionId], references: [id])
+  department EventDepartment     @relation(fields: [departmentId], references: [id])
+  role       VolunteerRole       @relation(fields: [roleId], references: [id])
+  shift      EventShift          @relation(fields: [shiftId], references: [id])
+  venue      Venue               @relation(fields: [venueId], references: [id])
+  deployment VolunteerDeployment?
+
+  @@unique([volunteerId, editionId], map: "uq_volunteer_edition_assignment")
+  @@index([assignmentCode])
+  @@index([selectionId])
+  @@index([volunteerId])
+  @@index([editionId])
+  @@index([departmentId])
+  @@index([roleId])
+  @@index([shiftId])
+  @@index([venueId])
+  @@index([assignmentStatus])
+  @@map("volunteer_assignments")
+}
+
+// ─── Volunteer Deployment ─────────────────────────────────────────────────
+
+model VolunteerDeployment {
+  id                    String           @id @default(uuid()) @db.Uuid
+  deploymentCode        String           @unique @map("deployment_code")
+  assignmentId          String           @unique @map("assignment_id") @db.Uuid
+  volunteerId           String           @map("volunteer_id") @db.Uuid
+  editionId             String           @map("edition_id") @db.Uuid
+  deploymentStatus      DeploymentStatus @default(EXPECTED) @map("deployment_status")
+  reportingDate         DateTime?        @map("reporting_date") @db.Date
+  reportingTime         DateTime?        @map("reporting_time")
+  reportingLocation     String?          @map("reporting_location") @db.Text
+  reportingInstructions String?          @map("reporting_instructions") @db.Text
+  coordinatorId         String?          @map("coordinator_id") @db.Uuid
+  notes                 String?          @db.Text
+  version               Int              @default(1)
+  createdAt             DateTime         @default(now()) @map("created_at")
+  updatedAt             DateTime         @updatedAt @map("updated_at")
+  createdBy             String?          @map("created_by") @db.Uuid
+  updatedBy             String?          @map("updated_by") @db.Uuid
+
+  assignment    VolunteerAssignment     @relation(fields: [assignmentId], references: [id])
+  volunteer     Volunteer               @relation(fields: [volunteerId], references: [id])
+  edition       EventEdition            @relation(fields: [editionId], references: [id])
+  participation VolunteerParticipation?
+
+  @@index([deploymentCode])
+  @@index([assignmentId])
+  @@index([volunteerId])
+  @@index([editionId])
+  @@index([deploymentStatus])
+  @@index([reportingDate])
+  @@index([coordinatorId])
+  @@map("volunteer_deployments")
+}
+
+// ─── Volunteer Participation ──────────────────────────────────────────────
+
+model VolunteerParticipation {
+  id                  String              @id @default(uuid()) @db.Uuid
+  participationCode   String              @unique @map("participation_code")
+  deploymentId        String              @unique @map("deployment_id") @db.Uuid
+  assignmentId        String              @map("assignment_id") @db.Uuid
+  volunteerId         String              @map("volunteer_id") @db.Uuid
+  editionId           String              @map("edition_id") @db.Uuid
+  participationStatus ParticipationStatus @default(PENDING) @map("participation_status")
+  reportedDate        DateTime?           @map("reported_date")
+  completionDate      DateTime?           @map("completion_date")
+  coordinatorRemarks  String?             @map("coordinator_remarks") @db.Text
+  verifiedBy          String?             @map("verified_by") @db.Uuid
+  verifiedAt          DateTime?           @map("verified_at")
+  version             Int                 @default(1)
+  createdAt           DateTime            @default(now()) @map("created_at")
+  updatedAt           DateTime            @updatedAt @map("updated_at")
+  createdBy           String?             @map("created_by") @db.Uuid
+  updatedBy           String?             @map("updated_by") @db.Uuid
+
+  deployment VolunteerDeployment @relation(fields: [deploymentId], references: [id])
+  volunteer  Volunteer           @relation(fields: [volunteerId], references: [id])
+  edition    EventEdition        @relation(fields: [editionId], references: [id])
+
+  @@unique([volunteerId, editionId], map: "uq_volunteer_edition_participation")
+  @@index([participationCode])
+  @@index([deploymentId])
+  @@index([assignmentId])
+  @@index([volunteerId])
+  @@index([editionId])
+  @@index([participationStatus])
+  @@index([reportedDate])
+  @@index([completionDate])
+  @@index([verifiedBy])
+  @@map("volunteer_participations")
 }

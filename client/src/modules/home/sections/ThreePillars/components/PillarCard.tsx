@@ -1,9 +1,7 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Award, Users, BookOpen, ArrowUpRight } from 'lucide-react';
 import { PillarItem } from '../types';
+import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 interface PillarCardProps {
   pillar: PillarItem;
@@ -27,22 +25,13 @@ export const PillarCard: React.FC<PillarCardProps> = ({
   const IconComponent = pillarIcons[pillar.id as keyof typeof pillarIcons] || Award;
 
   return (
-    <motion.div
+    <InteractiveCard
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border transition-all duration-300 rounded-sm p-6 sm:p-8 shadow-sm hover:shadow-xl ${
+      className={`group flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border rounded-sm p-6 sm:p-8 transition-all duration-500 ${
         isHovered ? 'border-institutional-accent' : 'border-institutional-dark/10 dark:border-white/10'
       }`}
     >
-      {/* Subtle Accent Border Glow on Hover */}
-      <div
-        className={`absolute top-0 left-0 right-0 h-1 transition-colors duration-300 ${
-          isHovered ? 'bg-institutional-accent' : 'bg-transparent'
-        }`}
-      />
-
       <div>
         {/* Card Header Tag */}
         <div className="flex items-center justify-between mb-6">
@@ -66,7 +55,7 @@ export const PillarCard: React.FC<PillarCardProps> = ({
             }}
           />
 
-          <div className="relative z-10 w-14 h-14 rounded-full bg-institutional-dark dark:bg-white/10 text-institutional-accent flex items-center justify-center mb-2 shadow transition-transform duration-300 group-hover:scale-110">
+          <div className="relative z-10 w-14 h-14 rounded-full bg-institutional-dark dark:bg-white/10 text-institutional-accent flex items-center justify-center mb-2 shadow transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
             <IconComponent className="w-6 h-6 stroke-[1.5]" />
           </div>
 
@@ -76,7 +65,7 @@ export const PillarCard: React.FC<PillarCardProps> = ({
         </div>
 
         {/* Pillar Title */}
-        <h3 className="font-cormorant text-3xl font-bold text-institutional-dark dark:text-white mb-3 group-hover:text-institutional-accent transition-colors duration-200">
+        <h3 className="font-cormorant text-3xl font-bold text-institutional-dark dark:text-white mb-3 group-hover:text-institutional-accent transition-colors duration-300">
           {pillar.title}
         </h3>
 
@@ -89,11 +78,11 @@ export const PillarCard: React.FC<PillarCardProps> = ({
       {/* CTA Button */}
       <a
         href={pillar.href}
-        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark dark:text-white group-hover:text-institutional-accent transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm py-1"
+        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark dark:text-white group-hover:text-institutional-accent transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm py-1"
       >
         <span>{pillar.ctaText}</span>
-        <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-institutional-accent" />
+        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-institutional-accent" />
       </a>
-    </motion.div>
+    </InteractiveCard>
   );
 };

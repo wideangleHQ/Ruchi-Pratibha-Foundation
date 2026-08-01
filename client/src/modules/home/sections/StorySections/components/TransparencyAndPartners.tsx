@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Download, FileText, ShieldCheck, Building2, GraduationCap, Landmark } from 'lucide-react';
+import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const TransparencyAndPartners: React.FC = () => {
   const reports = [
@@ -43,20 +44,20 @@ export const TransparencyAndPartners: React.FC = () => {
             {partnerTypes.map((partner) => {
               const IconComp = partner.icon;
               return (
-                <div
+                <InteractiveCard
                   key={partner.name}
-                  className="group bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 text-center hover:border-institutional-accent transition-all duration-300 shadow-sm"
+                  className="bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 text-center hover:border-institutional-accent transition-all duration-500"
                 >
-                  <div className="w-12 h-12 rounded-full bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 text-institutional-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-full bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 text-institutional-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark transition-all duration-500 ease-out">
                     <IconComp className="w-6 h-6 stroke-[1.5]" />
                   </div>
-                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-1">
+                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-1 group-hover:text-institutional-accent transition-colors duration-300">
                     {partner.name}
                   </h4>
                   <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-400">
                     {partner.desc}
                   </p>
-                </div>
+                </InteractiveCard>
               );
             })}
           </div>
@@ -82,9 +83,9 @@ export const TransparencyAndPartners: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reports.map((report) => (
-              <div
+              <InteractiveCard
                 key={report.title}
-                className="group relative flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 sm:p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-institutional-accent transition-all duration-300"
+                className="flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 sm:p-7 hover:border-institutional-accent transition-all duration-500"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -94,7 +95,7 @@ export const TransparencyAndPartners: React.FC = () => {
                     <FileText className="w-4 h-4 text-institutional-accent/70" />
                   </div>
 
-                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2 group-hover:text-institutional-accent transition-colors">
+                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2 group-hover:text-institutional-accent transition-colors duration-300">
                     {report.title}
                   </h4>
                 </div>
@@ -106,13 +107,13 @@ export const TransparencyAndPartners: React.FC = () => {
                   <a
                     href="#download"
                     aria-label={`Download ${report.title}`}
-                    className="inline-flex items-center gap-1 text-xs font-space text-institutional-accent hover:text-institutional-dark dark:hover:text-white font-semibold transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-space text-institutional-accent hover:text-institutional-dark dark:hover:text-white font-semibold transition-colors duration-300"
                   >
                     <span>Download</span>
-                    <Download className="w-3.5 h-3.5" />
+                    <Download className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform duration-300" />
                   </a>
                 </div>
-              </div>
+              </InteractiveCard>
             ))}
           </div>
         </div>

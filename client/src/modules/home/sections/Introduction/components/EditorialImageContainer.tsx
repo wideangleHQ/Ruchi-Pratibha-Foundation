@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Landmark } from 'lucide-react';
+import { InteractiveImage } from '@/components/ui/InteractiveImage';
 import { useEditorialAnimation } from '../hooks/useEditorialAnimation';
 
 export const EditorialImageContainer: React.FC = () => {
@@ -16,53 +17,44 @@ export const EditorialImageContainer: React.FC = () => {
       variants={imageVariants}
       className="relative w-full max-w-md mx-auto lg:max-w-none flex justify-center items-center"
     >
-      <div className="group relative w-full max-h-[480px] sm:max-h-[520px] lg:max-h-[540px] xl:max-h-[600px] aspect-[4/5] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-2xl hover:border-institutional-accent transition-all duration-500 ease-out">
-        {/* Subtle grid pattern background */}
-        <div
-          className="absolute inset-0 opacity-10 dark:opacity-15 pointer-events-none transition-opacity duration-500 group-hover:opacity-20"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 160, 89, 0.15) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-        />
+      <div className="relative w-full max-h-[480px] sm:max-h-[520px] lg:max-h-[540px] xl:max-h-[600px] aspect-[4/5] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-2 sm:p-2.5 shadow-xl hover:shadow-2xl hover:border-institutional-accent transition-all duration-500 ease-out">
+        <InteractiveImage className="w-full h-full rounded-sm">
+          <Image
+            src="/founder_portrait.png"
+            alt="Ruchi Prativa Foundation Living Archive & Heritage"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
+            className="object-cover object-top rounded-sm"
+            priority
+          />
 
-        {/* Decorative corner accent frames */}
-        <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-institutional-accent/60 group-hover:border-institutional-accent transition-colors duration-500" />
-        <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-institutional-accent/60 group-hover:border-institutional-accent transition-colors duration-500" />
+          {/* Decorative Corner Accent Frames */}
+          <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-institutional-accent/80 z-20 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-institutional-accent/80 z-20 pointer-events-none" />
 
-        {/* Top Header Badge */}
-        <div className="relative z-10 flex items-center justify-between">
-          <span className="text-[10px] uppercase tracking-widest font-space text-institutional-mutedLight dark:text-gray-400 font-semibold">
-            Living Archive
-          </span>
-          <span className="text-[10px] uppercase tracking-widest font-space text-institutional-accent bg-institutional-accent/10 border border-institutional-accent/20 px-2.5 py-1 rounded-sm font-medium">
-            1997 – Present
-          </span>
-        </div>
-
-        {/* Center Emblem Section */}
-        <div className="relative z-10 flex flex-col items-center justify-center my-auto py-6 sm:py-10">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-institutional-dark dark:bg-white/10 text-institutional-accent flex items-center justify-center mb-6 shadow-md transition-all duration-500 ease-out group-hover:scale-105 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
-            <Landmark className="w-8 h-8 sm:w-9 sm:h-9 stroke-[1.5]" />
+          {/* Top Header Badge */}
+          <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+            <span className="text-[10px] uppercase tracking-widest font-space text-white/90 font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-sm border border-white/20 shadow-sm">
+              Living Archive
+            </span>
+            <span className="text-[10px] uppercase tracking-widest font-space text-institutional-accent bg-black/70 backdrop-blur-md border border-institutional-accent/40 px-3 py-1 rounded-sm font-semibold shadow-sm">
+              1997 – Present
+            </span>
           </div>
-          <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-institutional-dark dark:text-white text-center tracking-tight group-hover:text-institutional-accent transition-colors duration-300">
-            Odisha’s Cultural Heritage & Hope
-          </h3>
-          <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 text-center mt-2.5 max-w-xs leading-relaxed">
-            Preserving history, honoring excellence, and empowering grassroots communities across the state.
-          </p>
-        </div>
 
-        {/* Bottom Caption Bar */}
-        <div className="relative z-10 pt-4 border-t border-institutional-dark/10 dark:border-white/10 flex items-center justify-between text-[10px] font-space tracking-wider">
-          <span className="text-institutional-mutedLight dark:text-gray-400">
-            Three Decades of Impact
-          </span>
-          <span className="text-institutional-accent font-semibold">
-            Ruchi Prativa Foundation
-          </span>
-        </div>
+          {/* Bottom Editorial Caption Overlay */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col gap-1 pointer-events-none">
+            <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Odisha’s Cultural Heritage &amp; Hope
+            </h3>
+            <div className="flex items-center justify-between text-[10px] font-space tracking-wider text-gray-300 pt-1.5 border-t border-white/20">
+              <span>Three Decades of Impact</span>
+              <span className="text-institutional-accent font-semibold">
+                Ruchi Prativa Foundation
+              </span>
+            </div>
+          </div>
+        </InteractiveImage>
       </div>
     </motion.div>
   );

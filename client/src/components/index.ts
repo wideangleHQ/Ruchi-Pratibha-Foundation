@@ -1,2 +1,2 @@
-// Components directory marker
-export {};
+export { InteractiveCard } from './ui/InteractiveCard';
+export { InteractiveImage } from './ui/InteractiveImage';

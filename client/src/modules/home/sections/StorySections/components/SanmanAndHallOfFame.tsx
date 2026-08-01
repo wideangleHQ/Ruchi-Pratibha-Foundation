@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Award, Star, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const SanmanAndHallOfFame: React.FC = () => {
   const hallOfFame = [
@@ -50,7 +51,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Awardee Portrait Placeholder */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-sm aspect-[4/5] rounded-sm bg-white/5 border border-white/15 p-6 flex flex-col justify-between overflow-hidden group">
+              <InteractiveCard className="relative w-full max-w-sm aspect-[4/5] rounded-sm bg-white/5 border border-white/15 p-6 flex flex-col justify-between overflow-hidden">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-space tracking-widest uppercase text-institutional-accent">
                     Featured Awardee
@@ -59,10 +60,10 @@ export const SanmanAndHallOfFame: React.FC = () => {
                 </div>
 
                 <div className="my-auto text-center py-6">
-                  <div className="w-20 h-20 rounded-full bg-institutional-accent/20 border border-institutional-accent/40 text-institutional-accent flex items-center justify-center mx-auto mb-4">
+                  <div className="w-20 h-20 rounded-full bg-institutional-accent/20 border border-institutional-accent/40 text-institutional-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
                     <Award className="w-9 h-9 stroke-[1.5]" />
                   </div>
-                  <h4 className="font-cormorant text-2xl font-bold text-white">
+                  <h4 className="font-cormorant text-2xl font-bold text-white group-hover:text-institutional-accent transition-colors duration-300">
                     Featured Laureate
                   </h4>
                   <span className="font-space text-xs text-gray-300 mt-1 block">
@@ -74,7 +75,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
                   <span>Literature &amp; Arts</span>
                   <span>Annual Honors</span>
                 </div>
-              </div>
+              </InteractiveCard>
             </div>
 
             {/* Awardee Biography */}
@@ -97,10 +98,10 @@ export const SanmanAndHallOfFame: React.FC = () => {
                 </span>
                 <a
                   href="#biography"
-                  className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest font-space font-semibold text-institutional-accent hover:text-white transition-colors"
+                  className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest font-space font-semibold text-institutional-accent hover:text-white transition-colors duration-300"
                 >
                   <span>Read Laureate Biography</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </div>
             </div>
@@ -120,7 +121,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
             </div>
             <a
               href="#hall-of-fame"
-              className="inline-flex items-center gap-2 text-xs font-space uppercase tracking-widest text-institutional-accent hover:text-white transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 text-xs font-space uppercase tracking-widest text-institutional-accent hover:text-white transition-colors duration-300 whitespace-nowrap"
             >
               <span>Explore Full Hall of Fame</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -129,9 +130,9 @@ export const SanmanAndHallOfFame: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {hallOfFame.map((person) => (
-              <div
+              <InteractiveCard
                 key={person.name}
-                className="group relative flex flex-col justify-between bg-white/5 border border-white/10 rounded-sm p-6 sm:p-8 hover:border-institutional-accent hover:bg-white/10 transition-all duration-300 shadow-sm hover:shadow-xl"
+                className="flex flex-col justify-between bg-white/5 border border-white/10 rounded-sm p-6 sm:p-8 hover:border-institutional-accent transition-all duration-500"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -143,7 +144,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
                     </span>
                   </div>
 
-                  <h4 className="font-cormorant text-2xl font-bold text-white mb-2 group-hover:text-institutional-accent transition-colors">
+                  <h4 className="font-cormorant text-2xl font-bold text-white mb-2 group-hover:text-institutional-accent transition-colors duration-300">
                     {person.name}
                   </h4>
                   <p className="font-manrope text-xs text-gray-300 leading-relaxed mb-6">
@@ -153,11 +154,11 @@ export const SanmanAndHallOfFame: React.FC = () => {
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-space text-gray-400">
                   <span>Sanman Archive</span>
-                  <span className="text-institutional-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-institutional-accent group-hover:translate-x-1 transition-transform duration-300">
                     →
                   </span>
                 </div>
-              </div>
+              </InteractiveCard>
             ))}
           </div>
         </div>

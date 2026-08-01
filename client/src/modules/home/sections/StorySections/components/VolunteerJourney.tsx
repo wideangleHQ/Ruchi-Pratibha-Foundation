@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Compass, UserPlus, HeartHandshake, Sparkles, ArrowRight } from 'lucide-react';
+import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const VolunteerJourney: React.FC = () => {
   const steps = [
@@ -56,21 +57,21 @@ export const VolunteerJourney: React.FC = () => {
           {steps.map((step) => {
             const IconComponent = step.icon;
             return (
-              <div
+              <InteractiveCard
                 key={step.num}
-                className="group relative flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-7 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-institutional-accent transition-all duration-300"
+                className="flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-7 sm:p-8 hover:border-institutional-accent transition-all duration-500"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-space text-2xl font-bold text-institutional-accent/50 group-hover:text-institutional-accent transition-colors">
+                    <span className="font-space text-2xl font-bold text-institutional-accent/50 group-hover:text-institutional-accent transition-colors duration-300">
                       {step.num}
                     </span>
-                    <div className="w-10 h-10 rounded-sm bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 flex items-center justify-center text-institutional-accent transition-transform duration-300 group-hover:scale-110">
+                    <div className="w-10 h-10 rounded-sm bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 flex items-center justify-center text-institutional-accent transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
                       <IconComponent className="w-5 h-5 stroke-[1.5]" />
                     </div>
                   </div>
 
-                  <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-3 group-hover:text-institutional-accent transition-colors">
+                  <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-3 group-hover:text-institutional-accent transition-colors duration-300">
                     {step.title}
                   </h3>
 
@@ -81,11 +82,11 @@ export const VolunteerJourney: React.FC = () => {
 
                 <div className="pt-4 mt-6 border-t border-institutional-dark/5 dark:border-white/5 flex items-center justify-between text-[10px] font-space text-institutional-mutedLight dark:text-gray-400">
                   <span>Step {step.num}</span>
-                  <span className="text-institutional-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-institutional-accent group-hover:translate-x-1 transition-transform duration-300">
                     →
                   </span>
                 </div>
-              </div>
+              </InteractiveCard>
             );
           })}
         </div>

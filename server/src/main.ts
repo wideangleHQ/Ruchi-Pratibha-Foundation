@@ -92,6 +92,7 @@ async function bootstrap(): Promise<void> {
         'access-token',
       )
       .addTag('Health', 'Health check endpoints')
+      .addTag('Volunteers', 'Volunteer registration and lookup')
       .build();
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);

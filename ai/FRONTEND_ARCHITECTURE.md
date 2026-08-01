@@ -630,12 +630,71 @@ The current architecture should remain valid as these features are introduced.
 
 ## Component Hierarchy & Usage
 - **Header (`modules/home/sections/Navigation`)**:
-  - `index.tsx`: Fixed top container with balanced horizontal padding (`px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16`) and absolute center alignment for `<NavLinks />`.
+  - `index.tsx`: 100% stationary, ultra-minimal fixed header row with inner content constrained to the site's global grid (`max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16`) rendering `<NavLogo />` on the left and right-aligned utility controls `<NavActions />`.
+  - `NavActions.tsx`: Utility section rendering Search, Hamburger Directory Toggle (`Directory`), Theme Switcher (Light/Dark/System via `next-themes`), Language Switcher (`EN`/`OR`), and "Become a Volunteer" primary CTA.
+  - `MegaNavPanel.tsx`: GSAP-animated 6-column mega navigation panel with a **100vw full-bleed edge-to-edge opaque background** (`bg-institutional-dark`) that visually merges into one continuous navigation surface with the Header. Houses an inner content grid (`max-w-[1550px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-8 lg:py-12 xl:py-14`) with refined luxury dashboard card grid gaps (`gap-5 lg:gap-6 xl:gap-7 2xl:gap-8`) and card padding (`p-6 sm:p-6 lg:p-7`) aligning 6 directory categories 100% flush with the website grid.
   - `NavLogo.tsx`: Renders `/logo.svg` via Next.js `<Image>` with priority loading and smooth hover scaling (`group-hover:scale-105`).
-  - `NavLinks.tsx`: Horizontally centered menu items with responsive gap scaling (`gap-2 lg:gap-3 xl:gap-5 2xl:gap-8`).
-  - `MobileMenu.tsx`: Mobile drawer header displaying `/logo.svg` alongside the brand title.
-- **Footer (`modules/home/sections/Footer`)**:
-  - `index.tsx`: Brand header displaying `/logo.svg` (48x48px) with hover effects, consistent spacing, and alignment to the footer content grid.
+  - `MobileMenu.tsx`: Dedicated mobile drawer navigation header displaying `/logo.svg` alongside the brand title.
+- **Who We Are / Introduction (`modules/home/sections/Introduction`)**:
+  - `index.tsx`: Balanced editorial section container with standard grid alignment (`max-w-[1500px] w-full mx-auto px-6 sm:px-10 lg:px-12 xl:px-16`).
+  - `EditorialContent.tsx`: Preserves existing section heading, narrative paragraphs, and primary CTA button.
+  - `EditorialImageContainer.tsx`: Replaces placeholder icon emblem block with a high-resolution featured Next.js `<Image>` component (`/founder_portrait.png`) wrapped in `InteractiveImage` with living archive badges, glare sheen sweep, and floating caption overlay.
+- **Interactive Journey Through Time (`modules/home/sections/Timeline`)**:
+  - `index.tsx`: Compact section container with optimized padding (`py-12 sm:py-16`) and tight vertical rhythm.
+  - `TimelineTrack.tsx`: Desktop horizontal timeline track with 100% mathematically centered indicator circles (`top-[42px]` geometric alignment), enhanced typography contrast (`font-semibold text-institutional-dark dark:text-gray-200`), and smooth progress bar transitions.
+  - `TimelineDetail.tsx`: Tabbed milestone cards wrapped in `InteractiveCard` with concentric circle icon containers, smooth tab height adaptation, and entrance stagger animations.
+- **Featured Impact Story (`modules/home/sections/StorySections/components/FeaturedImpactStory.tsx`)**:
+  - `FeaturedImpactStory.tsx`: Editorial horizontal slider contained within `~100vh` viewport height (`lg:min-h-[85vh] lg:max-h-[920px] py-12 lg:py-20`) showcasing 5 full-card background impact story cards inspired by premium editorial design.
+  - `Sharp Architectural Corners`: Sharp border radius (`rounded-sm` 4-8px) eliminating oversized rounded edges and aligning perfectly with Apple × Stripe design standards.
+  - `Zero White Frame Edge-to-Edge Image`: Card container uses `p-0`, allowing the background image (`object-cover`) to touch all 4 edges (top, bottom, left, right) from 0 to 100% with absolutely zero white frame or padding around the image.
+  - `Expanded 32px Left & Bottom Overlay Padding`: Internal overlay content layer (`p-7 sm:p-8 lg:p-9`) provides generous 32px left/bottom grid alignment for category badges, person name, narrative summary, and `Read Story →` CTA.
+  - `Flush Transparent Edge Fade`: Viewport-edge flush transparent gradient masks (`w-16 sm:w-28 lg:w-36 bg-gradient-to-r/l from-institutional-light dark:from-institutional-dark to-transparent`) creating a luxury "content continues" effect without gaps.
+- **Moments in Time Gallery (`modules/home/sections/StorySections/components/PhotoMosaic.tsx`, `Masonry.tsx`)**:
+  - `Masonry.tsx`: Integrated React Bits Masonry gallery layout component powered by GSAP (`stagger: 0.04`, `duration: 0.6`, `animateFrom: 'bottom'`, `blurToFocus: true`) with tight 12px Pinterest-style grid gaps (`gap = 12`) and 5-to-1 dynamic column breakpoints (`1500px`: 5 cols, `1000px`: 4 cols, `600px`: 3 cols, `400px`: 2 cols, default: 1 col).
+  - `Shadow-Free Editorial Cards`: Each masonry card wraps in `<InteractiveCard disableShadow>` with sharp `rounded-sm` corners, edge-to-edge images (`Image fill object-cover`), soft theme-adaptive dark gradient overlays, mouse spotlight specular lighting, image zoom (`scale-105`), micro 3D tilt ($\pm 2.5^\circ$), and zero hover box shadow.
+  - `Refined Higher Gradient Fade & Compact Spacing`: Gradual 450px vertical gradient fade-out (`h-80 sm:h-[380px] lg:h-[450px] bg-gradient-to-t from-institutional-cream via-institutional-cream/85 dark:from-[#0B0F17] dark:via-[#0B0F17]/85 to-transparent`) starting 200px higher up in the gallery, paired with reduced bottom padding (`pb-10 sm:pb-12 lg:pb-14`).
+- **Flagship Publications Digital Library (`modules/home/sections/StorySections/components/PublicationsAndMedia.tsx`, `PublicationBook.tsx`, `BookShelf.tsx`, `BookPreview.tsx`)**:
+  - `PublicationsAndMedia.tsx`: Dedicated digital library section (`lg:min-h-[80vh] flex flex-col justify-center py-12 lg:py-20`) showcasing section heading, description, 3D hardcover bookshelf, and `View All Publications` primary CTA button.
+  - `PublicationBook.tsx`: 3D hardcover book component featuring front cover with gold foil border, 3D left spine fold (`BookSpine`), layered page stack right edge, `perspective: 1200px` 3D hover tilt (`rotateY(-12deg)`, `rotateX(3deg)`, `translateY(-10px)`), specular glare sweep, and ambient shelf drop shadow.
+  - `BookShelf.tsx`: Horizontal digital library shelf holding 6 flagship publication editions standing upright on a luxury shelf plank with smooth horizontal scroll navigation (`ChevronLeft`/`ChevronRight`) and touch swipe support.
+  - `BookPreview.tsx`: Interactive book-opening detail modal (`rotateY(-160deg)` cover unfold) displaying full publication metadata, 3D hardcover mockup, editorial summary, and action CTAs (`Read Online`, `Download PDF`, `View Archive`).
+- **Your Volunteer Journey (`modules/home/sections/StorySections/components/VolunteerJourney.tsx`)**:
+  - Relocated to sit **immediately below the Publications section**, transitioning visitors naturally from exploring knowledge into active community participation.
+- **Revised Homepage Section Architecture (`HomePage.tsx`)**:
+  1. `Navigation`
+  2. `Hero`
+  3. `Legacy` (Trust & Statistics)
+  4. `ChairmanMessage`
+  5. `Introduction` (Who We Are Editorial Narrative)
+  6. `Timeline` (Interactive Journey Through Time)
+  7. `FeaturedImpactStory` (Editorial Horizontal Slider)
+  8. `PhotoMosaic` (Moments in Time Pinterest Visual Archive)
+  9. `PublicationsAndMedia` (Flagship Publications Digital Library)
+  10. `VolunteerJourney` (Your Volunteer Journey - relocated directly after Publications)
+  11. `SignatureQuote`
+  12. `Footer`
+  - *Removed Sections*: `Ruchi Prativa Sanman`, `Partners in Purpose`, and `Institutional Governance & Transparency` have been completely removed from the rendering tree to streamline storytelling flow and eliminate redundancy.
+
+## Reusable Interaction System
+- **`InteractiveCard` (`components/ui/InteractiveCard.tsx`)**:
+  - Refined React Bits inspired card interaction component adapted for Apple × Foundation Premium Editorial design across Light Mode (`#F8F6F0`) and Dark Mode (`#0B0F17`).
+  - *Refined Interaction Parameters*:
+    - **Immediate Hover Lift & Elevation**: High-velocity cubic-bezier easing (`duration: 0.22`, `ease: [0.16, 1, 0.3, 1]`) ensuring zero delay when cursor enters card (`y: -5`, `scale: 1.006`).
+    - **Subtle Subconscious Micro 3D Tilt**: Micro mouse-following 3D rotation ($\pm 2.5^\circ$ `rotateX`/`rotateY` with `perspective: 1000px`) that smoothly interpolates cursor movement and returns gracefully to rest position on mouse leave.
+    - **Warm Luxury Ivory Light Mode Surface**: Light Mode hover surface transitions to a warm ivory cream tint (`#FFFDF9`) with soft gold specular highlight (`rgba(197, 160, 89, 0.14)`), leaving Dark Mode (`#121824`) untouched.
+    - **Dynamic Illuminated Border Mask**: Masked radial border overlay (`maskImage: radial-gradient(220px circle...)`) that dynamically illuminates a deep graphite charcoal (`#0B0F17`) border in Light Mode and gold accent (`#C5A059`) border in Dark Mode right at cursor coordinates.
+    - **Touch Device Safety**: Disables mouse coordinate tracking and 3D tilt automatically on touch devices (`'ontouchstart' in window`), preserving lift, border glow, and shadow elevation without performance degradation.
+  - *Consumers*:
+    - **Trust Cards (`Legacy/components/CredentialsGrid.tsx`)**: Government Recognition, Foundation Registration, CSR Commitment, National Presence.
+    - **Three Pillars (`ThreePillars/components/PillarCard.tsx`)**: Recognition, Community, Knowledge.
+    - **Timeline Milestone Cards (`Timeline/components/TimelineDetail.tsx`)**: Epoch Overview, Key Achievements, Long-term Legacy.
+    - **Sanman & Hall of Fame (`StorySections/components/SanmanAndHallOfFame.tsx`)**: Featured Laureate & Hall of Fame Honorees.
+    - **Impact & Publications (`StorySections/components/FeaturedImpactStory.tsx`, `PublicationsAndMedia.tsx`)**: Impact Narratives & Flagship Journals.
+    - **Transparency & Volunteer Journey (`StorySections/components/TransparencyAndPartners.tsx`, `VolunteerJourney.tsx`)**: Governance Audit Cards, Partner Cards, Volunteer Steps.
+    - **Visual Mosaic (`StorySections/components/PhotoMosaic.tsx`)**: Photo Archive Mosaic Cards.
+- **`InteractiveImage` (`components/ui/InteractiveImage.tsx`)**:
+  - Unified photography & media wrapper component used across all featured images and portraits.
+  - *Interactions*: Smooth zoom-in (`scale-105`), glare sheen sweep overlay (`group-hover:translate-x-full`), lighting reflection vignette, hardware accelerated transitions.
 
 ---
 

@@ -1,28 +1,151 @@
 'use client';
 
 import React from 'react';
-import { Camera, Image as ImageIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { Masonry, MasonryItem } from './Masonry';
+
+const GALLERY_ITEMS: MasonryItem[] = [
+  {
+    id: '1',
+    title: 'Award Ceremony & Honors Assembly',
+    category: 'Culture',
+    badge: 'Sanman Laureates 2024',
+    img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+    height: 520,
+    url: '#gallery-1',
+  },
+  {
+    id: '2',
+    title: 'Rural Healthcare & Mobile Vision Clinics',
+    category: 'Health',
+    badge: 'Ganjam Belt Outpost',
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
+    height: 380,
+    url: '#gallery-2',
+  },
+  {
+    id: '3',
+    title: 'Empowering Young Rural Scholars',
+    category: 'Education',
+    badge: 'Mayurbhanj District',
+    img: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80',
+    height: 580,
+    url: '#gallery-3',
+  },
+  {
+    id: '4',
+    title: 'Volunteer Community Reforestation Drive',
+    category: 'Environment',
+    badge: 'Kendujhar Sacred Groves',
+    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+    height: 420,
+    url: '#gallery-4',
+  },
+  {
+    id: '5',
+    title: 'Amaruchi Journal Flagship Launch',
+    category: 'Knowledge',
+    badge: 'Annual Publications',
+    img: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80',
+    height: 460,
+    url: '#gallery-5',
+  },
+  {
+    id: '6',
+    title: 'Grassroots Tribal Dialogue & Heritage',
+    category: 'Heritage',
+    badge: 'Koraput Weavers Guild',
+    img: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
+    height: 540,
+    url: '#gallery-6',
+  },
+  {
+    id: '7',
+    title: 'Youth Digital Skill & Tech Workshops',
+    category: 'Technology',
+    badge: 'Sundargarh Skill Hub',
+    img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+    height: 390,
+    url: '#gallery-7',
+  },
+  {
+    id: '8',
+    title: 'Women Artisan Fair-Trade Assembly',
+    category: 'Empowerment',
+    badge: 'Asha Handicrafts',
+    img: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80',
+    height: 500,
+    url: '#gallery-8',
+  },
+  {
+    id: '9',
+    title: 'Clean Water Micro-Pumping Stations',
+    category: 'Infrastructure',
+    badge: 'Bhadrak Coastal Belt',
+    img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+    height: 340,
+    url: '#gallery-9',
+  },
+  {
+    id: '10',
+    title: 'Youth Leadership & Civic Engagement',
+    category: 'Governance',
+    badge: 'Bhubaneswar Assembly',
+    img: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+    height: 480,
+    url: '#gallery-10',
+  },
+  {
+    id: '11',
+    title: 'Organic Farming & Seed Preservation',
+    category: 'Agriculture',
+    badge: 'Kalahandi Collective',
+    img: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+    height: 410,
+    url: '#gallery-11',
+  },
+  {
+    id: '12',
+    title: 'Maternal Wellness & Nutritional Support',
+    category: 'Health',
+    badge: 'Rayagada Outpost',
+    img: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
+    height: 530,
+    url: '#gallery-12',
+  },
+  {
+    id: '13',
+    title: 'Solar Lanterns for Remote Classrooms',
+    category: 'Energy',
+    badge: 'Malkangiri Frontier',
+    img: 'https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=800&q=80',
+    height: 360,
+    url: '#gallery-13',
+  },
+  {
+    id: '14',
+    title: 'Community Folk Music & Cultural Revival',
+    category: 'Culture',
+    badge: 'Puri District Guild',
+    img: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80',
+    height: 470,
+    url: '#gallery-14',
+  },
+];
 
 export const PhotoMosaic: React.FC = () => {
-  const galleryItems = [
-    { title: 'Award Ceremony & Honors Assembly', category: 'Culture' },
-    { title: 'Rural Healthcare & Vision Clinics', category: 'Health' },
-    { title: 'Empowering Young Scholars', category: 'Education' },
-    { title: 'Volunteer Community Drives', category: 'Community' },
-    { title: 'Environmental & Afforestation Initiatives', category: 'Environment' },
-    { title: 'Amaruchi Journal Launch', category: 'Knowledge' },
-    { title: 'Grassroots Tribal Dialogue', category: 'Heritage' },
-  ];
-
   return (
-    <section id="gallery" className="py-20 sm:py-28 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden">
-      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+    <section
+      id="gallery"
+      className="pt-16 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-14 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
+    >
+      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-              Visual Narrative
+              Visual Archive
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent" />
           </div>
@@ -34,67 +157,34 @@ export const PhotoMosaic: React.FC = () => {
           </p>
         </div>
 
-        {/* Photo Mosaic Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6">
-          {galleryItems.map((item, index) => {
-            // Asymmetrical grid column spans for an editorial magazine layout
-            const colSpanClass =
-              index === 0
-                ? 'lg:col-span-8 aspect-[16/9]'
-                : index === 1
-                ? 'lg:col-span-4 aspect-[4/3]'
-                : index === 2
-                ? 'lg:col-span-4 aspect-[4/3]'
-                : index === 3
-                ? 'lg:col-span-4 aspect-[4/3]'
-                : index === 4
-                ? 'lg:col-span-4 aspect-[4/3]'
-                : index === 5
-                ? 'lg:col-span-6 aspect-[16/9]'
-                : 'lg:col-span-6 aspect-[16/9]';
+        {/* React Bits Pinterest-Style Dense Masonry Gallery */}
+        <div className="relative">
+          <Masonry
+            items={GALLERY_ITEMS}
+            ease="power3.out"
+            duration={0.6}
+            stagger={0.04}
+            animateFrom="bottom"
+            blurToFocus={true}
+          />
 
-            return (
-              <div
-                key={item.title}
-                className={`group relative rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:border-institutional-accent transition-all duration-300 ${colSpanClass}`}
-              >
-                {/* Background Grid Pattern */}
-                <div
-                  className="absolute inset-0 opacity-10 pointer-events-none"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 160, 89, 0.15) 1px, transparent 1px)',
-                    backgroundSize: '20px 20px',
-                  }}
-                />
+          {/* Cinematic Bottom Gradient Fade-Out (Starts 200px Higher with Seamless Blend) */}
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-80 sm:h-[380px] lg:h-[450px] bg-gradient-to-t from-institutional-cream via-institutional-cream/85 dark:from-[#0B0F17] dark:via-[#0B0F17]/85 to-transparent z-20" />
+        </div>
 
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[10px] font-space tracking-widest text-institutional-accent uppercase font-semibold">
-                    {item.category} Archive
-                  </span>
-                  <Camera className="w-4 h-4 text-institutional-accent/70" />
-                </div>
-
-                <div className="relative z-10 my-auto text-center py-4">
-                  <div className="w-12 h-12 rounded-full bg-institutional-dark dark:bg-white/10 text-institutional-accent flex items-center justify-center mx-auto mb-3 shadow transition-transform duration-300 group-hover:scale-110">
-                    <ImageIcon className="w-6 h-6 stroke-[1.5]" />
-                  </div>
-                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white group-hover:text-institutional-accent transition-colors">
-                    {item.title}
-                  </h4>
-                </div>
-
-                <div className="relative z-10 pt-2 border-t border-institutional-dark/5 dark:border-white/5 flex items-center justify-between text-[9px] font-space text-institutional-mutedLight dark:text-gray-400">
-                  <span>Photo Archive</span>
-                  <span className="text-institutional-accent opacity-0 group-hover:opacity-100 transition-opacity">
-                    View Image →
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+        {/* Integrated Bottom CTA Button: View More Moments */}
+        <div className="-mt-16 sm:-mt-20 lg:-mt-24 text-center relative z-30">
+          <a
+            href="#full-gallery"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+          >
+            <span>View More Moments</span>
+            <ArrowRight className="w-4 h-4 text-institutional-accent group-hover:text-institutional-dark group-hover:translate-x-1 transition-all duration-300" />
+          </a>
         </div>
       </div>
     </section>
   );
 };
+
+export default PhotoMosaic;

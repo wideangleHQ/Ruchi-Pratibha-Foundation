@@ -7,6 +7,7 @@ import { DatabaseModule } from './database';
 import { RedisCacheModule } from './cache';
 import { StorageModule } from './storage';
 import { HealthModule } from './modules/health/health.module';
+import { CommunityModule } from './modules/community/community.module';
 import { CorrelationIdMiddleware } from './common/middleware';
 
 @Module({
@@ -30,6 +31,7 @@ import { CorrelationIdMiddleware } from './common/middleware';
     StorageModule,
 
     HealthModule,
+    CommunityModule,
   ],
   providers: [
     {

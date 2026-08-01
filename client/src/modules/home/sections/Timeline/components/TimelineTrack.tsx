@@ -14,25 +14,24 @@ export const TimelineTrack: React.FC<TimelineTrackProps> = ({
   selectedId,
   onSelect,
 }) => {
-  return (
-    <div className="relative py-6 sm:py-8 my-4">
-      {/* Desktop Horizontal Track */}
-      <div className="hidden lg:block relative w-full">
-        {/* Continuous Horizontal Line */}
-        <div className="absolute top-1/2 left-4 right-4 h-[2px] bg-institutional-accent/30 dark:bg-institutional-accent/30 -translate-y-1/2" />
+  const selectedIndex = milestones.findIndex((m) => m.id === selectedId);
+  const progressPercent = (selectedIndex / (milestones.length - 1)) * 100;
 
-        {/* Selected Accent Progress Bar Fill */}
+  return (
+    <div className="relative py-2 my-2">
+      {/* Desktop Horizontal Track */}
+      <div className="hidden lg:block relative w-full px-8">
+        {/* Continuous Horizontal Line aligned to geometric center of node circles */}
+        <div className="absolute top-[42px] left-12 right-12 h-[2px] bg-institutional-accent/30 dark:bg-institutional-accent/30 -translate-y-1/2 z-0" />
+
+        {/* Selected Progress Fill */}
         <div
-          className="absolute top-1/2 left-4 h-[2px] bg-institutional-accent -translate-y-1/2 transition-all duration-500 ease-out"
-          style={{
-            width: `${
-              (milestones.findIndex((m) => m.id === selectedId) / (milestones.length - 1)) * 96
-            }%`,
-          }}
+          className="absolute top-[42px] left-12 h-[2px] bg-institutional-accent -translate-y-1/2 transition-all duration-500 ease-out z-0"
+          style={{ width: `calc(${progressPercent}% * 0.92)` }}
         />
 
-        {/* Milestone Node Buttons */}
-        <div className="relative z-10 flex items-center justify-between px-2">
+        {/* Milestone Items Grid */}
+        <div className="relative z-10 flex items-start justify-between">
           {milestones.map((item) => {
             const isSelected = item.id === selectedId;
             return (
@@ -41,38 +40,38 @@ export const TimelineTrack: React.FC<TimelineTrackProps> = ({
                 onClick={() => onSelect(item.id)}
                 aria-pressed={isSelected}
                 aria-label={`Timeline milestone ${item.year}: ${item.title}`}
-                className="group relative flex flex-col items-center outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm py-2 px-1 transition-all duration-300 select-none"
+                className="group relative flex flex-col items-center outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm transition-all duration-300 select-none cursor-pointer"
               >
-                {/* Year Label */}
+                {/* Year Label - Enhanced Legibility & Font Weight */}
                 <span
-                  className={`font-space text-xs tracking-wider transition-all duration-300 mb-4 whitespace-nowrap ${
+                  className={`font-space text-xs tracking-wider transition-all duration-300 mb-2.5 whitespace-nowrap ${
                     isSelected
                       ? 'text-institutional-accent font-bold scale-110'
-                      : 'text-institutional-mutedLight dark:text-gray-400 group-hover:text-institutional-accent'
+                      : 'text-institutional-dark dark:text-gray-200 font-semibold group-hover:text-institutional-accent'
                   }`}
                 >
                   {item.year}
                 </span>
 
                 {/* Centered Node Circle */}
-                <div className="relative flex items-center justify-center">
+                <div className="relative w-8 h-8 flex items-center justify-center my-0.5 z-10">
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
                       isSelected
                         ? 'bg-institutional-accent shadow-md scale-125 ring-4 ring-institutional-accent/30 border-0'
-                        : 'bg-white dark:bg-institutional-surface border border-institutional-accent/40 group-hover:border-institutional-accent group-hover:scale-110'
+                        : 'bg-white dark:bg-institutional-surface border-2 border-institutional-accent/50 group-hover:border-institutional-accent group-hover:scale-110'
                     }`}
                   >
                     {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-institutional-dark" />}
                   </div>
                 </div>
 
-                {/* Milestone Short Title */}
+                {/* Milestone Short Title - Enhanced Readability */}
                 <span
-                  className={`font-cormorant text-sm transition-all duration-300 mt-4 text-center max-w-[110px] leading-tight ${
+                  className={`font-cormorant text-base transition-all duration-300 mt-2.5 text-center max-w-[130px] leading-snug ${
                     isSelected
                       ? 'text-institutional-accent font-bold'
-                      : 'text-institutional-mutedLight dark:text-gray-400 group-hover:text-institutional-dark dark:group-hover:text-white'
+                      : 'text-institutional-dark dark:text-gray-100 font-medium group-hover:text-institutional-accent'
                   }`}
                 >
                   {item.title}
@@ -84,7 +83,7 @@ export const TimelineTrack: React.FC<TimelineTrackProps> = ({
       </div>
 
       {/* Mobile/Tablet Scrollable Track */}
-      <div className="lg:hidden flex items-center justify-start gap-2.5 overflow-x-auto pb-4 pt-2 no-scrollbar px-1">
+      <div className="lg:hidden flex items-center justify-start gap-2.5 overflow-x-auto pb-3 pt-1 no-scrollbar px-1">
         {milestones.map((item) => {
           const isSelected = item.id === selectedId;
           return (
@@ -96,7 +95,7 @@ export const TimelineTrack: React.FC<TimelineTrackProps> = ({
               className={`px-4 py-2.5 text-xs font-space rounded-full transition-all duration-200 min-h-[44px] flex items-center justify-center whitespace-nowrap outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent flex-shrink-0 border-0 ${
                 isSelected
                   ? 'bg-institutional-accent text-institutional-dark font-bold shadow-md'
-                  : 'bg-institutional-accent/10 text-institutional-accent hover:bg-institutional-accent/20'
+                  : 'bg-institutional-accent/10 text-institutional-accent font-semibold hover:bg-institutional-accent/20'
               }`}
             >
               {item.year}
