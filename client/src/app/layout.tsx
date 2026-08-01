@@ -21,7 +21,7 @@ export default function RootLayout({
       className={`${cormorantGaramond.variable} ${manrope.variable} ${spaceGrotesk.variable}`}
     >
       <body className="font-manrope antialiased bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light selection:bg-institutional-accent selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>
       </body>

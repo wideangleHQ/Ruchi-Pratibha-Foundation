@@ -6,9 +6,15 @@ import { useCounterAnimation } from '../hooks/useCounterAnimation';
 
 interface StatCounterProps {
   stat: StatItem;
+  isFeaturedHeroMobile?: boolean;
+  isCompactMobile?: boolean;
 }
 
-export const StatCounter: React.FC<StatCounterProps> = ({ stat }) => {
+export const StatCounter: React.FC<StatCounterProps> = ({
+  stat,
+  isFeaturedHeroMobile = false,
+  isCompactMobile = false,
+}) => {
   const displayEnd = stat.numericValue === 200000 ? 2 : stat.numericValue;
   const { ref, count } = useCounterAnimation(displayEnd, 1800);
 
@@ -17,10 +23,24 @@ export const StatCounter: React.FC<StatCounterProps> = ({ stat }) => {
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center p-2 sm:p-4 min-w-0">
-      <span className="font-space text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-institutional-dark dark:text-white mb-3 tabular-nums whitespace-nowrap">
+      <span
+        className={`font-space font-bold tracking-tight tabular-nums whitespace-nowrap mb-2 ${
+          isFeaturedHeroMobile
+            ? 'text-6xl sm:text-7xl lg:text-6xl xl:text-7xl text-institutional-accent font-extrabold scale-105'
+            : isCompactMobile
+            ? 'text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-institutional-dark dark:text-white'
+            : 'text-5xl sm:text-5xl lg:text-5xl xl:text-6xl text-institutional-dark dark:text-white'
+        }`}
+      >
         {formattedDisplay}
       </span>
-      <span className="font-manrope text-xs sm:text-sm uppercase tracking-wider font-semibold text-institutional-mutedLight dark:text-gray-400 whitespace-nowrap">
+      <span
+        className={`font-manrope uppercase tracking-wider whitespace-nowrap ${
+          isFeaturedHeroMobile
+            ? 'text-xs sm:text-sm font-bold text-institutional-dark dark:text-white tracking-widest'
+            : 'text-[10px] sm:text-sm font-semibold text-institutional-mutedLight dark:text-gray-400'
+        }`}
+      >
         {stat.label}
       </span>
     </div>

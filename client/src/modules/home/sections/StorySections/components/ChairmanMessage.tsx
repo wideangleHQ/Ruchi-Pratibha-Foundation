@@ -41,11 +41,11 @@ export const ChairmanMessage: React.FC = () => {
   return (
     <section
       id="chairman"
-      className="relative py-12 sm:py-16 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden"
     >
-      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
-          {/* Left: Founder Portrait with Interactive 3D Parallax & Floating */}
+          {/* Left: Founder Portrait with Interactive 3D Parallax & Subtle Hover Zoom */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ export const ChairmanMessage: React.FC = () => {
             <motion.div
               animate={isHovered ? { y: 0 } : { y: [0, -6, 0] }}
               transition={{ repeat: isHovered ? 0 : Infinity, duration: 4.5, ease: 'easeInOut' }}
-              className="w-full max-w-sm sm:max-w-md perspective-1000"
+              className="w-full max-w-[290px] sm:max-w-md perspective-1000"
             >
               <motion.div
                 ref={cardRef}
@@ -68,7 +68,7 @@ export const ChairmanMessage: React.FC = () => {
                   rotateY: isHovered ? rotateY : 0,
                   transformStyle: 'preserve-3d',
                 }}
-                className="group relative w-full aspect-[4/5] rounded-md bg-white dark:bg-institutional-surface/60 border border-institutional-dark/15 dark:border-white/15 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 transform-gpu"
+                className="group relative w-full aspect-[4/5] rounded-md bg-white dark:bg-institutional-surface/60 border border-institutional-dark/15 dark:border-white/15 hover:border-institutional-accent/50 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform-gpu"
               >
                 {/* High Quality Founder Image */}
                 <div className="relative w-full h-full overflow-hidden">
@@ -121,24 +121,25 @@ export const ChairmanMessage: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Personal Message Copy with Refined Typography */}
+          {/* Right: Personal Message Copy with Refined Mobile Centering & Typography */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 flex flex-col justify-center max-w-2xl mx-auto lg:mx-0"
+            className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
           >
             {/* Kicker Badge */}
-            <div className="inline-flex items-center gap-3 mb-3 sm:mb-4">
+            <div className="inline-flex items-center gap-3 mb-3 sm:mb-4 justify-center lg:justify-start">
               <span className="h-[1px] w-8 bg-institutional-accent" />
               <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
                 Message From Our Founder
               </span>
+              <span className="h-[1px] w-8 bg-institutional-accent lg:hidden" />
             </div>
 
-            {/* Refined Section Title - Solid Black, Thinner Weight, Cormorant Font */}
-            <h2 className="font-cormorant text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-normal text-black dark:text-white tracking-tight mb-5 lg:mb-6 leading-[1.2]">
+            {/* Refined Section Title */}
+            <h2 className="font-cormorant text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-normal text-black dark:text-white tracking-tight mb-4 sm:mb-5 lg:mb-6 leading-[1.2]">
               &ldquo;True progress begins when we honor those who serve and uplift those in need.&rdquo;
             </h2>
 
@@ -156,7 +157,7 @@ export const ChairmanMessage: React.FC = () => {
             <div>
               <a
                 href="#message-full"
-                className="group inline-flex items-center gap-3 px-6 sm:px-7 py-3 sm:py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-black dark:text-white border border-black/30 dark:border-white/30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent"
+                className="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-black dark:text-white border border-black/30 dark:border-white/30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent"
               >
                 <span>Read Full Message</span>
                 <ArrowRight className="w-4 h-4 text-institutional-accent group-hover:translate-x-1 transition-transform" />

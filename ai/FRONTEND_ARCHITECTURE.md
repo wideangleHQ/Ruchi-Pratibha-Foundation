@@ -660,20 +660,12 @@ The current architecture should remain valid as these features are introduced.
   - `BookPreview.tsx`: Interactive book-opening detail modal (`rotateY(-160deg)` cover unfold) displaying full publication metadata, 3D hardcover mockup, editorial summary, and action CTAs (`Read Online`, `Download PDF`, `View Archive`).
 - **Your Volunteer Journey (`modules/home/sections/StorySections/components/VolunteerJourney.tsx`)**:
   - Relocated to sit **immediately below the Publications section**, transitioning visitors naturally from exploring knowledge into active community participation.
-- **Revised Homepage Section Architecture (`HomePage.tsx`)**:
-  1. `Navigation`
-  2. `Hero`
-  3. `Legacy` (Trust & Statistics)
-  4. `ChairmanMessage`
-  5. `Introduction` (Who We Are Editorial Narrative)
-  6. `Timeline` (Interactive Journey Through Time)
-  7. `FeaturedImpactStory` (Editorial Horizontal Slider)
-  8. `PhotoMosaic` (Moments in Time Pinterest Visual Archive)
-  9. `PublicationsAndMedia` (Flagship Publications Digital Library)
-  10. `VolunteerJourney` (Your Volunteer Journey - relocated directly after Publications)
-  11. `SignatureQuote`
-  12. `Footer`
-  - *Removed Sections*: `Ruchi Prativa Sanman`, `Partners in Purpose`, and `Institutional Governance & Transparency` have been completely removed from the rendering tree to streamline storytelling flow and eliminate redundancy.
+- **Dedicated Mobile Experience System (320px – 480px Viewports)**:
+  - *Default Theme System*: Light Mode is configured as the application-wide default theme (`defaultTheme="light" enableSystem={false}` in `app/layout.tsx`), persisting user preferences while dark mode remains togglable with zero hydration flickering.
+  - *Hero Section 90vh Mobile Height*: Mobile Hero section (`Hero/index.tsx`, `HeroContent.tsx`) is configured to `h-[90vh] min-h-[90vh] sm:min-h-screen sm:h-auto` in Mobile View Only so it fits the whole screen comfortably while keeping eyebrow, heading, paragraph, CTAs, and scroll indicator 100% vertically and horizontally centered with ~65-70% content width constraint.
+  - *Mobile Header Utility Actions & Compact Logo*: Mobile Header (`Navigation/index.tsx`, `NavLogo.tsx`) integrates Search, Theme Toggle (Light/Dark), and Language Selector (`EN`/`OR`) beside the mobile hamburger menu with touch-friendly 36px targets, while decreasing logo text size in Mobile View Only (`text-sm sm:text-lg`) for a clean, non-cramped header layout.
+  - *Legacy Counts 15–25% Font Size Increase*: Stat numbers (`StatCounter.tsx`) feature 15–25% larger numerical values on mobile (`text-4xl` for compact stats, `text-6xl` for `2 Lakhs+` centerpiece) emphasizing institutional impact.
+  - *Message From The Founder*: Founder section (`ChairmanMessage.tsx`) enforces consistent 24px side padding (`px-6 sm:px-6`), centered mobile typography alignment, refined quote spacing, and subtle institutional hover borders (`hover:border-institutional-accent/50`) and image zoom (`group-hover:scale-105 duration-700`).
 
 ## Reusable Interaction System
 - **`InteractiveCard` (`components/ui/InteractiveCard.tsx`)**:

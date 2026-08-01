@@ -176,10 +176,10 @@ export const PhotoMosaic: React.FC = () => {
         <div className="-mt-16 sm:-mt-20 lg:-mt-24 text-center relative z-30">
           <a
             href="#full-gallery"
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+            className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
             <span>View More Moments</span>
-            <ArrowRight className="w-4 h-4 text-institutional-accent group-hover:text-institutional-dark group-hover:translate-x-1 transition-all duration-300" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-institutional-accent group-hover:text-institutional-dark group-hover:translate-x-1 transition-all duration-300" />
           </a>
         </div>
       </div>
