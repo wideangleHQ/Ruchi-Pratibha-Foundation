@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { X, Search, Globe, Sun, Moon, Laptop } from 'lucide-react';
@@ -46,9 +47,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
           className="fixed inset-0 top-0 left-0 w-full h-screen bg-institutional-darker/98 backdrop-blur-xl text-white z-50 flex flex-col p-6 sm:p-8 overflow-y-auto"
         >
           <div className="flex items-center justify-between pb-6 border-b border-white/10">
-            <span className="font-cormorant text-xl sm:text-2xl font-bold text-institutional-accent whitespace-nowrap">
-              Ruchi Prativa Foundation
-            </span>
+            <div className="flex items-center gap-2.5">
+              <Image
+                src="/logo.svg"
+                alt="Ruchi Prativa Foundation Logo"
+                width={36}
+                height={36}
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+              />
+              <span className="font-cormorant text-xl sm:text-2xl font-bold text-institutional-accent whitespace-nowrap">
+                Ruchi Prativa Foundation
+              </span>
+            </div>
             <button
               onClick={onClose}
               aria-label="Close navigation menu"

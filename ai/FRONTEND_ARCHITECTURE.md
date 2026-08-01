@@ -620,6 +620,25 @@ The current architecture should remain valid as these features are introduced.
 
 ---
 
+# Graphify Asset Relationships & Component Hierarchy
+
+## Primary Brand Asset
+- **Source Asset**: `/assets/logo.svg`
+- **Public URL**: `/logo.svg` (`client/public/logo.svg`)
+- **Module Asset**: `@/assets/logo.svg` (`client/src/assets/logo.svg`)
+- **Aspect Ratio**: 1:1 (Vector SVG, crisp scaling on high-density displays)
+
+## Component Hierarchy & Usage
+- **Header (`modules/home/sections/Navigation`)**:
+  - `index.tsx`: Fixed top container with balanced horizontal padding (`px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16`) and absolute center alignment for `<NavLinks />`.
+  - `NavLogo.tsx`: Renders `/logo.svg` via Next.js `<Image>` with priority loading and smooth hover scaling (`group-hover:scale-105`).
+  - `NavLinks.tsx`: Horizontally centered menu items with responsive gap scaling (`gap-2 lg:gap-3 xl:gap-5 2xl:gap-8`).
+  - `MobileMenu.tsx`: Mobile drawer header displaying `/logo.svg` alongside the brand title.
+- **Footer (`modules/home/sections/Footer`)**:
+  - `index.tsx`: Brand header displaying `/logo.svg` (48x48px) with hover effects, consistent spacing, and alignment to the footer content grid.
+
+---
+
 # Guiding Principle
 
 The frontend should feel like a collection of independent business modules built on top of a shared platform.

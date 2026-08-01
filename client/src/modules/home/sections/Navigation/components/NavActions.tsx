@@ -24,7 +24,7 @@ export const NavActions: React.FC = () => {
   };
 
   return (
-    <div className="hidden lg:flex items-center space-x-2 lg:space-x-2.5 xl:space-x-4 flex-shrink-0">
+    <div className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0">
       {/* Search Button */}
       <button
         aria-label="Search institutional platform"
