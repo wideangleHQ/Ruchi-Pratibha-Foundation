@@ -1,0 +1,106 @@
+'use client';
+
+import React from 'react';
+import { Compass, UserPlus, HeartHandshake, Sparkles, ArrowRight } from 'lucide-react';
+
+export const VolunteerJourney: React.FC = () => {
+  const steps = [
+    {
+      num: '01',
+      title: 'Discover',
+      description: 'Explore community initiatives across education, healthcare, culture, and environmental sustainability in your district.',
+      icon: Compass,
+    },
+    {
+      num: '02',
+      title: 'Register',
+      description: 'Join our network of dedicated volunteers, scholars, and youth leaders committed to social transformation.',
+      icon: UserPlus,
+    },
+    {
+      num: '03',
+      title: 'Participate',
+      description: 'Engage directly in healthcare camps, school mentoring, tree plantation drives, and cultural archives.',
+      icon: HeartHandshake,
+    },
+    {
+      num: '04',
+      title: 'Create Impact',
+      description: 'See the real-world lives touched, track transparent metrics, and inspire others to contribute.',
+      icon: Sparkles,
+    },
+  ];
+
+  return (
+    <section id="volunteer" className="py-20 sm:py-28 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden">
+      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-3 mb-3">
+            <span className="h-[1px] w-8 bg-institutional-accent" />
+            <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
+              Get Involved
+            </span>
+            <span className="h-[1px] w-8 bg-institutional-accent" />
+          </div>
+          <h2 className="font-cormorant text-4xl sm:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
+            Your Volunteer Journey
+          </h2>
+          <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 mt-3">
+            Four meaningful steps to become part of Odisha’s living legacy of service.
+          </p>
+        </div>
+
+        {/* 4-Step Interactive Horizontal Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-14">
+          {steps.map((step) => {
+            const IconComponent = step.icon;
+            return (
+              <div
+                key={step.num}
+                className="group relative flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-7 sm:p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-institutional-accent transition-all duration-300"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-space text-2xl font-bold text-institutional-accent/50 group-hover:text-institutional-accent transition-colors">
+                      {step.num}
+                    </span>
+                    <div className="w-10 h-10 rounded-sm bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 flex items-center justify-center text-institutional-accent transition-transform duration-300 group-hover:scale-110">
+                      <IconComponent className="w-5 h-5 stroke-[1.5]" />
+                    </div>
+                  </div>
+
+                  <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-3 group-hover:text-institutional-accent transition-colors">
+                    {step.title}
+                  </h3>
+
+                  <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-6 border-t border-institutional-dark/5 dark:border-white/5 flex items-center justify-between text-[10px] font-space text-institutional-mutedLight dark:text-gray-400">
+                  <span>Step {step.num}</span>
+                  <span className="text-institutional-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                    →
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA Banner */}
+        <div className="text-center">
+          <a
+            href="#volunteer-register"
+            className="group inline-flex items-center gap-3 px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md"
+          >
+            <span>Become a Volunteer Today</span>
+            <ArrowRight className="w-4 h-4 text-institutional-dark group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
