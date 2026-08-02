@@ -6,8 +6,10 @@ import { configurations } from './config';
 import { DatabaseModule } from './database';
 import { RedisCacheModule } from './cache';
 import { StorageModule } from './storage';
+import { SupabaseStorageModule } from './supabase-storage';
 import { HealthModule } from './modules/health/health.module';
 import { CommunityModule } from './modules/community/community.module';
+import { MediaModule } from './modules/media/media.module';
 import { CorrelationIdMiddleware } from './common/middleware';
 
 @Module({
@@ -29,9 +31,11 @@ import { CorrelationIdMiddleware } from './common/middleware';
     DatabaseModule,
     RedisCacheModule,
     StorageModule,
+    SupabaseStorageModule,
 
     HealthModule,
     CommunityModule,
+    MediaModule,
   ],
   providers: [
     {

@@ -12,9 +12,9 @@ export const PublicationsAndMedia: React.FC = () => {
   return (
     <section
       id="publications"
-      className="py-12 sm:py-16 lg:py-20 lg:min-h-[80vh] flex flex-col justify-center bg-institutional-cream dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
+      className="py-14 sm:py-16 lg:py-20 lg:min-h-[80vh] flex flex-col justify-center bg-institutional-cream dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
     >
-      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
         {/* Section Header: Digital Library & Knowledge Repository */}
         <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-3 mb-2">

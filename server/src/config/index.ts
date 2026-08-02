@@ -6,6 +6,7 @@ import storageConfig from './storage.config';
 import securityConfig from './security.config';
 import swaggerConfig from './swagger.config';
 import mailConfig from './mail.config';
+import supabaseConfig from './supabase.config';
 
 export const configurations = [
   appConfig,
@@ -16,6 +17,7 @@ export const configurations = [
   securityConfig,
   swaggerConfig,
   mailConfig,
+  supabaseConfig,
 ];
 
 export {
@@ -27,4 +29,5 @@ export {
   securityConfig,
   swaggerConfig,
   mailConfig,
+  supabaseConfig,
 };

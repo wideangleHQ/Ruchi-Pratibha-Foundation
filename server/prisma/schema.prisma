@@ -127,36 +127,25 @@ enum ApplicationStatus {
   EXPIRED
 }
 
-enum SelectionStatus {
-  PENDING
-  SHORTLISTED
-  SELECTED
-  WAITLISTED
-  REJECTED
-}
-
-enum AssignmentStatus {
-  ASSIGNED
-  CONFIRMED
-  DECLINED
-  REASSIGNED
-  CANCELLED
-}
-
-enum DeploymentStatus {
-  EXPECTED
-  CONFIRMED
-  CANCELLED
-  NO_SHOW
-}
-
 enum ParticipationStatus {
-  PENDING
-  REPORTED
+  NOT_STARTED
+  ACTIVE
   COMPLETED
-  NOT_COMPLETED
-  NO_SHOW
   CANCELLED
+}
+
+enum CertificateType {
+  PARTICIPATION
+  APPRECIATION
+  EXCELLENCE
+  SPECIAL
+}
+
+enum CertificateStatus {
+  DRAFT
+  ISSUED
+  REVOKED
+  EXPIRED
 }
 
 // ─── User ────────────────────────────────────────────────────────────────────
@@ -226,9 +215,8 @@ model Volunteer {
   identities     VolunteerIdentity[]
   verifications  VolunteerVerification[]
   applications   VolunteerApplication[]
-  assignments    VolunteerAssignment[]
-  deployments    VolunteerDeployment[]
   participations VolunteerParticipation[]
+  certificates   VolunteerCertificate[]
 
   @@index([volunteerCode])
   @@index([email])
@@ -378,9 +366,8 @@ model EventEdition {
   venueRef      Venue? @relation(fields: [venueId], references: [id])
   shifts         EventShift[]
   applications   VolunteerApplication[]
-  assignments    VolunteerAssignment[]
-  deployments    VolunteerDeployment[]
   participations VolunteerParticipation[]
+  certificates   VolunteerCertificate[]
 
   @@index([eventId])
   @@index([editionCode])
@@ -425,7 +412,6 @@ model Venue {
   deletedBy            String?     @map("deleted_by") @db.Uuid
 
   editions    EventEdition[]
-  assignments VolunteerAssignment[]
 
   @@index([venueCode])
   @@index([venueStatus])
@@ -453,7 +439,6 @@ model EventDepartment {
 
   roles        VolunteerRole[]
   applications VolunteerApplication[]
-  assignments  VolunteerAssignment[]
 
   @@index([departmentCode])
   @@index([status])
@@ -486,7 +471,6 @@ model VolunteerRole {
 
   department   EventDepartment @relation(fields: [departmentId], references: [id])
   applications VolunteerApplication[]
-  assignments  VolunteerAssignment[]
 
   @@index([roleCode])
   @@index([departmentId])
@@ -517,7 +501,6 @@ model EventShift {
 
   edition      EventEdition @relation(fields: [editionId], references: [id])
   applications VolunteerApplication[]
-  assignments  VolunteerAssignment[]
 
   @@index([shiftCode])
   @@index([editionId])
@@ -564,7 +547,7 @@ model VolunteerApplication {
   preferredShift        EventShift?          @relation(fields: [preferredShiftId], references: [id])
   preferredDepartment   EventDepartment?     @relation(fields: [preferredDepartmentId], references: [id])
   preferredRole         VolunteerRole?       @relation(fields: [preferredRoleId], references: [id])
-  selection             VolunteerSelection?
+  participation         VolunteerParticipation?
 
   @@unique([volunteerId, editionId], map: "uq_volunteer_edition_application")
   @@index([applicationCode])
@@ -579,150 +562,621 @@ model VolunteerApplication {
   @@map("volunteer_applications")
 }
 
-// ─── Volunteer Selection ──────────────────────────────────────────────────
-
-model VolunteerSelection {
-  id                  String          @id @default(uuid()) @db.Uuid
-  selectionCode       String          @unique @map("selection_code")
-  applicationId       String          @unique @map("application_id") @db.Uuid
-  selectionScore      Float?          @map("selection_score")
-  recommendationScore Float?          @map("recommendation_score")
-  selectionStatus     SelectionStatus @default(PENDING) @map("selection_status")
-  selectionNotes      String?         @map("selection_notes") @db.Text
-  selectedBy          String?         @map("selected_by") @db.Uuid
-  selectedAt          DateTime?       @map("selected_at")
-  version             Int             @default(1)
-  createdAt           DateTime        @default(now()) @map("created_at")
-  updatedAt           DateTime        @updatedAt @map("updated_at")
-  createdBy           String?         @map("created_by") @db.Uuid
-  updatedBy           String?         @map("updated_by") @db.Uuid
-
-  application VolunteerApplication @relation(fields: [applicationId], references: [id])
-  assignment  VolunteerAssignment?
-
-  @@index([selectionCode])
-  @@index([applicationId])
-  @@index([selectionStatus])
-  @@index([recommendationScore])
-  @@index([selectedBy])
-  @@index([selectedAt])
-  @@map("volunteer_selections")
-}
-
-// ─── Volunteer Assignment ─────────────────────────────────────────────────
-
-model VolunteerAssignment {
-  id                    String           @id @default(uuid()) @db.Uuid
-  assignmentCode        String           @unique @map("assignment_code")
-  selectionId           String           @unique @map("selection_id") @db.Uuid
-  volunteerId           String           @map("volunteer_id") @db.Uuid
-  editionId             String           @map("edition_id") @db.Uuid
-  departmentId          String           @map("department_id") @db.Uuid
-  roleId                String           @map("role_id") @db.Uuid
-  shiftId               String           @map("shift_id") @db.Uuid
-  venueId               String           @map("venue_id") @db.Uuid
-  reportingManager      String?          @map("reporting_manager")
-  reportingInstructions String?          @map("reporting_instructions") @db.Text
-  reportingTime         DateTime?        @map("reporting_time")
-  assignmentStatus      AssignmentStatus @default(ASSIGNED) @map("assignment_status")
-  version               Int              @default(1)
-  createdAt             DateTime         @default(now()) @map("created_at")
-  updatedAt             DateTime         @updatedAt @map("updated_at")
-  createdBy             String?          @map("created_by") @db.Uuid
-  updatedBy             String?          @map("updated_by") @db.Uuid
-
-  selection  VolunteerSelection  @relation(fields: [selectionId], references: [id])
-  volunteer  Volunteer           @relation(fields: [volunteerId], references: [id])
-  edition    EventEdition        @relation(fields: [editionId], references: [id])
-  department EventDepartment     @relation(fields: [departmentId], references: [id])
-  role       VolunteerRole       @relation(fields: [roleId], references: [id])
-  shift      EventShift          @relation(fields: [shiftId], references: [id])
-  venue      Venue               @relation(fields: [venueId], references: [id])
-  deployment VolunteerDeployment?
-
-  @@unique([volunteerId, editionId], map: "uq_volunteer_edition_assignment")
-  @@index([assignmentCode])
-  @@index([selectionId])
-  @@index([volunteerId])
-  @@index([editionId])
-  @@index([departmentId])
-  @@index([roleId])
-  @@index([shiftId])
-  @@index([venueId])
-  @@index([assignmentStatus])
-  @@map("volunteer_assignments")
-}
-
-// ─── Volunteer Deployment ─────────────────────────────────────────────────
-
-model VolunteerDeployment {
-  id                    String           @id @default(uuid()) @db.Uuid
-  deploymentCode        String           @unique @map("deployment_code")
-  assignmentId          String           @unique @map("assignment_id") @db.Uuid
-  volunteerId           String           @map("volunteer_id") @db.Uuid
-  editionId             String           @map("edition_id") @db.Uuid
-  deploymentStatus      DeploymentStatus @default(EXPECTED) @map("deployment_status")
-  reportingDate         DateTime?        @map("reporting_date") @db.Date
-  reportingTime         DateTime?        @map("reporting_time")
-  reportingLocation     String?          @map("reporting_location") @db.Text
-  reportingInstructions String?          @map("reporting_instructions") @db.Text
-  coordinatorId         String?          @map("coordinator_id") @db.Uuid
-  notes                 String?          @db.Text
-  version               Int              @default(1)
-  createdAt             DateTime         @default(now()) @map("created_at")
-  updatedAt             DateTime         @updatedAt @map("updated_at")
-  createdBy             String?          @map("created_by") @db.Uuid
-  updatedBy             String?          @map("updated_by") @db.Uuid
-
-  assignment    VolunteerAssignment     @relation(fields: [assignmentId], references: [id])
-  volunteer     Volunteer               @relation(fields: [volunteerId], references: [id])
-  edition       EventEdition            @relation(fields: [editionId], references: [id])
-  participation VolunteerParticipation?
-
-  @@index([deploymentCode])
-  @@index([assignmentId])
-  @@index([volunteerId])
-  @@index([editionId])
-  @@index([deploymentStatus])
-  @@index([reportingDate])
-  @@index([coordinatorId])
-  @@map("volunteer_deployments")
-}
-
-// ─── Volunteer Participation ──────────────────────────────────────────────
+// ─── Volunteer Participation (Simplified Event-Centric) ──────────────────
 
 model VolunteerParticipation {
-  id                  String              @id @default(uuid()) @db.Uuid
-  participationCode   String              @unique @map("participation_code")
-  deploymentId        String              @unique @map("deployment_id") @db.Uuid
-  assignmentId        String              @map("assignment_id") @db.Uuid
-  volunteerId         String              @map("volunteer_id") @db.Uuid
-  editionId           String              @map("edition_id") @db.Uuid
-  participationStatus ParticipationStatus @default(PENDING) @map("participation_status")
-  reportedDate        DateTime?           @map("reported_date")
-  completionDate      DateTime?           @map("completion_date")
-  coordinatorRemarks  String?             @map("coordinator_remarks") @db.Text
-  verifiedBy          String?             @map("verified_by") @db.Uuid
-  verifiedAt          DateTime?           @map("verified_at")
-  version             Int                 @default(1)
-  createdAt           DateTime            @default(now()) @map("created_at")
-  updatedAt           DateTime            @updatedAt @map("updated_at")
-  createdBy           String?             @map("created_by") @db.Uuid
-  updatedBy           String?             @map("updated_by") @db.Uuid
+  id                    String              @id @default(uuid()) @db.Uuid
+  participationCode     String              @unique @map("participation_code")
+  applicationId         String              @unique @map("application_id") @db.Uuid
+  volunteerId           String              @map("volunteer_id") @db.Uuid
+  editionId             String              @map("edition_id") @db.Uuid
+  participationStatus   ParticipationStatus @default(NOT_STARTED) @map("participation_status")
+  startedAt             DateTime?           @map("started_at")
+  completedAt           DateTime?           @map("completed_at")
+  coordinatorRemarks    String?             @map("coordinator_remarks") @db.Text
+  completionNotes       String?             @map("completion_notes") @db.Text
+  certificateEligible   Boolean             @default(false) @map("certificate_eligible")
+  version               Int                 @default(1)
+  createdAt             DateTime            @default(now()) @map("created_at")
+  updatedAt             DateTime            @updatedAt @map("updated_at")
+  createdBy             String?             @map("created_by") @db.Uuid
+  updatedBy             String?             @map("updated_by") @db.Uuid
 
-  deployment VolunteerDeployment @relation(fields: [deploymentId], references: [id])
-  volunteer  Volunteer           @relation(fields: [volunteerId], references: [id])
-  edition    EventEdition        @relation(fields: [editionId], references: [id])
+  application VolunteerApplication @relation(fields: [applicationId], references: [id])
+  volunteer   Volunteer            @relation(fields: [volunteerId], references: [id])
+  edition     EventEdition         @relation(fields: [editionId], references: [id])
+  certificates VolunteerCertificate[]
 
   @@unique([volunteerId, editionId], map: "uq_volunteer_edition_participation")
   @@index([participationCode])
-  @@index([deploymentId])
-  @@index([assignmentId])
+  @@index([applicationId])
   @@index([volunteerId])
   @@index([editionId])
   @@index([participationStatus])
-  @@index([reportedDate])
-  @@index([completionDate])
-  @@index([verifiedBy])
+  @@index([startedAt])
+  @@index([completedAt])
+  @@index([certificateEligible])
   @@map("volunteer_participations")
+}
+
+// ─── Volunteer Certificate ───────────────────────────────────────────────
+
+model VolunteerCertificate {
+  id                 String            @id @default(uuid()) @db.Uuid
+  certificateNumber  String            @unique @map("certificate_number")
+  volunteerId        String            @map("volunteer_id") @db.Uuid
+  participationId    String            @map("participation_id") @db.Uuid
+  editionId          String            @map("edition_id") @db.Uuid
+  certificateType    CertificateType   @default(PARTICIPATION) @map("certificate_type")
+  certificateStatus  CertificateStatus @default(DRAFT) @map("certificate_status")
+  issueDate          DateTime?         @map("issue_date")
+  issuedBy           String?           @map("issued_by") @db.Uuid
+  verificationToken  String            @unique @map("verification_token")
+  bucketName         String?           @map("bucket_name")
+  objectPath         String?           @map("object_path")
+  publicUrl          String?           @map("public_url")
+  contentType        String?           @map("content_type")
+  fileSize           Int?              @map("file_size")
+  checksum           String?
+  version            Int               @default(1)
+  createdAt          DateTime          @default(now()) @map("created_at")
+  updatedAt          DateTime          @updatedAt @map("updated_at")
+  deletedAt          DateTime?         @map("deleted_at")
+  createdBy          String?           @map("created_by") @db.Uuid
+  updatedBy          String?           @map("updated_by") @db.Uuid
+
+  volunteer     Volunteer              @relation(fields: [volunteerId], references: [id])
+  participation VolunteerParticipation  @relation(fields: [participationId], references: [id])
+  edition       EventEdition           @relation(fields: [editionId], references: [id])
+
+  @@index([certificateNumber])
+  @@index([volunteerId])
+  @@index([participationId])
+  @@index([editionId])
+  @@index([certificateType])
+  @@index([certificateStatus])
+  @@index([verificationToken])
+  @@index([issueDate])
+  @@index([deletedAt])
+  @@map("volunteer_certificates")
+}
+
+// ─── Phase 9: Media & Digital Asset Management ──────────────────────────────
+
+enum MediaType {
+  IMAGE
+  DOCUMENT
+  VIDEO
+  AUDIO
+  OTHER
+}
+
+enum MediaVisibility {
+  PUBLIC
+  PRIVATE
+  INTERNAL
+}
+
+enum AssetStatus {
+  ACTIVE
+  ARCHIVED
+  PROCESSING
+  FAILED
+}
+
+enum DocumentCategory {
+  PUBLICATION
+  ANNUAL_REPORT
+  POLICY
+  CERTIFICATE
+  PRESS_RELEASE
+  DOWNLOAD
+  OTHER
+}
+
+model MediaFolder {
+  id          String   @id @default(uuid()) @db.Uuid
+  folderCode  String   @unique @map("folder_code")
+  name        String   @db.VarChar(255)
+  slug        String   @db.VarChar(255)
+  parentId    String?  @map("parent_id") @db.Uuid
+  path        String   @db.Text
+  depth       Int      @default(0)
+  sortOrder   Int      @default(0) @map("sort_order")
+  description String?  @db.Text
+  visibility  MediaVisibility @default(PUBLIC)
+  version     Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  createdBy   String?  @map("created_by") @db.Uuid
+  updatedBy   String?  @map("updated_by") @db.Uuid
+
+  parent   MediaFolder?  @relation("FolderTree", fields: [parentId], references: [id])
+  children MediaFolder[] @relation("FolderTree")
+  assets   MediaAsset[]
+
+  @@unique([parentId, slug], map: "uq_folder_parent_slug")
+  @@index([folderCode])
+  @@index([parentId])
+  @@index([path])
+  @@index([depth])
+  @@index([visibility])
+  @@index([deletedAt])
+  @@map("media_folders")
+}
+
+model MediaAsset {
+  id               String          @id @default(uuid()) @db.Uuid
+  mediaCode        String          @unique @map("media_code")
+  originalFilename String          @map("original_filename") @db.VarChar(500)
+  storedFilename   String          @map("stored_filename") @db.VarChar(500)
+  bucketName       String          @map("bucket_name") @db.VarChar(100)
+  objectPath       String          @map("object_path") @db.Text
+  publicUrl        String?         @map("public_url") @db.Text
+  contentType      String          @map("content_type") @db.VarChar(100)
+  extension        String          @db.VarChar(20)
+  fileSize         Int             @map("file_size")
+  mediaType        MediaType       @map("media_type")
+  width            Int?
+  height           Int?
+  duration         Float?
+  checksum         String          @db.VarChar(128)
+  uploadedBy       String          @map("uploaded_by") @db.Uuid
+  folderId         String?         @map("folder_id") @db.Uuid
+  tags             String[]        @default([])
+  description      String?         @db.Text
+  altText          String?         @map("alt_text") @db.VarChar(500)
+  visibility       MediaVisibility @default(PUBLIC)
+  assetStatus      AssetStatus     @default(ACTIVE) @map("asset_status")
+  version          Int             @default(1)
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+  deletedAt        DateTime?       @map("deleted_at")
+
+  folder        MediaFolder?   @relation(fields: [folderId], references: [id])
+  galleryImages GalleryImage[]
+  document      Document?
+
+  @@index([mediaCode])
+  @@index([bucketName])
+  @@index([contentType])
+  @@index([mediaType])
+  @@index([uploadedBy])
+  @@index([folderId])
+  @@index([visibility])
+  @@index([assetStatus])
+  @@index([checksum])
+  @@index([deletedAt])
+  @@index([tags])
+  @@map("media_assets")
+}
+
+model GalleryAlbum {
+  id            String          @id @default(uuid()) @db.Uuid
+  albumCode     String          @unique @map("album_code")
+  title         String          @db.VarChar(255)
+  slug          String          @unique
+  description   String?         @db.Text
+  coverImageId  String?         @map("cover_image_id") @db.Uuid
+  category      String?         @db.VarChar(100)
+  tags          String[]        @default([])
+  visibility    MediaVisibility @default(PUBLIC)
+  isFeatured    Boolean         @default(false) @map("is_featured")
+  sortOrder     Int             @default(0) @map("sort_order")
+  eventEditionId String?        @map("event_edition_id") @db.Uuid
+  version       Int             @default(1)
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+  deletedAt     DateTime?       @map("deleted_at")
+  createdBy     String?         @map("created_by") @db.Uuid
+  updatedBy     String?         @map("updated_by") @db.Uuid
+
+  images GalleryImage[]
+
+  @@index([albumCode])
+  @@index([slug])
+  @@index([category])
+  @@index([visibility])
+  @@index([isFeatured])
+  @@index([eventEditionId])
+  @@index([deletedAt])
+  @@index([tags])
+  @@map("gallery_albums")
+}
+
+model GalleryImage {
+  id          String          @id @default(uuid()) @db.Uuid
+  albumId     String          @map("album_id") @db.Uuid
+  assetId     String          @map("asset_id") @db.Uuid
+  caption     String?         @db.VarChar(500)
+  sortOrder   Int             @default(0) @map("sort_order")
+  isFeatured  Boolean         @default(false) @map("is_featured")
+  visibility  MediaVisibility @default(PUBLIC)
+  version     Int             @default(1)
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+  deletedAt   DateTime?       @map("deleted_at")
+  createdBy   String?         @map("created_by") @db.Uuid
+
+  album GalleryAlbum @relation(fields: [albumId], references: [id])
+  asset MediaAsset   @relation(fields: [assetId], references: [id])
+
+  @@unique([albumId, assetId], map: "uq_album_asset")
+  @@index([albumId])
+  @@index([assetId])
+  @@index([isFeatured])
+  @@index([sortOrder])
+  @@index([deletedAt])
+  @@map("gallery_images")
+}
+
+model Document {
+  id           String           @id @default(uuid()) @db.Uuid
+  documentCode String           @unique @map("document_code")
+  title        String           @db.VarChar(500)
+  slug         String           @unique
+  assetId      String           @unique @map("asset_id") @db.Uuid
+  category     DocumentCategory @default(OTHER)
+  summary      String?          @db.Text
+  author       String?          @db.VarChar(255)
+  publishDate  DateTime?        @map("publish_date")
+  tags         String[]         @default([])
+  visibility   MediaVisibility  @default(PUBLIC)
+  isFeatured   Boolean          @default(false) @map("is_featured")
+  downloadCount Int             @default(0) @map("download_count")
+  sortOrder    Int              @default(0) @map("sort_order")
+  version      Int              @default(1)
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+  deletedAt    DateTime?        @map("deleted_at")
+  createdBy    String?          @map("created_by") @db.Uuid
+  updatedBy    String?          @map("updated_by") @db.Uuid
+
+  asset MediaAsset @relation(fields: [assetId], references: [id])
+
+  @@index([documentCode])
+  @@index([slug])
+  @@index([assetId])
+  @@index([category])
+  @@index([visibility])
+  @@index([isFeatured])
+  @@index([publishDate])
+  @@index([deletedAt])
+  @@index([tags])
+  @@map("documents")
+}
+
+// ─── Phase 10: Knowledge & Publications ──────────────────────────────────────
+
+enum PublicationStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+  WITHDRAWN
+}
+
+enum ContributorRole {
+  PRIMARY_AUTHOR
+  CO_AUTHOR
+  EDITOR
+  DESIGNER
+  PHOTOGRAPHER
+  CONTRIBUTOR
+  TRANSLATOR
+  REVIEWER
+}
+
+enum ArticleStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+  WITHDRAWN
+}
+
+enum InteractionType {
+  DOWNLOAD
+  VIEW
+  READ
+}
+
+model PublicationCategory {
+  id            String   @id @default(uuid()) @db.Uuid
+  categoryCode  String   @unique @map("category_code")
+  name          String   @db.VarChar(255)
+  slug          String   @unique
+  description   String?  @db.Text
+  parentId      String?  @map("parent_id") @db.Uuid
+  iconUrl       String?  @map("icon_url") @db.Text
+  sortOrder     Int      @default(0) @map("sort_order")
+  isActive      Boolean  @default(true) @map("is_active")
+  version       Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+  createdBy     String?  @map("created_by") @db.Uuid
+  updatedBy     String?  @map("updated_by") @db.Uuid
+
+  parent       PublicationCategory?  @relation("CategoryTree", fields: [parentId], references: [id])
+  children     PublicationCategory[] @relation("CategoryTree")
+  publications Publication[]
+
+  @@index([categoryCode])
+  @@index([slug])
+  @@index([parentId])
+  @@index([isActive])
+  @@index([deletedAt])
+  @@map("publication_categories")
+}
+
+model Publication {
+  id              String            @id @default(uuid()) @db.Uuid
+  publicationCode String           @unique @map("publication_code")
+  title           String           @db.VarChar(500)
+  slug            String           @unique
+  subtitle        String?          @db.VarChar(500)
+  description     String?          @db.Text
+  summary         String?          @db.Text
+  categoryId      String           @map("category_id") @db.Uuid
+  language        String           @default("en") @db.VarChar(10)
+  isbn            String?          @db.VarChar(20)
+  issn            String?          @db.VarChar(20)
+  publicationDate DateTime?        @map("publication_date")
+  releaseDate     DateTime?        @map("release_date")
+  readingTime     Int?             @map("reading_time")
+  keywords        String[]         @default([])
+  status          PublicationStatus @default(DRAFT)
+  visibility      MediaVisibility  @default(PUBLIC)
+  isFeatured      Boolean          @default(false) @map("is_featured")
+  coverImageId    String?          @map("cover_image_id") @db.Uuid
+  pdfAssetId      String?          @map("pdf_asset_id") @db.Uuid
+  thumbnailId     String?          @map("thumbnail_id") @db.Uuid
+  seoTitle        String?          @map("seo_title") @db.VarChar(255)
+  seoDescription  String?          @map("seo_description") @db.Text
+  seoKeywords     String[]         @default([]) @map("seo_keywords")
+  canonicalUrl    String?          @map("canonical_url") @db.Text
+  downloadCount   Int              @default(0) @map("download_count")
+  viewCount       Int              @default(0) @map("view_count")
+  sortOrder       Int              @default(0) @map("sort_order")
+  version         Int              @default(1)
+  publishedAt     DateTime?        @map("published_at")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  deletedAt       DateTime?        @map("deleted_at")
+  createdBy       String?          @map("created_by") @db.Uuid
+  updatedBy       String?          @map("updated_by") @db.Uuid
+
+  category      PublicationCategory      @relation(fields: [categoryId], references: [id])
+  editions      PublicationEdition[]
+  contributors  PublicationContributor[]
+  tags          PublicationTagLink[]
+  articles      Article[]
+  downloads     DownloadHistory[]
+  readings      ReadingHistory[]
+
+  @@index([publicationCode])
+  @@index([slug])
+  @@index([categoryId])
+  @@index([status])
+  @@index([visibility])
+  @@index([isFeatured])
+  @@index([publicationDate])
+  @@index([releaseDate])
+  @@index([language])
+  @@index([downloadCount])
+  @@index([viewCount])
+  @@index([publishedAt])
+  @@index([deletedAt])
+  @@index([keywords])
+  @@map("publications")
+}
+
+model PublicationEdition {
+  id              String            @id @default(uuid()) @db.Uuid
+  editionCode     String            @unique @map("edition_code")
+  publicationId   String            @map("publication_id") @db.Uuid
+  editionNumber   Int               @map("edition_number")
+  volumeNumber    Int?              @map("volume_number")
+  issueNumber     Int?              @map("issue_number")
+  title           String?           @db.VarChar(500)
+  description     String?           @db.Text
+  publicationDate DateTime?         @map("publication_date")
+  coverImageId    String?           @map("cover_image_id") @db.Uuid
+  pdfAssetId      String?           @map("pdf_asset_id") @db.Uuid
+  pageCount       Int?              @map("page_count")
+  status          PublicationStatus @default(DRAFT)
+  visibility      MediaVisibility   @default(PUBLIC)
+  sortOrder       Int               @default(0) @map("sort_order")
+  version         Int               @default(1)
+  publishedAt     DateTime?         @map("published_at")
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  deletedAt       DateTime?         @map("deleted_at")
+  createdBy       String?           @map("created_by") @db.Uuid
+  updatedBy       String?           @map("updated_by") @db.Uuid
+
+  publication Publication @relation(fields: [publicationId], references: [id])
+
+  @@unique([publicationId, editionNumber], map: "uq_pub_edition")
+  @@index([editionCode])
+  @@index([publicationId])
+  @@index([editionNumber])
+  @@index([volumeNumber])
+  @@index([issueNumber])
+  @@index([status])
+  @@index([publicationDate])
+  @@index([deletedAt])
+  @@map("publication_editions")
+}
+
+model PublicationContributor {
+  id              String          @id @default(uuid()) @db.Uuid
+  publicationId   String          @map("publication_id") @db.Uuid
+  name            String          @db.VarChar(255)
+  email           String?         @db.VarChar(255)
+  bio             String?         @db.Text
+  avatarUrl       String?         @map("avatar_url") @db.Text
+  role            ContributorRole @default(CONTRIBUTOR)
+  sortOrder       Int             @default(0) @map("sort_order")
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+  deletedAt       DateTime?       @map("deleted_at")
+
+  publication Publication @relation(fields: [publicationId], references: [id])
+
+  @@index([publicationId])
+  @@index([name])
+  @@index([role])
+  @@index([deletedAt])
+  @@map("publication_contributors")
+}
+
+model PublicationTag {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique @db.VarChar(100)
+  slug      String   @unique
+  usageCount Int     @default(0) @map("usage_count")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  publications PublicationTagLink[]
+
+  @@index([name])
+  @@index([slug])
+  @@index([usageCount])
+  @@map("publication_tags")
+}
+
+model PublicationTagLink {
+  publicationId String @map("publication_id") @db.Uuid
+  tagId         String @map("tag_id") @db.Uuid
+
+  publication Publication    @relation(fields: [publicationId], references: [id])
+  tag         PublicationTag @relation(fields: [tagId], references: [id])
+
+  @@id([publicationId, tagId])
+  @@index([publicationId])
+  @@index([tagId])
+  @@map("publication_tag_links")
+}
+
+model Article {
+  id              String        @id @default(uuid()) @db.Uuid
+  articleCode     String        @unique @map("article_code")
+  publicationId   String?       @map("publication_id") @db.Uuid
+  title           String        @db.VarChar(500)
+  slug            String        @unique
+  subtitle        String?       @db.VarChar(500)
+  excerpt         String?       @db.Text
+  content         String        @db.Text
+  authorName      String        @map("author_name") @db.VarChar(255)
+  authorBio       String?       @map("author_bio") @db.Text
+  authorAvatarUrl String?       @map("author_avatar_url") @db.Text
+  featuredImageId String?       @map("featured_image_id") @db.Uuid
+  categories      String[]      @default([])
+  tags            String[]      @default([])
+  readingTime     Int?          @map("reading_time")
+  status          ArticleStatus @default(DRAFT)
+  visibility      MediaVisibility @default(PUBLIC)
+  isFeatured      Boolean       @default(false) @map("is_featured")
+  seoTitle        String?       @map("seo_title") @db.VarChar(255)
+  seoDescription  String?       @map("seo_description") @db.Text
+  seoKeywords     String[]      @default([]) @map("seo_keywords")
+  viewCount       Int           @default(0) @map("view_count")
+  sortOrder       Int           @default(0) @map("sort_order")
+  version         Int           @default(1)
+  publishedAt     DateTime?     @map("published_at")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  deletedAt       DateTime?     @map("deleted_at")
+  createdBy       String?       @map("created_by") @db.Uuid
+  updatedBy       String?       @map("updated_by") @db.Uuid
+
+  publication Publication? @relation(fields: [publicationId], references: [id])
+
+  @@index([articleCode])
+  @@index([slug])
+  @@index([publicationId])
+  @@index([authorName])
+  @@index([status])
+  @@index([visibility])
+  @@index([isFeatured])
+  @@index([publishedAt])
+  @@index([viewCount])
+  @@index([deletedAt])
+  @@index([categories])
+  @@index([tags])
+  @@map("articles")
+}
+
+model DownloadHistory {
+  id            String          @id @default(uuid()) @db.Uuid
+  publicationId String          @map("publication_id") @db.Uuid
+  userId        String?         @map("user_id") @db.Uuid
+  ipAddress     String?         @map("ip_address") @db.VarChar(45)
+  userAgent     String?         @map("user_agent") @db.Text
+  deviceType    String?         @map("device_type") @db.VarChar(50)
+  interactionType InteractionType @default(DOWNLOAD) @map("interaction_type")
+  createdAt     DateTime        @default(now()) @map("created_at")
+
+  publication Publication @relation(fields: [publicationId], references: [id])
+
+  @@index([publicationId])
+  @@index([userId])
+  @@index([interactionType])
+  @@index([createdAt])
+  @@map("download_history")
+}
+
+model ReadingHistory {
+  id            String   @id @default(uuid()) @db.Uuid
+  publicationId String   @map("publication_id") @db.Uuid
+  userId        String?  @map("user_id") @db.Uuid
+  progress      Float    @default(0)
+  lastReadAt    DateTime @default(now()) @map("last_read_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  publication Publication @relation(fields: [publicationId], references: [id])
+
+  @@unique([publicationId, userId], map: "uq_reading_user")
+  @@index([publicationId])
+  @@index([userId])
+  @@index([lastReadAt])
+  @@map("reading_history")
+}
+
+model Archive {
+  id            String   @id @default(uuid()) @db.Uuid
+  archiveCode   String   @unique @map("archive_code")
+  title         String   @db.VarChar(500)
+  slug          String   @unique
+  description   String?  @db.Text
+  year          Int
+  volumeNumber  Int?     @map("volume_number")
+  issueNumber   Int?     @map("issue_number")
+  categoryId    String?  @map("category_id") @db.Uuid
+  coverImageId  String?  @map("cover_image_id") @db.Uuid
+  pdfAssetId    String?  @map("pdf_asset_id") @db.Uuid
+  collectionName String? @map("collection_name") @db.VarChar(255)
+  visibility    MediaVisibility @default(PUBLIC)
+  sortOrder     Int      @default(0) @map("sort_order")
+  version       Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+  createdBy     String?  @map("created_by") @db.Uuid
+  updatedBy     String?  @map("updated_by") @db.Uuid
+
+  @@index([archiveCode])
+  @@index([slug])
+  @@index([year])
+  @@index([volumeNumber])
+  @@index([issueNumber])
+  @@index([categoryId])
+  @@index([collectionName])
+  @@index([visibility])
+  @@index([deletedAt])
+  @@map("archives")
 }

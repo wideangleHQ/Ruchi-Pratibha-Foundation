@@ -2,7 +2,6 @@ import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser, Roles } from '../../../common/decorators';
 import {
-  BulkDeploymentActionDto,
   BulkParticipationDto,
   CoordinatorRemarksDto,
   ParticipationQueryDto,
@@ -15,13 +14,13 @@ import { VolunteerParticipationService } from './volunteer-participation.service
 export class ParticipationAdminController {
   constructor(private readonly service: VolunteerParticipationService) {}
 
-  @Post(':deploymentCode/report')
-  @ApiOperation({ summary: 'Report participation for a deployment' })
-  report(
-    @Param('deploymentCode') deploymentCode: string,
+  @Post('from-application/:applicationId')
+  @ApiOperation({ summary: 'Create participation from an approved application' })
+  createFromApplication(
+    @Param('applicationId') applicationId: string,
     @CurrentUser('sub') adminId: string,
   ) {
-    return this.service.reportParticipation(deploymentCode, adminId);
+    return this.service.createFromApplication(applicationId, adminId);
   }
 
   @Get()
@@ -36,6 +35,15 @@ export class ParticipationAdminController {
     return this.service.getAdminParticipationByCode(code);
   }
 
+  @Patch(':code/start')
+  @ApiOperation({ summary: 'Start participation' })
+  start(
+    @Param('code') code: string,
+    @CurrentUser('sub') adminId: string,
+  ) {
+    return this.service.startParticipation(code, adminId);
+  }
+
   @Patch(':code/complete')
   @ApiOperation({ summary: 'Mark participation as completed' })
   complete(
@@ -46,41 +54,14 @@ export class ParticipationAdminController {
     return this.service.markCompleted(code, dto, adminId);
   }
 
-  @Patch(':code/not-complete')
-  @ApiOperation({ summary: 'Mark participation as not completed' })
-  notComplete(
-    @Param('code') code: string,
-    @Body() dto: CoordinatorRemarksDto,
-    @CurrentUser('sub') adminId: string,
-  ) {
-    return this.service.markNotCompleted(code, dto, adminId);
-  }
-
-  @Patch(':code/no-show')
-  @ApiOperation({ summary: 'Mark participation as no-show' })
-  noShow(
-    @Param('code') code: string,
-    @CurrentUser('sub') adminId: string,
-  ) {
-    return this.service.markNoShow(code, adminId);
-  }
-
   @Patch(':code/cancel')
   @ApiOperation({ summary: 'Cancel participation' })
   cancel(
     @Param('code') code: string,
+    @Body() dto: CoordinatorRemarksDto,
     @CurrentUser('sub') adminId: string,
   ) {
-    return this.service.cancelParticipation(code, adminId);
-  }
-
-  @Patch(':code/verify')
-  @ApiOperation({ summary: 'Verify a completed participation' })
-  verify(
-    @Param('code') code: string,
-    @CurrentUser('sub') adminId: string,
-  ) {
-    return this.service.verifyParticipation(code, adminId);
+    return this.service.cancelParticipation(code, dto, adminId);
   }
 
   @Patch(':code/remarks')
@@ -93,13 +74,14 @@ export class ParticipationAdminController {
     return this.service.updateCoordinatorRemarks(code, dto, adminId);
   }
 
-  @Post('bulk-report')
-  @ApiOperation({ summary: 'Bulk report participations from deployments' })
-  bulkReport(
-    @Body() dto: BulkDeploymentActionDto,
+  @Patch(':code/certificate-eligibility')
+  @ApiOperation({ summary: 'Set certificate eligibility' })
+  certificateEligibility(
+    @Param('code') code: string,
+    @Body('eligible') eligible: boolean,
     @CurrentUser('sub') adminId: string,
   ) {
-    return this.service.bulkReport(dto, adminId);
+    return this.service.setCertificateEligibility(code, eligible, adminId);
   }
 
   @Post('bulk-complete')
@@ -109,14 +91,5 @@ export class ParticipationAdminController {
     @CurrentUser('sub') adminId: string,
   ) {
     return this.service.bulkComplete(dto, adminId);
-  }
-
-  @Post('bulk-no-show')
-  @ApiOperation({ summary: 'Bulk mark participations as no-show' })
-  bulkNoShow(
-    @Body() dto: BulkParticipationDto,
-    @CurrentUser('sub') adminId: string,
-  ) {
-    return this.service.bulkMarkNoShow(dto, adminId);
   }
 }

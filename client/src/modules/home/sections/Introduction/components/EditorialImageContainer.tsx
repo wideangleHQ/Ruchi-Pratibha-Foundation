@@ -15,9 +15,9 @@ export const EditorialImageContainer: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       variants={imageVariants}
-      className="relative w-full max-w-md mx-auto lg:max-w-none flex justify-center items-center"
+      className="relative w-full max-w-[290px] sm:max-w-md mx-auto lg:max-w-none flex justify-center items-center"
     >
-      <div className="relative w-full max-h-[480px] sm:max-h-[520px] lg:max-h-[540px] xl:max-h-[600px] aspect-[4/5] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-2 sm:p-2.5 shadow-xl hover:shadow-2xl hover:border-institutional-accent transition-all duration-500 ease-out">
+      <div className="relative w-full max-h-[380px] sm:max-h-[520px] lg:max-h-[540px] xl:max-h-[600px] aspect-[4/5] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-2 sm:p-2.5 shadow-xl hover:shadow-2xl hover:border-institutional-accent transition-all duration-500 ease-out">
         <InteractiveImage className="w-full h-full rounded-sm">
           <Image
             src="/founder_portrait.png"

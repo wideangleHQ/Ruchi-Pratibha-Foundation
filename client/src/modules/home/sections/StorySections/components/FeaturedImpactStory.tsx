@@ -105,19 +105,20 @@ export const FeaturedImpactStory: React.FC = () => {
   return (
     <section
       id="impact-story"
-      className="py-12 sm:py-16 lg:py-20 lg:min-h-[85vh] lg:max-h-[920px] flex flex-col justify-center bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
+      className="py-14 sm:py-16 lg:py-20 lg:min-h-[85vh] lg:max-h-[920px] flex flex-col justify-center bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
     >
-      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
         {/* Section Header with Navigation Controls */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+        <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between text-center sm:text-left gap-4 mb-8 sm:mb-10">
           <div>
-            <div className="inline-flex items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-3 mb-2 justify-center sm:justify-start">
               <span className="h-[1px] w-8 bg-institutional-accent" />
               <span className="text-[11px] uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
                 Featured Impact Story
               </span>
+              <span className="h-[1px] w-8 bg-institutional-accent sm:hidden" />
             </div>
-            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-institutional-dark dark:text-white">
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
               Real People. Real Change.
             </h2>
             <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-1.5 max-w-xl">
@@ -133,40 +134,40 @@ export const FeaturedImpactStory: React.FC = () => {
             <button
               onClick={handlePrev}
               aria-label="Previous Impact Story"
-              className="p-2.5 rounded-full border border-institutional-dark/15 dark:border-white/15 hover:border-institutional-accent text-institutional-dark dark:text-white hover:text-institutional-accent transition-all duration-200 cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-full border border-institutional-dark/15 dark:border-white/15 hover:border-institutional-accent text-institutional-dark dark:text-white hover:text-institutional-accent transition-all duration-200 cursor-pointer"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next Impact Story"
-              className="p-2.5 rounded-full border border-institutional-dark/15 dark:border-white/15 hover:border-institutional-accent text-institutional-dark dark:text-white hover:text-institutional-accent transition-all duration-200 cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-full border border-institutional-dark/15 dark:border-white/15 hover:border-institutional-accent text-institutional-dark dark:text-white hover:text-institutional-accent transition-all duration-200 cursor-pointer"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
 
-        {/* Slider Container with Flush Left & Right Transparent Edge Fades */}
-        <div className="relative w-full">
-          {/* Left Gradient Edge Fade (Flush with Viewport Edge) */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 lg:w-36 bg-gradient-to-r from-institutional-light dark:from-institutional-dark to-transparent z-20" />
+        {/* Full-Bleed 100vw Carousel Container on Mobile View */}
+        <div className="relative w-[100vw] -ml-6 sm:w-full sm:ml-0 overflow-hidden">
+          {/* Left Gradient Edge Fade (Soft Ambient Blend) */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-32 lg:w-44 bg-gradient-to-r from-institutional-light via-institutional-light/70 dark:from-institutional-dark dark:via-institutional-dark/70 to-transparent z-20" />
 
-          {/* Right Gradient Edge Fade (Flush with Viewport Edge) */}
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 lg:w-36 bg-gradient-to-l from-institutional-light dark:from-institutional-dark to-transparent z-20" />
+          {/* Right Gradient Edge Fade (Soft Ambient Blend) */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-32 lg:w-44 bg-gradient-to-l from-institutional-light via-institutional-light/70 dark:from-institutional-dark dark:via-institutional-dark/70 to-transparent z-20" />
 
-          {/* Horizontal Snap Slider */}
+          {/* Horizontal Snap Slider (Peek 20-25% Previous & Next Cards on Mobile) */}
           <div
             ref={sliderRef}
-            className="flex gap-5 sm:gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-1"
+            className="flex gap-4 sm:gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-none py-2 px-6 sm:px-1"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {STORIES.map((story) => (
               <div
                 key={story.id}
-                className="snap-center shrink-0 w-[82vw] sm:w-[320px] md:w-[360px] lg:w-[400px] transition-opacity duration-300"
+                className="snap-center shrink-0 w-[72vw] sm:w-[320px] md:w-[360px] lg:w-[400px] transition-opacity duration-300"
               >
-                <InteractiveCard className="group relative h-[480px] sm:h-[520px] rounded-sm overflow-hidden shadow-lg border border-white/15 dark:border-white/10 p-0">
+                <InteractiveCard className="group relative h-[420px] sm:h-[520px] rounded-sm overflow-hidden shadow-lg border border-white/15 dark:border-white/10 p-0">
                   {/* Full-Card Edge-to-Edge Background Image with Smooth Hover Brightening & Scale */}
                   <div className="absolute inset-0 z-0 overflow-hidden rounded-sm">
                     <Image
@@ -180,11 +181,11 @@ export const FeaturedImpactStory: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/25 dark:from-black/95 dark:via-black/70 dark:to-black/35 group-hover:from-black/90 transition-colors duration-300" />
                   </div>
 
-                  {/* Inner Overlay Content Container with Generous 32px Left & Bottom Padding */}
-                  <div className="relative z-10 flex flex-col justify-between h-full p-7 sm:p-8 lg:p-9">
+                  {/* Inner Overlay Content Container with Generous Padding */}
+                  <div className="relative z-10 flex flex-col justify-between h-full p-6 sm:p-8 lg:p-9">
                     {/* Top Area: Category Label & Location Metadata */}
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] font-space tracking-widest uppercase font-semibold text-institutional-accent bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-sm border border-white/15">
+                      <span className="text-[10px] font-space tracking-widest uppercase font-semibold text-institutional-accent bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-sm border border-white/15">
                         {story.tag}
                       </span>
                       <span className="text-[10px] font-space tracking-wider text-gray-300 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-sm">
@@ -200,7 +201,7 @@ export const FeaturedImpactStory: React.FC = () => {
                       </h3>
 
                       {/* Story Title */}
-                      <p className="font-cormorant text-lg text-institutional-accent font-medium leading-snug italic mb-3">
+                      <p className="font-cormorant text-base sm:text-lg text-institutional-accent font-medium leading-snug italic mb-3 line-clamp-1">
                         {story.title}
                       </p>
 

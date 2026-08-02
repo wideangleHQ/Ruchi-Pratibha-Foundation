@@ -138,8 +138,8 @@ export const ChairmanMessage: React.FC = () => {
               <span className="h-[1px] w-8 bg-institutional-accent lg:hidden" />
             </div>
 
-            {/* Refined Section Title */}
-            <h2 className="font-cormorant text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-normal text-black dark:text-white tracking-tight mb-4 sm:mb-5 lg:mb-6 leading-[1.2]">
+            {/* Refined Section Title - Bold Weight & Scale Matching Homepage Section Hierarchy */}
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-institutional-dark dark:text-white tracking-tight mb-4 sm:mb-5 lg:mb-6 leading-[1.15]">
               &ldquo;True progress begins when we honor those who serve and uplift those in need.&rdquo;
             </h2>
 

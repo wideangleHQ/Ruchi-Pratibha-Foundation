@@ -9,18 +9,15 @@ describe('ParticipationAdminController', () => {
 
   beforeEach(async () => {
     const mockService = {
-      reportParticipation: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
+      createFromApplication: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
       getAdminParticipations: jest.fn().mockResolvedValue({ data: [], message: 'ok' }),
       getAdminParticipationByCode: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
+      startParticipation: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
       markCompleted: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
-      markNotCompleted: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
-      markNoShow: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
       cancelParticipation: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
-      verifyParticipation: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
       updateCoordinatorRemarks: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
-      bulkReport: jest.fn().mockResolvedValue({ data: { count: 2 }, message: 'ok' }),
+      setCertificateEligibility: jest.fn().mockResolvedValue({ data: {}, message: 'ok' }),
       bulkComplete: jest.fn().mockResolvedValue({ data: { count: 2 }, message: 'ok' }),
-      bulkMarkNoShow: jest.fn().mockResolvedValue({ data: { count: 2 }, message: 'ok' }),
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -32,9 +29,9 @@ describe('ParticipationAdminController', () => {
     service = module.get(VolunteerParticipationService);
   });
 
-  it('should report participation', async () => {
-    await controller.report('RPF-DEP-000001', 'admin-1');
-    expect(service.reportParticipation).toHaveBeenCalledWith('RPF-DEP-000001', 'admin-1');
+  it('should create participation from application', async () => {
+    await controller.createFromApplication('app-1', 'admin-1');
+    expect(service.createFromApplication).toHaveBeenCalledWith('app-1', 'admin-1');
   });
 
   it('should list participations', async () => {
@@ -47,29 +44,19 @@ describe('ParticipationAdminController', () => {
     expect(service.getAdminParticipationByCode).toHaveBeenCalledWith('RPF-PRT-000001');
   });
 
+  it('should start participation', async () => {
+    await controller.start('RPF-PRT-000001', 'admin-1');
+    expect(service.startParticipation).toHaveBeenCalledWith('RPF-PRT-000001', 'admin-1');
+  });
+
   it('should mark complete', async () => {
     await controller.complete('RPF-PRT-000001', {}, 'admin-1');
     expect(service.markCompleted).toHaveBeenCalledWith('RPF-PRT-000001', {}, 'admin-1');
   });
 
-  it('should mark not complete', async () => {
-    await controller.notComplete('RPF-PRT-000001', { coordinatorRemarks: 'Incomplete' }, 'admin-1');
-    expect(service.markNotCompleted).toHaveBeenCalledWith('RPF-PRT-000001', { coordinatorRemarks: 'Incomplete' }, 'admin-1');
-  });
-
-  it('should mark no-show', async () => {
-    await controller.noShow('RPF-PRT-000001', 'admin-1');
-    expect(service.markNoShow).toHaveBeenCalledWith('RPF-PRT-000001', 'admin-1');
-  });
-
   it('should cancel participation', async () => {
-    await controller.cancel('RPF-PRT-000001', 'admin-1');
-    expect(service.cancelParticipation).toHaveBeenCalledWith('RPF-PRT-000001', 'admin-1');
-  });
-
-  it('should verify participation', async () => {
-    await controller.verify('RPF-PRT-000001', 'admin-1');
-    expect(service.verifyParticipation).toHaveBeenCalledWith('RPF-PRT-000001', 'admin-1');
+    await controller.cancel('RPF-PRT-000001', {}, 'admin-1');
+    expect(service.cancelParticipation).toHaveBeenCalledWith('RPF-PRT-000001', {}, 'admin-1');
   });
 
   it('should update remarks', async () => {
@@ -77,19 +64,14 @@ describe('ParticipationAdminController', () => {
     expect(service.updateCoordinatorRemarks).toHaveBeenCalledWith('RPF-PRT-000001', { coordinatorRemarks: 'Well done' }, 'admin-1');
   });
 
-  it('should bulk report', async () => {
-    await controller.bulkReport({ deploymentIds: ['dep-1'] }, 'admin-1');
-    expect(service.bulkReport).toHaveBeenCalledWith({ deploymentIds: ['dep-1'] }, 'admin-1');
+  it('should set certificate eligibility', async () => {
+    await controller.certificateEligibility('RPF-PRT-000001', true, 'admin-1');
+    expect(service.setCertificateEligibility).toHaveBeenCalledWith('RPF-PRT-000001', true, 'admin-1');
   });
 
   it('should bulk complete', async () => {
     await controller.bulkComplete({ participationIds: ['prt-1'] }, 'admin-1');
     expect(service.bulkComplete).toHaveBeenCalledWith({ participationIds: ['prt-1'] }, 'admin-1');
-  });
-
-  it('should bulk mark no-show', async () => {
-    await controller.bulkNoShow({ participationIds: ['prt-1'] }, 'admin-1');
-    expect(service.bulkMarkNoShow).toHaveBeenCalledWith({ participationIds: ['prt-1'] }, 'admin-1');
   });
 });
 

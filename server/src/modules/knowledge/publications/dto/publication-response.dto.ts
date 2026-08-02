@@ -1,0 +1,72 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Publication } from '@prisma/client';
+
+export class PublicationResponseDto {
+  @ApiProperty() id!: string;
+  @ApiProperty() publicationCode!: string;
+  @ApiProperty() title!: string;
+  @ApiProperty() slug!: string;
+  @ApiPropertyOptional() subtitle?: string | null;
+  @ApiPropertyOptional() description?: string | null;
+  @ApiPropertyOptional() summary?: string | null;
+  @ApiProperty() categoryId!: string;
+  @ApiProperty() language!: string;
+  @ApiPropertyOptional() isbn?: string | null;
+  @ApiPropertyOptional() issn?: string | null;
+  @ApiPropertyOptional() publicationDate?: Date | null;
+  @ApiPropertyOptional() releaseDate?: Date | null;
+  @ApiPropertyOptional() readingTime?: number | null;
+  @ApiProperty() keywords!: string[];
+  @ApiProperty() status!: string;
+  @ApiProperty() visibility!: string;
+  @ApiProperty() isFeatured!: boolean;
+  @ApiPropertyOptional() coverImageId?: string | null;
+  @ApiPropertyOptional() pdfAssetId?: string | null;
+  @ApiPropertyOptional() thumbnailId?: string | null;
+  @ApiPropertyOptional() seoTitle?: string | null;
+  @ApiPropertyOptional() seoDescription?: string | null;
+  @ApiProperty() seoKeywords!: string[];
+  @ApiPropertyOptional() canonicalUrl?: string | null;
+  @ApiProperty() downloadCount!: number;
+  @ApiProperty() viewCount!: number;
+  @ApiProperty() sortOrder!: number;
+  @ApiPropertyOptional() publishedAt?: Date | null;
+  @ApiProperty() createdAt!: Date;
+  @ApiProperty() updatedAt!: Date;
+
+  static fromEntity(entity: Publication): PublicationResponseDto {
+    const dto = new PublicationResponseDto();
+    dto.id = entity.id;
+    dto.publicationCode = entity.publicationCode;
+    dto.title = entity.title;
+    dto.slug = entity.slug;
+    dto.subtitle = entity.subtitle;
+    dto.description = entity.description;
+    dto.summary = entity.summary;
+    dto.categoryId = entity.categoryId;
+    dto.language = entity.language;
+    dto.isbn = entity.isbn;
+    dto.issn = entity.issn;
+    dto.publicationDate = entity.publicationDate;
+    dto.releaseDate = entity.releaseDate;
+    dto.readingTime = entity.readingTime;
+    dto.keywords = entity.keywords;
+    dto.status = entity.status;
+    dto.visibility = entity.visibility;
+    dto.isFeatured = entity.isFeatured;
+    dto.coverImageId = entity.coverImageId;
+    dto.pdfAssetId = entity.pdfAssetId;
+    dto.thumbnailId = entity.thumbnailId;
+    dto.seoTitle = entity.seoTitle;
+    dto.seoDescription = entity.seoDescription;
+    dto.seoKeywords = entity.seoKeywords;
+    dto.canonicalUrl = entity.canonicalUrl;
+    dto.downloadCount = entity.downloadCount;
+    dto.viewCount = entity.viewCount;
+    dto.sortOrder = entity.sortOrder;
+    dto.publishedAt = entity.publishedAt;
+    dto.createdAt = entity.createdAt;
+    dto.updatedAt = entity.updatedAt;
+    return dto;
+  }
+}

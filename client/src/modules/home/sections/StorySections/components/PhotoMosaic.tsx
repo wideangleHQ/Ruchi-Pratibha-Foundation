@@ -137,9 +137,9 @@ export const PhotoMosaic: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="pt-16 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-14 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
+      className="pt-14 sm:pt-24 lg:pt-28 pb-10 sm:pb-12 lg:pb-14 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden relative"
     >
-      <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-3 mb-3">
