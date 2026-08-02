@@ -19,7 +19,7 @@ export interface MegaCategoryItem {
   links: NavLinkItem[];
 }
 
-const CATEGORIES: MegaCategoryItem[] = [
+export const CATEGORIES: MegaCategoryItem[] = [
   {
     label: 'Foundation',
     tag: 'GOVERNANCE & HISTORY',
