@@ -36,7 +36,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     onClose();
     if (
       typeof window !== 'undefined' &&
-      (window.location.pathname === '/about' || window.location.pathname === '/foundation') &&
+      (window.location.pathname === '/about' ||
+        window.location.pathname === '/foundation' ||
+        window.location.pathname === '/work' ||
+        window.location.pathname === '/csr') &&
       href.includes('#')
     ) {
       const targetId = href.split('#')[1];

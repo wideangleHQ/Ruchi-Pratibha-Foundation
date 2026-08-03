@@ -48,11 +48,16 @@ export const CATEGORIES: MegaCategoryItem[] = [
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'CSR Initiatives', href: '#impact-story', ariaLabel: 'CSR Initiatives and Commitments' },
-      { label: 'Grassroots Projects', href: '#impact-story', ariaLabel: 'Grassroots Projects' },
-      { label: 'Beneficiaries', href: '#impact-story', ariaLabel: 'Community Beneficiaries' },
-      { label: 'Key Statistics', href: '#legacy', ariaLabel: 'Impact Statistics' },
-      { label: 'Success Stories', href: '#impact-story', ariaLabel: 'Featured Success Stories' },
+      { label: 'CSR Initiatives Overview', href: '/work#csr-hero', ariaLabel: 'CSR Initiatives Overview' },
+      { label: 'Our CSR Philosophy', href: '/work#csr-philosophy', ariaLabel: 'Our CSR Philosophy' },
+      { label: 'Focus Areas & Pillars', href: '/work#focus-areas', ariaLabel: 'Areas of Social Responsibility' },
+      { label: 'Activity Archive', href: '/work#csr-archive', ariaLabel: 'Search Activity Archive' },
+      { label: 'Featured Initiatives', href: '/work#featured-csr', ariaLabel: 'Featured Community Initiatives' },
+      { label: 'Stories of Impact', href: '/work#stories-of-impact', ariaLabel: 'Stories of Community Impact' },
+      { label: 'Service Timeline', href: '/work#csr-timeline', ariaLabel: 'Journey of Service' },
+      { label: 'Social Partners', href: '/work#csr-partners', ariaLabel: 'Partners in Social Responsibility' },
+      { label: 'Moments Gallery', href: '/work#csr-gallery', ariaLabel: 'Moments from the Field Gallery' },
+      { label: 'Transparency Reports', href: '/work#csr-reports', ariaLabel: 'Reports and Documentation' },
     ],
   },
   {
@@ -172,7 +177,10 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
     onClose();
     if (
       typeof window !== 'undefined' &&
-      (window.location.pathname === '/about' || window.location.pathname === '/foundation') &&
+      (window.location.pathname === '/about' ||
+        window.location.pathname === '/foundation' ||
+        window.location.pathname === '/work' ||
+        window.location.pathname === '/csr') &&
       href.includes('#')
     ) {
       const targetId = href.split('#')[1];

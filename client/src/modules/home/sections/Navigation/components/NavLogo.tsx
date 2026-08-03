@@ -1,10 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const NavLogo: React.FC = () => {
   return (
-    <a
-      href="#"
+    <Link
+      href="/"
       aria-label="Ruchi Prativa Foundation Home"
       className="group flex items-center gap-3 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm"
     >
@@ -26,6 +27,6 @@ export const NavLogo: React.FC = () => {
           Est. 1997
         </span>
       </div>
-    </a>
+    </Link>
   );
 };

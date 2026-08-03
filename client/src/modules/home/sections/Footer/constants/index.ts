@@ -20,11 +20,14 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Programs',
     links: [
-      { label: 'CSR Initiatives', href: '#csr' },
-      { label: 'Education', href: '#education' },
-      { label: 'Healthcare', href: '#healthcare' },
-      { label: 'Environment', href: '#environment' },
-      { label: 'Community Development', href: '#community' },
+      { label: 'CSR Initiatives Overview', href: '/work#csr-hero' },
+      { label: 'Our CSR Philosophy', href: '/work#csr-philosophy' },
+      { label: 'Focus Areas & Pillars', href: '/work#focus-areas' },
+      { label: 'Activity Archive', href: '/work#csr-archive' },
+      { label: 'Featured Initiatives', href: '/work#featured-csr' },
+      { label: 'Stories of Impact', href: '/work#stories-of-impact' },
+      { label: 'Social Partners', href: '/work#csr-partners' },
+      { label: 'Transparency Reports', href: '/work#csr-reports' },
     ],
   },
   {
