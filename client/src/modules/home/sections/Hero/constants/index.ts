@@ -1,8 +1,8 @@
 export const HERO_CONTENT = {
   eyebrow: 'Since 1997',
-  heading: 'Celebrating Excellence.\nEmpowering Communities.\nInspiring Generations.',
+  heading: 'Honouring Excellence.\nPreserving Heritage.\nInspiring Generations.',
   description:
-    'For nearly three decades, Ruchi Prativa Foundation has served as a beacon of philanthropic excellence, honoring visionary leaders and driving sustainable grassroots transformation across India.',
-  primaryCta: 'Explore Our Legacy',
+    'For nearly three decades, Ruchi Prativa Foundation has celebrated excellence, promoted education, preserved Odisha’s cultural heritage, and strengthened communities through meaningful social initiatives.',
+  primaryCta: 'Register for Damdar Odia',
   secondaryCta: 'Become a Volunteer',
 };

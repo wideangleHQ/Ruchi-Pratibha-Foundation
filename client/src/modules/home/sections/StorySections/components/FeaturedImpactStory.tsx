@@ -114,15 +114,15 @@ export const FeaturedImpactStory: React.FC = () => {
             <div className="inline-flex items-center gap-3 mb-2 justify-center sm:justify-start">
               <span className="h-[1px] w-8 bg-institutional-accent" />
               <span className="text-[11px] uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-                Featured Impact Story
+                Ruchi Prativa Sanman
               </span>
               <span className="h-[1px] w-8 bg-institutional-accent sm:hidden" />
             </div>
             <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
-              Real People. Real Change.
+              Celebrating Excellence Since 1997
             </h2>
-            <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-1.5 max-w-xl">
-              Every story reflects hope, dedication, and the power of collective grassroots action.
+            <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-1.5 max-w-2xl leading-relaxed">
+              Ruchi Prativa Sanman is the Foundation’s flagship annual recognition programme honouring distinguished personalities who have made exceptional contributions across literature, education, science, medicine, social service, culture, and the arts.
             </p>
           </div>
 

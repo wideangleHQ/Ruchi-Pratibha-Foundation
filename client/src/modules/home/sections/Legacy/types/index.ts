@@ -3,6 +3,7 @@ export interface StatItem {
   numericValue: number;
   suffix: string;
   label: string;
+  sublabel?: string;
 }
 
 export interface CredentialItem {

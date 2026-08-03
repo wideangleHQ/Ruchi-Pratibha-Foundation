@@ -145,15 +145,15 @@ export const PhotoMosaic: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-              Visual Archive
+              Historical Gallery
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent" />
           </div>
           <h2 className="font-cormorant text-4xl sm:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
-            Moments in Time
+            Moments That Define Our Journey
           </h2>
-          <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 mt-3">
-            A photographic tapestry of three decades of service, celebration, and community connection across Odisha.
+          <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 mt-3 leading-relaxed">
+            Discover memorable moments from award ceremonies, educational initiatives, literary gatherings, cultural celebrations, and Foundation activities spanning nearly three decades.
           </p>
         </div>
 
@@ -178,7 +178,7 @@ export const PhotoMosaic: React.FC = () => {
             href="#full-gallery"
             className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
-            <span>View More Moments</span>
+            <span>Explore Gallery</span>
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-institutional-accent group-hover:text-institutional-dark group-hover:translate-x-1 transition-all duration-300" />
           </a>
         </div>

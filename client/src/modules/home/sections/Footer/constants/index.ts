@@ -4,11 +4,11 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Foundation',
     links: [
-      { label: 'About Foundation', href: '#foundation' },
-      { label: 'Our Legacy', href: '#legacy' },
-      { label: 'Leadership', href: '#leadership' },
-      { label: 'Timeline', href: '#timeline' },
-      { label: 'Vision & Mission', href: '#vision' },
+      { label: 'About Foundation', href: '/about' },
+      { label: 'Our Legacy', href: '/about#legacy' },
+      { label: 'Leadership', href: '/about#leadership' },
+      { label: 'Timeline', href: '/about#journey' },
+      { label: 'Vision & Mission', href: '/about#purpose' },
     ],
   },
   {

@@ -1,0 +1,48 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+const SECTION_IDS = [
+  'about-hero',
+  'about-foundation',
+  'mission-vision',
+  'leadership',
+  'timeline-archives',
+  'chairmans-message',
+  'governance-charter',
+];
+
+export function useActiveSection() {
+  const [activeSection, setActiveSection] = useState<string>('about-hero');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    const handleIntersect: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return activeSection;
+}

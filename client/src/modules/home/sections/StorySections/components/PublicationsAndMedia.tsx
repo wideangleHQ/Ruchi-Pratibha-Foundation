@@ -20,15 +20,15 @@ export const PublicationsAndMedia: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-2">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-[11px] uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-              Literary Repository
+              Preserving Knowledge
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent" />
           </div>
           <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
-            Flagship Publications
+            Institutional Publications
           </h2>
           <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-1.5 leading-relaxed">
-            Three decades of knowledge, culture, and ideas preserved through our hardcover journals and research publications.
+            The Foundation’s publications document decades of thought, culture, literature, achievements, and institutional history. They serve as an important archive preserving Odisha’s intellectual and cultural heritage.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export const PublicationsAndMedia: React.FC = () => {
             href="#publications-archive"
             className="group inline-flex items-center gap-2.5 px-6 py-3 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow transition-all duration-300 cursor-pointer"
           >
-            <span>View All Publications</span>
+            <span>Explore Publications</span>
             <ArrowRight className="w-3.5 h-3.5 text-institutional-accent group-hover:text-institutional-dark group-hover:translate-x-1 transition-all duration-300" />
           </a>
         </div>

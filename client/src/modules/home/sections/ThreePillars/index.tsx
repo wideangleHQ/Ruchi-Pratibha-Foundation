@@ -16,20 +16,20 @@ export const ThreePillars: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-6 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-widest font-space text-institutional-accent font-semibold">
-              Core Framework
+              Our Mission
             </span>
             <span className="h-[1px] w-6 bg-institutional-accent" />
           </div>
           <h2 className="font-cormorant text-4xl sm:text-5xl font-bold text-institutional-dark tracking-tight">
-            The Three Pillars of Our Mission
+            Our Purpose
           </h2>
           <p className="font-manrope text-base text-institutional-mutedLight mt-4 leading-relaxed">
-            Our institutional platform is anchored by three interconnected directives that drive recognition, empower communities, and advance knowledge across India.
+            Our institutional platform is guided by core directives that drive recognition, empower youth through education, preserve literature and culture, and fulfill social responsibility.
           </p>
         </div>
 
-        {/* 3 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Purpose Pillars Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {PILLARS.map((pillar) => (
             <PillarCard
               key={pillar.id}

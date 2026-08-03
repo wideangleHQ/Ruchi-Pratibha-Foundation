@@ -29,13 +29,13 @@ export const Footer: React.FC = () => {
                 Ruchi Prativa Foundation
               </span>
               <span className="text-[9px] sm:text-[11px] tracking-widest uppercase font-space text-institutional-muted whitespace-nowrap">
-                Empowering Communities • Honoring Leaders • Since 1997
+                Honouring Excellence • Preserving Heritage • Since 1997
               </span>
             </div>
           </a>
 
           <div className="text-xs font-space text-gray-400 max-w-sm leading-relaxed text-center md:text-left">
-            An institutional public trust dedicated to philanthropic excellence, cultural preservation, and grassroots community upliftment.
+            A registered public charitable trust dedicated to recognising excellence, promoting education, preserving cultural heritage, and serving society.
           </div>
         </div>
 

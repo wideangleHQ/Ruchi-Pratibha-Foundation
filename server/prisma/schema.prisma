@@ -117,6 +117,25 @@ enum ShiftStatus {
   INACTIVE
 }
 
+enum SpeakerStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+enum SessionStatus {
+  DRAFT
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum ScheduleStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+}
+
 enum ApplicationStatus {
   DRAFT
   SUBMITTED
@@ -365,6 +384,8 @@ model EventEdition {
   createdByUser User?  @relation(fields: [createdById], references: [id])
   venueRef      Venue? @relation(fields: [venueId], references: [id])
   shifts         EventShift[]
+  sessions       EventSession[]
+  schedules      EventSchedule[]
   applications   VolunteerApplication[]
   participations VolunteerParticipation[]
   certificates   VolunteerCertificate[]
@@ -412,6 +433,8 @@ model Venue {
   deletedBy            String?     @map("deleted_by") @db.Uuid
 
   editions    EventEdition[]
+  sessions    EventSession[]
+  schedules   EventSchedule[]
 
   @@index([venueCode])
   @@index([venueStatus])
@@ -508,6 +531,123 @@ model EventShift {
   @@index([startTime, endTime])
   @@index([deletedAt])
   @@map("event_shifts")
+}
+
+// ─── Event Speaker ──────────────────────────────────────────────────────────
+
+model EventSpeaker {
+  id              String        @id @default(uuid()) @db.Uuid
+  speakerCode     String        @unique @map("speaker_code")
+  name            String        @db.VarChar(255)
+  slug            String        @unique
+  designation     String?       @db.VarChar(255)
+  organization    String?       @db.VarChar(255)
+  biography       String?       @db.Text
+  shortBio        String?       @map("short_bio") @db.VarChar(500)
+  photoAssetId    String?       @map("photo_asset_id") @db.Uuid
+  email           String?       @db.VarChar(255)
+  phone           String?       @db.VarChar(20)
+  website         String?       @db.Text
+  linkedinUrl     String?       @map("linkedin_url") @db.Text
+  twitterUrl      String?       @map("twitter_url") @db.Text
+  speakerStatus   SpeakerStatus @default(ACTIVE) @map("speaker_status")
+  sortOrder       Int           @default(0) @map("sort_order")
+  version         Int           @default(1)
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  deletedAt       DateTime?     @map("deleted_at")
+  createdBy       String?       @map("created_by") @db.Uuid
+  updatedBy       String?       @map("updated_by") @db.Uuid
+
+  sessions  EventSession[]
+  schedules EventSchedule[]
+
+  @@index([speakerCode])
+  @@index([slug])
+  @@index([speakerStatus])
+  @@index([sortOrder])
+  @@index([deletedAt])
+  @@map("event_speakers")
+}
+
+// ─── Event Session ──────────────────────────────────────────────────────────
+
+model EventSession {
+  id              String        @id @default(uuid()) @db.Uuid
+  sessionCode     String        @unique @map("session_code")
+  editionId       String        @map("edition_id") @db.Uuid
+  title           String        @db.VarChar(500)
+  slug            String
+  description     String?       @db.Text
+  sessionType     String?       @map("session_type") @db.VarChar(100)
+  speakerId       String?       @map("speaker_id") @db.Uuid
+  venueId         String?       @map("venue_id") @db.Uuid
+  startTime       DateTime?     @map("start_time")
+  endTime         DateTime?     @map("end_time")
+  capacity        Int?
+  sessionStatus   SessionStatus @default(DRAFT) @map("session_status")
+  sortOrder       Int           @default(0) @map("sort_order")
+  version         Int           @default(1)
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  deletedAt       DateTime?     @map("deleted_at")
+  createdBy       String?       @map("created_by") @db.Uuid
+  updatedBy       String?       @map("updated_by") @db.Uuid
+
+  edition   EventEdition   @relation(fields: [editionId], references: [id])
+  speaker   EventSpeaker?  @relation(fields: [speakerId], references: [id])
+  venue     Venue?         @relation(fields: [venueId], references: [id])
+  schedules EventSchedule[]
+
+  @@unique([editionId, slug], map: "uq_edition_session_slug")
+  @@index([sessionCode])
+  @@index([editionId])
+  @@index([speakerId])
+  @@index([venueId])
+  @@index([sessionStatus])
+  @@index([startTime])
+  @@index([sortOrder])
+  @@index([deletedAt])
+  @@map("event_sessions")
+}
+
+// ─── Event Schedule ─────────────────────────────────────────────────────────
+
+model EventSchedule {
+  id              String         @id @default(uuid()) @db.Uuid
+  scheduleCode    String         @unique @map("schedule_code")
+  editionId       String         @map("edition_id") @db.Uuid
+  sessionId       String?        @map("session_id") @db.Uuid
+  speakerId       String?        @map("speaker_id") @db.Uuid
+  venueId         String?        @map("venue_id") @db.Uuid
+  title           String         @db.VarChar(500)
+  description     String?        @db.Text
+  startTime       DateTime       @map("start_time")
+  endTime         DateTime       @map("end_time")
+  displayOrder    Int            @default(0) @map("display_order")
+  scheduleStatus  ScheduleStatus @default(DRAFT) @map("schedule_status")
+  version         Int            @default(1)
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+  deletedAt       DateTime?      @map("deleted_at")
+  createdBy       String?        @map("created_by") @db.Uuid
+  updatedBy       String?        @map("updated_by") @db.Uuid
+
+  edition  EventEdition  @relation(fields: [editionId], references: [id])
+  session  EventSession? @relation(fields: [sessionId], references: [id])
+  speaker  EventSpeaker? @relation(fields: [speakerId], references: [id])
+  venue    Venue?        @relation(fields: [venueId], references: [id])
+
+  @@index([scheduleCode])
+  @@index([editionId])
+  @@index([sessionId])
+  @@index([speakerId])
+  @@index([venueId])
+  @@index([startTime])
+  @@index([displayOrder])
+  @@index([scheduleStatus])
+  @@index([deletedAt])
+  @@map("event_schedules")
 }
 
 // ─── Volunteer Application ─────────────────────────────────────────────────

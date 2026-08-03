@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useEditorialAnimation } from '../hooks/useEditorialAnimation';
@@ -42,13 +43,13 @@ export const EditorialContent: React.FC = () => {
 
       {/* Action Button */}
       <div>
-        <a
-          href="#story"
+        <Link
+          href="/about"
           className="group inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark dark:text-white border border-institutional-dark dark:border-white/30 hover:bg-institutional-dark hover:text-white dark:hover:bg-white dark:hover:text-institutional-dark transition-all duration-300 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap shadow-sm hover:shadow-md"
         >
           <span>{EDITORIAL_CONTENT.ctaLabel}</span>
           <ArrowRight className="w-4 h-4 text-institutional-accent group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
-        </a>
+        </Link>
       </div>
     </motion.div>
   );

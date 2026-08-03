@@ -6,43 +6,35 @@ import { useCounterAnimation } from '../hooks/useCounterAnimation';
 
 interface StatCounterProps {
   stat: StatItem;
-  isFeaturedHeroMobile?: boolean;
-  isCompactMobile?: boolean;
 }
 
-export const StatCounter: React.FC<StatCounterProps> = ({
-  stat,
-  isFeaturedHeroMobile = false,
-  isCompactMobile = false,
-}) => {
-  const displayEnd = stat.numericValue === 200000 ? 2 : stat.numericValue;
-  const { ref, count } = useCounterAnimation(displayEnd, 1800);
+export const StatCounter: React.FC<StatCounterProps> = ({ stat }) => {
+  const displayEnd = stat.numericValue;
+  const { ref, count } = useCounterAnimation(displayEnd, 1600);
 
-  const formattedDisplay =
-    stat.numericValue === 200000 ? `${count} Lakhs+` : `${count}${stat.suffix}`;
+  const formattedDisplay = stat.suffix ? `${count}${stat.suffix}` : `${count}`;
 
   return (
-    <div ref={ref} className="flex flex-col items-center text-center p-2 sm:p-4 min-w-0">
-      <span
-        className={`font-space font-bold tracking-tight tabular-nums whitespace-nowrap mb-2 ${
-          isFeaturedHeroMobile
-            ? 'text-6xl sm:text-7xl lg:text-6xl xl:text-7xl text-institutional-accent font-extrabold scale-105'
-            : isCompactMobile
-            ? 'text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-institutional-dark dark:text-white'
-            : 'text-5xl sm:text-5xl lg:text-5xl xl:text-6xl text-institutional-dark dark:text-white'
-        }`}
-      >
+    <div
+      ref={ref}
+      className="flex flex-col items-center justify-center text-center p-4 sm:p-6 w-full h-full min-h-[120px] sm:min-h-[140px] rounded-sm bg-white/40 dark:bg-white/[0.03] border border-black/5 dark:border-white/10 hover:border-institutional-accent/40 transition-all duration-300 group"
+    >
+      {/* Number Display - Space Grotesk Bold */}
+      <span className="font-space text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-institutional-dark dark:text-white mb-2 leading-none tabular-nums group-hover:text-institutional-accent transition-colors duration-300">
         {formattedDisplay}
       </span>
-      <span
-        className={`font-manrope uppercase tracking-wider whitespace-nowrap ${
-          isFeaturedHeroMobile
-            ? 'text-xs sm:text-sm font-bold text-institutional-dark dark:text-white tracking-widest'
-            : 'text-[10px] sm:text-sm font-semibold text-institutional-mutedLight dark:text-gray-400'
-        }`}
-      >
+
+      {/* Main Label - Manrope Medium/Semibold */}
+      <span className="font-manrope text-xs sm:text-sm font-semibold text-institutional-dark dark:text-gray-200 leading-snug text-center max-w-[210px]">
         {stat.label}
       </span>
+
+      {/* Supporting Sublabel (Visually Smaller) */}
+      {stat.sublabel && (
+        <span className="font-manrope text-[10px] sm:text-xs text-institutional-accent font-medium mt-1 leading-tight text-center">
+          {stat.sublabel}
+        </span>
+      )}
     </div>
   );
 };

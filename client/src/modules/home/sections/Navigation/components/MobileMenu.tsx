@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { CATEGORIES, MegaCategoryItem } from './MegaNavPanel';
+import { useActiveSection } from '@/hooks/useActiveSection';
 import {
   Accordion,
   AccordionItem,
@@ -17,6 +18,8 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+  const activeSection = useActiveSection();
+
   // Prevent background body scroll when mobile menu panel is open
   useEffect(() => {
     if (isOpen) {
@@ -28,6 +31,27 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    onClose();
+    if (typeof window !== 'undefined' && window.location.pathname === '/about' && href.includes('#')) {
+      const targetId = href.split('#')[1];
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', `/about#${targetId}`);
+        }
+      }
+    }
+  };
+
+  const isLinkActive = (href: string) => {
+    if (!activeSection) return false;
+    const hash = href.split('#')[1];
+    return hash === activeSection;
+  };
 
   return (
     <AnimatePresence>
@@ -56,9 +80,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="fixed top-[58px] sm:top-[64px] left-0 right-0 bottom-0 z-40 bg-institutional-dark border-b border-white/15 shadow-2xl lg:hidden flex flex-col pointer-events-auto overflow-hidden"
           >
-            {/* Scrollable Content Container (Adapts to all Mobile Heights 320px–480px with Safe Area Bottom Padding) */}
+            {/* Scrollable Content Container */}
             <div className="flex-1 overflow-y-auto scrollbar-none p-5 sm:p-6 space-y-6 pb-12">
-              {/* Accordion Navigation Groups (Official shadcn/ui Accordion Base) */}
+              {/* Accordion Navigation Groups */}
               <nav aria-label="Mobile Directory Navigation" className="w-full">
                 <Accordion type="single" collapsible defaultValue="Foundation" className="w-full">
                   {CATEGORIES.map((item: MegaCategoryItem) => (
@@ -66,20 +90,30 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                       <AccordionTrigger tag={item.tag}>{item.label}</AccordionTrigger>
                       <AccordionContent>
                         <div className="flex flex-col gap-1">
-                          {item.links.map((lnk) => (
-                            <a
-                              key={lnk.label}
-                              href={lnk.href}
-                              onClick={onClose}
-                              aria-label={lnk.ariaLabel}
-                              className="group/link flex items-center justify-between py-2 px-2.5 min-h-[44px] text-xs font-manrope text-gray-300 hover:text-white hover:bg-white/5 rounded-sm transition-all duration-150"
-                            >
-                              <span className="group-hover/link:translate-x-1 transition-transform duration-150">
-                                {lnk.label}
-                              </span>
-                              <ArrowUpRight className="w-3.5 h-3.5 text-institutional-accent opacity-70 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-150" />
-                            </a>
-                          ))}
+                          {item.links.map((lnk) => {
+                            const active = isLinkActive(lnk.href);
+                            return (
+                              <a
+                                key={lnk.label}
+                                href={lnk.href}
+                                onClick={(e) => handleLinkClick(e, lnk.href)}
+                                aria-label={lnk.ariaLabel}
+                                className={`group/link flex items-center justify-between py-2 px-2.5 min-h-[44px] text-xs font-manrope rounded-sm transition-all duration-150 ${
+                                  active
+                                    ? 'text-institutional-accent bg-white/10 font-semibold'
+                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                }`}
+                              >
+                                <span className="flex items-center gap-2 group-hover/link:translate-x-1 transition-transform duration-150">
+                                  {active && (
+                                    <span className="w-1.5 h-1.5 rounded-full bg-institutional-accent shrink-0 animate-pulse" />
+                                  )}
+                                  <span>{lnk.label}</span>
+                                </span>
+                                <ArrowUpRight className={`w-3.5 h-3.5 transition-all duration-150 ${active ? 'text-institutional-accent opacity-100' : 'text-institutional-accent opacity-70 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5'}`} />
+                              </a>
+                            );
+                          })}
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -87,14 +121,23 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 </Accordion>
               </nav>
 
-              {/* Primary CTA Section */}
-              <div className="pt-4 border-t border-white/10">
+              {/* Primary CTA & Explore Section */}
+              <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
                 <a
                   href="#volunteer"
                   onClick={onClose}
                   className="w-full text-center py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent shadow-md cursor-pointer whitespace-nowrap min-h-[48px] flex items-center justify-center"
                 >
                   Become a Volunteer
+                </a>
+
+                <a
+                  href="/about#about-hero"
+                  onClick={(e) => handleLinkClick(e, '/about#about-hero')}
+                  className="w-full text-center py-2.5 text-[11px] uppercase tracking-widest font-space font-semibold text-gray-300 hover:text-white border border-white/10 hover:border-institutional-accent/40 rounded-sm transition-colors duration-150 cursor-pointer min-h-[40px] flex items-center justify-center gap-1.5"
+                >
+                  <span>Explore Hero</span>
+                  <span className="text-institutional-accent font-semibold">EXPLORE →</span>
                 </a>
               </div>
 

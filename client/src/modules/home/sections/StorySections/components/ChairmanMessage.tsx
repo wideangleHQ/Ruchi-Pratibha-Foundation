@@ -40,8 +40,8 @@ export const ChairmanMessage: React.FC = () => {
 
   return (
     <section
-      id="chairman"
-      className="relative py-16 sm:py-20 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden"
+      id="chairmans-message"
+      className="relative py-16 sm:py-20 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
@@ -140,16 +140,16 @@ export const ChairmanMessage: React.FC = () => {
 
             {/* Refined Section Title - Bold Weight & Scale Matching Homepage Section Hierarchy */}
             <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-institutional-dark dark:text-white tracking-tight mb-4 sm:mb-5 lg:mb-6 leading-[1.15]">
-              &ldquo;True progress begins when we honor those who serve and uplift those in need.&rdquo;
+              A Vision That Continues To Inspire
             </h2>
 
             {/* Quote Paragraphs */}
             <div className="space-y-3 sm:space-y-4 font-manrope text-sm sm:text-base lg:text-lg text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
-              <p>
-                When we established the Ruchi Prativa Foundation nearly thirty years ago, our vision was simple yet eternal: to build an institution that acts as a bridge of hope for grassroots communities and a platform of honor for Odisha’s most dedicated minds.
+              <p className="font-cormorant italic text-lg sm:text-xl text-institutional-accent">
+                &ldquo;The true strength of any society lies in its people. When we recognise talent, encourage young minds, preserve our cultural values, and serve those in need, we build a stronger future for generations to come.&rdquo;
               </p>
               <p>
-                Philanthropy is not merely about resources; it is about human dignity, cultural self-respect, and fostering a spirit of togetherness across generations.
+                The Foundation was established with the belief that social progress is achieved through compassion, education, cultural pride, and recognition of excellence. Every initiative undertaken by the Foundation reflects this enduring vision.
               </p>
             </div>
 

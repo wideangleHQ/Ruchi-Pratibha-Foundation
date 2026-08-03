@@ -9,25 +9,25 @@ export const VolunteerJourney: React.FC = () => {
     {
       num: '01',
       title: 'Discover',
-      description: 'Explore community initiatives across education, healthcare, culture, and environmental sustainability in your district.',
+      description: 'Explore community initiatives across education, literature, culture, and social welfare in your region.',
       icon: Compass,
     },
     {
       num: '02',
-      title: 'Register',
-      description: 'Join our network of dedicated volunteers, scholars, and youth leaders committed to social transformation.',
+      title: 'Connect',
+      description: 'Connect with our network of dedicated volunteers, scholars, and professionals committed to social transformation.',
       icon: UserPlus,
     },
     {
       num: '03',
       title: 'Participate',
-      description: 'Engage directly in healthcare camps, school mentoring, tree plantation drives, and cultural archives.',
+      description: 'Engage directly in educational initiatives, literary gatherings, cultural celebrations, and community programs.',
       icon: HeartHandshake,
     },
     {
       num: '04',
       title: 'Create Impact',
-      description: 'See the real-world lives touched, track transparent metrics, and inspire others to contribute.',
+      description: 'Contribute meaningfully to society, inspire future generations, and help preserve our cultural heritage.',
       icon: Sparkles,
     },
   ];
@@ -40,15 +40,15 @@ export const VolunteerJourney: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-              Get Involved
+              Community Participation
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent" />
           </div>
           <h2 className="font-cormorant text-3xl sm:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
-            Your Volunteer Journey
+            Become Part of the Journey
           </h2>
-          <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-2.5">
-            Four meaningful steps to become part of Odisha’s living legacy of service.
+          <p className="font-manrope text-xs sm:text-sm text-institutional-mutedLight dark:text-gray-300 mt-2.5 leading-relaxed">
+            The Foundation welcomes individuals, institutions, students, professionals, and organisations who wish to contribute towards education, culture, heritage, and community development. Whether through volunteering, partnerships, or collaborative initiatives, every contribution helps strengthen the Foundation’s mission.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export const VolunteerJourney: React.FC = () => {
             href="#volunteer-register"
             className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md"
           >
-            <span>Become a Volunteer Today</span>
+            <span>Become a Volunteer</span>
             <ArrowRight className="w-4 h-4 text-institutional-dark group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

@@ -1,28 +1,55 @@
 import { StatItem, CredentialItem } from '../types';
 
 export const STATS: StatItem[] = [
-  { value: '30+', numericValue: 30, suffix: '+', label: 'Years of Impact' },
-  { value: '300+', numericValue: 300, suffix: '+', label: 'Programs & Initiatives' },
-  { value: '250+', numericValue: 250, suffix: '+', label: 'Honors & Recognitions' },
-  { value: '2 Lakhs+', numericValue: 200000, suffix: ' Lakhs+', label: 'Lives Empowered' },
-  { value: '50+', numericValue: 50, suffix: '+', label: 'Communities Reached' },
+  {
+    value: '1997',
+    numericValue: 1997,
+    suffix: '',
+    label: 'Established Year',
+  },
+  {
+    value: '28+',
+    numericValue: 28,
+    suffix: '+',
+    label: 'Years of Legacy',
+  },
+  {
+    value: '1',
+    numericValue: 1,
+    suffix: '',
+    label: 'Annual Flagship Recognition',
+    sublabel: '(Ruchi Prativa Sanman)',
+  },
+  {
+    value: '2',
+    numericValue: 2,
+    suffix: '',
+    label: 'Institutional Publications',
+    sublabel: 'Amaruchi & Prativayana',
+  },
+  {
+    value: '1',
+    numericValue: 1,
+    suffix: '',
+    label: 'Registered Charitable Trust',
+  },
 ];
 
 export const CREDENTIALS: CredentialItem[] = [
   {
-    title: 'Government Recognition',
-    description: 'Officially recognized by state and national bodies for social excellence.',
+    title: 'Recognising Excellence',
+    description: 'Honouring outstanding individuals across Odisha through Ruchi Prativa Sanman since 1997.',
   },
   {
-    title: 'Foundation Registration',
-    description: 'Registered non-profit trust operating under strict governance standards.',
+    title: 'Encouraging Education',
+    description: 'Recognising meritorious students and inspiring young minds to pursue knowledge.',
   },
   {
-    title: 'CSR Commitment',
-    description: 'Transparent audit reporting and full compliance for corporate partnerships.',
+    title: 'Preserving Culture & Literature',
+    description: 'Publishing flagship journals Amaruchi and Prativayana to preserve regional heritage.',
   },
   {
-    title: 'National Presence',
-    description: 'Active grassroots network spanning multiple states and regional chapters.',
+    title: 'Public Charitable Trust',
+    description: 'Operating as a transparent, registered non-profit trust dedicated to community welfare.',
   },
 ];

@@ -11,8 +11,8 @@ export const Timeline: React.FC = () => {
 
   return (
     <section
-      id="timeline"
-      className="py-14 sm:py-16 bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden"
+      id="timeline-archives"
+      className="py-14 sm:py-16 bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
         {/* Section Header */}

@@ -1,10 +1,10 @@
 export const EDITORIAL_CONTENT = {
-  eyebrow: 'Our Legacy',
-  heading: 'Who We Are',
+  eyebrow: 'Who We Are',
+  heading: 'Our Legacy',
   paragraphs: [
-    'Founded in 1997, the Ruchi Prativa Foundation was born from a simple yet profound belief: that every community holds extraordinary potential, and every selfless leader deserves to be celebrated.',
-    'For nearly three decades, we have walked alongside the people of Odisha—building schools, supporting healthcare access, protecting regional heritage, and honoring over 250 visionaries whose dedication inspires us all.',
-    'Guided by empathy, integrity, and hope, we bridge rich cultural traditions with meaningful progress—ensuring that every life touched becomes a beacon for generations to come.',
+    'Founded in 1997, Ruchi Prativa Foundation was established with a mission to recognise outstanding achievements while contributing to the social, educational, literary, and cultural development of society.',
+    'Over the years, the Foundation has honoured eminent personalities through Ruchi Prativa Sanman, recognised meritorious students, published literary works through Amaruchi and Prativayana, and encouraged initiatives that strengthen education, culture, and community welfare across Odisha.',
+    'The Foundation continues to preserve its heritage while embracing new opportunities to serve future generations.',
   ],
-  ctaLabel: 'Read Our Full Story',
+  ctaLabel: 'Read Our Story',
 };
