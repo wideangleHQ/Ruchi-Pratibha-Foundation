@@ -6,9 +6,9 @@ interface DataTableProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function DataTable({ className, children, ...props }: DataTableProps) {
   return (
-    <div className={cn('rounded-[18px] border bg-card shadow-soft overflow-hidden', className)} {...props}>
+    <div className={cn('rounded-[16px] border bg-card shadow-foundation-sm overflow-hidden', className)} {...props}>
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full font-manrope text-sm">
           {children}
         </table>
       </div>

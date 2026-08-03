@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -10,7 +11,6 @@ import {
   FileText,
   Settings,
   ChevronLeft,
-  Heart,
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -64,31 +64,35 @@ export function Sidebar() {
       <motion.aside
         initial={false}
         animate={{ width: isCollapsed ? 'var(--sidebar-width-collapsed)' : 'var(--sidebar-width)' }}
-        transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed left-0 top-0 z-40 flex h-screen flex-col border-r bg-sidebar"
       >
         <div className={cn('flex h-[var(--topbar-height)] items-center border-b px-4', isCollapsed ? 'justify-center' : 'justify-between')}>
           <Link href="/" className="flex items-center gap-2.5 overflow-hidden">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[10px] bg-primary">
-              <Heart className="h-4 w-4 text-primary-foreground" strokeWidth={2.5} />
-            </div>
+            <Image
+              src="/logo.svg"
+              alt="Pratibha Foundation"
+              width={32}
+              height={32}
+              className="h-8 w-8 shrink-0 object-contain"
+            />
             <AnimatePresence>
               {!isCollapsed && (
                 <motion.span
                   initial={{ opacity: 0, width: 0 }}
                   animate={{ opacity: 1, width: 'auto' }}
                   exit={{ opacity: 0, width: 0 }}
-                  transition={{ duration: 0.15 }}
-                  className="whitespace-nowrap text-sm font-bold tracking-tight"
+                  transition={{ duration: 0.2 }}
+                  className="whitespace-nowrap font-cormorant text-sm font-semibold tracking-tight"
                 >
-                  RPF Dashboard
+                  Pratibha Foundation
                 </motion.span>
               )}
             </AnimatePresence>
           </Link>
           {!isCollapsed && (
             <Button variant="ghost" size="icon-sm" onClick={toggle} aria-label="Collapse sidebar">
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
             </Button>
           )}
         </div>
@@ -103,8 +107,8 @@ export function Sidebar() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.1 }}
-                      className="mb-2 px-2 text-[11px] font-medium uppercase tracking-wider text-sidebar-foreground/50"
+                      transition={{ duration: 0.15 }}
+                      className="mb-2 px-2 font-manrope text-[11px] font-medium uppercase tracking-wider text-sidebar-foreground/50"
                     >
                       {group.title}
                     </motion.p>
@@ -117,7 +121,7 @@ export function Sidebar() {
                       <Link
                         href={item.href}
                         className={cn(
-                          'group relative flex items-center gap-3 rounded-[12px] px-2.5 py-2 text-sm font-medium transition-all duration-150',
+                          'group relative flex items-center gap-3 rounded-[12px] px-2.5 py-2 font-manrope text-sm font-medium transition-all duration-200',
                           isActive
                             ? 'bg-sidebar-accent text-sidebar-accent-foreground'
                             : 'text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground',
@@ -131,7 +135,7 @@ export function Sidebar() {
                             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                           />
                         )}
-                        <item.icon className={cn('relative z-10 h-4.5 w-4.5 shrink-0', isActive && 'text-sidebar-primary')} />
+                        <item.icon className={cn('relative z-10 h-4.5 w-4.5 shrink-0', isActive && 'text-sidebar-primary')} strokeWidth={1.75} />
                         <AnimatePresence>
                           {!isCollapsed && (
                             <motion.span
@@ -186,8 +190,8 @@ export function Sidebar() {
                 <AvatarFallback className="text-xs bg-sidebar-accent text-sidebar-accent-foreground">AD</AvatarFallback>
               </Avatar>
               <div className="flex-1 overflow-hidden">
-                <p className="truncate text-sm font-medium text-sidebar-foreground">Admin</p>
-                <p className="truncate text-xs text-sidebar-foreground/60">admin@rpf.org</p>
+                <p className="truncate font-manrope text-sm font-medium text-sidebar-foreground">Admin</p>
+                <p className="truncate font-manrope text-xs text-sidebar-foreground/60">admin@rpf.org</p>
               </div>
             </div>
           )}

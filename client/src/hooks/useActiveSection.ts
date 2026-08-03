@@ -5,11 +5,17 @@ import { useState, useEffect } from 'react';
 const SECTION_IDS = [
   'about-hero',
   'about-foundation',
-  'mission-vision',
+  'foundation-story',
+  'founders-words',
+  'vision-mission-values',
+  'journey',
+  'milestones',
   'leadership',
-  'timeline-archives',
-  'chairmans-message',
-  'governance-charter',
+  'governance',
+  'philosophy',
+  'why-we-matter',
+  'future',
+  'join-journey',
 ];
 
 export function useActiveSection() {

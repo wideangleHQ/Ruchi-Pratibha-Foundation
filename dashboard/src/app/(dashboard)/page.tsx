@@ -6,7 +6,6 @@ import { PageHeader } from '@/components/dashboard/page-header';
 import { StatCard } from '@/components/dashboard/stat-card';
 import { MetricCard } from '@/components/dashboard/metric-card';
 import { ContentCard } from '@/components/dashboard/content-card';
-import { GlassCard } from '@/components/dashboard/glass-card';
 import { EmptyState } from '@/components/dashboard/empty-state';
 import { StatusBadge } from '@/components/dashboard/status-badge';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ export default function DashboardHome() {
           description="Welcome back. Here is an overview of the foundation."
           action={
             <Button size="sm">
-              <Plus className="h-4 w-4" />
+              <Plus className="h-4 w-4" strokeWidth={1.75} />
               Quick Action
             </Button>
           }
@@ -79,29 +78,25 @@ export default function DashboardHome() {
                 { name: 'Q3 Report Filing', status: 'success' as const, label: 'Complete' },
               ].map((item) => (
                 <div key={item.name} className="flex items-center justify-between rounded-[12px] border p-3">
-                  <span className="text-sm">{item.name}</span>
+                  <span className="font-manrope text-sm">{item.name}</span>
                   <StatusBadge status={item.status} label={item.label} />
                 </div>
               ))}
             </div>
           </ContentCard>
 
-          <GlassCard>
-            <h3 className="text-base font-semibold">Quick Stats</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              At-a-glance metrics with glass morphism styling.
-            </p>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              <div className="rounded-[12px] bg-background/60 p-3 text-center">
-                <p className="text-2xl font-bold">89%</p>
-                <p className="text-xs text-muted-foreground">Retention</p>
+          <ContentCard title="Quick Stats" description="At-a-glance metrics overview">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-[12px] border bg-muted/30 p-3 text-center">
+                <p className="font-space text-2xl font-bold">89%</p>
+                <p className="font-manrope text-xs text-muted-foreground">Retention</p>
               </div>
-              <div className="rounded-[12px] bg-background/60 p-3 text-center">
-                <p className="text-2xl font-bold">4.8</p>
-                <p className="text-xs text-muted-foreground">Satisfaction</p>
+              <div className="rounded-[12px] border bg-muted/30 p-3 text-center">
+                <p className="font-space text-2xl font-bold">4.8</p>
+                <p className="font-manrope text-xs text-muted-foreground">Satisfaction</p>
               </div>
             </div>
-          </GlassCard>
+          </ContentCard>
         </div>
 
         <ContentCard title="Upcoming Events">
@@ -109,7 +104,7 @@ export default function DashboardHome() {
             icon={Calendar}
             title="No upcoming events"
             description="Schedule your next event to see it here."
-            action={<Button size="sm"><Plus className="h-4 w-4" />Create Event</Button>}
+            action={<Button size="sm"><Plus className="h-4 w-4" strokeWidth={1.75} />Create Event</Button>}
           />
         </ContentCard>
       </div>

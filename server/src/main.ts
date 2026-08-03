@@ -91,8 +91,15 @@ async function bootstrap(): Promise<void> {
         },
         'access-token',
       )
+      .addCookieAuth('rpf_dashboard_access', {
+        type: 'apiKey',
+        in: 'cookie',
+        name: 'rpf_dashboard_access',
+        description: 'Dashboard access token cookie',
+      })
       .addTag('Health', 'Health check endpoints')
       .addTag('Volunteers', 'Volunteer registration and lookup')
+      .addTag('Dashboard Auth', 'Dashboard access gateway')
       .build();
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);

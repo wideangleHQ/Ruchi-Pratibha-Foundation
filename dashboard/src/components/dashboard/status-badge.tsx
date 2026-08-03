@@ -9,12 +9,12 @@ interface StatusBadgeProps {
 }
 
 const variants: Record<StatusVariant, { dot: string; bg: string; text: string }> = {
-  active: { dot: 'bg-success', bg: 'bg-success/10', text: 'text-success' },
-  success: { dot: 'bg-success', bg: 'bg-success/10', text: 'text-success' },
+  active: { dot: 'bg-forest-green', bg: 'bg-forest-green/10', text: 'text-forest-green' },
+  success: { dot: 'bg-forest-green', bg: 'bg-forest-green/10', text: 'text-forest-green' },
   inactive: { dot: 'bg-muted-foreground', bg: 'bg-muted', text: 'text-muted-foreground' },
-  pending: { dot: 'bg-warning', bg: 'bg-warning/10', text: 'text-warning' },
-  warning: { dot: 'bg-warning', bg: 'bg-warning/10', text: 'text-warning' },
-  error: { dot: 'bg-destructive', bg: 'bg-destructive/10', text: 'text-destructive' },
+  pending: { dot: 'bg-heritage-bronze', bg: 'bg-heritage-bronze/10', text: 'text-heritage-bronze' },
+  warning: { dot: 'bg-heritage-bronze', bg: 'bg-heritage-bronze/10', text: 'text-heritage-bronze' },
+  error: { dot: 'bg-foundation-red', bg: 'bg-foundation-red/10', text: 'text-foundation-red' },
 };
 
 export function StatusBadge({ status, label, className }: StatusBadgeProps) {
@@ -22,7 +22,7 @@ export function StatusBadge({ status, label, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium',
+        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-manrope text-xs font-medium',
         v.bg,
         v.text,
         className,

@@ -15,10 +15,10 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className={cn('flex items-center gap-1 text-sm', className)}>
+    <nav aria-label="Breadcrumb" className={cn('flex items-center gap-1 font-manrope text-sm', className)}>
       {items.map((item, index) => (
         <React.Fragment key={item.label}>
-          {index > 0 && <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/50" />}
+          {index > 0 && <ChevronRight className="h-3.5 w-3.5 text-muted-foreground/50" strokeWidth={1.75} />}
           {item.href && index < items.length - 1 ? (
             <Link
               href={item.href}

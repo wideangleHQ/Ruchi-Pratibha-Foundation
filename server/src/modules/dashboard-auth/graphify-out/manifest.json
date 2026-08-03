@@ -1,0 +1,67 @@
+{
+  "__tests__/dashboard-auth.controller.spec.ts": {
+    "mtime": 1785735878.8403392,
+    "ast_hash": "0a9e4c34f042d0cf7431ddc0484df20b",
+    "semantic_hash": "0a9e4c34f042d0cf7431ddc0484df20b"
+  },
+  "__tests__/dashboard-auth.guard.spec.ts": {
+    "mtime": 1785735887.4231827,
+    "ast_hash": "8e456efd17cce314dbe0f12fcd1e5795",
+    "semantic_hash": "8e456efd17cce314dbe0f12fcd1e5795"
+  },
+  "__tests__/dashboard-auth.service.spec.ts": {
+    "mtime": 1785736059.2787766,
+    "ast_hash": "cc481abed500e3cacaeac634776f2a9e",
+    "semantic_hash": "cc481abed500e3cacaeac634776f2a9e"
+  },
+  "constants/index.ts": {
+    "mtime": 1785735756.1198416,
+    "ast_hash": "f6d3a40e063c37fec0ffd08ae3443ae8",
+    "semantic_hash": "f6d3a40e063c37fec0ffd08ae3443ae8"
+  },
+  "dashboard-auth.controller.ts": {
+    "mtime": 1785735846.6016607,
+    "ast_hash": "95e9e7125dbbdc37a1df7e6cb99d1de1",
+    "semantic_hash": "95e9e7125dbbdc37a1df7e6cb99d1de1"
+  },
+  "dashboard-auth.guard.ts": {
+    "mtime": 1785735960.283363,
+    "ast_hash": "01a2fe3145f9eefd724ab23810a27850",
+    "semantic_hash": "01a2fe3145f9eefd724ab23810a27850"
+  },
+  "dashboard-auth.module.ts": {
+    "mtime": 1785735808.2326827,
+    "ast_hash": "f8538774cc4a9a08f7d31f8b64360e44",
+    "semantic_hash": "f8538774cc4a9a08f7d31f8b64360e44"
+  },
+  "dashboard-auth.service.ts": {
+    "mtime": 1785735782.2223027,
+    "ast_hash": "d0710c7da74f1b873b01b4eaf3fe5858",
+    "semantic_hash": "d0710c7da74f1b873b01b4eaf3fe5858"
+  },
+  "dashboard-auth.strategy.ts": {
+    "mtime": 1785735806.5903482,
+    "ast_hash": "a48ea3e7d18d7fc877c6ed1c4e1655ad",
+    "semantic_hash": "a48ea3e7d18d7fc877c6ed1c4e1655ad"
+  },
+  "dto/dashboard-access.dto.ts": {
+    "mtime": 1785735760.52706,
+    "ast_hash": "eda8fa9f2dff3781f7388999a42dcd47",
+    "semantic_hash": "eda8fa9f2dff3781f7388999a42dcd47"
+  },
+  "dto/dashboard-response.dto.ts": {
+    "mtime": 1785735763.0796154,
+    "ast_hash": "e6c24f37d8afa5054f46cbdbb5273ea0",
+    "semantic_hash": "e6c24f37d8afa5054f46cbdbb5273ea0"
+  },
+  "dto/index.ts": {
+    "mtime": 1785735763.8288224,
+    "ast_hash": "6fd7cf8b66613eaaf6facdbd485359fa",
+    "semantic_hash": "6fd7cf8b66613eaaf6facdbd485359fa"
+  },
+  "interfaces/index.ts": {
+    "mtime": 1785735758.095504,
+    "ast_hash": "b976919b895b3214b5198b941ea291d4",
+    "semantic_hash": "b976919b895b3214b5198b941ea291d4"
+  }
+}

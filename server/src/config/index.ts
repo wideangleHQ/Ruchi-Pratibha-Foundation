@@ -7,6 +7,7 @@ import securityConfig from './security.config';
 import swaggerConfig from './swagger.config';
 import mailConfig from './mail.config';
 import supabaseConfig from './supabase.config';
+import dashboardAuthConfig from './dashboard-auth.config';
 
 export const configurations = [
   appConfig,
@@ -18,6 +19,7 @@ export const configurations = [
   swaggerConfig,
   mailConfig,
   supabaseConfig,
+  dashboardAuthConfig,
 ];
 
 export {
@@ -30,4 +32,5 @@ export {
   swaggerConfig,
   mailConfig,
   supabaseConfig,
+  dashboardAuthConfig,
 };

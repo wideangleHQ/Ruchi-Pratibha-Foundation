@@ -1,0 +1,177 @@
+{
+  "communities": {
+    "0": [
+      "constants_index",
+      "constants_index_dashboard_auth_constants",
+      "dashboard_auth_controller",
+      "dashboard_auth_guard",
+      "dashboard_auth_guard_dashboardaccessguard",
+      "dashboard_auth_guard_dashboardaccessguard_constructor",
+      "dashboard_auth_guard_ts_injectable",
+      "dashboard_auth_module",
+      "dashboard_auth_module_dashboardauthmodule",
+      "dashboard_auth_service",
+      "dto_dashboard_access_dto",
+      "module",
+      "tests_dashboard_auth_controller_spec",
+      "tests_dashboard_auth_guard_spec",
+      "tests_dashboard_auth_guard_spec_createmockcontext"
+    ],
+    "1": [
+      "dashboard_auth_guard_dashboardaccessguard_canactivate",
+      "dashboard_auth_service_dashboardauthservice",
+      "dashboard_auth_service_dashboardauthservice_constructor",
+      "dashboard_auth_service_dashboardauthservice_createsignature",
+      "dashboard_auth_service_dashboardauthservice_getcookiename",
+      "dashboard_auth_service_dashboardauthservice_issuetoken",
+      "dashboard_auth_service_dashboardauthservice_parseexpiration",
+      "dashboard_auth_service_dashboardauthservice_setcookie",
+      "dashboard_auth_service_dashboardauthservice_sign",
+      "dashboard_auth_service_dashboardauthservice_verifytoken",
+      "dashboard_auth_service_ts_injectable",
+      "interfaces_index_dashboardtokenpayload",
+      "tests_dashboard_auth_service_spec"
+    ],
+    "2": [
+      "apicookieauth",
+      "apioperation",
+      "apiresponse",
+      "dashboard_auth_controller_dashboardauthcontroller_verify",
+      "get",
+      "useguards"
+    ],
+    "3": [
+      "dto_dashboard_access_dto_dashboardaccessdto",
+      "dto_dashboard_access_dto_ts_apiproperty",
+      "isnotempty",
+      "isstring",
+      "maxlength",
+      "transform"
+    ],
+    "4": [
+      "dto_dashboard_response_dto",
+      "dto_dashboard_response_dto_dashboardaccessresponsedto",
+      "dto_dashboard_response_dto_dashboardlogoutresponsedto",
+      "dto_dashboard_response_dto_dashboardverifyresponsedto",
+      "dto_dashboard_response_dto_ts_apiproperty",
+      "dto_index"
+    ],
+    "5": [
+      "apibody",
+      "body",
+      "dashboard_auth_controller_dashboardauthcontroller_access",
+      "dashboard_auth_service_dashboardauthservice_validateaccesscode",
+      "throttle"
+    ],
+    "6": [
+      "dashboard_auth_controller_dashboardauthcontroller_logout",
+      "dashboard_auth_service_dashboardauthservice_clearcookie",
+      "httpcode",
+      "post",
+      "res"
+    ],
+    "7": [
+      "apitags",
+      "controller",
+      "dashboard_auth_controller_dashboardauthcontroller",
+      "dashboard_auth_controller_dashboardauthcontroller_constructor"
+    ],
+    "8": [
+      "interfaces_index",
+      "interfaces_index_dashboardaccessresponse",
+      "interfaces_index_dashboardlogoutresponse",
+      "interfaces_index_dashboardverifyresponse"
+    ],
+    "9": [
+      "dashboard_auth_strategy",
+      "dashboard_auth_strategy_dashboard_auth_strategy"
+    ]
+  },
+  "cohesion": {
+    "0": 0.24761904761904763,
+    "1": 0.24358974358974358,
+    "2": 0.3333333333333333,
+    "3": 0.3333333333333333,
+    "4": 0.6666666666666666,
+    "5": 0.4,
+    "6": 0.4,
+    "7": 0.5,
+    "8": 0.5,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "dashboard_auth_service_dashboardauthservice",
+      "label": "DashboardAuthService",
+      "degree": 20
+    },
+    {
+      "id": "dashboard_auth_controller_dashboardauthcontroller",
+      "label": "DashboardAuthController",
+      "degree": 9
+    },
+    {
+      "id": "dto_dashboard_access_dto_dashboardaccessdto",
+      "label": "DashboardAccessDto",
+      "degree": 9
+    },
+    {
+      "id": "dashboard_auth_guard_dashboardaccessguard",
+      "label": "DashboardAccessGuard",
+      "degree": 7
+    },
+    {
+      "id": "dto_dashboard_response_dto_dashboardaccessresponsedto",
+      "label": "DashboardAccessResponseDto",
+      "degree": 5
+    },
+    {
+      "id": "dto_dashboard_response_dto_dashboardverifyresponsedto",
+      "label": "DashboardVerifyResponseDto",
+      "degree": 5
+    },
+    {
+      "id": "dto_dashboard_response_dto_dashboardlogoutresponsedto",
+      "label": "DashboardLogoutResponseDto",
+      "degree": 5
+    },
+    {
+      "id": "interfaces_index_dashboardtokenpayload",
+      "label": "DashboardTokenPayload",
+      "degree": 5
+    },
+    {
+      "id": "constants_index_dashboard_auth_constants",
+      "label": "DASHBOARD_AUTH_CONSTANTS",
+      "degree": 4
+    },
+    {
+      "id": "dashboard_auth_module_dashboardauthmodule",
+      "label": "DashboardAuthModule",
+      "degree": 2
+    }
+  ],
+  "surprises": [],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `DashboardAuthService` connect `DashboardAuthService` to `dashboard-auth.controller.ts`, `.access`, `.logout`, `DashboardAuthController`?",
+      "why": "High betweenness centrality (0.288) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `DashboardAuthController` connect `DashboardAuthController` to `dashboard-auth.controller.ts`, `.verify`, `.access`, `.logout`?",
+      "why": "High betweenness centrality (0.170) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `DashboardAccessDto` connect `DashboardAccessDto` to `dashboard-auth.controller.ts`, `index.ts`, `.access`?",
+      "why": "High betweenness centrality (0.164) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `DASHBOARD_AUTH_STRATEGY`, `DashboardAccessResponse`, `DashboardLogoutResponse` to the rest of the system?",
+      "why": "4 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

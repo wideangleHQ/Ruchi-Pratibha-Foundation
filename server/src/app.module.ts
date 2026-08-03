@@ -10,6 +10,7 @@ import { SupabaseStorageModule } from './supabase-storage';
 import { HealthModule } from './modules/health/health.module';
 import { CommunityModule } from './modules/community/community.module';
 import { MediaModule } from './modules/media/media.module';
+import { DashboardAuthModule } from './modules/dashboard-auth/dashboard-auth.module';
 import { CorrelationIdMiddleware } from './common/middleware';
 
 @Module({
@@ -36,6 +37,7 @@ import { CorrelationIdMiddleware } from './common/middleware';
     HealthModule,
     CommunityModule,
     MediaModule,
+    DashboardAuthModule,
   ],
   providers: [
     {

@@ -11,6 +11,24 @@ export const FooterLinksGrid: React.FC = () => {
     setOpenAccordion((prev) => (prev === title ? null : title));
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (
+      typeof window !== 'undefined' &&
+      (window.location.pathname === '/about' || window.location.pathname === '/foundation') &&
+      href.includes('#')
+    ) {
+      const targetId = href.split('#')[1];
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', href);
+        }
+      }
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 py-12 border-b border-white/10 dark:border-white/10 border-black/10">
       {FOOTER_SECTIONS.map((section) => {
@@ -48,6 +66,7 @@ export const FooterLinksGrid: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     className="font-manrope text-xs text-gray-300 dark:text-gray-300 hover:text-institutional-accent dark:hover:text-institutional-accent transition-colors duration-200 inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-institutional-accent whitespace-nowrap"
                   >
                     <span>{link.label}</span>

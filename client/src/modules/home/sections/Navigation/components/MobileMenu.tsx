@@ -34,14 +34,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onClose();
-    if (typeof window !== 'undefined' && window.location.pathname === '/about' && href.includes('#')) {
+    if (
+      typeof window !== 'undefined' &&
+      (window.location.pathname === '/about' || window.location.pathname === '/foundation') &&
+      href.includes('#')
+    ) {
       const targetId = href.split('#')[1];
       if (targetId) {
         const el = document.getElementById(targetId);
         if (el) {
           e.preventDefault();
           el.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', `/about#${targetId}`);
+          window.history.pushState(null, '', href);
         }
       }
     }

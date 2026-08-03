@@ -15,7 +15,7 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn('fixed inset-0 z-50 bg-black/40 backdrop-blur-sm data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out', className)}
+    className={cn('fixed inset-0 z-50 bg-charcoal/40 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out', className)}
     {...props}
   />
 ));
@@ -32,7 +32,7 @@ const DrawerContent = React.forwardRef<React.ComponentRef<typeof DialogPrimitive
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          'fixed z-50 flex h-full w-full max-w-md flex-col bg-card shadow-soft-lg',
+          'fixed z-50 flex h-full w-full max-w-md flex-col bg-card shadow-foundation-lg',
           side === 'right' && 'right-0 top-0 data-[state=open]:animate-slide-in',
           side === 'left' && 'left-0 top-0 data-[state=open]:animate-slide-in',
           className,
@@ -41,7 +41,7 @@ const DrawerContent = React.forwardRef<React.ComponentRef<typeof DialogPrimitive
       >
         {children}
         <DialogPrimitive.Close className="absolute right-4 top-4 rounded-[10px] p-1.5 opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring">
-          <X className="h-4 w-4" />
+          <X className="h-4 w-4" strokeWidth={1.75} />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
@@ -55,7 +55,7 @@ function DrawerHeader({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
 }
 
 function DrawerBody({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn('flex-1 overflow-y-auto px-6 py-4 scrollbar-thin', className)} {...props} />;
+  return <div className={cn('flex-1 overflow-y-auto px-6 py-4', className)} {...props} />;
 }
 
 function DrawerFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {

@@ -4,11 +4,17 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Foundation',
     links: [
-      { label: 'About Foundation', href: '/about' },
-      { label: 'Our Legacy', href: '/about#legacy' },
-      { label: 'Leadership', href: '/about#leadership' },
-      { label: 'Timeline', href: '/about#journey' },
-      { label: 'Vision & Mission', href: '/about#purpose' },
+      { label: 'About Foundation', href: '/foundation#about-foundation' },
+      { label: 'Our Legacy', href: '/foundation#foundation-story' },
+      { label: 'Vision & Mission', href: '/foundation#vision-mission-values' },
+      { label: 'Leadership', href: '/foundation#leadership' },
+      { label: 'Journey', href: '/foundation#journey' },
+      { label: 'Milestones', href: '/foundation#milestones' },
+      { label: "Founder's Words", href: '/foundation#founders-words' },
+      { label: 'Governance Charter', href: '/foundation#governance' },
+      { label: 'Our Philosophy', href: '/foundation#philosophy' },
+      { label: 'Why We Matter', href: '/foundation#why-we-matter' },
+      { label: 'Future Vision', href: '/foundation#future' },
     ],
   },
   {

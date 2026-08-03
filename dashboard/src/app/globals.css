@@ -4,80 +4,83 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 220 13% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 13% 9%;
+    /* Foundation Heritage Light Theme */
+    --background: 38 33% 95%;        /* #F8F5EF Ivory */
+    --foreground: 0 0% 9%;           /* #171717 Charcoal */
+    --card: 0 0% 100%;               /* #FFFFFF Warm White */
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 13% 9%;
-    --primary: 0 73% 41%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 40 55% 51%;           /* #C89B3C Heritage Gold */
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 13% 95%;
-    --secondary-foreground: 220 13% 9%;
-    --muted: 220 13% 95%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 220 13% 95%;
-    --accent-foreground: 220 13% 9%;
-    --destructive: 0 72% 51%;
+    --secondary: 0 59% 30%;          /* #7A1F1F Deep Maroon */
+    --secondary-foreground: 0 0% 100%;
+    --destructive: 4 73% 47%;        /* #C62828 Foundation Red */
     --destructive-foreground: 0 0% 100%;
-    --success: 142 72% 29%;
+    --success: 149 35% 28%;          /* #355E3B Forest Green */
     --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
+    --warning: 40 55% 51%;           /* #C89B3C Heritage Gold */
     --warning-foreground: 0 0% 100%;
-    --border: 220 13% 90%;
-    --input: 220 13% 90%;
-    --ring: 0 73% 41%;
-    --radius: 0.875rem;
-    --radius-card: 1.125rem;
-    --radius-dialog: 1.375rem;
+    --muted: 30 10% 90%;             /* #E8E5E1 Warm Gray */
+    --muted-foreground: 0 0% 35%;    /* #5A5A5A */
+    --accent: 30 10% 90%;            /* #E8E5E1 */
+    --accent-foreground: 0 0% 9%;
+    --border: 30 10% 90%;            /* #E8E5E1 */
+    --input: 30 10% 90%;
+    --ring: 40 55% 51%;              /* Heritage Gold */
+    --radius: 0.75rem;               /* 12px */
+    --heritage-navy: 213 49% 23%;    /* #1D3557 */
+    --bronze: 33 39% 39%;            /* #8B6A3D */
+
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 13% 26%;
-    --sidebar-primary: 0 73% 41%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 0 59% 30%;    /* Deep Maroon */
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 13% 96%;
-    --sidebar-accent-foreground: 220 13% 9%;
-    --sidebar-border: 220 13% 93%;
-    --sidebar-ring: 0 73% 41%;
+    --sidebar-accent: 38 33% 95%;    /* Ivory */
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 30 10% 92%;
+    --sidebar-ring: 40 55% 51%;
     --sidebar-width: 16.5rem;
     --sidebar-width-collapsed: 4.5rem;
     --topbar-height: 3.75rem;
   }
 
   .dark {
-    --background: 220 13% 6%;
-    --foreground: 220 13% 95%;
-    --card: 220 13% 8%;
-    --card-foreground: 220 13% 95%;
-    --popover: 220 13% 8%;
-    --popover-foreground: 220 13% 95%;
-    --primary: 0 73% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 13% 14%;
-    --secondary-foreground: 220 13% 95%;
-    --muted: 220 13% 14%;
-    --muted-foreground: 220 9% 55%;
-    --accent: 220 13% 14%;
-    --accent-foreground: 220 13% 95%;
-    --destructive: 0 62% 40%;
+    /* Foundation Ceremonial Dark Theme */
+    --background: 0 0% 9%;           /* #171717 Charcoal */
+    --foreground: 38 33% 95%;        /* #F8F5EF Ivory */
+    --card: 0 0% 12%;               /* Slightly lighter charcoal */
+    --card-foreground: 38 33% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 38 33% 95%;
+    --primary: 40 55% 51%;           /* Heritage Gold */
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 59% 35%;          /* Lighter Maroon for dark */
+    --secondary-foreground: 0 0% 100%;
+    --destructive: 4 73% 50%;
     --destructive-foreground: 0 0% 100%;
-    --success: 142 60% 35%;
+    --success: 149 35% 35%;
     --success-foreground: 0 0% 100%;
-    --warning: 38 80% 45%;
-    --warning-foreground: 0 0% 100%;
-    --border: 220 13% 16%;
-    --input: 220 13% 16%;
-    --ring: 0 73% 45%;
-    --radius: 0.875rem;
-    --radius-card: 1.125rem;
-    --radius-dialog: 1.375rem;
-    --sidebar-background: 220 13% 7%;
-    --sidebar-foreground: 220 13% 75%;
-    --sidebar-primary: 0 73% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 13% 12%;
-    --sidebar-accent-foreground: 220 13% 95%;
-    --sidebar-border: 220 13% 13%;
-    --sidebar-ring: 0 73% 45%;
+    --warning: 40 55% 55%;
+    --warning-foreground: 0 0% 9%;
+    --muted: 0 0% 16%;              /* #2A2A2A */
+    --muted-foreground: 0 0% 48%;   /* #7A7A7A */
+    --accent: 0 0% 16%;
+    --accent-foreground: 38 33% 95%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 40 55% 51%;
+    --heritage-navy: 213 49% 35%;
+    --bronze: 33 39% 50%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 65%;
+    --sidebar-primary: 40 55% 51%;   /* Heritage Gold in dark */
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 38 33% 95%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 40 55% 51%;
     --sidebar-width: 16.5rem;
     --sidebar-width-collapsed: 4.5rem;
     --topbar-height: 3.75rem;
@@ -86,42 +89,60 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .dark * {
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 170%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-foreground;
+  h1, h2, h3, h4 {
+    font-family: var(--font-cormorant), 'Georgia', serif;
+    letter-spacing: -0.01em;
+    line-height: 115%;
+  }
+
+  h5, h6 {
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    font-weight: 600;
   }
 
   ::selection {
-    @apply bg-primary/15 text-foreground;
+    background-color: hsl(var(--primary) / 0.15);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-background/80 backdrop-blur-xl border-border/50;
+  .font-heading {
+    font-family: var(--font-cormorant), 'Georgia', serif;
   }
 
-  .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/40 shadow-sm;
+  .font-body {
+    font-family: var(--font-manrope), system-ui, sans-serif;
   }
 
-  .shadow-soft {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 4px 16px 0 rgb(0 0 0 / 0.04);
+  .font-number {
+    font-family: var(--font-space-grotesk), 'Courier New', monospace;
   }
 
-  .shadow-soft-md {
-    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 0.04), 0 8px 24px 0 rgb(0 0 0 / 0.06);
+  .shadow-foundation-sm {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
 
-  .shadow-soft-lg {
-    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 0.04), 0 16px 40px 0 rgb(0 0 0 / 0.08);
+  .shadow-foundation-md {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-foundation-lg {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
   }
 
   .scrollbar-thin {

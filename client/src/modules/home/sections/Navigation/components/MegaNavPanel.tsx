@@ -29,11 +29,16 @@ export const CATEGORIES: MegaCategoryItem[] = [
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
       { label: 'About Foundation', href: '/about#about-foundation', ariaLabel: 'About Ruchi Prativa Foundation' },
-      { label: 'Mission & Vision', href: '/about#mission-vision', ariaLabel: 'Our Mission and Vision' },
+      { label: 'Story Behind the Foundation', href: '/about#foundation-story', ariaLabel: 'The Story Behind the Foundation' },
+      { label: "Founder's Words", href: '/about#founders-words', ariaLabel: "Founder's Words" },
+      { label: 'Vision • Mission • Values', href: '/about#vision-mission-values', ariaLabel: 'Vision Mission Values' },
+      { label: 'Journey of an Institution', href: '/about#journey', ariaLabel: 'Journey of an Institution' },
+      { label: 'Institutional Milestones', href: '/about#milestones', ariaLabel: 'Institutional Milestones' },
       { label: 'Leadership', href: '/about#leadership', ariaLabel: 'Foundation Leadership' },
-      { label: 'Timeline Archives', href: '/about#timeline-archives', ariaLabel: 'Historical Journey Timeline' },
-      { label: "Chairman's Message", href: '/about#chairmans-message', ariaLabel: "Message from Chairman" },
-      { label: 'Governance Charter', href: '/about#governance-charter', ariaLabel: 'Governance and Transparency' },
+      { label: 'Governance Charter', href: '/about#governance', ariaLabel: 'Governance Charter' },
+      { label: 'Our Philosophy', href: '/about#philosophy', ariaLabel: 'Our Philosophy' },
+      { label: 'Why We Matter', href: '/about#why-we-matter', ariaLabel: 'Why We Matter' },
+      { label: 'Future Vision', href: '/about#future', ariaLabel: 'Future Vision' },
     ],
   },
   {
@@ -165,14 +170,18 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onClose();
-    if (typeof window !== 'undefined' && window.location.pathname === '/about' && href.includes('#')) {
+    if (
+      typeof window !== 'undefined' &&
+      (window.location.pathname === '/about' || window.location.pathname === '/foundation') &&
+      href.includes('#')
+    ) {
       const targetId = href.split('#')[1];
       if (targetId) {
         const el = document.getElementById(targetId);
         if (el) {
           e.preventDefault();
           el.scrollIntoView({ behavior: 'smooth' });
-          window.history.pushState(null, '', `/about#${targetId}`);
+          window.history.pushState(null, '', href);
         }
       }
     }

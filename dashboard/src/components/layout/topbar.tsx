@@ -19,7 +19,7 @@ export function Topbar({ children, onSearchClick }: TopbarProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-30 flex h-[var(--topbar-height)] items-center border-b glass transition-[margin,width] duration-200',
+        'sticky top-0 z-30 flex h-[var(--topbar-height)] items-center border-b bg-background/95 transition-[margin,width] duration-200',
         isCollapsed
           ? 'lg:ml-[var(--sidebar-width-collapsed)] lg:w-[calc(100%-var(--sidebar-width-collapsed))]'
           : 'lg:ml-[var(--sidebar-width)] lg:w-[calc(100%-var(--sidebar-width))]',

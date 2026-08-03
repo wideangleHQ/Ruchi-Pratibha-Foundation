@@ -25,12 +25,12 @@ export function MetricCard({ label, value, icon: Icon, variant = 'default', clas
   };
 
   return (
-    <div className={cn('rounded-[18px] border p-5 shadow-soft', variantStyles[variant], className)}>
+    <div className={cn('rounded-[16px] border p-5 shadow-foundation-sm', variantStyles[variant], className)}>
       <div className="flex items-center gap-3">
-        {Icon && <Icon className={cn('h-4 w-4', iconStyles[variant])} />}
-        <span className="text-sm text-muted-foreground">{label}</span>
+        {Icon && <Icon className={cn('h-4 w-4', iconStyles[variant])} strokeWidth={1.75} />}
+        <span className="font-manrope text-sm text-muted-foreground">{label}</span>
       </div>
-      <p className="mt-2 text-3xl font-extrabold tracking-tight">{value}</p>
+      <p className="mt-2 font-space text-3xl font-bold tracking-tight">{value}</p>
     </div>
   );
 }

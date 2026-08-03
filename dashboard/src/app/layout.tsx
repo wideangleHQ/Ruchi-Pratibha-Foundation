@@ -1,13 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { cormorantGaramond, manrope, spaceGrotesk } from '@/lib/fonts';
 import { Providers } from '@/providers';
 import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${cormorantGaramond.variable} ${manrope.variable} ${spaceGrotesk.variable} font-manrope antialiased`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -28,7 +28,7 @@ export const GovernanceTransparency: React.FC = () => {
   ];
 
   return (
-    <section id="governance-charter" className="py-20 sm:py-28 bg-institutional-light dark:bg-institutional-surface/20 text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section id="governance" className="py-20 sm:py-28 bg-institutional-light dark:bg-institutional-surface/20 text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
           <motion.div
@@ -100,25 +100,31 @@ export const GovernanceTransparency: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
             >
-              <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6">
+              <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 hover:border-institutional-accent/50 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-semibold">
                       {doc.category}
                     </span>
-                    <FileText className="w-5 h-5 text-institutional-accent" />
+                    <div className="w-8 h-8 rounded-full bg-institutional-accent/15 flex items-center justify-center text-institutional-accent">
+                      <FileText className="w-4 h-4" />
+                    </div>
                   </div>
                   <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2">
                     {doc.title}
                   </h4>
-                  <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-6">
+                  <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-4">
                     {doc.desc}
                   </p>
+                  <div className="text-[10px] font-space text-gray-500 dark:text-gray-400 mb-4 flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-2">
+                    <span>STATUS: CERTIFIED PUBLIC RECORD</span>
+                    <span>UPDATED 2024-25</span>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11px] font-space text-institutional-accent">
-                  <span className="truncate max-w-[180px]">[PDF Download Placeholder]</span>
-                  <Download className="w-4 h-4 shrink-0" />
+                <div className="pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11px] font-space text-institutional-accent font-semibold group/dl cursor-pointer">
+                  <span className="truncate max-w-[180px] group-hover/dl:underline">[PDF Download Placeholder]</span>
+                  <Download className="w-4 h-4 shrink-0 group-hover/dl:translate-y-0.5 transition-transform" />
                 </div>
               </InteractiveCard>
             </motion.div>

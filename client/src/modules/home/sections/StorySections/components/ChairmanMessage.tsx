@@ -40,7 +40,7 @@ export const ChairmanMessage: React.FC = () => {
 
   return (
     <section
-      id="chairmans-message"
+      id="founders-words"
       className="relative py-16 sm:py-20 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">
@@ -123,8 +123,8 @@ export const ChairmanMessage: React.FC = () => {
 
           {/* Right: Personal Message Copy with Refined Mobile Centering & Typography */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 flex flex-col justify-center items-center lg:items-start text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
@@ -133,24 +133,36 @@ export const ChairmanMessage: React.FC = () => {
             <div className="inline-flex items-center gap-3 mb-3 sm:mb-4 justify-center lg:justify-start">
               <span className="h-[1px] w-8 bg-institutional-accent" />
               <span className="text-xs uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold">
-                Message From Our Founder
+                Founder&apos;s Words
               </span>
               <span className="h-[1px] w-8 bg-institutional-accent lg:hidden" />
             </div>
 
-            {/* Refined Section Title - Bold Weight & Scale Matching Homepage Section Hierarchy */}
-            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-institutional-dark dark:text-white tracking-tight mb-4 sm:mb-5 lg:mb-6 leading-[1.15]">
-              A Vision That Continues To Inspire
+            {/* Refined Section Title */}
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-institutional-dark dark:text-white tracking-tight mb-4 sm:mb-6 leading-[1.15]">
+              Founder&apos;s Words
             </h2>
 
-            {/* Quote Paragraphs */}
-            <div className="space-y-3 sm:space-y-4 font-manrope text-sm sm:text-base lg:text-lg text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
-              <p className="font-cormorant italic text-lg sm:text-xl text-institutional-accent">
-                &ldquo;The true strength of any society lies in its people. When we recognise talent, encourage young minds, preserve our cultural values, and serve those in need, we build a stronger future for generations to come.&rdquo;
+            {/* Subtle Decorative Quotation Mark Icon */}
+            <div className="mb-4 text-institutional-accent/40">
+              <Quote className="w-8 h-8 rotate-180" />
+            </div>
+
+            {/* Exact Founder's Words Copy */}
+            <div className="font-manrope text-base sm:text-lg lg:text-xl text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-6 font-normal">
+              <p className="font-cormorant italic text-xl sm:text-2xl text-institutional-dark dark:text-white leading-relaxed">
+                &ldquo;When we envisioned Ruchi Prativa Foundation, our aspiration was never confined to presenting awards. We wanted to establish an institution that would recognise excellence, encourage young minds, preserve our cultural heritage, and strengthen society through service. Every individual honoured by the Foundation represents values that inspire others to dream bigger, work harder, and contribute selflessly to the nation. As we continue this journey, our commitment remains unchanged—to celebrate human potential, uphold integrity, and leave behind a legacy that future generations will proudly inherit.&rdquo;
               </p>
-              <p>
-                The Foundation was established with the belief that social progress is achieved through compassion, education, cultural pride, and recognition of excellence. Every initiative undertaken by the Foundation reflects this enduring vision.
-              </p>
+            </div>
+
+            {/* Signature Placeholder */}
+            <div className="pt-4 border-t border-black/10 dark:border-white/10 w-full flex flex-col items-center lg:items-start mb-6 font-space">
+              <span className="font-cormorant text-2xl font-bold italic text-institutional-accent">
+                Shri Sarat Kumar Sahoo
+              </span>
+              <span className="text-[11px] uppercase tracking-widest text-gray-500 dark:text-gray-400 mt-0.5">
+                Founder &amp; Managing Trustee, Ruchi Prativa Foundation
+              </span>
             </div>
 
             {/* Action CTA */}

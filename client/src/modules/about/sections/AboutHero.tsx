@@ -18,7 +18,7 @@ export const AboutHero: React.FC = () => {
           >
             <span className="h-[1px] w-8 bg-institutional-accent/60" />
             <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
-              About Ruchi Prativa Foundation
+              Since 1997
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent/60" />
           </motion.div>
@@ -28,19 +28,29 @@ export const AboutHero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-cormorant text-3xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.12] mb-6 sm:mb-8"
+            className="font-cormorant text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.12] mb-4 sm:mb-6"
           >
-            Building a Legacy of Service, Recognition and Cultural Stewardship
+            About Ruchi Prativa Foundation
           </motion.h1>
 
-          {/* Short Introduction */}
+          {/* Subtitle */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="font-cormorant text-xl sm:text-3xl font-semibold text-institutional-accent mb-6 sm:mb-8 tracking-tight"
+          >
+            Three Decades of Service, Recognition &amp; Cultural Legacy
+          </motion.h2>
+
+          {/* Supporting Copy */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-manrope text-base sm:text-xl text-gray-300 max-w-3xl leading-relaxed mb-8 sm:mb-10 font-normal"
+            className="font-manrope text-base sm:text-lg text-gray-300 max-w-3xl leading-relaxed mb-8 sm:mb-10 font-normal"
           >
-            Established in 1997, Ruchi Prativa Foundation stands as an institutional pillar in Odisha—dedicated to recognising extraordinary individuals, nurturing academic brilliance, preserving rich literary heritage, and fostering community development.
+            Founded in <strong>1997</strong>, Ruchi Prativa Foundation has grown into one of Odisha&apos;s respected philanthropic and cultural institutions, honouring excellence while nurturing education, literature, heritage, and community welfare.
           </motion.p>
 
           {/* CTA Button */}
@@ -51,10 +61,10 @@ export const AboutHero: React.FC = () => {
             className="mb-12 sm:mb-16"
           >
             <a
-              href="#who-we-are"
+              href="#about-foundation"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent"
             >
-              <span>Explore Our Legacy</span>
+              <span>Explore Our Journey</span>
               <ArrowDown className="w-4 h-4 text-institutional-dark" />
             </a>
           </motion.div>
