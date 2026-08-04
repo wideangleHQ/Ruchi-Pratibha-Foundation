@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HeartHandshake, Building2 } from 'lucide-react';
 
 export const CSRCTA: React.FC = () => {
   return (
@@ -14,13 +13,17 @@ export const CSRCTA: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="w-14 h-14 rounded-full bg-institutional-accent/20 border border-institutional-accent/40 flex items-center justify-center mb-6 text-institutional-accent"
+            className="inline-flex items-center gap-3 mb-6"
           >
-            <HeartHandshake className="w-7 h-7 stroke-[1.5]" />
+            <span className="h-[1px] w-8 bg-institutional-accent/60" />
+            <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
+              Community Action • Join Us
+            </span>
+            <span className="h-[1px] w-8 bg-institutional-accent/60" />
           </motion.div>
 
           {/* Heading */}
@@ -51,21 +54,19 @@ export const CSRCTA: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-xl min-w-[200px]"
+              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md min-w-[200px] min-h-[44px]"
             >
-              <HeartHandshake className="w-4 h-4" />
               <span>Become a Volunteer</span>
             </a>
 
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/30 hover:bg-white hover:text-institutional-dark transition-all duration-300 rounded-sm min-w-[200px]"
+              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/30 hover:bg-white hover:text-institutional-dark transition-all duration-300 rounded-sm min-w-[200px] min-h-[44px]"
             >
-              <Building2 className="w-4 h-4" />
               <span>Partner With Us</span>
             </a>
           </motion.div>

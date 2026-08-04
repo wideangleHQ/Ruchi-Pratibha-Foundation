@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Image as ImageIcon, Filter, Maximize2, X } from 'lucide-react';
+import { Filter, Maximize2, X } from 'lucide-react';
 import { CSR_GALLERY_ITEMS } from '../data/csrData';
 import { InteractiveImage } from '@/components/ui/InteractiveImage';
 
@@ -19,11 +19,35 @@ const GALLERY_CATEGORIES = [
 export const CSRGallery: React.FC = () => {
   const [selectedCat, setSelectedCat] = useState<string>('All');
   const [activeLightboxItem, setActiveLightboxItem] = useState<(typeof CSR_GALLERY_ITEMS)[0] | null>(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredItems = useMemo(() => {
     if (selectedCat === 'All') return CSR_GALLERY_ITEMS;
     return CSR_GALLERY_ITEMS.filter((item) => item.category === selectedCat);
   }, [selectedCat]);
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const cardWidth = container.scrollWidth / filteredItems.length;
+    const scrollPos = container.scrollLeft;
+    const index = Math.round(scrollPos / cardWidth);
+    if (index >= 0 && index < filteredItems.length) {
+      setActiveMobileIndex(index);
+    }
+  };
+
+  const scrollToIndex = (idx: number) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const cardWidth = container.scrollWidth / filteredItems.length;
+    container.scrollTo({
+      left: idx * cardWidth,
+      behavior: 'smooth',
+    });
+    setActiveMobileIndex(idx);
+  };
 
   return (
     <section
@@ -49,7 +73,7 @@ export const CSRGallery: React.FC = () => {
         </div>
 
         {/* Category Filter Chips */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
           <span className="text-[10px] font-space uppercase text-institutional-accent font-semibold shrink-0 mr-1 flex items-center gap-1">
             <Filter className="w-3 h-3" />
             <span>FILTER:</span>
@@ -60,9 +84,9 @@ export const CSRGallery: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCat(cat)}
-                className={`text-[11px] font-space uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 shrink-0 cursor-pointer ${
+                className={`text-[11px] font-space uppercase tracking-wider px-3.5 py-2 min-h-[38px] rounded-sm transition-all duration-200 shrink-0 cursor-pointer ${
                   active
-                    ? 'bg-institutional-accent text-institutional-dark font-bold shadow'
+                    ? 'bg-institutional-accent text-institutional-dark font-bold shadow-xs'
                     : 'bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 text-institutional-dark dark:text-gray-300 hover:border-institutional-accent/40'
                 }`}
               >
@@ -72,8 +96,8 @@ export const CSRGallery: React.FC = () => {
           })}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 1. DESKTOP & TABLET MASONRY GRID (hidden on mobile, grid on md+) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -92,7 +116,6 @@ export const CSRGallery: React.FC = () => {
                     </div>
 
                     <div className="my-auto text-center py-4 px-2">
-                      <ImageIcon className="w-8 h-8 text-institutional-accent mx-auto mb-2 opacity-80 group-hover:scale-110 transition-transform" />
                       <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
                         [ Gallery Photo Placeholder ]
                       </span>
@@ -117,6 +140,70 @@ export const CSRGallery: React.FC = () => {
           ))}
         </div>
 
+        {/* 2. MOBILE FULL-BLEED HORIZONTAL CAROUSEL (320px-480px, visible on md:hidden) */}
+        <div className="block md:hidden">
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="w-[100vw] -ml-6 px-6 overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory flex gap-4 pt-2 pb-4 touch-pan-x"
+          >
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setActiveLightboxItem(item)}
+                className="w-[78vw] shrink-0 snap-center cursor-pointer rounded-sm overflow-hidden border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-2 shadow-none"
+              >
+                <InteractiveImage className="w-full h-full rounded-sm">
+                  <div className="w-full aspect-[4/3] flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white rounded-sm">
+                    <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                      <span>{item.category}</span>
+                      <span>{item.location}</span>
+                    </div>
+
+                    <div className="my-auto text-center py-2 px-1">
+                      <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                        [ Photo Placeholder ]
+                      </span>
+                      <h4 className="font-cormorant text-lg font-bold text-white mb-1 leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="font-manrope text-xs text-gray-300 line-clamp-2">
+                        {item.caption}
+                      </p>
+                    </div>
+
+                    <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex items-center justify-between">
+                      <span>ITEM #{item.id}</span>
+                      <span className="flex items-center gap-1 text-institutional-accent">
+                        <Maximize2 className="w-3 h-3" /> View Photo
+                      </span>
+                    </div>
+                  </div>
+                </InteractiveImage>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Pagination Indicator Dots */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {filteredItems.map((item, idx) => {
+              const active = activeMobileIndex === idx;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    active
+                      ? 'w-6 h-2 bg-institutional-accent shadow-sm'
+                      : 'w-2 h-2 bg-black/20 dark:bg-white/20 hover:bg-institutional-accent/50'
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </div>
+
         {/* Lightbox Modal */}
         <AnimatePresence>
           {activeLightboxItem && (
@@ -136,28 +223,37 @@ export const CSRGallery: React.FC = () => {
               >
                 <button
                   onClick={() => setActiveLightboxItem(null)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-institutional-accent cursor-pointer"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
 
-                <div className="aspect-[16/9] w-full rounded bg-white/5 border border-white/10 flex flex-col items-center justify-center text-center p-6 mb-4 relative">
-                  <ImageIcon className="w-12 h-12 text-institutional-accent mb-3" />
-                  <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold mb-1">
-                    [ High Resolution Archival Photo Placeholder ]
-                  </span>
-                  <h3 className="font-cormorant text-2xl font-bold text-white mb-2">
-                    {activeLightboxItem.title}
-                  </h3>
-                  <p className="font-manrope text-xs text-gray-300 max-w-md">
-                    {activeLightboxItem.caption}
-                  </p>
+                <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-2">
+                  {activeLightboxItem.category} • {activeLightboxItem.location}
+                </span>
+
+                <h3 className="font-cormorant text-2xl sm:text-3xl font-bold text-white mb-4">
+                  {activeLightboxItem.title}
+                </h3>
+
+                <div className="aspect-[16/9] w-full rounded bg-white/5 border border-white/15 p-6 flex flex-col justify-between mb-4 relative">
+                  <div className="my-auto text-center">
+                    <span className="text-sm font-space uppercase tracking-widest text-institutional-accent font-semibold block">
+                      [ High-Resolution Archival Photograph ]
+                    </span>
+                    <p className="text-xs text-gray-400 mt-2">
+                      TODO: Insert official photograph file from RPF media drive.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs font-space text-gray-400 border-t border-white/10 pt-3">
-                  <span>CATEGORY: {activeLightboxItem.category}</span>
+                <p className="font-manrope text-sm text-gray-300 leading-relaxed mb-4">
+                  {activeLightboxItem.caption}
+                </p>
+
+                <div className="pt-4 border-t border-white/15 flex items-center justify-between text-xs font-space text-gray-400">
                   <span>LOCATION: {activeLightboxItem.location}</span>
-                  <span>TODO: High-Res Photo Asset</span>
+                  <span className="text-institutional-accent">RPF DIGITAL ARCHIVE</span>
                 </div>
               </motion.div>
             </motion.div>

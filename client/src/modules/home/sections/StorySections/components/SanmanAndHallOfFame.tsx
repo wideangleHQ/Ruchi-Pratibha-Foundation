@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Award, Star, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const SanmanAndHallOfFame: React.FC = () => {
@@ -52,17 +52,17 @@ export const SanmanAndHallOfFame: React.FC = () => {
             {/* Awardee Portrait Placeholder */}
             <div className="lg:col-span-5 flex justify-center">
               <InteractiveCard className="relative w-full max-w-sm aspect-[4/5] rounded-sm bg-white/5 border border-white/15 p-6 flex flex-col justify-between overflow-hidden">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-space tracking-widest uppercase text-institutional-accent">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-[10px] font-space tracking-widest uppercase text-institutional-accent font-semibold">
                     Featured Awardee
                   </span>
-                  <Star className="w-4 h-4 text-institutional-accent fill-institutional-accent" />
+                  <span className="text-[9px] font-space uppercase text-gray-400">LAUREATE SPOTLIGHT</span>
                 </div>
 
                 <div className="my-auto text-center py-6">
-                  <div className="w-20 h-20 rounded-full bg-institutional-accent/20 border border-institutional-accent/40 text-institutional-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
-                    <Award className="w-9 h-9 stroke-[1.5]" />
-                  </div>
+                  <span className="text-[11px] font-space uppercase tracking-widest text-institutional-accent font-semibold block mb-2">
+                    [ Archival Portrait Placeholder ]
+                  </span>
                   <h4 className="font-cormorant text-2xl font-bold text-white group-hover:text-institutional-accent transition-colors duration-300">
                     Featured Laureate
                   </h4>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, ShieldCheck, CheckCircle } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const GovernanceTransparency: React.FC = () => {
@@ -53,19 +53,19 @@ export const GovernanceTransparency: React.FC = () => {
 
             <ul className="space-y-3 font-manrope text-xs sm:text-sm text-institutional-dark dark:text-gray-200">
               <li className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-institutional-accent shrink-0" />
+                <span className="text-institutional-accent font-bold text-base">•</span>
                 <span>Registered Public Charitable Trust under the Indian Trust Act, 1882.</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-institutional-accent shrink-0" />
+                <span className="text-institutional-accent font-bold text-base">•</span>
                 <span>Section 80G &amp; 12A Income Tax Registration for charitable donations.</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-institutional-accent shrink-0" />
+                <span className="text-institutional-accent font-bold text-base">•</span>
                 <span>Independent Advisory Board and Jury panel for award selection.</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-institutional-accent shrink-0" />
+                <span className="text-institutional-accent font-bold text-base">•</span>
                 <span>Annual public disclosures and certified financial audit statements.</span>
               </li>
             </ul>
@@ -79,9 +79,11 @@ export const GovernanceTransparency: React.FC = () => {
             className="lg:col-span-5"
           >
             <div className="p-8 rounded-sm bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 shadow-lg flex flex-col items-center text-center">
-              <ShieldCheck className="w-12 h-12 text-institutional-accent mb-4 stroke-[1.5]" />
+              <span className="text-xs font-space uppercase tracking-[0.25em] text-institutional-accent font-semibold mb-3 border-b border-institutional-accent/20 pb-2">
+                INSTITUTIONAL PLEDGE
+              </span>
               <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-2">
-                Institutional Pledge
+                Public Transparency
               </h3>
               <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed">
                 &ldquo;Every rupee entrusted to the Foundation is deployed strictly according to public trust legislation, safeguarding institutional dignity and social welfare.&rdquo;
@@ -102,13 +104,13 @@ export const GovernanceTransparency: React.FC = () => {
             >
               <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 hover:border-institutional-accent/50 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-4 border-b border-institutional-accent/20 pb-2.5">
                     <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-semibold">
                       {doc.category}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-institutional-accent/15 flex items-center justify-center text-institutional-accent">
-                      <FileText className="w-4 h-4" />
-                    </div>
+                    <span className="font-space text-[8px] uppercase tracking-wider text-institutional-accent font-semibold border border-institutional-accent/30 px-2 py-0.5 rounded">
+                      PDF
+                    </span>
                   </div>
                   <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2">
                     {doc.title}

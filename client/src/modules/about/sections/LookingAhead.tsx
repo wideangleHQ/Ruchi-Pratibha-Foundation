@@ -3,15 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, BookOpen, Users, Award, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const LookingAhead: React.FC = () => {
   const focuses = [
-    { label: 'Youth', desc: 'Empowering young scholars & meritorious achievers.', icon: Users },
-    { label: 'Knowledge', desc: 'Expanding print & digital reach of Amaruchi & Prativayana.', icon: BookOpen },
-    { label: 'Culture', desc: 'Safeguarding Odia traditions, arts, and heritage.', icon: Shield },
-    { label: 'Recognition', desc: 'Sustaining national honor for trailblazing minds.', icon: Award },
-    { label: 'Community', desc: 'Expanding grassroots welfare initiatives across districts.', icon: Sparkles },
+    { label: 'Youth', desc: 'Empowering young scholars & meritorious achievers.' },
+    { label: 'Knowledge', desc: 'Expanding print & digital reach of Amaruchi & Prativayana.' },
+    { label: 'Culture', desc: 'Safeguarding Odia traditions, arts, and heritage.' },
+    { label: 'Recognition', desc: 'Sustaining national honor for trailblazing minds.' },
+    { label: 'Community', desc: 'Expanding grassroots welfare initiatives across districts.' },
   ];
 
   return (
@@ -54,27 +54,23 @@ export const LookingAhead: React.FC = () => {
 
           {/* 5 Focus Areas Pills */}
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 w-full mb-12">
-            {focuses.map((f, idx) => {
-              const IconComp = f.icon;
-              return (
-                <motion.div
-                  key={f.label}
+            {focuses.map((f, idx) => (
+              <motion.div
+                key={f.label}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.08 }}
                   className="flex flex-col items-center text-center p-4 rounded-sm bg-white/5 border border-white/10"
                 >
-                  <IconComp className="w-5 h-5 text-institutional-accent mb-2" />
-                  <span className="font-space text-xs uppercase tracking-wider font-bold text-white mb-1">
-                    {f.label}
+                  <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-bold mb-1">
+                    0{idx + 1} • {f.label}
                   </span>
                   <span className="font-manrope text-[11px] text-gray-400 leading-snug">
                     {f.desc}
                   </span>
                 </motion.div>
-              );
-            })}
+            ))}
           </div>
 
           {/* CTA */}

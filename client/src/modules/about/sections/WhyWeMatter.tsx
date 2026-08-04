@@ -3,35 +3,31 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { InteractiveImage } from '@/components/ui/InteractiveImage';
-import { Award, BookOpen, Heart, Shield, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export const WhyWeMatter: React.FC = () => {
   const [expandedReason, setExpandedReason] = useState<number | null>(0);
 
   const reasons = [
     {
-      icon: Award,
       tag: 'WHY RECOGNITION?',
       title: 'Honouring Lifelong Merit',
       summary: 'Publicly celebrating individuals whose contributions transform literature, science, and society.',
       detail: 'When society honours merit, it establishes high moral and intellectual standards for upcoming generations, proving that integrity and public dedication are valued above fleeting gains.',
     },
     {
-      icon: BookOpen,
       tag: 'WHY EDUCATION?',
       title: 'Empowering Meritorious Youth',
       summary: 'Instituting academic awards and scholarships for deserving young scholars across Odisha.',
       detail: 'Education is the engine of social mobility. By supporting top performers in schools and colleges, we nurture the scholars, researchers, and public leaders of tomorrow.',
     },
     {
-      icon: Shield,
       tag: 'WHY CULTURE?',
       title: 'Preserving Odia Literature & Heritage',
       summary: 'Publishing flagship journals Amaruchi and Prativayana to archive intellectual thought.',
       detail: 'A society that loses its literary memory loses its self-respect. Our publications provide a permanent printed and digital home for Odia language, essays, and creative expressions.',
     },
     {
-      icon: Heart,
       tag: 'WHY SERVICE?',
       title: 'Grassroots Social Welfare & Public Trust',
       summary: 'Executing transparent community welfare projects under audited trust governance.',
@@ -49,7 +45,7 @@ export const WhyWeMatter: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
-              Institutional Relevance
+              Institutional Values
             </span>
             <span className="h-[1px] w-8 bg-institutional-accent" />
           </div>
@@ -65,7 +61,6 @@ export const WhyWeMatter: React.FC = () => {
           {/* Left Column: 4 Interactive Narrative Cards */}
           <div className="lg:col-span-7 flex flex-col gap-4">
             {reasons.map((r, idx) => {
-              const IconComp = r.icon;
               const isExpanded = expandedReason === idx;
               return (
                 <motion.div
@@ -83,9 +78,9 @@ export const WhyWeMatter: React.FC = () => {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-institutional-accent/15 text-institutional-accent flex items-center justify-center shrink-0">
-                        <IconComp className="w-4 h-4" />
-                      </div>
+                      <span className="font-cormorant text-2xl font-bold text-institutional-accent shrink-0">
+                        0{idx + 1}
+                      </span>
                       <div>
                         <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-semibold block">
                           {r.tag}

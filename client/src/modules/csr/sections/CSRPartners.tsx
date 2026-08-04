@@ -1,21 +1,36 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Stethoscope, Briefcase, Handshake, Users2, Home } from 'lucide-react';
 import { PARTNER_CATEGORIES } from '../data/csrData';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
-const PARTNER_ICONS: Record<string, React.ElementType> = {
-  'Educational Institutions': Building2,
-  'Healthcare Organizations': Stethoscope,
-  'Corporate & CSR Partners': Briefcase,
-  'NGOs & Civil Society': Handshake,
-  'Youth & Volunteers': Users2,
-  'Local Communities': Home,
-};
-
 export const CSRPartners: React.FC = () => {
+  const [activeMobileIndex, setActiveMobileIndex] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const cardWidth = container.scrollWidth / PARTNER_CATEGORIES.length;
+    const scrollPos = container.scrollLeft;
+    const index = Math.round(scrollPos / cardWidth);
+    if (index >= 0 && index < PARTNER_CATEGORIES.length) {
+      setActiveMobileIndex(index);
+    }
+  };
+
+  const scrollToIndex = (idx: number) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const cardWidth = container.scrollWidth / PARTNER_CATEGORIES.length;
+    container.scrollTo({
+      left: idx * cardWidth,
+      behavior: 'smooth',
+    });
+    setActiveMobileIndex(idx);
+  };
+
   return (
     <section
       id="csr-partners"
@@ -23,7 +38,7 @@ export const CSRPartners: React.FC = () => {
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-3 mb-3">
             <span className="h-[1px] w-8 bg-institutional-accent" />
             <span className="text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
@@ -39,14 +54,11 @@ export const CSRPartners: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Partner Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PARTNER_CATEGORIES.map((p, idx) => {
-            const IconComp = PARTNER_ICONS[p.title] || Handshake;
-
-            return (
-              <motion.div
-                key={p.title}
+        {/* 1. DESKTOP & TABLET GRID (hidden on mobile, grid on md+) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PARTNER_CATEGORIES.map((p, idx) => (
+            <motion.div
+              key={p.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -54,13 +66,11 @@ export const CSRPartners: React.FC = () => {
               >
                 <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 sm:p-7 hover:border-institutional-accent/50 transition-all duration-300">
                   <div>
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-4 border-b border-institutional-accent/20 pb-3">
                       <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-semibold">
                         {p.tag}
                       </span>
-                      <div className="w-10 h-10 rounded-full bg-institutional-accent/15 text-institutional-accent flex items-center justify-center">
-                        <IconComp className="w-5 h-5" />
-                      </div>
+                      <span className="font-space text-[9px] text-gray-400">RPF ALLIANCE</span>
                     </div>
 
                     <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-2">
@@ -94,8 +104,80 @@ export const CSRPartners: React.FC = () => {
                   </div>
                 </InteractiveCard>
               </motion.div>
-            );
-          })}
+          ))}
+        </div>
+
+        {/* 2. MOBILE FULL-BLEED HORIZONTAL CAROUSEL (320px-480px, visible on md:hidden) */}
+        <div className="block md:hidden">
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="w-[100vw] -ml-6 px-6 overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory flex gap-4 pt-2 pb-4 touch-pan-x"
+          >
+            {PARTNER_CATEGORIES.map((p) => (
+              <div
+                key={p.title}
+                  className="w-[78vw] shrink-0 snap-center flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 shadow-none"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3 border-b border-institutional-accent/20 pb-2.5">
+                      <span className="font-space text-[9px] uppercase tracking-widest text-institutional-accent font-semibold">
+                        {p.tag}
+                      </span>
+                      <span className="font-space text-[8px] text-gray-400">RPF ALLIANCE</span>
+                    </div>
+
+                    <h3 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2 leading-tight">
+                      {p.title}
+                    </h3>
+
+                    <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-4">
+                      {p.description}
+                    </p>
+
+                    <div className="pt-3 border-t border-black/5 dark:border-white/5">
+                      <span className="text-[9px] font-space uppercase text-institutional-accent font-semibold block mb-1.5">
+                        TYPICAL COLLABORATORS
+                      </span>
+                      <div className="flex flex-wrap gap-1">
+                        {p.examples.map((ex) => (
+                          <span
+                            key={ex}
+                            className="text-[9px] font-space px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 text-institutional-dark dark:text-gray-200"
+                          >
+                            • {ex}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 mt-4 border-t border-black/5 dark:border-white/5 text-[9px] font-space text-gray-500 dark:text-gray-400 flex justify-between">
+                    <span>PARTNERSHIP</span>
+                    <span>RPF NETWORK</span>
+                  </div>
+                </div>
+            ))}
+          </div>
+
+          {/* Mobile Pagination Indicator Dots */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {PARTNER_CATEGORIES.map((p, idx) => {
+              const active = activeMobileIndex === idx;
+              return (
+                <button
+                  key={p.title}
+                  onClick={() => scrollToIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    active
+                      ? 'w-6 h-2 bg-institutional-accent shadow-sm'
+                      : 'w-2 h-2 bg-black/20 dark:bg-white/20 hover:bg-institutional-accent/50'
+                  }`}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

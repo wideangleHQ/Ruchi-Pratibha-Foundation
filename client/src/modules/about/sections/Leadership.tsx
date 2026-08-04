@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { UserCheck, Shield, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const Leadership: React.FC = () => {
@@ -47,11 +47,10 @@ export const Leadership: React.FC = () => {
               <div>
                 {/* Portrait Placeholder */}
                 <div className="w-full aspect-[4/3] rounded-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-4 flex flex-col items-center justify-center text-center mb-6 group relative overflow-hidden">
-                  <UserCheck className="w-8 h-8 text-institutional-accent mb-2 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-[11px] font-space uppercase tracking-widest text-institutional-accent font-semibold">
-                    [ Portrait Placeholder ]
+                  <span className="text-[11px] font-space uppercase tracking-widest text-institutional-accent font-semibold mb-1">
+                    [ Archival Portrait Placeholder ]
                   </span>
-                  <span className="text-[10px] font-manrope text-gray-500 dark:text-gray-400 mt-1">
+                  <span className="text-[10px] font-manrope text-gray-500 dark:text-gray-400">
                     Shri Sarat Kumar Sahoo • Founder &amp; Managing Trustee
                   </span>
                 </div>
@@ -113,11 +112,10 @@ export const Leadership: React.FC = () => {
               <div>
                 {/* Board Group Placeholder */}
                 <div className="w-full aspect-[4/3] rounded-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-4 flex flex-col items-center justify-center text-center mb-6 group relative overflow-hidden">
-                  <Shield className="w-8 h-8 text-institutional-accent mb-2 stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-[11px] font-space uppercase tracking-widest text-institutional-accent font-semibold">
-                    [ Portrait Placeholder ]
+                  <span className="text-[11px] font-space uppercase tracking-widest text-institutional-accent font-semibold mb-1">
+                    [ Archival Portrait Placeholder ]
                   </span>
-                  <span className="text-[10px] font-manrope text-gray-500 dark:text-gray-400 mt-1">
+                  <span className="text-[10px] font-manrope text-gray-500 dark:text-gray-400">
                     Institutional Advisory Trustees &amp; Jurors Assembly
                   </span>
                 </div>

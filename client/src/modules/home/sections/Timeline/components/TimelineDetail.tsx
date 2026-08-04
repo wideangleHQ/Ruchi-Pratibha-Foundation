@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { Landmark, Award, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { TimelineMilestone, MilestoneCard } from '../types';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
@@ -34,8 +34,6 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
     },
   };
 
-  const cardIcons = [Landmark, Award, ShieldCheck];
-
   return (
     <div className="mt-6 lg:mt-8 w-full transition-all duration-300">
       <AnimatePresence mode="wait">
@@ -48,10 +46,8 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
             exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
             className="hidden md:grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
           >
-            {milestone.cards.map((card: MilestoneCard, idx: number) => {
-              const IconComp = cardIcons[idx % cardIcons.length];
-              return (
-                <motion.div key={card.title} variants={cardVariants} className="h-full">
+            {milestone.cards.map((card: MilestoneCard) => (
+              <motion.div key={card.title} variants={cardVariants} className="h-full">
                   <InteractiveCard
                     className="flex flex-col justify-between h-full p-6 sm:p-8"
                   >
@@ -68,7 +64,7 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
                         )}
                       </div>
 
-                      {/* Card Image / Icon Container for Card 1 */}
+                      {/* Card Image Placeholder for Card 1 */}
                       {card.type === 'overview' && (
                         <div className="relative w-full aspect-[16/10] rounded-sm bg-institutional-surface/5 dark:bg-white/5 border border-institutional-dark/10 dark:border-white/10 p-4 flex flex-col items-center justify-center mb-6 overflow-hidden">
                           <div
@@ -79,21 +75,22 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
                               backgroundSize: '16px 16px',
                             }}
                           />
-                          <div className="relative w-12 h-12 rounded-full border-2 border-institutional-accent/40 bg-white dark:bg-institutional-dark flex items-center justify-center text-institutional-accent mb-2 transition-all duration-300 ease-out group-hover:border-institutional-accent group-hover:bg-institutional-accent group-hover:text-institutional-dark shadow-sm">
-                            <div className="absolute inset-1 rounded-full bg-institutional-accent/15 dark:bg-institutional-accent/25 group-hover:bg-white/40 dark:group-hover:bg-white/30 transition-colors duration-300 pointer-events-none" />
-                            <IconComp className="relative z-10 w-5 h-5 stroke-[1.75] transition-all duration-300 group-hover:scale-110 group-hover:text-institutional-dark" />
-                          </div>
-                          <span className="text-[9px] uppercase tracking-widest font-space text-institutional-mutedLight dark:text-gray-400">
-                            Historical Archive
+                          <span className="text-[10px] uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold mb-1">
+                            [ Historical Archive Placeholder ]
+                          </span>
+                          <span className="text-[9px] font-space text-institutional-mutedLight dark:text-gray-400">
+                            Archival Photo Record • {milestone.year}
                           </span>
                         </div>
                       )}
 
-                      {/* Card 2 & 3 Icon Container with Concentric Circle */}
+                      {/* Card 2 & 3 Editorial Index Bar */}
                       {card.type !== 'overview' && (
-                        <div className="relative w-12 h-12 rounded-full border-2 border-institutional-accent/40 bg-white dark:bg-institutional-dark flex items-center justify-center text-institutional-accent mb-6 transition-all duration-300 ease-out group-hover:border-institutional-accent group-hover:bg-institutional-accent group-hover:text-institutional-dark shadow-sm">
-                          <div className="absolute inset-1 rounded-full bg-institutional-accent/15 dark:bg-institutional-accent/25 group-hover:bg-white/40 dark:group-hover:bg-white/30 transition-colors duration-300 pointer-events-none" />
-                          <IconComp className="relative z-10 w-5 h-5 stroke-[1.75] transition-all duration-300 group-hover:scale-110 group-hover:text-institutional-dark" />
+                        <div className="flex items-center gap-2 mb-4">
+                          <span className="h-[1px] w-6 bg-institutional-accent" />
+                          <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-semibold">
+                            ARCHIVAL RECORD
+                          </span>
                         </div>
                       )}
 
@@ -127,8 +124,7 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
                     </div>
                   </InteractiveCard>
                 </motion.div>
-              );
-            })}
+            ))}
           </motion.div>
 
           {/* Mobile View Only: Vertical Editorial Order (Text Box 1 -> Text Box 2 -> Image Container) */}
@@ -217,10 +213,6 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
                     backgroundSize: '16px 16px',
                   }}
                 />
-                <div className="relative w-12 h-12 rounded-full border-2 border-institutional-accent/40 bg-white dark:bg-institutional-dark flex items-center justify-center text-institutional-accent mb-2 shadow-sm">
-                  <div className="absolute inset-1 rounded-full bg-institutional-accent/15 pointer-events-none" />
-                  <Landmark className="relative z-10 w-5 h-5 stroke-[1.75]" />
-                </div>
                 <span className="font-cormorant text-lg font-bold text-institutional-dark dark:text-white mb-1 text-center">
                   {milestone.year} Historical Document Archive
                 </span>

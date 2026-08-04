@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { InteractiveImage } from '@/components/ui/InteractiveImage';
-import { ChevronDown, BookOpen } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export const WhoWeAre: React.FC = () => {
   const [showCharterDetail, setShowCharterDetail] = useState(false);
@@ -72,7 +72,6 @@ export const WhoWeAre: React.FC = () => {
                 onClick={() => setShowCharterDetail(!showCharterDetail)}
                 className="inline-flex items-center gap-2 text-xs font-space uppercase tracking-wider text-institutional-accent hover:text-institutional-dark dark:hover:text-white font-semibold transition-colors duration-150 cursor-pointer focus:outline-none"
               >
-                <BookOpen className="w-3.5 h-3.5" />
                 <span>{showCharterDetail ? 'Hide Charter Excerpt' : 'Read 1997 Charter Excerpt'}</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${showCharterDetail ? 'rotate-180' : ''}`} />
               </button>

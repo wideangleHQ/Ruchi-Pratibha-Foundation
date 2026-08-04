@@ -2,15 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, BookOpen, Users, Award, Shield } from 'lucide-react';
 
 export const NextChapter: React.FC = () => {
   const focuses = [
-    { label: 'Digital Heritage', desc: 'Archiving 30 years of publications & convocation speeches.', icon: Shield },
-    { label: 'Youth Engagement', desc: 'Empowering upcoming scholars & meritorious achievers.', icon: Users },
-    { label: 'Knowledge Preservation', desc: 'Expanding print & digital distribution of Amaruchi & Prativayana.', icon: BookOpen },
-    { label: 'Institutional Growth', desc: 'Expanding award categories & multi-disciplinary jury councils.', icon: Award },
-    { label: 'Community Participation', desc: 'Strengthening grassroots welfare initiatives across Odisha districts.', icon: Sparkles },
+    { label: 'Digital Heritage', desc: 'Archiving 30 years of publications & convocation speeches.' },
+    { label: 'Youth Engagement', desc: 'Empowering upcoming scholars & meritorious achievers.' },
+    { label: 'Knowledge Preservation', desc: 'Expanding print & digital distribution of Amaruchi & Prativayana.' },
+    { label: 'Institutional Growth', desc: 'Expanding award categories & multi-disciplinary jury councils.' },
+    { label: 'Community Participation', desc: 'Strengthening grassroots welfare initiatives across Odisha districts.' },
   ];
 
   return (
@@ -56,27 +55,23 @@ export const NextChapter: React.FC = () => {
 
           {/* 5 Focus Areas Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 w-full mb-8">
-            {focuses.map((f, idx) => {
-              const IconComp = f.icon;
-              return (
-                <motion.div
-                  key={f.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="flex flex-col items-center text-center p-5 rounded-sm bg-white/5 border border-white/10"
-                >
-                  <IconComp className="w-5 h-5 text-institutional-accent mb-2" />
-                  <span className="font-space text-xs uppercase tracking-wider font-bold text-white mb-1">
-                    {f.label}
-                  </span>
-                  <span className="font-manrope text-[11px] text-gray-400 leading-snug">
-                    {f.desc}
-                  </span>
-                </motion.div>
-              );
-            })}
+            {focuses.map((f, idx) => (
+              <motion.div
+                key={f.label}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="flex flex-col items-center text-center p-4 rounded-sm bg-white/5 border border-white/10"
+              >
+                <span className="font-space text-[10px] uppercase tracking-widest text-institutional-accent font-bold mb-1">
+                  0{idx + 1} • {f.label}
+                </span>
+                <span className="font-manrope text-[11px] text-gray-400 leading-snug">
+                  {f.desc}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

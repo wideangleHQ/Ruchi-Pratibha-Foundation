@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, HeartHandshake } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const AboutCTA: React.FC = () => {
   return (
@@ -14,13 +14,17 @@ export const AboutCTA: React.FC = () => {
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="w-12 h-12 rounded-full bg-institutional-accent/20 text-institutional-accent flex items-center justify-center mb-6"
+            className="inline-flex items-center gap-3 mb-6"
           >
-            <HeartHandshake className="w-6 h-6" />
+            <span className="h-[1px] w-8 bg-institutional-accent" />
+            <span className="text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
+              Join the Movement
+            </span>
+            <span className="h-[1px] w-8 bg-institutional-accent" />
           </motion.div>
 
           <motion.h2

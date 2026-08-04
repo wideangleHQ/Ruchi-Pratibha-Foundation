@@ -58,7 +58,7 @@ export const CSRPhilosophy: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-full p-6 sm:p-8 bg-white dark:bg-institutional-surface/40 border-l-4 border-institutional-accent border-y border-r border-black/5 dark:border-white/10 rounded-r-sm shadow-md"
+            className="w-full p-6 sm:p-8 bg-white dark:bg-institutional-surface/40 border-l-4 border-institutional-accent border-y border-r border-black/5 dark:border-white/10 rounded-r-sm shadow-none sm:shadow-md"
           >
             <blockquote className="font-cormorant italic text-xl sm:text-2xl lg:text-3xl text-institutional-dark dark:text-white leading-relaxed">
               &ldquo;We measure institutional success not through raw output, but through the dignity preserved, lives touched, and positive change passed to future generations.&rdquo;

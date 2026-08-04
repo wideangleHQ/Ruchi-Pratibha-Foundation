@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, HeartHandshake } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 
 export const CSRHero: React.FC = () => {
   return (
@@ -56,11 +56,11 @@ export const CSRHero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-4 mb-12 sm:mb-16"
+            className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto mb-10 sm:mb-16"
           >
             <a
               href="#csr-archive"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent"
+              className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent min-h-[44px]"
             >
               <span>Explore Activities</span>
               <ArrowDown className="w-4 h-4 text-institutional-dark" />
@@ -68,9 +68,8 @@ export const CSRHero: React.FC = () => {
 
             <a
               href="#csr-cta"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/30 hover:bg-white hover:text-institutional-dark transition-all duration-300 rounded-sm text-center"
+              className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/30 hover:bg-white hover:text-institutional-dark transition-all duration-300 rounded-sm text-center min-h-[44px]"
             >
-              <HeartHandshake className="w-4 h-4" />
               <span>Become a Volunteer</span>
             </a>
           </motion.div>
@@ -81,7 +80,7 @@ export const CSRHero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-full max-w-5xl mx-auto relative rounded-sm overflow-hidden border border-white/15 bg-white/5 shadow-2xl"
+          className="w-full max-w-5xl mx-auto relative rounded-sm overflow-hidden border border-white/15 bg-white/5 shadow-none sm:shadow-2xl"
         >
           <div className="aspect-[16/9] sm:aspect-[21/9] w-full flex flex-col items-center justify-center p-8 text-center relative bg-gradient-to-br from-institutional-surface/80 via-institutional-dark to-institutional-darker">
             <div className="absolute inset-0 bg-[radial-gradient(rgba(197,160,89,0.1)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />

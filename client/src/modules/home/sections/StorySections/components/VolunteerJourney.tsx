@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { Compass, UserPlus, HeartHandshake, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const VolunteerJourney: React.FC = () => {
@@ -10,25 +9,21 @@ export const VolunteerJourney: React.FC = () => {
       num: '01',
       title: 'Discover',
       description: 'Explore community initiatives across education, literature, culture, and social welfare in your region.',
-      icon: Compass,
     },
     {
       num: '02',
       title: 'Connect',
       description: 'Connect with our network of dedicated volunteers, scholars, and professionals committed to social transformation.',
-      icon: UserPlus,
     },
     {
       num: '03',
       title: 'Participate',
       description: 'Engage directly in educational initiatives, literary gatherings, cultural celebrations, and community programs.',
-      icon: HeartHandshake,
     },
     {
       num: '04',
       title: 'Create Impact',
       description: 'Contribute meaningfully to society, inspire future generations, and help preserve our cultural heritage.',
-      icon: Sparkles,
     },
   ];
 
@@ -54,21 +49,19 @@ export const VolunteerJourney: React.FC = () => {
 
         {/* 4-Step Interactive Horizontal Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-14">
-          {steps.map((step) => {
-            const IconComponent = step.icon;
-            return (
-              <InteractiveCard
-                key={step.num}
+          {steps.map((step) => (
+            <InteractiveCard
+              key={step.num}
                 className="flex flex-col justify-between bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 sm:p-8 text-center sm:text-left items-center sm:items-start"
               >
                 <div className="flex flex-col items-center sm:items-start">
-                  <div className="w-full flex items-center justify-between mb-5 sm:mb-6">
-                    <span className="font-space text-xl sm:text-2xl font-bold text-institutional-accent/50 group-hover:text-institutional-accent transition-colors duration-300">
+                  <div className="w-full flex items-center justify-between border-b border-institutional-accent/20 pb-3 mb-4">
+                    <span className="font-cormorant text-3xl font-bold text-institutional-accent">
                       {step.num}
                     </span>
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-sm bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 flex items-center justify-center text-institutional-accent transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
-                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.5]" />
-                    </div>
+                    <span className="font-space text-[10px] uppercase tracking-widest text-institutional-mutedLight dark:text-gray-400">
+                      STEP {step.num}
+                    </span>
                   </div>
 
                   <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-institutional-dark dark:text-white mb-2 sm:mb-3 group-hover:text-institutional-accent transition-colors duration-300">
@@ -87,8 +80,7 @@ export const VolunteerJourney: React.FC = () => {
                   </span>
                 </div>
               </InteractiveCard>
-            );
-          })}
+          ))}
         </div>
 
         {/* CTA Banner */}

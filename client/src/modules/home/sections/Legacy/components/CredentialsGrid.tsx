@@ -1,27 +1,24 @@
 'use client';
 
 import React from 'react';
-import { Award, ShieldCheck, Landmark, Globe2 } from 'lucide-react';
 import { CREDENTIALS } from '../constants';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
-
-const icons = [Award, ShieldCheck, Landmark, Globe2];
 
 export const CredentialsGrid: React.FC = () => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 lg:gap-8 items-stretch">
-      {CREDENTIALS.map((item, idx) => {
-        const Icon = icons[idx % icons.length];
-        return (
-          <InteractiveCard
-            key={item.title}
+      {CREDENTIALS.map((item, idx) => (
+        <InteractiveCard
+          key={item.title}
             className="flex flex-col justify-between h-full p-4 sm:p-8 text-center sm:text-left items-center sm:items-start"
           >
             <div className="flex flex-col items-center sm:items-start">
-              {/* Concentric Icon Container */}
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-institutional-accent/40 bg-white dark:bg-institutional-dark flex items-center justify-center text-institutional-accent mb-4 sm:mb-6 transition-all duration-300 ease-out group-hover:border-institutional-accent group-hover:bg-institutional-accent group-hover:text-institutional-dark shadow-sm">
-                <div className="absolute inset-1 rounded-full bg-institutional-accent/15 dark:bg-institutional-accent/25 group-hover:bg-white/40 dark:group-hover:bg-white/30 transition-colors duration-300 pointer-events-none" />
-                <Icon className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 stroke-[1.75] transition-all duration-300 group-hover:scale-110 group-hover:text-institutional-dark" />
+              {/* Editorial Index & Gold Accent Line */}
+              <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                <span className="h-[1px] w-6 bg-institutional-accent" />
+                <span className="font-space text-xs uppercase tracking-widest text-institutional-accent font-semibold">
+                  0{idx + 1}
+                </span>
               </div>
 
               {/* Card Title */}
@@ -45,8 +42,7 @@ export const CredentialsGrid: React.FC = () => {
               </span>
             </div>
           </InteractiveCard>
-        );
-      })}
+      ))}
     </div>
   );
 };

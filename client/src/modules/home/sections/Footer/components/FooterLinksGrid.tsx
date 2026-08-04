@@ -17,7 +17,9 @@ export const FooterLinksGrid: React.FC = () => {
       (window.location.pathname === '/about' ||
         window.location.pathname === '/foundation' ||
         window.location.pathname === '/work' ||
-        window.location.pathname === '/csr') &&
+        window.location.pathname === '/csr' ||
+        window.location.pathname === '/publications' ||
+        window.location.pathname === '/library') &&
       href.includes('#')
     ) {
       const targetId = href.split('#')[1];

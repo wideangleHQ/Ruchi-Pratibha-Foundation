@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, GraduationCap, BookOpen, HeartHandshake } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const OurPurpose: React.FC = () => {
@@ -14,7 +13,6 @@ export const OurPurpose: React.FC = () => {
       intro: 'Honouring Life Accomplishments',
       description:
         'Instituting the flagship Ruchi Prativa Sanman to celebrate distinguished visionaries across literature, science, medicine, social service, and the arts.',
-      icon: Award,
     },
     {
       id: 'education',
@@ -23,7 +21,6 @@ export const OurPurpose: React.FC = () => {
       intro: 'Encouraging Young Achievers',
       description:
         'Recognising meritorious students to foster academic discipline, intellectual curiosity, and future leadership for society.',
-      icon: GraduationCap,
     },
     {
       id: 'literature',
@@ -32,7 +29,6 @@ export const OurPurpose: React.FC = () => {
       intro: 'Preserving Odia Heritage',
       description:
         'Publishing landmark publications Amaruchi and Prativayana to document essays, creative literature, research, and institutional history.',
-      icon: BookOpen,
     },
     {
       id: 'social',
@@ -41,7 +37,6 @@ export const OurPurpose: React.FC = () => {
       intro: 'Community Welfare & Trust',
       description:
         'Executing transparent social initiatives grounded in public welfare, community awareness, and grassroots engagement.',
-      icon: HeartHandshake,
     },
   ];
 
@@ -66,11 +61,9 @@ export const OurPurpose: React.FC = () => {
 
         {/* 4 Editorial Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {pillars.map((pillar, idx) => {
-            const IconComponent = pillar.icon;
-            return (
-              <motion.div
-                key={pillar.id}
+          {pillars.map((pillar, idx) => (
+            <motion.div
+              key={pillar.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -78,13 +71,13 @@ export const OurPurpose: React.FC = () => {
               >
                 <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 sm:p-8 hover:border-institutional-accent/40 transition-all duration-300">
                   <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-space text-xl font-bold text-institutional-accent/60">
+                    <div className="w-full flex items-center justify-between border-b border-institutional-accent/20 pb-3 mb-4">
+                      <span className="font-cormorant text-3xl font-bold text-institutional-accent">
                         {pillar.num}
                       </span>
-                      <div className="w-10 h-10 rounded-sm bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 flex items-center justify-center text-institutional-accent">
-                        <IconComponent className="w-5 h-5 stroke-[1.5]" />
-                      </div>
+                      <span className="font-space text-[9px] uppercase tracking-widest text-institutional-mutedLight dark:text-gray-400">
+                        DIRECTIVE {pillar.num}
+                      </span>
                     </div>
 
                     <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-1">
@@ -104,8 +97,7 @@ export const OurPurpose: React.FC = () => {
                   </div>
                 </InteractiveCard>
               </motion.div>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { Download, FileText, ShieldCheck, Building2, GraduationCap, Landmark } from 'lucide-react';
+import { Download, FileText } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
 export const TransparencyAndPartners: React.FC = () => {
@@ -13,10 +12,10 @@ export const TransparencyAndPartners: React.FC = () => {
   ];
 
   const partnerTypes = [
-    { name: 'Government Bodies', icon: Landmark, desc: 'State & National Welfare Alliances' },
-    { name: 'Educational Institutions', icon: GraduationCap, desc: 'Universities & Rural Schools' },
-    { name: 'Corporate Partners', icon: Building2, desc: 'CSR Initiatives & Coalitions' },
-    { name: 'Grassroots NGOs', icon: ShieldCheck, desc: 'Community Implementation Networks' },
+    { name: 'Government Bodies', desc: 'State & National Welfare Alliances' },
+    { name: 'Educational Institutions', desc: 'Universities & Rural Schools' },
+    { name: 'Corporate Partners', desc: 'CSR Initiatives & Coalitions' },
+    { name: 'Grassroots NGOs', desc: 'Community Implementation Networks' },
   ];
 
   return (
@@ -41,16 +40,14 @@ export const TransparencyAndPartners: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {partnerTypes.map((partner) => {
-              const IconComp = partner.icon;
-              return (
-                <InteractiveCard
-                  key={partner.name}
+            {partnerTypes.map((partner) => (
+              <InteractiveCard
+                key={partner.name}
                   className="bg-white dark:bg-institutional-surface/40 border border-institutional-dark/10 dark:border-white/10 rounded-sm p-6 text-center hover:border-institutional-accent transition-all duration-500"
                 >
-                  <div className="w-12 h-12 rounded-full bg-institutional-accent/10 dark:bg-institutional-accent/15 border border-institutional-accent/30 text-institutional-accent flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark transition-all duration-500 ease-out">
-                    <IconComp className="w-6 h-6 stroke-[1.5]" />
-                  </div>
+                  <span className="text-[10px] font-space uppercase tracking-widest text-institutional-accent font-semibold border-b border-institutional-accent/20 pb-2 mb-3 block">
+                    PARTNERSHIP NETWORK
+                  </span>
                   <h4 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-1 group-hover:text-institutional-accent transition-colors duration-300">
                     {partner.name}
                   </h4>
@@ -58,8 +55,7 @@ export const TransparencyAndPartners: React.FC = () => {
                     {partner.desc}
                   </p>
                 </InteractiveCard>
-              );
-            })}
+            ))}
           </div>
         </div>
 

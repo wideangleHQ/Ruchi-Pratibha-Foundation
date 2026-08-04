@@ -1,2 +1,1 @@
-// Modules directory marker
-export {};
+export { VisualArchivePage } from './archive/VisualArchivePage';

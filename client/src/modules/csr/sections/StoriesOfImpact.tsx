@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, ChevronLeft, ChevronRight, UserCheck, X } from 'lucide-react';
+import { Quote, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { IMPACT_STORIES } from '../data/csrData';
 import { CSRStory } from '../types';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
@@ -46,14 +46,14 @@ export const StoriesOfImpact: React.FC = () => {
 
         {/* Storytelling Carousel View */}
         <div className="max-w-4xl mx-auto">
-          <InteractiveCard className="bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-8 sm:p-12 shadow-xl relative overflow-hidden">
+          <InteractiveCard className="bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 sm:p-12 shadow-none sm:shadow-xl relative overflow-hidden">
             {/* Story Category Tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-8 border-b border-black/5 dark:border-white/5 pb-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-6 sm:mb-8 border-b border-black/5 dark:border-white/5 pb-4">
               {IMPACT_STORIES.map((st, sIdx) => (
                 <button
                   key={st.id}
                   onClick={() => setActiveIdx(sIdx)}
-                  className={`text-xs font-space uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 cursor-pointer ${
+                  className={`text-xs font-space uppercase tracking-wider px-3.5 py-2.5 min-h-[40px] flex items-center justify-center rounded-sm transition-all duration-200 cursor-pointer ${
                     activeIdx === sIdx
                       ? 'bg-institutional-accent text-institutional-dark font-bold'
                       : 'bg-black/5 dark:bg-white/5 text-gray-500 hover:text-institutional-accent'
@@ -81,7 +81,6 @@ export const StoriesOfImpact: React.FC = () => {
                   </div>
 
                   <div className="my-auto text-center py-4">
-                    <UserCheck className="w-10 h-10 text-institutional-accent mx-auto mb-2 stroke-[1.5]" />
                     <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
                       [ Story Image Placeholder ]
                     </span>

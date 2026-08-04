@@ -1,5 +1,4 @@
-import React from 'react';
-import { Award, Users, BookOpen, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PillarItem } from '../types';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
@@ -10,19 +9,12 @@ interface PillarCardProps {
   onMouseLeave: () => void;
 }
 
-const pillarIcons = {
-  recognition: Award,
-  community: Users,
-  knowledge: BookOpen,
-};
-
 export const PillarCard: React.FC<PillarCardProps> = ({
   pillar,
   isHovered,
   onMouseEnter,
   onMouseLeave,
 }) => {
-  const IconComponent = pillarIcons[pillar.id as keyof typeof pillarIcons] || Award;
 
   return (
     <InteractiveCard
@@ -55,8 +47,8 @@ export const PillarCard: React.FC<PillarCardProps> = ({
             }}
           />
 
-          <div className="relative z-10 w-14 h-14 rounded-full bg-institutional-dark dark:bg-white/10 text-institutional-accent flex items-center justify-center mb-2 shadow transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
-            <IconComponent className="w-6 h-6 stroke-[1.5]" />
+          <div className="relative z-10 w-12 h-12 rounded-full bg-institutional-dark dark:bg-white/10 border border-institutional-accent/40 text-institutional-accent flex items-center justify-center mb-2 shadow font-cormorant text-xl font-bold transition-all duration-500 ease-out group-hover:scale-105 group-hover:bg-institutional-accent group-hover:text-institutional-dark">
+            0{pillar.id === 'recognition' ? 1 : pillar.id === 'community' ? 2 : 3}
           </div>
 
           <span className="relative z-10 text-[10px] uppercase tracking-widest font-space text-institutional-mutedLight dark:text-gray-400 font-medium">
