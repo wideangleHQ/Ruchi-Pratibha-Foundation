@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
-import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -24,11 +24,6 @@ async function bootstrap(): Promise<void> {
   const nodeEnv = configService.getOrThrow<string>('app.nodeEnv');
 
   app.setGlobalPrefix(`${apiPrefix}/${apiVersion}`);
-
-  app.enableVersioning({
-    type: VersioningType.URI,
-    defaultVersion: '1',
-  });
 
   app.use(helmet({
     contentSecurityPolicy: nodeEnv === 'production' ? undefined : false,
@@ -99,7 +94,11 @@ async function bootstrap(): Promise<void> {
       })
       .addTag('Health', 'Health check endpoints')
       .addTag('Volunteers', 'Volunteer registration and lookup')
+      .addTag('Admin - Volunteers', 'Admin volunteer management')
+      .addTag('Admin - Applications', 'Admin application management')
       .addTag('Dashboard Auth', 'Dashboard access gateway')
+      .addTag('Admin - CSR Opportunities', 'CSR opportunity management')
+      .addTag('CSR Opportunities', 'Public CSR opportunities')
       .build();
 
     const document = SwaggerModule.createDocument(app, swaggerConfig);

@@ -8,7 +8,9 @@ import {
   LayoutDashboard,
   Users,
   Calendar,
+  HandHeart,
   FileText,
+  ClipboardList,
   Settings,
   ChevronLeft,
   type LucideIcon,
@@ -21,39 +23,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
-interface NavItem {
-  label: string;
-  href: string;
-  icon: LucideIcon;
-}
-
-interface NavGroup {
-  title: string;
-  items: NavItem[];
-}
-
-const navigation: NavGroup[] = [
-  {
-    title: 'Overview',
-    items: [
-      { label: 'Dashboard', href: '/', icon: LayoutDashboard },
-    ],
-  },
-  {
-    title: 'Management',
-    items: [
-      { label: 'Volunteers', href: '/volunteers', icon: Users },
-      { label: 'Events', href: '/events', icon: Calendar },
-      { label: 'Reports', href: '/reports', icon: FileText },
-    ],
-  },
-  {
-    title: 'System',
-    items: [
-      { label: 'Settings', href: '/settings', icon: Settings },
-    ],
-  },
-];
+import { navigation } from '@/config/sidebar';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -120,6 +90,7 @@ export function Sidebar() {
                     const linkContent = (
                       <Link
                         href={item.href}
+                        prefetch={true}
                         className={cn(
                           'group relative flex items-center gap-3 rounded-[12px] px-2.5 py-2 font-manrope text-sm font-medium transition-all duration-200',
                           isActive

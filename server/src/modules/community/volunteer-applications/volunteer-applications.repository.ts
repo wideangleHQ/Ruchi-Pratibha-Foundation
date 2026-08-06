@@ -14,8 +14,18 @@ export class VolunteerApplicationsRepository {
     return this.prisma.volunteerApplication.findFirst({ where: { id, deletedAt: null } });
   }
 
-  async findByCode(code: string): Promise<VolunteerApplication | null> {
-    return this.prisma.volunteerApplication.findFirst({ where: { applicationCode: code, deletedAt: null } });
+  async findByCode(code: string) {
+    return this.prisma.volunteerApplication.findFirst({
+      where: { applicationCode: code, deletedAt: null },
+      include: {
+        volunteer: {
+          select: { id: true, firstName: true, lastName: true, email: true, phone: true, volunteerCode: true, volunteerStatus: true, city: true, state: true, skills: true },
+        },
+        edition: {
+          select: { editionName: true, year: true, event: { select: { title: true } } },
+        },
+      },
+    });
   }
 
   async findActiveByVolunteerAndEdition(volunteerId: string, editionId: string): Promise<VolunteerApplication | null> {
@@ -51,10 +61,30 @@ export class VolunteerApplicationsRepository {
     editionStatus?: string;
     registrationEnabled?: boolean;
     registrationCloses?: Date | null;
+    csrOpportunity?: {
+      acceptRegistrations: boolean;
+      workflowType: string;
+      opportunityStatus: string;
+      registrationOpens: Date | null;
+      registrationCloses: Date | null;
+    } | null;
   }> {
     const ed = await this.prisma.eventEdition.findFirst({
       where: { id: editionId, deletedAt: null },
-      select: { editionStatus: true, registrationEnabled: true, registrationCloses: true },
+      select: {
+        editionStatus: true,
+        registrationEnabled: true,
+        registrationCloses: true,
+        csrOpportunity: {
+          select: {
+            acceptRegistrations: true,
+            workflowType: true,
+            opportunityStatus: true,
+            registrationOpens: true,
+            registrationCloses: true,
+          },
+        },
+      },
     });
     if (!ed) return { exists: false };
     return {
@@ -62,6 +92,7 @@ export class VolunteerApplicationsRepository {
       editionStatus: ed.editionStatus,
       registrationEnabled: ed.registrationEnabled,
       registrationCloses: ed.registrationCloses,
+      csrOpportunity: ed.csrOpportunity,
     };
   }
 
@@ -115,6 +146,14 @@ export class VolunteerApplicationsRepository {
         orderBy: { [sortBy]: options.sortOrder },
         skip: options.skip,
         take: options.take,
+        include: {
+          volunteer: {
+            select: { firstName: true, lastName: true, email: true, volunteerCode: true, volunteerStatus: true },
+          },
+          edition: {
+            select: { editionName: true, year: true, event: { select: { title: true } } },
+          },
+        },
       }),
       this.prisma.volunteerApplication.count({ where }),
     ]);

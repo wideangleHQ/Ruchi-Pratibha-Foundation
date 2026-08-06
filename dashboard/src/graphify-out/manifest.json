@@ -35,9 +35,9 @@
     "semantic_hash": "4fbb19ac9a937ceec1f82cf502ab1507"
   },
   "components/dashboard/drawer.tsx": {
-    "mtime": 1785735074.684734,
-    "ast_hash": "12095ac710f20f429404f221a3b431f8",
-    "semantic_hash": "12095ac710f20f429404f221a3b431f8"
+    "mtime": 1786026148.3645275,
+    "ast_hash": "efe36a6719423e4ff409d3fc6d4202a8",
+    "semantic_hash": ""
   },
   "components/dashboard/empty-state.tsx": {
     "mtime": 1785735051.9575949,
@@ -100,9 +100,9 @@
     "semantic_hash": "59590150b8f2259c8c5923aef8bc6d9d"
   },
   "components/layout/sidebar.tsx": {
-    "mtime": 1785735110.6411948,
-    "ast_hash": "6337f826349bcf448406dd7e705be9e6",
-    "semantic_hash": "6337f826349bcf448406dd7e705be9e6"
+    "mtime": 1786030352.528192,
+    "ast_hash": "4243404c9e614a324bdc6b17916ef2f0",
+    "semantic_hash": ""
   },
   "components/layout/theme-toggle.tsx": {
     "mtime": 1785684843.227749,
@@ -245,9 +245,9 @@
     "semantic_hash": "28ecf5fe11c945cd2aa8bc079c0e3665"
   },
   "app/(dashboard)/page.tsx": {
-    "mtime": 1785735136.4144864,
-    "ast_hash": "ac3c0fc7b56de5a8bea8229e8085ce02",
-    "semantic_hash": "ac3c0fc7b56de5a8bea8229e8085ce02"
+    "mtime": 1786026184.4237695,
+    "ast_hash": "683591a0999b337a1ea38ab5febd11ee",
+    "semantic_hash": ""
   },
   "app/access/access-form.tsx": {
     "mtime": 1785736473.9817886,
@@ -273,5 +273,65 @@
     "mtime": 1785736453.5382037,
     "ast_hash": "e360543756ec95685857f77135523a74",
     "semantic_hash": "e360543756ec95685857f77135523a74"
+  },
+  "app/(dashboard)/applications/page.tsx": {
+    "mtime": 1786025986.5347116,
+    "ast_hash": "a11cfe8df7758ac1a8fd4a152f0caeb2",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/[id]/edit/page.tsx": {
+    "mtime": 1786034716.8295372,
+    "ast_hash": "733eaa9166ce5530ce9899220a1d210e",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/[id]/page.tsx": {
+    "mtime": 1786029910.834293,
+    "ast_hash": "1c823e8e97111f7cf0cd2d6c49d8c18b",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/[id]/preview/page.tsx": {
+    "mtime": 1786030360.7623456,
+    "ast_hash": "f421d7c93242f09dc51157cd1c68c672",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/archived/page.tsx": {
+    "mtime": 1786030357.5512235,
+    "ast_hash": "70cbca45d4576dcd6fe9de3943c55bcc",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/create/page.tsx": {
+    "mtime": 1786030399.6673484,
+    "ast_hash": "7dea13ed0699337209177b4d7e1ff318",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/opportunities/page.tsx": {
+    "mtime": 1786029725.1318097,
+    "ast_hash": "68a6b098c5e185394e30e50f3b7b21dd",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/volunteers/[id]/page.tsx": {
+    "mtime": 1786025931.868036,
+    "ast_hash": "d8aeab1a67f38ee7af541580738603e6",
+    "semantic_hash": ""
+  },
+  "app/(dashboard)/volunteers/page.tsx": {
+    "mtime": 1786025889.3309133,
+    "ast_hash": "49fd43f3b972cfbb697fab8e8f6e4078",
+    "semantic_hash": ""
+  },
+  "lib/api/applications.ts": {
+    "mtime": 1786030263.5210502,
+    "ast_hash": "5975f324ac411a27bf1bcc389337e5df",
+    "semantic_hash": ""
+  },
+  "lib/api/opportunities.ts": {
+    "mtime": 1786029681.0138495,
+    "ast_hash": "36da3e2b0dbef73621b81b8e99aee73b",
+    "semantic_hash": ""
+  },
+  "lib/api/volunteers.ts": {
+    "mtime": 1786025839.1015391,
+    "ast_hash": "4eab5efbc000d23dc0ca429041bb9972",
+    "semantic_hash": ""
   }
 }

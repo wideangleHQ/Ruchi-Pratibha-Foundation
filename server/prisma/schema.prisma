@@ -142,6 +142,7 @@ enum ApplicationStatus {
   UNDER_REVIEW
   APPROVED
   REJECTED
+  WAITLISTED
   WITHDRAWN
   EXPIRED
 }
@@ -328,8 +329,9 @@ model Event {
   updatedBy          String?   @map("updated_by") @db.Uuid
   deletedBy          String?   @map("deleted_by") @db.Uuid
 
-  createdByUser User?          @relation(fields: [createdById], references: [id])
-  editions      EventEdition[]
+  createdByUser    User?              @relation(fields: [createdById], references: [id])
+  editions         EventEdition[]
+  csrOpportunities CsrOpportunity[]
 
   @@index([eventCode])
   @@index([slug])
@@ -380,15 +382,16 @@ model EventEdition {
 
   venueId               String?          @map("venue_id") @db.Uuid
 
-  event         Event  @relation(fields: [eventId], references: [id])
-  createdByUser User?  @relation(fields: [createdById], references: [id])
-  venueRef      Venue? @relation(fields: [venueId], references: [id])
+  event          Event  @relation(fields: [eventId], references: [id])
+  createdByUser  User?  @relation(fields: [createdById], references: [id])
+  venueRef       Venue? @relation(fields: [venueId], references: [id])
   shifts         EventShift[]
   sessions       EventSession[]
   schedules      EventSchedule[]
   applications   VolunteerApplication[]
   participations VolunteerParticipation[]
   certificates   VolunteerCertificate[]
+  csrOpportunity CsrOpportunity?
 
   @@index([eventId])
   @@index([editionCode])
@@ -1319,4 +1322,153 @@ model Archive {
   @@index([visibility])
   @@index([deletedAt])
   @@map("archives")
+}
+
+// ─── CSR Opportunity Management ─────────────────────────────────────────────
+
+enum OpportunityType {
+  EVENT_BASED
+  CAMPAIGN
+  LONG_TERM
+  RECURRING
+}
+
+enum OpportunityStatus {
+  DRAFT
+  PUBLISHED
+  UPCOMING
+  REGISTRATION_OPEN
+  REGISTRATION_CLOSED
+  ONGOING
+  COMPLETED
+  CANCELLED
+  ARCHIVED
+}
+
+enum OpportunityMode {
+  OFFLINE
+  ONLINE
+  HYBRID
+}
+
+enum WorkflowType {
+  MANUAL
+  AUTOMATIC
+}
+
+model CsrOpportunity {
+  id                     String            @id @default(uuid()) @db.Uuid
+  opportunityCode        String            @unique @map("opportunity_code")
+  slug                   String            @unique
+  title                  String            @db.VarChar(300)
+  eventId                String?           @map("event_id") @db.Uuid
+  editionId              String?           @unique @map("edition_id") @db.Uuid
+  opportunityType        OpportunityType   @map("opportunity_type")
+  opportunityStatus      OpportunityStatus @default(DRAFT) @map("opportunity_status")
+  shortDescription       String            @map("short_description") @db.VarChar(500)
+  detailedDescription    String?           @map("detailed_description") @db.Text
+  featuredImageKey       String?           @map("featured_image_key")
+  bannerImageKey         String?           @map("banner_image_key")
+
+  // Schedule
+  registrationOpens      DateTime?         @map("registration_opens")
+  registrationCloses     DateTime?         @map("registration_closes")
+  eventStartDate         DateTime?         @map("event_start_date")
+  eventEndDate           DateTime?         @map("event_end_date")
+  reportingTime          String?           @map("reporting_time") @db.VarChar(10)
+  closingTime            String?           @map("closing_time") @db.VarChar(10)
+  timeZone               String            @default("Asia/Kolkata") @map("time_zone") @db.VarChar(50)
+
+  // Location
+  mode                   OpportunityMode   @default(OFFLINE)
+  venue                  String?           @db.VarChar(300)
+  address                String?           @db.Text
+  landmark               String?           @db.VarChar(200)
+  district               String?           @db.VarChar(100)
+  state                  String?           @db.VarChar(100)
+  pincode                String?           @db.VarChar(10)
+  googleMapsUrl          String?           @map("google_maps_url") @db.Text
+  meetingLink            String?           @map("meeting_link") @db.Text
+  platform               String?           @db.VarChar(100)
+
+  // Volunteer Requirements
+  volunteersRequired     Int               @default(0) @map("volunteers_required")
+  maxApplications        Int               @default(0) @map("max_applications")
+  minAge                 Int?              @map("min_age")
+  maxAge                 Int?              @map("max_age")
+  genderRestriction      String            @default("ANY") @map("gender_restriction") @db.VarChar(20)
+  experienceRequired     Boolean           @default(false) @map("experience_required")
+  requiredSkills         String[]          @default([]) @map("required_skills")
+  physicalRequirements   String?           @map("physical_requirements") @db.Text
+
+  // Coordinator
+  coordinatorName        String?           @map("coordinator_name") @db.VarChar(200)
+  coordinatorDesignation String?           @map("coordinator_designation") @db.VarChar(200)
+  coordinatorEmail       String?           @map("coordinator_email") @db.VarChar(255)
+  coordinatorMobile      String?           @map("coordinator_mobile") @db.VarChar(15)
+  coordinatorAltMobile   String?           @map("coordinator_alt_mobile") @db.VarChar(15)
+
+  // Registration Form Config
+  formConfig             Json?             @map("form_config") @db.JsonB
+
+  // Required Documents
+  requiredDocuments      String[]          @default([]) @map("required_documents")
+
+  // Media
+  galleryImageKeys       String[]          @default([]) @map("gallery_image_keys")
+  brochureKey            String?           @map("brochure_key")
+  supportingDocKeys      String[]          @default([]) @map("supporting_doc_keys")
+
+  // Website Visibility
+  showOnHomepage         Boolean           @default(false) @map("show_on_homepage")
+  showOnCsrPage          Boolean           @default(true) @map("show_on_csr_page")
+  isFeatured             Boolean           @default(false) @map("is_featured")
+  acceptRegistrations    Boolean           @default(false) @map("accept_registrations")
+  showCountdown          Boolean           @default(false) @map("show_countdown")
+
+  // SEO
+  metaTitle              String?           @map("meta_title") @db.VarChar(70)
+  metaDescription        String?           @map("meta_description") @db.VarChar(160)
+  ogImageKey             String?           @map("og_image_key")
+
+  // Workflow
+  workflowType           WorkflowType      @default(MANUAL) @map("workflow_type")
+
+  // Notifications
+  notifyRegistration     Boolean           @default(true) @map("notify_registration")
+  notifyApproval         Boolean           @default(true) @map("notify_approval")
+  notifyRejection        Boolean           @default(true) @map("notify_rejection")
+  notifyReminder         Boolean           @default(false) @map("notify_reminder")
+
+  // Admin Notes
+  adminNotes             String?           @map("admin_notes") @db.Text
+
+  // Standard
+  version                Int               @default(1)
+  createdAt              DateTime          @default(now()) @map("created_at")
+  updatedAt              DateTime          @updatedAt @map("updated_at")
+  deletedAt              DateTime?         @map("deleted_at")
+  createdById            String?           @map("created_by_id") @db.Uuid
+  updatedBy              String?           @map("updated_by") @db.Uuid
+  deletedBy              String?           @map("deleted_by") @db.Uuid
+
+  event   Event?        @relation(fields: [eventId], references: [id])
+  edition EventEdition? @relation(fields: [editionId], references: [id])
+
+  @@index([opportunityCode])
+  @@index([slug])
+  @@index([eventId])
+  @@index([editionId])
+  @@index([opportunityType])
+  @@index([opportunityStatus])
+  @@index([mode])
+  @@index([district, state])
+  @@index([isFeatured])
+  @@index([showOnHomepage])
+  @@index([showOnCsrPage])
+  @@index([acceptRegistrations])
+  @@index([registrationOpens, registrationCloses])
+  @@index([eventStartDate])
+  @@index([deletedAt])
+  @@map("csr_opportunities")
 }

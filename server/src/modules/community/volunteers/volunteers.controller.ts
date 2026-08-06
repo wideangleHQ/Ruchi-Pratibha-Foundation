@@ -3,7 +3,9 @@ import {
   Controller,
   Get,
   Param,
+  Patch,
   Post,
+  Query,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
@@ -19,7 +21,9 @@ import {
 import { VolunteersService } from './volunteers.service';
 import { RegisterVolunteerDto } from './dto/register-volunteer.dto';
 import { CreateVolunteerIdentityDto } from './dto/create-volunteer-identity.dto';
+import { VolunteerQueryDto } from './dto/volunteer-query.dto';
 import { StrictParseUUIDPipe } from '../../../common/pipes';
+import { CurrentUser, Roles } from '../../../common/decorators';
 
 @ApiTags('Volunteers')
 @Controller('volunteers')
@@ -122,5 +126,48 @@ export class VolunteersController {
   @ApiResponse({ status: 404, description: 'Volunteer not found' })
   async findByCode(@Param('code') code: string) {
     return this.volunteersService.findByCode(code);
+  }
+}
+
+@ApiTags('Admin - Volunteers')
+@Controller('admin/volunteers')
+@Roles('SUPER_ADMIN', 'ADMIN')
+export class VolunteersAdminController {
+  constructor(private readonly volunteersService: VolunteersService) {}
+
+  @Get('stats')
+  @ApiOperation({ summary: 'Get dashboard volunteer and application stats' })
+  getStats() {
+    return this.volunteersService.getDashboardStats();
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'List all volunteers with filters' })
+  findAll(@Query() query: VolunteerQueryDto) {
+    return this.volunteersService.getAdminVolunteers(query);
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get volunteer detail by ID' })
+  findById(@Param('id', StrictParseUUIDPipe) id: string) {
+    return this.volunteersService.getAdminVolunteerById(id);
+  }
+
+  @Patch(':id/verify')
+  @ApiOperation({ summary: 'Verify a volunteer' })
+  verify(
+    @Param('id', StrictParseUUIDPipe) id: string,
+    @CurrentUser('sub') adminId: string,
+  ) {
+    return this.volunteersService.verifyVolunteer(id, adminId);
+  }
+
+  @Patch(':id/reject')
+  @ApiOperation({ summary: 'Reject a volunteer' })
+  reject(
+    @Param('id', StrictParseUUIDPipe) id: string,
+    @CurrentUser('sub') adminId: string,
+  ) {
+    return this.volunteersService.rejectVolunteer(id, adminId);
   }
 }

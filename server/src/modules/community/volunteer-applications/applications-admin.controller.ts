@@ -51,4 +51,14 @@ export class ApplicationsAdminController {
   ) {
     return this.service.rejectApplication(code, dto, adminId);
   }
+
+  @Patch(':code/waitlist')
+  @ApiOperation({ summary: 'Waitlist an application' })
+  waitlist(
+    @Param('code') code: string,
+    @Body() dto: AdminReviewDto,
+    @CurrentUser('sub') adminId: string,
+  ) {
+    return this.service.waitlistApplication(code, dto, adminId);
+  }
 }

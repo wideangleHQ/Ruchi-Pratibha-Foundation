@@ -1,13 +1,18 @@
-# Graph Report - src/modules/media  (2026-08-02)
+# Graph Report - server  (2026-08-06)
 
 ## Corpus Check
-- 45 files · ~9,764 words
+- 324 files · ~68,001 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1092 nodes · 1278 edges · 513 communities (31 shown, 482 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 2514 nodes · 5395 edges · 208 communities (148 shown, 60 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `5dc72e8a`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Gallery & Media Module Hub
@@ -195,488 +200,650 @@
 - Community 184
 - Community 185
 - Community 186
-- Community 187
-- Community 188
-- Community 189
-- Community 190
-- Community 191
-- Community 192
-- Community 193
-- Community 194
-- Community 195
-- Community 196
-- Community 197
-- Community 198
-- Community 199
-- Community 200
-- Community 201
-- Community 202
-- Community 203
-- Community 204
-- Community 205
-- Community 206
-- Community 207
-- Community 208
-- Community 209
-- Community 210
-- Community 211
-- Community 212
-- Community 213
-- Community 214
-- Community 215
-- Community 216
-- Community 217
-- Community 218
-- Community 219
-- Community 220
-- Community 221
+- EntityNotFoundException
+- EntityConflictException
+- CreateDepartmentDto
+- publication-categories.service.ts
+- UpdateDepartmentDto
+- .rejectVolunteer
+- VolunteerQueryDto
+- index.ts
+- RejectVolunteerDto
+- .register
+- pagination-query.dto.ts
+- ApproveVolunteerDto
+- PrismaExceptionFilter
+- PermissionsGuard
+- ShiftQueryDto
+- eslint.config.js
+- ShiftResponseDto
 - Community 222
-- Community 223
-- Community 224
 - Community 225
-- Community 226
-- Community 227
-- Community 228
-- Community 229
-- Community 230
-- Community 231
-- Community 232
-- Community 233
-- Community 234
-- Community 235
-- Community 236
-- Community 237
-- Community 238
-- Community 239
-- Community 240
-- Community 241
-- Community 242
-- Community 243
-- Community 244
-- Community 245
-- Community 246
-- Community 247
-- Community 248
-- Community 249
-- Community 250
-- Community 251
-- Community 252
-- Community 253
-- Community 254
-- Community 255
-- Community 256
-- Community 257
-- Community 258
-- Community 259
-- Community 260
-- Community 261
-- Community 262
-- Community 263
-- Community 264
-- Community 265
-- Community 266
-- Community 267
-- Community 268
-- Community 269
-- Community 270
-- Community 271
-- Community 272
-- Community 273
-- Community 274
-- Community 275
-- Community 276
-- Community 277
-- Community 278
-- Community 279
-- Community 280
-- Community 281
-- Community 282
-- Community 283
-- Community 284
-- Community 285
-- Community 286
-- Community 287
-- Community 288
-- Community 289
-- Community 290
-- Community 291
-- Community 292
-- Community 293
-- Community 294
-- Community 295
-- Community 296
-- Community 297
-- Community 298
-- Community 299
-- Community 300
-- Community 301
-- Community 302
-- Community 303
-- Community 304
-- Community 305
-- Community 306
-- Community 307
-- Community 308
-- Community 309
-- Community 310
-- Community 311
-- Community 312
-- Community 313
-- Community 314
-- Community 315
-- Community 316
-- Community 317
-- Community 318
-- Community 319
-- Community 320
-- Community 321
-- Community 322
-- Community 323
-- Community 324
-- Community 325
-- Community 326
-- Community 327
-- Community 328
-- Community 329
-- Community 330
-- Community 331
-- Community 332
-- Community 333
-- Community 334
-- Community 335
-- Community 336
-- Community 337
-- Community 338
-- Community 339
-- Community 340
-- Community 341
-- Community 342
-- Community 343
-- Community 344
-- Community 345
-- Community 346
-- Community 347
-- Community 348
-- Community 349
-- Community 350
-- Community 351
-- Community 352
-- Community 353
-- Community 354
-- Community 355
-- Community 356
-- Community 357
-- Community 358
-- Community 359
-- Community 360
-- Community 361
-- Community 362
-- Community 363
-- Community 364
-- Community 365
-- Community 366
-- Community 367
-- Community 368
-- Community 369
-- Community 370
-- Community 371
-- Community 372
-- Community 373
-- Community 374
-- Community 375
-- Community 376
-- Community 377
-- Community 378
-- Community 379
-- Community 380
-- Community 381
-- Community 382
-- Community 383
-- Community 384
-- Community 385
-- Community 386
-- Community 387
-- Community 388
-- Community 389
-- Community 390
-- Community 391
-- Community 392
-- Community 393
-- Community 394
-- Community 395
-- Community 396
-- Community 397
-- Community 398
-- Community 399
-- Community 400
-- Community 401
-- Community 402
-- Community 403
-- Community 404
-- Community 405
-- Community 406
-- Community 407
-- Community 408
-- Community 409
-- Community 410
-- Community 411
-- Community 412
-- Community 413
-- Community 414
-- Community 415
-- Community 416
-- Community 417
-- Community 418
-- Community 419
-- Community 420
-- Community 421
-- Community 422
-- Community 423
-- Community 424
-- Community 425
-- Community 426
-- Community 427
-- Community 428
-- Community 429
-- Community 430
-- Community 431
-- Community 432
-- Community 433
-- Community 434
-- Community 435
-- Community 436
-- Community 437
-- Community 438
-- Community 439
-- Community 440
-- Community 441
-- Community 442
-- Community 443
-- Community 444
-- Community 445
-- Community 446
-- Community 447
-- Community 448
-- Community 449
-- Community 450
-- Community 451
-- Community 452
-- Community 453
-- Community 454
-- Community 455
-- Community 456
-- Community 457
-- Community 458
-- Community 459
-- Community 460
-- Community 461
-- Community 462
-- Community 463
-- Community 464
-- Community 465
-- Community 466
-- Community 467
-- Community 468
-- Community 469
-- Community 470
-- Community 471
-- Community 472
-- Community 473
-- Community 474
-- Community 475
-- Community 476
-- Community 477
-- Community 478
-- Community 479
-- Community 480
-- Community 481
-- Community 482
-- Community 483
-- Community 484
-- Community 485
-- Community 486
-- Community 487
-- Community 488
-- Community 489
-- Community 490
-- Community 491
-- Community 492
-- Community 493
-- Community 494
-- Community 495
-- Community 496
-- Community 497
-- Community 498
-- Community 499
-- Community 500
-- Community 501
-- Community 502
-- Community 503
-- Community 504
-- Community 505
-- Community 506
-- Community 507
-- Community 508
-- Community 509
-- Community 510
-- Community 511
-- Community 512
 
 ## God Nodes (most connected - your core abstractions)
-1. `VolunteerParticipationService` - 28 edges
-2. `VolunteerDeploymentsService` - 22 edges
-3. `VolunteerParticipationRepository` - 22 edges
-4. `FoldersService` - 21 edges
-5. `GalleryService` - 21 edges
-6. `FoldersRepository` - 20 edges
-7. `GalleryRepository` - 20 edges
-8. `ParticipationAdminController` - 19 edges
-9. `AssetsService` - 19 edges
-10. `DocumentsService` - 18 edges
+1. `@nestjs/swagger` - 122 edges
+2. `CurrentUser` - 110 edges
+3. `Roles()` - 77 edges
+4. `PaginationQueryDto` - 57 edges
+5. `PrismaService` - 54 edges
+6. `PaginationMeta` - 43 edges
+7. `EntityNotFoundException` - 35 edges
+8. `BusinessException` - 34 edges
+9. `EventEditionsService` - 28 edges
+10. `CsrOpportunitiesService` - 27 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `bootstrap()` --indirect_call--> `AppModule`  [INFERRED]
+  src/main.ts → src/app.module.ts
+- `CsrOpportunitiesPublicController` --references--> `Public()`  [EXTRACTED]
+  src/modules/community/csr-opportunities/csr-opportunities-public.controller.ts → src/common/decorators/public.decorator.ts
+- `SchedulesPublicController` --references--> `Public()`  [EXTRACTED]
+  src/modules/community/event-schedules/schedules-public.controller.ts → src/common/decorators/public.decorator.ts
+- `SessionsPublicController` --references--> `Public()`  [EXTRACTED]
+  src/modules/community/event-sessions/sessions-public.controller.ts → src/common/decorators/public.decorator.ts
+- `SpeakersPublicController` --references--> `Public()`  [EXTRACTED]
+  src/modules/community/event-speakers/speakers-public.controller.ts → src/common/decorators/public.decorator.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (513 total, 482 thin omitted)
+## Communities (208 total, 60 thin omitted)
 
 ### Community 0 - "Gallery & Media Module Hub"
-Cohesion: 0.07
-Nodes (23): FoldersModule, Module, GalleryController, ApiOperation, ApiTags, Body, Controller, CurrentUser (+15 more)
+Cohesion: 0.24
+Nodes (5): DatabaseModule, Global, Module, PendingVolunteerRow, VolunteerWithIdentitiesAndVerifications
 
 ### Community 1 - "Gallery Album DTOs"
-Cohesion: 0.05
-Nodes (47): CreateAlbumDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsEnum, IsInt, IsOptional (+39 more)
+Cohesion: 0.06
+Nodes (33): ApiCookieAuth, HttpCode, Res, DASHBOARD_AUTH_CONSTANTS, DashboardAuthController, ApiBody, ApiOperation, ApiResponse (+25 more)
 
 ### Community 2 - "Deployment Action DTOs"
-Cohesion: 0.09
-Nodes (10): BulkDeploymentActionDto, ApiProperty, ArrayMinSize, IsArray, IsUUID, Module, VolunteerParticipationModule, Injectable (+2 more)
+Cohesion: 0.18
+Nodes (4): EventDepartmentsRepository, Injectable, EventDepartmentsService, Injectable
 
 ### Community 3 - "Assets Controller"
-Cohesion: 0.17
-Nodes (17): ApiConsumes, AssetsController, ApiOperation, ApiTags, Body, Controller, CurrentUser, Delete (+9 more)
+Cohesion: 0.16
+Nodes (12): ApiConsumes, UploadedFiles, UseInterceptors, ApiPropertyOptional, IsArray, IsEnum, IsOptional, IsString (+4 more)
 
 ### Community 4 - "Folders Controller"
-Cohesion: 0.19
-Nodes (13): FoldersController, ApiOperation, ApiTags, Body, Controller, CurrentUser, Delete, Get (+5 more)
+Cohesion: 0.05
+Nodes (43): src/**/*, src/cache/*, src/common/*, src/config/*, src/database/*, src/modules/*, src/storage/*, compilerOptions (+35 more)
 
 ### Community 5 - "Folders Repository Layer"
-Cohesion: 0.16
-Nodes (4): FoldersRepository, Injectable, FoldersService, Injectable
+Cohesion: 0.09
+Nodes (8): ALLOWED_EXTENSIONS, ALLOWED_MIME_TYPES, BUCKET_MAP, FileValidationOptions, ImageMetadata, SupabaseStorageService, SupabaseUploadResult, Injectable
+
+### Community 6 - "Documents Repository"
+Cohesion: 0.06
+Nodes (21): AppConfig, appSchema, AuthConfig, authSchema, CacheConfig, cacheSchema, DashboardAuthConfig, dashboardAuthSchema (+13 more)
 
 ### Community 7 - "Participation Admin Controller"
-Cohesion: 0.28
-Nodes (10): ParticipationAdminController, ApiOperation, ApiTags, Body, Controller, CurrentUser, Param, Patch (+2 more)
+Cohesion: 0.06
+Nodes (30): CsrOpportunitiesModule, Module, EventDepartmentsModule, Module, EventEditionsModule, Module, EventSchedulesModule, Module (+22 more)
 
 ### Community 8 - "Documents Controller"
-Cohesion: 0.22
-Nodes (13): DocumentsController, ApiOperation, ApiTags, Body, Controller, CurrentUser, Delete, Get (+5 more)
+Cohesion: 0.14
+Nodes (11): FoldersController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
 
 ### Community 9 - "Deployments Admin Controller"
-Cohesion: 0.19
-Nodes (12): DeploymentsAdminController, ApiOperation, ApiTags, Body, Controller, CurrentUser, Get, Param (+4 more)
+Cohesion: 0.31
+Nodes (8): ParticipationAdminController, ApiOperation, ApiTags, Body, Controller, Param, Patch, Post
 
-### Community 13 - "Folder Response DTOs"
+### Community 10 - "Participation Service"
+Cohesion: 0.15
+Nodes (4): EventSpeakersRepository, Injectable, EventSpeakersService, Injectable
+
+### Community 12 - "Deployments Service"
+Cohesion: 0.16
+Nodes (4): EventsRepository, Injectable, EventsService, Injectable
+
+### Community 14 - "Assets Repository"
+Cohesion: 0.17
+Nodes (11): EditionsAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 15 - "Test Specifications"
+Cohesion: 0.09
+Nodes (22): scripts, build, check-types, format, format:check, lint, lint:check, prisma:generate (+14 more)
+
+### Community 16 - "Coordinator Remarks DTOs"
+Cohesion: 0.16
+Nodes (12): Roles(), GalleryController, ApiOperation, ApiTags, Body, Controller, Delete, Get (+4 more)
+
+### Community 17 - "Asset Query DTOs"
+Cohesion: 0.12
+Nodes (4): GalleryRepository, Injectable, GalleryService, Injectable
+
+### Community 18 - "Document Create DTOs"
+Cohesion: 0.14
+Nodes (8): APP_CONSTANTS, CACHE_CONSTANTS, FILE_CONSTANTS, ExceptionResponseBody, GlobalExceptionFilter, Catch, LoggingInterceptor, Injectable
+
+### Community 19 - "Participation Bulk DTOs"
+Cohesion: 0.12
+Nodes (6): RolesGuard, Injectable, PaginatedResult, AuthenticatedRequest, buildPaginatedResult(), buildPaginationMeta()
+
+### Community 21 - "Asset Operation DTOs"
+Cohesion: 0.22
+Nodes (5): EditionResponseDto, ApiPropertyOptional, EventEditionsService, Injectable, VALID_TRANSITIONS
+
+### Community 22 - "Deployments Volunteer Controller"
+Cohesion: 0.19
+Nodes (11): EventsAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 23 - "Participation Volunteer Controller"
+Cohesion: 0.15
+Nodes (10): HealthController, ApiOperation, ApiTags, Controller, Get, HealthModule, Module, HealthCheckResult (+2 more)
+
+### Community 24 - "Documents Module Wiring"
+Cohesion: 0.17
+Nodes (11): PublicationCategoriesController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 25 - "Document Update DTOs"
+Cohesion: 0.19
+Nodes (11): DocumentsController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 26 - "Documents Query & List"
+Cohesion: 0.11
+Nodes (19): argon2, @aws-sdk/client-s3, class-validator, compression, helmet, @nestjs/config, @nestjs/core, dependencies (+11 more)
+
+### Community 28 - "Deployment Create DTOs"
+Cohesion: 0.19
+Nodes (11): AssetsController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 30 - "Community 30"
+Cohesion: 0.18
+Nodes (11): SchedulesAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 31 - "Community 31"
+Cohesion: 0.15
+Nodes (4): EventShiftsRepository, Injectable, EventShiftsService, Injectable
+
+### Community 33 - "Community 33"
+Cohesion: 0.13
+Nodes (4): Injectable, VolunteersRepository, Injectable, VolunteersService
+
+### Community 34 - "Community 34"
+Cohesion: 0.18
+Nodes (8): AssetsService, Injectable, AssetQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsString, IsUUID
+
+### Community 35 - "Community 35"
+Cohesion: 0.13
+Nodes (14): AppModule, Module, CorrelationIdMiddleware, Injectable, bootstrap(), CommunityModule, Module, DashboardAuthModule (+6 more)
+
+### Community 36 - "Community 36"
+Cohesion: 0.15
+Nodes (13): ApiPropertyOptional, IsBoolean, IsDateString, IsEnum, IsInt, IsOptional, IsString, IsUrl (+5 more)
+
+### Community 37 - "Community 37"
+Cohesion: 0.21
+Nodes (11): ApiParam, ApiOperation, ApiResponse, ApiTags, Controller, Get, Param, Patch (+3 more)
+
+### Community 38 - "Community 38"
+Cohesion: 0.18
+Nodes (11): SessionsAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 39 - "Community 39"
+Cohesion: 0.19
+Nodes (11): EventShiftsController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 40 - "Community 40"
+Cohesion: 0.18
+Nodes (11): SpeakersAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 41 - "Community 41"
+Cohesion: 0.18
+Nodes (3): Injectable, VolunteerApplicationsRepository, INELIGIBLE_EDITION_STATUSES
+
+### Community 42 - "Community 42"
+Cohesion: 0.17
+Nodes (10): CertificatesAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+2 more)
+
+### Community 43 - "Community 43"
 Cohesion: 0.13
 Nodes (13): FolderResponseDto, ApiProperty, ApiPropertyOptional, MoveFolderDto, ApiPropertyOptional, IsEnum, IsInt, IsOptional (+5 more)
 
-### Community 15 - "Test Specifications"
-Cohesion: 0.24
-Nodes (5): Module, VolunteerDeploymentsModule, Injectable, VolunteerDeploymentsRepository, VALID_TRANSITIONS
-
-### Community 16 - "Coordinator Remarks DTOs"
-Cohesion: 0.14
-Nodes (8): CoordinatorRemarksDto, ApiPropertyOptional, IsOptional, IsString, MaxLength, ParticipationResponseDto, ApiProperty, ApiPropertyOptional
-
-### Community 17 - "Asset Query DTOs"
+### Community 44 - "Community 44"
 Cohesion: 0.15
-Nodes (9): AssetQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsString, IsUUID, AssetResponseDto, ApiProperty (+1 more)
+Nodes (3): ApiResponseDto, ApiProperty, ApiPropertyOptional
 
-### Community 18 - "Document Create DTOs"
+### Community 45 - "Community 45"
+Cohesion: 0.18
+Nodes (6): FoldersModule, Module, FoldersRepository, Injectable, FoldersService, Injectable
+
+### Community 46 - "Community 46"
+Cohesion: 0.18
+Nodes (9): PaginationQueryDto, ApiPropertyOptional, IsEnum, IsInt, IsOptional, IsString, Max, Min (+1 more)
+
+### Community 47 - "Community 47"
+Cohesion: 0.20
+Nodes (8): StrictParseUUIDPipe, Injectable, EventSessionsService, Injectable, VALID_STATUS_TRANSITIONS, SessionsPublicController, ApiTags, Controller
+
+### Community 48 - "Community 48"
+Cohesion: 0.15
+Nodes (3): Injectable, VolunteerCertificatesRepository, ELIGIBLE_PARTICIPATION_STATUSES
+
+### Community 49 - "Community 49"
+Cohesion: 0.14
+Nodes (16): CsrOpportunityWithEvent, OpportunityQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsString, MaxLength, OpportunityEntity (+8 more)
+
+### Community 50 - "Community 50"
+Cohesion: 0.29
+Nodes (3): RoleResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 51 - "Community 51"
+Cohesion: 0.13
+Nodes (15): CreateEditionDto, ApiProperty, ApiPropertyOptional, IsBoolean, IsDateString, IsEnum, IsInt, IsNotEmpty (+7 more)
+
+### Community 52 - "Community 52"
+Cohesion: 0.11
+Nodes (4): EditionListItemDto, ApiProperty, EventEditionsRepository, Injectable
+
+### Community 53 - "Community 53"
+Cohesion: 0.20
+Nodes (10): ApiPropertyOptional, IsDateString, IsEnum, IsInt, IsOptional, IsString, IsUUID, MaxLength (+2 more)
+
+### Community 54 - "Community 54"
+Cohesion: 0.13
+Nodes (15): CreateEventDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsEnum, IsInt, IsNotEmpty (+7 more)
+
+### Community 55 - "Community 55"
+Cohesion: 0.24
+Nodes (7): EventsPublicController, ApiOperation, ApiTags, Controller, Get, Param, Query
+
+### Community 56 - "Community 56"
+Cohesion: 0.13
+Nodes (15): CreateVenueDto, ApiProperty, ApiPropertyOptional, IsEnum, IsInt, IsNotEmpty, IsNumber, IsOptional (+7 more)
+
+### Community 57 - "Community 57"
+Cohesion: 0.18
+Nodes (11): ApiOperation, ApiTags, Body, Controller, Delete, Get, Param, Patch (+3 more)
+
+### Community 58 - "Community 58"
+Cohesion: 0.18
+Nodes (10): ApplicationsVolunteerController, ApiOperation, ApiTags, Body, Controller, Get, Param, Patch (+2 more)
+
+### Community 59 - "Community 59"
+Cohesion: 0.12
+Nodes (15): CreateApplicationDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsInt, IsNotEmpty, IsOptional (+7 more)
+
+### Community 61 - "Community 61"
+Cohesion: 0.18
+Nodes (9): SessionQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, ApiOperation, Get, Param (+1 more)
+
+### Community 62 - "Community 62"
+Cohesion: 0.20
+Nodes (9): ScheduleQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, ApiOperation, Get, Param (+1 more)
+
+### Community 63 - "Community 63"
+Cohesion: 0.20
+Nodes (10): ApiPropertyOptional, IsDateString, IsEnum, IsInt, IsOptional, IsString, IsUUID, MaxLength (+2 more)
+
+### Community 64 - "Community 64"
+Cohesion: 0.14
+Nodes (14): CreateSpeakerDto, ApiProperty, ApiPropertyOptional, IsEmail, IsInt, IsNotEmpty, IsOptional, IsString (+6 more)
+
+### Community 65 - "Community 65"
+Cohesion: 0.14
+Nodes (14): CreateRoleDto, ApiProperty, ApiPropertyOptional, IsArray, IsInt, IsNotEmpty, IsOptional, IsString (+6 more)
+
+### Community 66 - "Community 66"
+Cohesion: 0.22
+Nodes (8): CreateVolunteerIdentityDto, ApiProperty, IsEnum, IsNotEmpty, IsString, MaxLength, MinLength, VolunteerWithIdentities
+
+### Community 67 - "Community 67"
+Cohesion: 0.14
+Nodes (14): RegisterVolunteerDto, ApiProperty, ApiPropertyOptional, IsArray, IsDateString, IsEmail, IsEnum, IsNotEmpty (+6 more)
+
+### Community 68 - "Community 68"
+Cohesion: 0.15
+Nodes (13): CreateScheduleDto, ApiProperty, ApiPropertyOptional, IsDateString, IsInt, IsNotEmpty, IsOptional, IsString (+5 more)
+
+### Community 69 - "Community 69"
+Cohesion: 0.15
+Nodes (13): CreateSessionDto, ApiProperty, ApiPropertyOptional, IsDateString, IsInt, IsNotEmpty, IsOptional, IsString (+5 more)
+
+### Community 70 - "Community 70"
+Cohesion: 0.15
+Nodes (13): ApiPropertyOptional, IsArray, IsBoolean, IsEnum, IsInt, IsOptional, IsString, Matches (+5 more)
+
+### Community 71 - "Community 71"
+Cohesion: 0.15
+Nodes (13): ApiPropertyOptional, IsEnum, IsInt, IsNumber, IsOptional, IsString, IsUrl, Max (+5 more)
+
+### Community 72 - "Community 72"
+Cohesion: 0.17
+Nodes (14): ApplicationsAdminController, ApiOperation, ApiTags, Body, Controller, Get, Param, Patch (+6 more)
+
+### Community 73 - "Community 73"
+Cohesion: 0.21
+Nodes (7): ForbiddenResourceException, ApplicationQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, VALID_TRANSITIONS
+
+### Community 74 - "Community 74"
+Cohesion: 0.15
+Nodes (9): CertificateResponseDto, ApiProperty, ApiPropertyOptional, GenerateCertificateDto, ApiProperty, ApiPropertyOptional, IsEnum, IsOptional (+1 more)
+
+### Community 75 - "Community 75"
+Cohesion: 0.18
+Nodes (7): ParticipationQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, Get, Query
+
+### Community 76 - "Community 76"
+Cohesion: 0.15
+Nodes (13): ApiPropertyOptional, IsArray, IsEnum, IsInt, IsOptional, IsString, IsUUID, Matches (+5 more)
+
+### Community 77 - "Community 77"
+Cohesion: 0.27
+Nodes (6): ApiOperation, Body, Delete, Param, Patch, Post
+
+### Community 78 - "Community 78"
+Cohesion: 0.15
+Nodes (13): CreatePublicationDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsDateString, IsEnum, IsInt (+5 more)
+
+### Community 79 - "Community 79"
 Cohesion: 0.15
 Nodes (13): CreateDocumentDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsDateString, IsEnum, IsInt (+5 more)
 
-### Community 19 - "Participation Bulk DTOs"
+### Community 80 - "Community 80"
+Cohesion: 0.23
+Nodes (8): EventQueryDto, ApiPropertyOptional, IsEnum, IsOptional, EventListItemDto, EventResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 81 - "Community 81"
+Cohesion: 0.16
+Nodes (15): Public(), EditionQueryDto, ApiPropertyOptional, IsEnum, IsInt, IsOptional, Min, Type (+7 more)
+
+### Community 83 - "Community 83"
 Cohesion: 0.18
-Nodes (9): BulkParticipationDto, ApiProperty, ApiPropertyOptional, ArrayMinSize, IsArray, IsOptional, IsString, IsUUID (+1 more)
+Nodes (8): SpeakerQueryDto, ApiPropertyOptional, IsEnum, IsOptional, SpeakerResponseDto, ApiProperty, ApiPropertyOptional, VALID_STATUS_TRANSITIONS
 
-### Community 20 - "Assets Module Wiring"
-Cohesion: 0.30
-Nodes (4): AssetsModule, Module, AssetsService, Injectable
+### Community 84 - "Community 84"
+Cohesion: 0.17
+Nodes (12): ApiPropertyOptional, IsArray, IsBoolean, IsDateString, IsEnum, IsInt, IsOptional, IsString (+4 more)
 
-### Community 21 - "Asset Operation DTOs"
+### Community 85 - "Community 85"
+Cohesion: 0.40
+Nodes (4): AssetsModule, Module, GalleryModule, Module
+
+### Community 86 - "Community 86"
+Cohesion: 0.23
+Nodes (3): AssetResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 87 - "Community 87"
 Cohesion: 0.29
 Nodes (11): BulkDeleteAssetsDto, CopyAssetDto, MoveAssetDto, ApiPropertyOptional, IsArray, IsEnum, IsOptional, IsString (+3 more)
 
-### Community 22 - "Deployments Volunteer Controller"
-Cohesion: 0.21
-Nodes (9): DeploymentsVolunteerController, ApiOperation, ApiTags, Controller, CurrentUser, Get, Param, Query (+1 more)
+### Community 88 - "Community 88"
+Cohesion: 0.17
+Nodes (12): CreateAlbumDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsEnum, IsInt, IsOptional (+4 more)
 
-### Community 23 - "Participation Volunteer Controller"
-Cohesion: 0.21
-Nodes (9): ParticipationVolunteerController, ApiOperation, ApiTags, Controller, CurrentUser, Get, Param, Query (+1 more)
+### Community 89 - "Community 89"
+Cohesion: 0.18
+Nodes (12): AddGalleryImageDto, ApiProperty, ApiPropertyOptional, IsBoolean, IsEnum, IsInt, IsOptional, IsString (+4 more)
 
-### Community 24 - "Documents Module Wiring"
-Cohesion: 0.33
-Nodes (4): DocumentsModule, Module, DocumentsService, Injectable
+### Community 90 - "Community 90"
+Cohesion: 0.15
+Nodes (7): Inject, RedisCacheModule, Global, Module, CacheService, Injectable, redisProvider
 
-### Community 25 - "Document Update DTOs"
+### Community 91 - "Community 91"
+Cohesion: 0.18
+Nodes (10): build, builder, dockerfilePath, deploy, healthcheckPath, healthcheckTimeout, restartPolicyMaxRetries, restartPolicyType (+2 more)
+
+### Community 92 - "Community 92"
+Cohesion: 0.18
+Nodes (11): ApiPropertyOptional, IsEmail, IsEnum, IsInt, IsOptional, IsString, IsUrl, IsUUID (+3 more)
+
+### Community 94 - "Community 94"
 Cohesion: 0.18
 Nodes (11): ApiPropertyOptional, IsArray, IsBoolean, IsDateString, IsEnum, IsInt, IsOptional, IsString (+3 more)
 
-### Community 26 - "Documents Query & List"
-Cohesion: 0.20
-Nodes (7): DocumentQueryDto, ApiPropertyOptional, IsBoolean, IsEnum, IsOptional, IsString, Type
+### Community 95 - "Community 95"
+Cohesion: 0.18
+Nodes (11): ApiPropertyOptional, IsArray, IsBoolean, IsEnum, IsInt, IsOptional, IsString, IsUUID (+3 more)
 
-### Community 27 - "Folder Create DTOs"
+### Community 96 - "Community 96"
+Cohesion: 0.18
+Nodes (5): ResponseTransformInterceptor, Injectable, TimeoutInterceptor, Injectable, ApiResponseShape
+
+### Community 97 - "Community 97"
+Cohesion: 0.29
+Nodes (4): VALID_STATUS_TRANSITIONS, SchedulesPublicController, ApiTags, Controller
+
+### Community 98 - "Community 98"
+Cohesion: 0.19
+Nodes (4): EventSchedulesRepository, Injectable, EventSchedulesService, Injectable
+
+### Community 99 - "Community 99"
+Cohesion: 0.20
+Nodes (10): CreateShiftDto, ApiProperty, ApiPropertyOptional, IsDateString, IsNotEmpty, IsOptional, IsString, MaxLength (+2 more)
+
+### Community 100 - "Community 100"
+Cohesion: 0.21
+Nodes (12): CurrentUser, CsrOpportunitiesAdminController, ApiOperation, ApiTags, Body, Controller, Delete, Get (+4 more)
+
+### Community 101 - "Community 101"
+Cohesion: 0.24
+Nodes (7): SpeakersPublicController, ApiOperation, ApiTags, Controller, Get, Param, Query
+
+### Community 102 - "Community 102"
+Cohesion: 0.16
+Nodes (3): CsrOpportunitiesService, Injectable, getEvent()
+
+### Community 103 - "Community 103"
+Cohesion: 0.22
+Nodes (9): CertificateData, CertificatePdfService, Injectable, CertificatesVolunteerController, ApiTags, Controller, Injectable, VALID_TRANSITIONS (+1 more)
+
+### Community 104 - "Community 104"
+Cohesion: 0.14
+Nodes (9): ApiOperation, Get, Param, Query, CertificateQueryDto, ApiPropertyOptional, IsEnum, IsOptional (+1 more)
+
+### Community 106 - "Community 106"
+Cohesion: 0.11
+Nodes (9): CsrOpportunitiesPublicController, ApiOperation, ApiTags, Controller, Get, Param, Query, CsrOpportunitiesRepository (+1 more)
+
+### Community 107 - "Community 107"
+Cohesion: 0.33
+Nodes (6): PublicationCategoryQueryDto, ApiPropertyOptional, IsBoolean, IsOptional, IsUUID, Type
+
+### Community 108 - "Community 108"
+Cohesion: 0.20
+Nodes (10): CreatePublicationCategoryDto, ApiProperty, ApiPropertyOptional, IsBoolean, IsInt, IsOptional, IsString, IsUUID (+2 more)
+
+### Community 110 - "Community 110"
 Cohesion: 0.20
 Nodes (10): CreateFolderDto, ApiProperty, ApiPropertyOptional, IsEnum, IsInt, IsOptional, IsString, IsUUID (+2 more)
 
-### Community 28 - "Deployment Create DTOs"
+### Community 111 - "Community 111"
 Cohesion: 0.22
-Nodes (8): CreateDeploymentDto, ApiProperty, ApiPropertyOptional, IsDateString, IsOptional, IsString, IsUUID, MaxLength
+Nodes (9): ArrayMinSize, BulkParticipationDto, ApiProperty, ApiPropertyOptional, IsArray, IsOptional, IsString, IsUUID (+1 more)
 
-### Community 30 - "Community 30"
+### Community 112 - "Community 112"
+Cohesion: 0.22
+Nodes (9): eslint-config-prettier, devDependencies, eslint-config-prettier, @types/pdfkit, @types/supertest, @typescript-eslint/eslint-plugin, @types/pdfkit, @types/supertest (+1 more)
+
+### Community 113 - "Community 113"
+Cohesion: 0.22
+Nodes (8): collection, compilerOptions, assets, deleteOutDir, plugins, watchAssets, $schema, sourceRoot
+
+### Community 114 - "Community 114"
+Cohesion: 0.22
+Nodes (8): **/*.e2e-spec.ts, **/*.spec.ts, ./tsconfig.json, exclude, extends, dist, node_modules, test
+
+### Community 115 - "Community 115"
+Cohesion: 0.22
+Nodes (9): ApiPropertyOptional, IsDateString, IsEnum, IsOptional, IsString, MaxLength, MinLength, Transform (+1 more)
+
+### Community 116 - "Community 116"
+Cohesion: 0.29
+Nodes (4): ApiPropertyOptional, IsEnum, IsOptional, VenueQueryDto
+
+### Community 117 - "Community 117"
+Cohesion: 0.18
+Nodes (6): DocumentsModule, Module, DocumentsRepository, Injectable, DocumentsService, Injectable
+
+### Community 118 - "Community 118"
+Cohesion: 0.35
+Nodes (5): ApiTags, Controller, VolunteerRolesController, Injectable, VolunteerRolesService
+
+### Community 119 - "Community 119"
+Cohesion: 0.22
+Nodes (9): ApiPropertyOptional, IsBoolean, IsInt, IsOptional, IsString, IsUUID, MaxLength, Min (+1 more)
+
+### Community 120 - "Community 120"
+Cohesion: 0.40
+Nodes (3): PublicationResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 121 - "Community 121"
+Cohesion: 0.29
+Nodes (7): DocumentQueryDto, ApiPropertyOptional, IsBoolean, IsEnum, IsOptional, IsString, Type
+
+### Community 122 - "Community 122"
+Cohesion: 0.12
+Nodes (17): IsObject, CreateOpportunityDto, ApiProperty, ApiPropertyOptional, IsArray, IsBoolean, IsDateString, IsEmail (+9 more)
+
+### Community 123 - "Community 123"
 Cohesion: 0.25
-Nodes (8): ApiPropertyOptional, IsArray, IsEnum, IsOptional, IsString, IsUUID, MaxLength, UploadAssetDto
+Nodes (3): ScheduleResponseDto, ApiProperty, ApiPropertyOptional
 
-### Community 31 - "Community 31"
+### Community 124 - "Community 124"
+Cohesion: 0.25
+Nodes (3): ApiProperty, ApiPropertyOptional, VenueResponseDto
+
+### Community 125 - "Community 125"
+Cohesion: 0.15
+Nodes (9): CoordinatorRemarksDto, ApiPropertyOptional, IsOptional, IsString, MaxLength, ParticipationResponseDto, ApiProperty, ApiPropertyOptional (+1 more)
+
+### Community 126 - "Community 126"
+Cohesion: 0.18
+Nodes (7): RoleQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, Get, Query
+
+### Community 127 - "Community 127"
+Cohesion: 0.25
+Nodes (3): PublicationCategoryResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 128 - "Community 128"
+Cohesion: 0.25
+Nodes (8): PublicationQueryDto, ApiPropertyOptional, IsBoolean, IsEnum, IsOptional, IsString, IsUUID, Type
+
+### Community 129 - "Community 129"
 Cohesion: 0.25
 Nodes (3): DocumentResponseDto, ApiProperty, ApiPropertyOptional
 
-### Community 32 - "Community 32"
+### Community 130 - "Community 130"
 Cohesion: 0.25
-Nodes (7): ParticipationQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID, Get, Query
+Nodes (8): AlbumQueryDto, ApiPropertyOptional, IsBoolean, IsEnum, IsOptional, IsString, IsUUID, Transform
 
-### Community 34 - "Community 34"
-Cohesion: 0.33
-Nodes (5): DeploymentQueryDto, ApiPropertyOptional, IsEnum, IsOptional, IsUUID
-
-### Community 35 - "Community 35"
+### Community 131 - "Community 131"
 Cohesion: 0.50
-Nodes (3): DeploymentResponseDto, ApiProperty, ApiPropertyOptional
+Nodes (3): DepartmentResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 132 - "Community 132"
+Cohesion: 0.21
+Nodes (10): Req, ApiOperation, ApiTags, Body, Controller, Get, Param, Patch (+2 more)
+
+### Community 133 - "Community 133"
+Cohesion: 0.18
+Nodes (11): EventDepartmentsController, ApiOperation, ApiTags, Body, Controller, Delete, Get, Param (+3 more)
+
+### Community 134 - "Community 134"
+Cohesion: 0.33
+Nodes (5): engines, node, name, private, version
+
+### Community 135 - "Community 135"
+Cohesion: 0.24
+Nodes (10): PendingVolunteersQueryDto, ApiPropertyOptional, IsOptional, IsString, AdminIdentityDto, AdminVolunteerDetailDto, PendingVolunteerSummaryDto, ApiProperty (+2 more)
+
+### Community 137 - "Community 137"
+Cohesion: 0.24
+Nodes (7): ParticipationVolunteerController, ApiOperation, ApiTags, Controller, Get, Param, Query
+
+### Community 138 - "Community 138"
+Cohesion: 0.47
+Nodes (5): AdminApplicationResponseDto, ApplicationResponseDto, ApplicationWithRelations, ApiProperty, ApiPropertyOptional
+
+### Community 139 - "Community 139"
+Cohesion: 0.47
+Nodes (4): AlbumResponseDto, GalleryImageResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 140 - "Community 140"
+Cohesion: 0.50
+Nodes (3): Development, Production Build, Ruchi Prativa Foundation — Server Application
+
+### Community 141 - "Community 141"
+Cohesion: 0.22
+Nodes (4): DepartmentQueryDto, ApiPropertyOptional, IsEnum, IsOptional
+
+### Community 190 - "EntityConflictException"
+Cohesion: 0.40
+Nodes (3): EntityConflictException, Injectable, VenuesService
+
+### Community 191 - "CreateDepartmentDto"
+Cohesion: 0.20
+Nodes (10): CreateDepartmentDto, ApiProperty, ApiPropertyOptional, IsNotEmpty, IsOptional, IsString, Matches, MaxLength (+2 more)
+
+### Community 192 - "publication-categories.service.ts"
+Cohesion: 0.31
+Nodes (4): PublicationCategoriesModule, Module, PublicationCategoriesRepository, Injectable
+
+### Community 193 - "UpdateDepartmentDto"
+Cohesion: 0.22
+Nodes (9): ApiPropertyOptional, IsEnum, IsOptional, IsString, Matches, MaxLength, MinLength, Transform (+1 more)
+
+### Community 194 - ".rejectVolunteer"
+Cohesion: 0.28
+Nodes (3): ApiProperty, ApiPropertyOptional, VolunteerListItemDto
+
+### Community 195 - "VolunteerQueryDto"
+Cohesion: 0.22
+Nodes (6): ApiPropertyOptional, IsEnum, IsOptional, IsString, MaxLength, VolunteerQueryDto
+
+### Community 196 - "index.ts"
+Cohesion: 0.25
+Nodes (3): SessionResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 197 - "RejectVolunteerDto"
+Cohesion: 0.25
+Nodes (8): RejectVolunteerDto, ApiProperty, ApiPropertyOptional, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength
+
+### Community 198 - ".register"
+Cohesion: 0.29
+Nodes (6): ApiBody, ApiConsumes, Body, Post, UploadedFiles, UseInterceptors
+
+### Community 200 - "ApproveVolunteerDto"
+Cohesion: 0.40
+Nodes (5): ApproveVolunteerDto, ApiPropertyOptional, IsOptional, IsString, MaxLength
+
+### Community 203 - "ShiftQueryDto"
+Cohesion: 0.50
+Nodes (4): ShiftQueryDto, ApiPropertyOptional, IsEnum, IsOptional
+
+### Community 205 - "ShiftResponseDto"
+Cohesion: 0.67
+Nodes (3): ShiftResponseDto, ApiProperty, ApiPropertyOptional
+
+### Community 222 - "Community 222"
+Cohesion: 0.29
+Nodes (8): Exclude, Expose, maskDocumentNumber(), ApiProperty, ApiPropertyOptional, VolunteerIdentityData, VolunteerIdentityResponseDto, VolunteerResponseDto
+
+### Community 225 - "Community 225"
+Cohesion: 0.15
+Nodes (4): Injectable, VolunteerVerificationRepository, Injectable, VolunteerVerificationService
 
 ## Knowledge Gaps
-- **2 isolated node(s):** `VALID_TRANSITIONS`, `VALID_TRANSITIONS`
+- **185 isolated node(s):** `tsParser`, `tsPlugin`, `config`, `$schema`, `collection` (+180 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **482 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **60 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `UploadAssetDto` connect `Community 30` to `Asset Query DTOs`, `Assets Controller`, `Assets Module Wiring`, `Assets Repository`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `FoldersRepository` connect `Folders Repository Layer` to `Folders Service Layer`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `FoldersController` connect `Folders Controller` to `Folders Repository Layer`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `VALID_TRANSITIONS`, `VALID_TRANSITIONS` to the rest of the system?**
-  _2 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Gallery & Media Module Hub` be split into smaller, more focused modules?**
-  _Cohesion score 0.06584723441615452 - nodes in this community are weakly interconnected._
+- **Why does `@nestjs/swagger` connect `Community 82` to `Gallery Album DTOs`, `Community 129`, `Community 131`, `Community 135`, `Community 138`, `Community 139`, `Community 141`, `Asset Query DTOs`, `Participation Bulk DTOs`, `Asset Operation DTOs`, `Participation Volunteer Controller`, `Community 31`, `Community 34`, `Community 35`, `Community 43`, `Community 45`, `Community 47`, `Community 49`, `Community 50`, `Community 59`, `EntityConflictException`, `publication-categories.service.ts`, `Community 66`, `.rejectVolunteer`, `index.ts`, `pagination-query.dto.ts`, `Community 72`, `Community 73`, `Community 74`, `Community 80`, `Community 83`, `Community 86`, `Community 87`, `Community 89`, `Community 222`, `Community 97`, `Community 103`, `Community 113`, `Community 117`, `Community 118`, `Community 120`, `Community 123`, `Community 124`, `Community 125`, `Community 126`, `Community 127`?**
+  _High betweenness centrality (0.197) - this node is a cross-community bridge._
+- **Why does `CurrentUser` connect `Community 100` to `Assets Controller`, `Community 132`, `Community 133`, `Community 135`, `Documents Controller`, `Deployments Admin Controller`, `Community 137`, `Community 141`, `Assets Repository`, `Coordinator Remarks DTOs`, `Asset Query DTOs`, `Participation Bulk DTOs`, `Asset Operation DTOs`, `Deployments Volunteer Controller`, `Documents Module Wiring`, `Document Update DTOs`, `Deployment Create DTOs`, `Community 30`, `Community 31`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 42`, `Community 45`, `Community 47`, `Community 49`, `Community 57`, `Community 58`, `EntityConflictException`, `publication-categories.service.ts`, `Community 66`, `Community 72`, `Community 73`, `Community 77`, `Community 80`, `Community 83`, `Community 97`, `Community 103`, `Community 104`, `Community 117`, `Community 118`, `Community 125`?**
+  _High betweenness centrality (0.126) - this node is a cross-community bridge._
+- **Why does `Roles()` connect `Coordinator Remarks DTOs` to `Assets Controller`, `Community 132`, `Community 133`, `Community 135`, `Documents Controller`, `Deployments Admin Controller`, `Community 137`, `Community 141`, `Assets Repository`, `Asset Query DTOs`, `Participation Bulk DTOs`, `Asset Operation DTOs`, `Deployments Volunteer Controller`, `Documents Module Wiring`, `Document Update DTOs`, `Deployment Create DTOs`, `Community 30`, `Community 31`, `Community 34`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 42`, `Community 45`, `Community 47`, `Community 49`, `Community 57`, `Community 58`, `EntityConflictException`, `publication-categories.service.ts`, `Community 66`, `Community 72`, `Community 73`, `Community 80`, `Community 83`, `Community 97`, `Community 100`, `Community 103`, `Community 117`, `Community 118`, `Community 125`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **What connects `tsParser`, `tsPlugin`, `config` to the rest of the system?**
+  _185 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Gallery Album DTOs` be split into smaller, more focused modules?**
-  _Cohesion score 0.0512987012987013 - nodes in this community are weakly interconnected._
-- **Should `Deployment Action DTOs` be split into smaller, more focused modules?**
-  _Cohesion score 0.0928030303030303 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06398730830248546 - nodes in this community are weakly interconnected._
+- **Should `Folders Controller` be split into smaller, more focused modules?**
+  _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
+- **Should `Folders Repository Layer` be split into smaller, more focused modules?**
+  _Cohesion score 0.0946969696969697 - nodes in this community are weakly interconnected._

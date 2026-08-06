@@ -1,7 +1,7 @@
 'use client';
 
-import { DashboardLayout } from '@/components/layout/dashboard-layout';
-import { Breadcrumb } from '@/components/dashboard/breadcrumb';
+
+
 import { PageHeader } from '@/components/dashboard/page-header';
 import { StatCard } from '@/components/dashboard/stat-card';
 import { MetricCard } from '@/components/dashboard/metric-card';
@@ -13,9 +13,7 @@ import { Users, Calendar, Heart, FileText, Plus } from 'lucide-react';
 
 export default function DashboardHome() {
   return (
-    <DashboardLayout
-      breadcrumb={<Breadcrumb items={[{ label: 'Dashboard', href: '/' }]} />}
-    >
+    <>
       <div className="space-y-6">
         <PageHeader
           title="Dashboard"
@@ -108,6 +106,6 @@ export default function DashboardHome() {
           />
         </ContentCard>
       </div>
-    </DashboardLayout>
+    </>
   );
 }

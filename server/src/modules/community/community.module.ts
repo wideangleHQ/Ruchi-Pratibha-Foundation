@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { CsrOpportunitiesModule } from './csr-opportunities/csr-opportunities.module';
 import { EventDepartmentsModule } from './event-departments/event-departments.module';
 import { EventEditionsModule } from './event-editions/event-editions.module';
 import { EventSchedulesModule } from './event-schedules/event-schedules.module';
@@ -30,6 +31,7 @@ import { VolunteersModule } from './volunteers/volunteers.module';
     VolunteerApplicationsModule,
     VolunteerParticipationModule,
     VolunteerCertificatesModule,
+    CsrOpportunitiesModule,
   ],
 })
 export class CommunityModule {}

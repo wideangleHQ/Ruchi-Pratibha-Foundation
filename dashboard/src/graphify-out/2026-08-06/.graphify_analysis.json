@@ -1,0 +1,408 @@
+{
+  "communities": {
+    "0": [
+      "app_error",
+      "app_error_error",
+      "app_not_found",
+      "app_not_found_notfound",
+      "components_layout_dashboard_layout",
+      "components_layout_dashboard_layout_dashboardlayout",
+      "components_layout_dashboard_layout_dashboardlayoutprops",
+      "components_layout_mobile_sidebar",
+      "components_layout_mobile_sidebar_mobilesidebar",
+      "components_layout_mobile_sidebar_navitems",
+      "components_layout_profile_dropdown_profiledropdown",
+      "components_layout_sidebar",
+      "components_layout_sidebar_navgroup",
+      "components_layout_sidebar_navigation",
+      "components_layout_sidebar_navitem",
+      "components_layout_sidebar_sidebar",
+      "components_layout_topbar",
+      "components_layout_topbar_topbar",
+      "components_layout_topbar_topbarprops",
+      "components_ui_button",
+      "components_ui_button_button",
+      "components_ui_button_buttonprops",
+      "components_ui_button_buttonvariants",
+      "components_ui_tooltip",
+      "components_ui_tooltip_tooltipcontent",
+      "hooks_use_sidebar",
+      "hooks_use_sidebar_sidebarstate",
+      "hooks_use_sidebar_usesidebar"
+    ],
+    "1": [
+      "app_dashboard_page",
+      "app_dashboard_page_dashboardhome",
+      "components_dashboard_breadcrumb",
+      "components_dashboard_breadcrumb_breadcrumb",
+      "components_dashboard_breadcrumb_breadcrumbitem",
+      "components_dashboard_breadcrumb_breadcrumbprops",
+      "components_dashboard_content_card",
+      "components_dashboard_content_card_contentcard",
+      "components_dashboard_content_card_contentcardprops",
+      "components_dashboard_empty_state",
+      "components_dashboard_empty_state_emptystate",
+      "components_dashboard_empty_state_emptystateprops",
+      "components_dashboard_metric_card",
+      "components_dashboard_metric_card_metriccard",
+      "components_dashboard_metric_card_metriccardprops",
+      "components_dashboard_page_header",
+      "components_dashboard_page_header_pageheader",
+      "components_dashboard_page_header_pageheaderprops",
+      "components_dashboard_stat_card",
+      "components_dashboard_stat_card_statcard",
+      "components_dashboard_stat_card_statcardprops",
+      "components_dashboard_status_badge",
+      "components_dashboard_status_badge_statusbadge",
+      "components_dashboard_status_badge_statusbadgeprops",
+      "components_dashboard_status_badge_statusvariant",
+      "components_dashboard_status_badge_variants"
+    ],
+    "2": [
+      "components_dashboard_pagination",
+      "components_dashboard_pagination_generatepagenumbers",
+      "components_dashboard_pagination_pagination",
+      "components_dashboard_pagination_paginationprops",
+      "components_layout_notification_bell",
+      "components_layout_notification_bell_notificationbell",
+      "components_layout_notification_bell_notificationbellprops",
+      "components_ui_avatar",
+      "components_ui_avatar_avatar",
+      "components_ui_avatar_avatarfallback",
+      "components_ui_avatar_avatarimage",
+      "components_ui_label",
+      "components_ui_label_label",
+      "components_ui_label_labelvariants",
+      "components_ui_popover",
+      "components_ui_popover_popovercontent",
+      "components_ui_scroll_area",
+      "components_ui_scroll_area_scrollarea",
+      "components_ui_scroll_area_scrollbar",
+      "components_ui_separator",
+      "components_ui_separator_separator",
+      "components_ui_switch",
+      "components_ui_switch_switch",
+      "lib_utils",
+      "lib_utils_cn"
+    ],
+    "3": [
+      "components_dashboard_search_command",
+      "components_dashboard_search_command_searchcommand",
+      "components_dashboard_search_command_searchcommandprops",
+      "components_ui_command",
+      "components_ui_command_command",
+      "components_ui_command_commanddialog",
+      "components_ui_command_commandempty",
+      "components_ui_command_commandgroup",
+      "components_ui_command_commandinput",
+      "components_ui_command_commanditem",
+      "components_ui_command_commandlist",
+      "components_ui_command_commandseparator",
+      "components_ui_command_commandshortcut",
+      "components_ui_dialog",
+      "components_ui_dialog_dialogcontent",
+      "components_ui_dialog_dialogdescription",
+      "components_ui_dialog_dialogfooter",
+      "components_ui_dialog_dialogheader",
+      "components_ui_dialog_dialogoverlay",
+      "components_ui_dialog_dialogtitle"
+    ],
+    "4": [
+      "app_access_access_form",
+      "app_access_access_form_accessform",
+      "app_access_access_form_accessformvalues",
+      "app_access_access_form_accessschema",
+      "app_access_page",
+      "app_access_page_accesspage",
+      "app_access_page_metadata",
+      "components_ui_input",
+      "components_ui_input_input",
+      "lib_dashboard_auth",
+      "lib_dashboard_auth_accessresponse",
+      "lib_dashboard_auth_dashboardaccess",
+      "lib_dashboard_auth_dashboardlogout",
+      "lib_dashboard_auth_dashboardverify",
+      "lib_dashboard_auth_logoutresponse",
+      "lib_dashboard_auth_verifyresponse"
+    ],
+    "5": [
+      "components_layout_profile_dropdown",
+      "components_layout_profile_dropdown_profiledropdownprops",
+      "components_layout_theme_toggle",
+      "components_layout_theme_toggle_themetoggle",
+      "components_ui_dropdown_menu",
+      "components_ui_dropdown_menu_dropdownmenucheckboxitem",
+      "components_ui_dropdown_menu_dropdownmenucontent",
+      "components_ui_dropdown_menu_dropdownmenuitem",
+      "components_ui_dropdown_menu_dropdownmenulabel",
+      "components_ui_dropdown_menu_dropdownmenuradioitem",
+      "components_ui_dropdown_menu_dropdownmenuseparator",
+      "components_ui_dropdown_menu_dropdownmenushortcut",
+      "components_ui_dropdown_menu_dropdownmenusubcontent",
+      "components_ui_dropdown_menu_dropdownmenusubtrigger"
+    ],
+    "6": [
+      "components_dashboard_data_table",
+      "components_dashboard_data_table_datatable",
+      "components_dashboard_data_table_datatablebody",
+      "components_dashboard_data_table_datatablecell",
+      "components_dashboard_data_table_datatablehead",
+      "components_dashboard_data_table_datatableheader",
+      "components_dashboard_data_table_datatableprops",
+      "components_dashboard_data_table_datatablerow"
+    ],
+    "7": [
+      "components_ui_select",
+      "components_ui_select_selectcontent",
+      "components_ui_select_selectitem",
+      "components_ui_select_selectlabel",
+      "components_ui_select_selectscrolldownbutton",
+      "components_ui_select_selectscrollupbutton",
+      "components_ui_select_selectseparator",
+      "components_ui_select_selecttrigger"
+    ],
+    "8": [
+      "app_layout",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "lib_fonts",
+      "lib_fonts_cormorantgaramond",
+      "lib_fonts_manrope",
+      "lib_fonts_spacegrotesk"
+    ],
+    "9": [
+      "components_dashboard_drawer",
+      "components_dashboard_drawer_drawerbody",
+      "components_dashboard_drawer_drawercontent",
+      "components_dashboard_drawer_drawercontentprops",
+      "components_dashboard_drawer_drawerfooter",
+      "components_dashboard_drawer_drawerheader",
+      "components_dashboard_drawer_draweroverlay"
+    ],
+    "10": [
+      "components_ui_card",
+      "components_ui_card_card",
+      "components_ui_card_cardcontent",
+      "components_ui_card_carddescription",
+      "components_ui_card_cardfooter",
+      "components_ui_card_cardheader",
+      "components_ui_card_cardtitle"
+    ],
+    "11": [
+      "providers_index",
+      "providers_index_providers",
+      "providers_query_provider",
+      "providers_query_provider_queryprovider",
+      "providers_theme_provider",
+      "providers_theme_provider_themeprovider"
+    ],
+    "12": [
+      "components_ui_accordion",
+      "components_ui_accordion_accordioncontent",
+      "components_ui_accordion_accordionitem",
+      "components_ui_accordion_accordiontrigger"
+    ],
+    "13": [
+      "components_ui_badge",
+      "components_ui_badge_badge",
+      "components_ui_badge_badgeprops",
+      "components_ui_badge_badgevariants"
+    ],
+    "14": [
+      "components_ui_tabs",
+      "components_ui_tabs_tabscontent",
+      "components_ui_tabs_tabslist",
+      "components_ui_tabs_tabstrigger"
+    ],
+    "15": [
+      "middleware",
+      "middleware_config",
+      "middleware_middleware",
+      "middleware_public_paths"
+    ],
+    "16": [
+      "components_dashboard_section_header",
+      "components_dashboard_section_header_sectionheader",
+      "components_dashboard_section_header_sectionheaderprops"
+    ],
+    "17": [
+      "app_loading",
+      "app_loading_loading"
+    ],
+    "18": [
+      "components_ui_checkbox",
+      "components_ui_checkbox_checkbox"
+    ],
+    "19": [
+      "components_ui_skeleton",
+      "components_ui_skeleton_skeleton"
+    ],
+    "20": [
+      "components_ui_textarea",
+      "components_ui_textarea_textarea"
+    ],
+    "21": [
+      "lib_api_client",
+      "lib_api_client_apiclient"
+    ]
+  },
+  "cohesion": {
+    "0": 0.10582010582010581,
+    "1": 0.09846153846153846,
+    "2": 0.11666666666666667,
+    "3": 0.14736842105263157,
+    "4": 0.15833333333333333,
+    "5": 0.2087912087912088,
+    "6": 0.25,
+    "7": 0.25,
+    "8": 0.42857142857142855,
+    "9": 0.2857142857142857,
+    "10": 0.2857142857142857,
+    "11": 0.4666666666666667,
+    "12": 0.5,
+    "13": 0.6666666666666666,
+    "14": 0.5,
+    "15": 0.6666666666666666,
+    "16": 0.6666666666666666,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0
+  },
+  "gods": [
+    {
+      "id": "lib_utils_cn",
+      "label": "cn()",
+      "degree": 12
+    },
+    {
+      "id": "components_ui_button_button",
+      "label": "Button",
+      "degree": 11
+    },
+    {
+      "id": "components_dashboard_pagination_pagination",
+      "label": "Pagination()",
+      "degree": 3
+    },
+    {
+      "id": "components_layout_dashboard_layout_dashboardlayout",
+      "label": "DashboardLayout()",
+      "degree": 3
+    },
+    {
+      "id": "hooks_use_sidebar_usesidebar",
+      "label": "useSidebar",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_dropdown_menu_dropdownmenucontent",
+      "label": "DropdownMenuContent",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_dropdown_menu_dropdownmenuitem",
+      "label": "DropdownMenuItem",
+      "degree": 3
+    },
+    {
+      "id": "components_dashboard_pagination_generatepagenumbers",
+      "label": "generatePageNumbers()",
+      "degree": 2
+    },
+    {
+      "id": "components_dashboard_search_command_searchcommand",
+      "label": "SearchCommand()",
+      "degree": 2
+    },
+    {
+      "id": "components_layout_notification_bell_notificationbell",
+      "label": "NotificationBell()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "DashboardLayout()",
+      "target": "cn()",
+      "source_files": [
+        "components/layout/dashboard-layout.tsx",
+        "lib/utils.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "NotificationBell()",
+      "target": "cn()",
+      "source_files": [
+        "components/layout/notification-bell.tsx",
+        "lib/utils.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `NotificationBell()` unexpectedly reaches hub `cn()`"
+    },
+    {
+      "source": "Pagination()",
+      "target": "cn()",
+      "source_files": [
+        "components/dashboard/pagination.tsx",
+        "lib/utils.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "DashboardLayout()",
+      "target": "useSidebar",
+      "source_files": [
+        "components/layout/dashboard-layout.tsx",
+        "hooks/use-sidebar.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Button` connect `dashboard-layout.tsx` to `page.tsx`, `cn`, `access-form.tsx`, `dropdown-menu.tsx`?",
+      "why": "High betweenness centrality (0.112) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `cn()` connect `cn` to `dashboard-layout.tsx`?",
+      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `PaginationProps`, `SearchCommandProps`, `DashboardLayoutProps` to the rest of the system?",
+      "why": "75 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `dashboard-layout.tsx` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10582010582010581 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `page.tsx` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09846153846153846 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `cn` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11666666666666667 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `command.tsx` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14736842105263157 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

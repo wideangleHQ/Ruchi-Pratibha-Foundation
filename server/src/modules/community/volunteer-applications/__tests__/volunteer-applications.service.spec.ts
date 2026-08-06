@@ -12,7 +12,7 @@ describe('VolunteerApplicationsService', () => {
   const editionId = 'ed-uuid-001';
   const adminId = 'admin-uuid-001';
 
-  const mockApp: VolunteerApplication = {
+  const mockAppBase: VolunteerApplication = {
     id: 'app-uuid-001',
     applicationCode: 'RPF-APP-000001',
     volunteerId,
@@ -42,6 +42,28 @@ describe('VolunteerApplicationsService', () => {
     updatedBy: volunteerId,
     deletedBy: null,
   };
+
+  const mockRelations = {
+    volunteer: {
+      id: volunteerId,
+      firstName: 'Rahul',
+      lastName: 'Sharma',
+      email: 'rahul@example.com',
+      phone: '+919876543210',
+      volunteerCode: 'RPF-VOL-2026-00001',
+      volunteerStatus: VolunteerStatus.VERIFIED,
+      city: 'Bhubaneswar',
+      state: 'Odisha',
+      skills: ['leadership'],
+    },
+    edition: {
+      editionName: 'CSR Drive 2026',
+      year: 2026,
+      event: { title: 'Annual CSR Program' },
+    },
+  };
+
+  const mockApp = { ...mockAppBase, ...mockRelations } as any;
 
   const validDto = {
     editionId,

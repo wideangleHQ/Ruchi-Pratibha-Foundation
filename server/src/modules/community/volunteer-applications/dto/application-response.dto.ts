@@ -53,13 +53,54 @@ export class ApplicationResponseDto {
   }
 }
 
+interface ApplicationWithRelations extends VolunteerApplication {
+  volunteer?: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    volunteerCode: string;
+    volunteerStatus?: string;
+    phone?: string;
+    city?: string;
+    state?: string;
+    skills?: string[];
+  };
+  edition?: {
+    editionName: string;
+    year: number;
+    event: { title: string };
+  };
+}
+
 export class AdminApplicationResponseDto extends ApplicationResponseDto {
   @ApiPropertyOptional() adminRemarks?: string | null;
+  @ApiPropertyOptional() volunteerName?: string;
+  @ApiPropertyOptional() volunteerEmail?: string;
+  @ApiPropertyOptional() volunteerCode?: string;
+  @ApiPropertyOptional() volunteerStatus?: string;
+  @ApiPropertyOptional() volunteerCity?: string;
+  @ApiPropertyOptional() volunteerState?: string;
+  @ApiPropertyOptional() editionName?: string;
+  @ApiPropertyOptional() eventTitle?: string;
+  @ApiPropertyOptional() editionYear?: number;
 
-  static fromEntityAdmin(a: VolunteerApplication): AdminApplicationResponseDto {
+  static fromEntityAdmin(a: ApplicationWithRelations): AdminApplicationResponseDto {
     const dto = new AdminApplicationResponseDto();
     Object.assign(dto, ApplicationResponseDto.fromEntity(a));
     dto.adminRemarks = a.adminRemarks;
+    if (a.volunteer) {
+      dto.volunteerName = `${a.volunteer.firstName} ${a.volunteer.lastName}`;
+      dto.volunteerEmail = a.volunteer.email;
+      dto.volunteerCode = a.volunteer.volunteerCode;
+      dto.volunteerStatus = a.volunteer.volunteerStatus;
+      dto.volunteerCity = a.volunteer.city;
+      dto.volunteerState = a.volunteer.state;
+    }
+    if (a.edition) {
+      dto.editionName = a.edition.editionName;
+      dto.eventTitle = a.edition.event.title;
+      dto.editionYear = a.edition.year;
+    }
     return dto;
   }
 }

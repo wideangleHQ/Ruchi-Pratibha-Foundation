@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { ApplicationStatus, EditionStatus, VolunteerStatus } from '@prisma/client';
+import { ApplicationStatus, EditionStatus, VolunteerStatus, WorkflowType } from '@prisma/client';
 import { ApiResponseDto } from '../../../common/dto';
 import {
   BusinessException,
@@ -20,9 +20,10 @@ import { VolunteerApplicationsRepository } from './volunteer-applications.reposi
 const VALID_TRANSITIONS: Record<ApplicationStatus, ApplicationStatus[]> = {
   [ApplicationStatus.DRAFT]: [ApplicationStatus.SUBMITTED, ApplicationStatus.WITHDRAWN],
   [ApplicationStatus.SUBMITTED]: [ApplicationStatus.UNDER_REVIEW, ApplicationStatus.WITHDRAWN],
-  [ApplicationStatus.UNDER_REVIEW]: [ApplicationStatus.APPROVED, ApplicationStatus.REJECTED],
+  [ApplicationStatus.UNDER_REVIEW]: [ApplicationStatus.APPROVED, ApplicationStatus.REJECTED, ApplicationStatus.WAITLISTED],
   [ApplicationStatus.APPROVED]: [],
   [ApplicationStatus.REJECTED]: [],
+  [ApplicationStatus.WAITLISTED]: [ApplicationStatus.APPROVED, ApplicationStatus.REJECTED],
   [ApplicationStatus.WITHDRAWN]: [],
   [ApplicationStatus.EXPIRED]: [],
 };
@@ -62,6 +63,20 @@ export class VolunteerApplicationsService {
     if (edition.registrationCloses && new Date() > edition.registrationCloses) {
       throw new BusinessException('Application deadline has passed');
     }
+    if (edition.csrOpportunity) {
+      if (!edition.csrOpportunity.acceptRegistrations) {
+        throw new BusinessException('This opportunity is not accepting registrations');
+      }
+      if (!['PUBLISHED', 'REGISTRATION_OPEN'].includes(edition.csrOpportunity.opportunityStatus)) {
+        throw new BusinessException(`Cannot apply to an opportunity with status "${edition.csrOpportunity.opportunityStatus}"`);
+      }
+      if (edition.csrOpportunity.registrationOpens && new Date() < edition.csrOpportunity.registrationOpens) {
+        throw new BusinessException('Registration is not open yet');
+      }
+      if (edition.csrOpportunity.registrationCloses && new Date() > edition.csrOpportunity.registrationCloses) {
+        throw new BusinessException('Application deadline has passed');
+      }
+    }
 
     const existing = await this.repository.findActiveByVolunteerAndEdition(volunteerId, dto.editionId);
     if (existing) {
@@ -72,11 +87,13 @@ export class VolunteerApplicationsService {
 
     const applicationCode = await this.generateCode();
 
+    const shouldAutoApprove = edition.csrOpportunity?.workflowType === WorkflowType.AUTOMATIC;
+
     const application = await this.repository.create({
       applicationCode,
       volunteerId,
       editionId: dto.editionId,
-      applicationStatus: ApplicationStatus.SUBMITTED,
+      applicationStatus: shouldAutoApprove ? ApplicationStatus.APPROVED : ApplicationStatus.SUBMITTED,
       motivation: dto.motivation ?? null,
       relevantExperience: dto.relevantExperience ?? null,
       skills: dto.skills ?? [],
@@ -91,6 +108,7 @@ export class VolunteerApplicationsService {
       expectedHours: dto.expectedHours ?? null,
       termsAccepted: true,
       submittedAt: new Date(),
+      reviewedAt: shouldAutoApprove ? new Date() : null,
       createdBy: volunteerId,
       updatedBy: volunteerId,
     });
@@ -210,6 +228,24 @@ export class VolunteerApplicationsService {
     const updated = await this.repository.update(app.id, data);
     this.logger.log(`Application ${app.applicationCode} rejected by admin ${adminId}`);
     return ApiResponseDto.success(AdminApplicationResponseDto.fromEntityAdmin(updated), 'Application rejected');
+  }
+
+  async waitlistApplication(code: string, dto: AdminReviewDto, adminId: string) {
+    const app = await this.repository.findByCode(code);
+    if (!app) throw new EntityNotFoundException('VolunteerApplication', code);
+
+    this.validateTransition(app.applicationStatus, ApplicationStatus.WAITLISTED);
+
+    const data: Record<string, unknown> = {
+      applicationStatus: ApplicationStatus.WAITLISTED,
+      updatedBy: adminId,
+      version: { increment: 1 },
+    };
+    if (dto.adminRemarks !== undefined) data.adminRemarks = dto.adminRemarks;
+
+    const updated = await this.repository.update(app.id, data);
+    this.logger.log(`Application ${app.applicationCode} waitlisted by admin ${adminId}`);
+    return ApiResponseDto.success(AdminApplicationResponseDto.fromEntityAdmin(updated), 'Application waitlisted');
   }
 
   private validateTransition(from: ApplicationStatus, to: ApplicationStatus): void {

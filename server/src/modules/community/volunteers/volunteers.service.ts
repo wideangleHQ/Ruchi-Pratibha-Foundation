@@ -1,9 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { IdentityDocumentType } from '@prisma/client';
+import { IdentityDocumentType, VolunteerStatus } from '@prisma/client';
 import { VolunteersRepository, VolunteerWithIdentities } from './volunteers.repository';
 import { RegisterVolunteerDto } from './dto/register-volunteer.dto';
 import { CreateVolunteerIdentityDto } from './dto/create-volunteer-identity.dto';
 import { VolunteerResponseDto } from './dto/volunteer-response.dto';
+import { VolunteerListItemDto } from './dto/volunteer-list-item.dto';
+import { VolunteerQueryDto } from './dto/volunteer-query.dto';
 import { StorageService } from '../../../storage';
 import {
   BusinessException,
@@ -12,6 +14,7 @@ import {
 } from '../../../common/exceptions';
 import { HttpStatus } from '@nestjs/common';
 import { ApiResponseDto } from '../../../common/dto';
+import { PaginationMeta } from '../../../common/interfaces';
 
 @Injectable()
 export class VolunteersService {
@@ -134,6 +137,82 @@ export class VolunteersService {
     return ApiResponseDto.success(
       VolunteerResponseDto.fromEntity(volunteer, photoUrl),
     );
+  }
+
+  async getAdminVolunteers(query: VolunteerQueryDto) {
+    const { data, total } = await this.repository.findManyForAdmin({
+      skip: query.skip,
+      take: query.take,
+      sortBy: query.sortBy,
+      sortOrder: query.sortOrder,
+      search: query.search,
+      volunteerStatus: query.volunteerStatus,
+      city: query.city,
+      state: query.state,
+    });
+    const items = data.map((v) => VolunteerListItemDto.fromEntity(v));
+    return ApiResponseDto.paginated(items, this.buildMeta(query.page, query.pageSize, total), 'Volunteers retrieved');
+  }
+
+  async getAdminVolunteerById(id: string) {
+    const volunteer = await this.repository.findByIdWithApplications(id);
+    if (!volunteer) throw new EntityNotFoundException('Volunteer', id);
+    const photoUrl = await this.resolveProfilePhotoUrl(volunteer);
+    return ApiResponseDto.success(
+      VolunteerResponseDto.fromEntity(volunteer, photoUrl),
+      'Volunteer retrieved',
+    );
+  }
+
+  async verifyVolunteer(id: string, adminId: string) {
+    const volunteer = await this.repository.findById(id);
+    if (!volunteer) throw new EntityNotFoundException('Volunteer', id);
+    if (volunteer.volunteerStatus === VolunteerStatus.VERIFIED) {
+      throw new BusinessException('Volunteer is already verified');
+    }
+
+    const updated = await this.repository.update(id, {
+      volunteerStatus: VolunteerStatus.VERIFIED,
+      updatedBy: adminId,
+      version: { increment: 1 },
+    });
+
+    this.logger.log(`Volunteer ${volunteer.volunteerCode} verified by admin ${adminId}`);
+    return ApiResponseDto.success(VolunteerListItemDto.fromEntity(updated), 'Volunteer verified');
+  }
+
+  async rejectVolunteer(id: string, adminId: string) {
+    const volunteer = await this.repository.findById(id);
+    if (!volunteer) throw new EntityNotFoundException('Volunteer', id);
+    if (volunteer.volunteerStatus === VolunteerStatus.REJECTED) {
+      throw new BusinessException('Volunteer is already rejected');
+    }
+
+    const updated = await this.repository.update(id, {
+      volunteerStatus: VolunteerStatus.REJECTED,
+      updatedBy: adminId,
+      version: { increment: 1 },
+    });
+
+    this.logger.log(`Volunteer ${volunteer.volunteerCode} rejected by admin ${adminId}`);
+    return ApiResponseDto.success(VolunteerListItemDto.fromEntity(updated), 'Volunteer rejected');
+  }
+
+  async getDashboardStats() {
+    const [volunteerStats, applicationStats] = await Promise.all([
+      this.repository.getStats(),
+      this.repository.getApplicationStats(),
+    ]);
+
+    return ApiResponseDto.success({
+      volunteers: volunteerStats,
+      applications: applicationStats,
+    }, 'Dashboard stats retrieved');
+  }
+
+  private buildMeta(page: number, pageSize: number, totalItems: number): PaginationMeta {
+    const totalPages = Math.ceil(totalItems / pageSize);
+    return { page, pageSize, totalItems, totalPages, hasNextPage: page < totalPages, hasPreviousPage: page > 1 };
   }
 
   private async validateNoDuplicate(email: string, phone: string): Promise<void> {
