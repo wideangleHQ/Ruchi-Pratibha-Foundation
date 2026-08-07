@@ -32,10 +32,14 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
     const res = await fetch(`${API_BASE_URL}/dashboard/verify`, {
       headers: { Cookie: `${COOKIE_NAME}=${cookie.value}` },
       cache: 'no-store',
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
 
     if (!res.ok) {
       const response = NextResponse.redirect(new URL('/access', request.url));

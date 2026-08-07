@@ -70,7 +70,7 @@ const DEFAULT_ITEMS: CardNavItem[] = [
       { label: 'Grassroots Projects', href: '#impact-story', ariaLabel: 'Featured Grassroots Projects' },
       { label: 'Key Statistics', href: '#legacy', ariaLabel: 'Impact Statistics' },
       { label: 'Events & Workshops', href: '#moments', ariaLabel: 'Events and Activities' },
-      { label: 'Volunteer Journey', href: '#volunteer', ariaLabel: 'Join as a Volunteer' },
+      { label: 'Volunteer Journey', href: '/get-involved/volunteer', ariaLabel: 'Join as a Volunteer' },
     ],
   },
   {
@@ -263,7 +263,7 @@ export const CardNav: React.FC<CardNavProps> = ({
 
           {/* Right: CTA Button */}
           <a
-            href="#volunteer"
+            href="/get-involved/volunteer"
             className="h-8 px-3.5 flex items-center justify-center text-[11px] uppercase tracking-widest font-space font-bold rounded-sm shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 whitespace-nowrap"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >

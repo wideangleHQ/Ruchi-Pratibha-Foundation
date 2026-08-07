@@ -42,7 +42,7 @@ export const PILLARS: PillarItem[] = [
     description:
       'Promoting initiatives that contribute to community welfare, education, awareness, and sustainable social development.',
     ctaText: 'Explore Initiatives',
-    href: '#volunteer',
+    href: '/get-involved/volunteer',
     aspectRatio: '16:10',
   },
 ];

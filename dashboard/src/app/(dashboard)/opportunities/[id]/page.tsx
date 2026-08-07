@@ -3,7 +3,6 @@
 import { use, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft, Edit, Send, Archive, Copy, Trash2, Eye,
   Mail, Phone, MapPin, Calendar, Clock, Users, Briefcase,
@@ -240,14 +239,7 @@ export default function OpportunityDetailPage({ params }: { params: Promise<{ id
         </div>
 
         {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-          >
+          <div key={activeTab}>
             {activeTab === 'Overview' && (
               <div className="grid gap-4 lg:grid-cols-2">
                 <ContentCard title="Essential Details">
@@ -477,8 +469,7 @@ export default function OpportunityDetailPage({ params }: { params: Promise<{ id
                 </ContentCard>
               </div>
             )}
-          </motion.div>
-        </AnimatePresence>
+          </div>
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CommandDialog,
   CommandInput,
@@ -29,20 +29,20 @@ export function SearchCommand({ open: controlledOpen, onOpenChange }: SearchComm
   const isOpen = controlledOpen ?? internalOpen;
   const setIsOpen = onOpenChange ?? setInternalOpen;
 
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        setIsOpen(!isOpen);
+        if (controlledOpen !== undefined && onOpenChange) {
+          onOpenChange(!controlledOpen);
+        } else {
+          setInternalOpen((prev) => !prev);
+        }
       }
-    },
-    [isOpen, setIsOpen],
-  );
-
-  useEffect(() => {
+    };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+  }, [controlledOpen, onOpenChange]);
 
   return (
     <CommandDialog open={isOpen} onOpenChange={setIsOpen}>

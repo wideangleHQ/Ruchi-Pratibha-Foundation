@@ -41,7 +41,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         window.location.pathname === '/work' ||
         window.location.pathname === '/csr' ||
         window.location.pathname === '/publications' ||
-        window.location.pathname === '/library') &&
+        window.location.pathname === '/library' ||
+        window.location.pathname === '/get-involved') &&
       href.includes('#')
     ) {
       const targetId = href.split('#')[1];
@@ -133,7 +134,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               {/* Primary CTA & Explore Section */}
               <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
                 <a
-                  href="#volunteer"
+                  href="/get-involved/volunteer"
                   onClick={onClose}
                   className="w-full text-center py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent shadow-md cursor-pointer whitespace-nowrap min-h-[48px] flex items-center justify-center"
                 >

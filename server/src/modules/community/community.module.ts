@@ -7,6 +7,7 @@ import { EventSessionsModule } from './event-sessions/event-sessions.module';
 import { EventShiftsModule } from './event-shifts/event-shifts.module';
 import { EventSpeakersModule } from './event-speakers/event-speakers.module';
 import { EventsModule } from './events/events.module';
+import { PublicRegistrationModule } from './public-registration/public-registration.module';
 import { VenuesModule } from './venues/venues.module';
 import { VolunteerApplicationsModule } from './volunteer-applications/volunteer-applications.module';
 import { VolunteerCertificatesModule } from './volunteer-certificates/volunteer-certificates.module';
@@ -32,6 +33,7 @@ import { VolunteersModule } from './volunteers/volunteers.module';
     VolunteerParticipationModule,
     VolunteerCertificatesModule,
     CsrOpportunitiesModule,
+    PublicRegistrationModule,
   ],
 })
 export class CommunityModule {}

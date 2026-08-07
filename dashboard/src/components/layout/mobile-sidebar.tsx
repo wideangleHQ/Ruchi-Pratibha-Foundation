@@ -33,8 +33,10 @@ export function MobileSidebar() {
   const { isMobileOpen, closeMobile } = useSidebar();
 
   useEffect(() => {
-    closeMobile();
-  }, [pathname, closeMobile]);
+    if (isMobileOpen) {
+      closeMobile();
+    }
+  }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AnimatePresence>

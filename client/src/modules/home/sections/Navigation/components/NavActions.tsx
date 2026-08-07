@@ -88,7 +88,7 @@ export const NavActions: React.FC<NavActionsProps> = ({
 
       {/* 5. Volunteer CTA */}
       <a
-        href="#volunteer"
+        href="/get-involved/volunteer"
         className="h-8 px-2.5 lg:px-3.5 flex items-center justify-center text-[10px] lg:text-[11px] uppercase tracking-wider xl:tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent whitespace-nowrap flex-shrink-0"
       >
         Become a Volunteer

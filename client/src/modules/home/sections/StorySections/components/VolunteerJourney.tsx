@@ -86,7 +86,7 @@ export const VolunteerJourney: React.FC = () => {
         {/* CTA Banner */}
         <div className="text-center">
           <a
-            href="#volunteer-register"
+            href="/get-involved/volunteer"
             className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md"
           >
             <span>Become a Volunteer</span>

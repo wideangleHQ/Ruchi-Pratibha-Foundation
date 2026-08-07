@@ -67,10 +67,10 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Get Involved',
     links: [
-      { label: 'Volunteer', href: '#volunteer' },
-      { label: 'CSR Partnership', href: '#csr-partnership' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Future Donations', href: '#donations', badge: 'Coming Soon' },
+      { label: 'Volunteer', href: '/get-involved/volunteer' },
+      { label: 'CSR Partnership', href: '/get-involved#partner' },
+      { label: 'Contact', href: '/contact#contact-hero' },
+      { label: 'Future Donations', href: '/get-involved#support', badge: 'Coming Soon' },
     ],
   },
 ];

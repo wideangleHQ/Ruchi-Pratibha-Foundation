@@ -119,11 +119,11 @@ export const CATEGORIES: MegaCategoryItem[] = [
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'Events & Workshops', href: '#moments', ariaLabel: 'Upcoming Events and Workshops' },
-      { label: 'Volunteers', href: '#volunteer', ariaLabel: 'Become a Foundation Volunteer' },
-      { label: 'Institutional Partners', href: '#transparency', ariaLabel: 'Governance & Institutional Partners' },
-      { label: 'Contact Us', href: '#volunteer', ariaLabel: 'Contact Foundation Office' },
-      { label: 'Support & Giving', href: '#volunteer', ariaLabel: 'Support Foundation Programs' },
+      { label: 'Events & Workshops', href: '/get-involved#events', ariaLabel: 'Upcoming Events and Workshops' },
+      { label: 'Volunteers', href: '/get-involved/volunteer', ariaLabel: 'Become a Foundation Volunteer' },
+      { label: 'Institutional Partners', href: '/get-involved#partner', ariaLabel: 'Governance & Institutional Partners' },
+      { label: 'Contact Us', href: '/contact#contact-hero', ariaLabel: 'Contact Foundation Office' },
+      { label: 'Support & Giving', href: '/get-involved#support', ariaLabel: 'Support Foundation Programs' },
     ],
   },
 ];
@@ -192,7 +192,8 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
       (window.location.pathname === '/about' ||
         window.location.pathname === '/foundation' ||
         window.location.pathname === '/work' ||
-        window.location.pathname === '/csr') &&
+        window.location.pathname === '/csr' ||
+        window.location.pathname === '/get-involved') &&
       href.includes('#')
     ) {
       const targetId = href.split('#')[1];

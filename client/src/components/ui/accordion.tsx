@@ -116,7 +116,7 @@ export const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTri
         aria-expanded={isOpen}
         onClick={() => itemValue && toggleItem(itemValue)}
         className={cn(
-          'flex w-full items-center justify-between py-3.5 text-left font-cormorant text-xl font-bold tracking-tight text-white transition-all duration-200 hover:text-institutional-accent focus:outline-none focus-visible:ring-1 focus-visible:ring-institutional-accent min-h-[48px] cursor-pointer group',
+          'flex w-full items-center justify-between py-3.5 text-left font-cormorant text-xl font-bold tracking-tight text-institutional-dark dark:text-white transition-all duration-200 hover:text-institutional-accent focus:outline-none focus-visible:ring-1 focus-visible:ring-institutional-accent min-h-[48px] cursor-pointer group',
           isOpen && 'text-institutional-accent',
           className
         )}

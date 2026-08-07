@@ -100,11 +100,7 @@ export function Sidebar() {
                         )}
                       >
                         {isActive && (
-                          <motion.div
-                            layoutId="sidebar-active"
-                            className="absolute inset-0 rounded-[12px] bg-sidebar-accent"
-                            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                          />
+                          <div className="absolute inset-0 rounded-[12px] bg-sidebar-accent" />
                         )}
                         <item.icon className={cn('relative z-10 h-4.5 w-4.5 shrink-0', isActive && 'text-sidebar-primary')} strokeWidth={1.75} />
                         <AnimatePresence>

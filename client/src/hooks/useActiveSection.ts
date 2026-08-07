@@ -16,6 +16,11 @@ const SECTION_IDS = [
   'why-we-matter',
   'future',
   'join-journey',
+  'gateway-hero',
+  'events',
+  'volunteer',
+  'partner',
+  'support',
 ];
 
 export function useActiveSection() {

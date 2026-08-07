@@ -240,18 +240,12 @@ export default function OpportunitiesPage() {
         ) : (
           <>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {opportunities.map((opp, index) => {
+                {opportunities.map((opp) => {
                   const badge = STATUS_MAP[opp.opportunityStatus] ?? { status: 'pending' as const, label: opp.opportunityStatus };
                   const isSelected = selectedIds.includes(opp.id);
                   return (
-                    <motion.div
+                    <div
                       key={opp.id}
-                      layout
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.2, delay: index * 0.03 }}
                       className={`group relative flex flex-col rounded-[16px] border bg-card shadow-foundation-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 cursor-pointer ${isSelected ? 'ring-2 ring-primary ring-offset-1' : ''}`}
                       onClick={() => router.push(`/opportunities/${opp.id}`)}
                     >
@@ -305,10 +299,9 @@ export default function OpportunitiesPage() {
                           )}
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
-              </AnimatePresence>
             </div>
 
             {meta && meta.totalPages > 1 && (

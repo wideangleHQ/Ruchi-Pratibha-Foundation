@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMutation } from '@tanstack/react-query';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ChevronLeft, ChevronRight, Save, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 import { PageHeader } from '@/components/dashboard/page-header';
@@ -100,16 +99,12 @@ function getInitialFormData(): FormData {
   };
 }
 
-const slideVariants = {
-  enter: (direction: number) => ({ x: direction > 0 ? 60 : -60, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit: (direction: number) => ({ x: direction > 0 ? -60 : 60, opacity: 0 }),
-};
+
 
 export default function CreateOpportunityPage() {
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const [direction, setDirection] = useState(0);
+
   const [form, setForm] = useState<FormData>(getInitialFormData);
 
   const createMut = useMutation({
@@ -151,9 +146,9 @@ export default function CreateOpportunityPage() {
     });
   };
 
-  const goNext = () => { setDirection(1); setStep((s) => Math.min(s + 1, WIZARD_STEPS.length - 1)); };
-  const goPrev = () => { setDirection(-1); setStep((s) => Math.max(s - 1, 0)); };
-  const goToStep = (i: number) => { setDirection(i > step ? 1 : -1); setStep(i); };
+  const goNext = () => { setStep((s) => Math.min(s + 1, WIZARD_STEPS.length - 1)); };
+  const goPrev = () => { setStep((s) => Math.max(s - 1, 0)); };
+  const goToStep = (i: number) => { setStep(i); };
 
   const canGoNext = step < WIZARD_STEPS.length - 1;
   const canGoPrev = step > 0;
@@ -174,16 +169,7 @@ export default function CreateOpportunityPage() {
 
         {/* Step Content */}
         <div className="min-h-[420px]">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={step}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
+            <div key={step}>
               {/* Step 0: General */}
               {step === 0 && (
                 <ContentCard title="General Information">
@@ -622,8 +608,7 @@ export default function CreateOpportunityPage() {
                   </ContentCard>
                 </div>
               )}
-            </motion.div>
-          </AnimatePresence>
+            </div>
         </div>
 
         {/* Footer Navigation */}

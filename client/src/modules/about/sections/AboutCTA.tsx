@@ -56,7 +56,7 @@ export const AboutCTA: React.FC = () => {
             className="flex flex-col sm:flex-row items-center gap-4"
           >
             <Link
-              href="#volunteer"
+              href="/get-involved/volunteer"
               className="group inline-flex items-center gap-2.5 px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-xl"
             >
               <span>Become a Volunteer</span>

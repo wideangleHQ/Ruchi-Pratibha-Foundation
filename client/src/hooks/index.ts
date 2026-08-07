@@ -1,2 +1,2 @@
-// Custom React Hooks export barrel
-export {};
+export { useVolunteerRegistration } from './useVolunteerRegistration';
+export type { RegistrationResult, RegistrationPayload } from './useVolunteerRegistration';

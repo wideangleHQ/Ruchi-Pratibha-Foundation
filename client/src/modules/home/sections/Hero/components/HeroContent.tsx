@@ -63,7 +63,7 @@ export const HeroContent: React.FC = () => {
             {HERO_CONTENT.primaryCta}
           </a>
           <a
-            href="#volunteer"
+            href="/get-involved/volunteer"
             className="w-full px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/20 hover:border-institutional-accent hover:text-institutional-accent transition-colors duration-200 rounded-sm text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap"
           >
             {HERO_CONTENT.secondaryCta}

@@ -6,7 +6,6 @@ import { useSidebar } from '@/hooks/use-sidebar';
 import { ThemeToggle } from './theme-toggle';
 import { NotificationBell } from './notification-bell';
 import { ProfileDropdown } from './profile-dropdown';
-import { cn } from '@/lib/utils';
 
 interface TopbarProps {
   children?: React.ReactNode;
@@ -18,12 +17,7 @@ export function Topbar({ children, onSearchClick }: TopbarProps) {
 
   return (
     <header
-      className={cn(
-        'sticky top-0 z-30 flex h-[var(--topbar-height)] items-center border-b bg-background/95 transition-[margin,width] duration-200',
-        isCollapsed
-          ? 'lg:ml-[var(--sidebar-width-collapsed)] lg:w-[calc(100%-var(--sidebar-width-collapsed))]'
-          : 'lg:ml-[var(--sidebar-width)] lg:w-[calc(100%-var(--sidebar-width))]',
-      )}
+      className="sticky top-0 z-30 flex h-[var(--topbar-height)] items-center border-b bg-background/95"
     >
       <div className="flex w-full items-center justify-between px-4 lg:px-6">
         <div className="flex items-center gap-3">

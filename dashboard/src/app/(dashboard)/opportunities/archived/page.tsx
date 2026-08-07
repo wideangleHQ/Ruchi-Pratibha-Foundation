@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Archive, ChevronRight, Search } from 'lucide-react';
 import { PageHeader } from '@/components/dashboard/page-header';
 import { StatCard } from '@/components/dashboard/stat-card';
@@ -64,15 +63,9 @@ export default function ArchivedOpportunitiesPage() {
         ) : (
           <>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {opportunities.map((opp, index) => (
-                  <motion.div
+                {opportunities.map((opp) => (
+                  <div
                     key={opp.id}
-                    layout
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }}
                     className="group flex flex-col rounded-[16px] border bg-muted/30 shadow-none transition-all duration-200 hover:bg-card hover:shadow-md cursor-pointer"
                     onClick={() => router.push(`/opportunities/${opp.id}`)}
                   >
@@ -90,9 +83,8 @@ export default function ArchivedOpportunitiesPage() {
                         {opp.registrationCloses ? `Closed ${new Date(opp.registrationCloses).getFullYear()}` : 'N/A'}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </AnimatePresence>
             </div>
             
             {meta && meta.totalPages > 1 && (
