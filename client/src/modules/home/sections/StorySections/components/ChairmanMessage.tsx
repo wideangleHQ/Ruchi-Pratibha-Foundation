@@ -40,7 +40,7 @@ export const ChairmanMessage: React.FC = () => {
 
   return (
     <section
-      id="founders-words"
+      id="founder"
       className="relative py-16 sm:py-20 lg:py-0 lg:h-screen lg:min-h-[720px] lg:max-h-[920px] flex items-center bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-institutional-light border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-6 lg:px-8 xl:px-12">

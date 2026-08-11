@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { ArchivePhoto } from '../types';
@@ -91,17 +92,43 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         {/* Content Container */}
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-16 pb-8">
           {/* Left: Large Photograph Viewer */}
-          <div className="lg:col-span-7 flex justify-center">
-            <div className="w-full aspect-[4/3] rounded-sm bg-gradient-to-br from-institutional-surface/90 via-institutional-dark to-institutional-darker border border-white/20 p-8 flex flex-col items-center justify-center text-center shadow-2xl relative">
-              <span className="text-xs font-space uppercase tracking-[0.25em] text-institutional-accent font-semibold mb-2">
-                [ High-Resolution Archival Photograph ]
-              </span>
-              <h3 className="font-cormorant text-2xl sm:text-3xl font-bold text-white mb-2">
-                {photo.title}
-              </h3>
-              <span className="text-xs font-space text-gray-300">
-                {photo.location} • Year {photo.year}
-              </span>
+          <div className="lg:col-span-7 flex justify-center w-full">
+            <div className="w-full aspect-[4/3] rounded-sm border border-white/20 shadow-2xl relative overflow-hidden bg-black/5 dark:bg-white/5">
+              {photo.imageUrl ? (
+                <>
+                  <Image
+                    src={photo.imageUrl}
+                    alt={photo.title}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-w-768px) 100vw, 600px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 pointer-events-none z-10" />
+                  <div className="absolute inset-0 p-8 flex flex-col items-center justify-center text-center text-white z-10">
+                    <span className="text-xs font-space uppercase tracking-[0.25em] text-institutional-accent font-semibold mb-2">
+                      [ High-Resolution Archival Photograph ]
+                    </span>
+                    <h3 className="font-cormorant text-2xl sm:text-3xl font-bold text-white mb-2">
+                      {photo.title}
+                    </h3>
+                    <span className="text-xs font-space text-gray-300">
+                      {photo.location} • Year {photo.year}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <div className="w-full h-full p-8 flex flex-col items-center justify-center text-center text-white bg-gradient-to-br from-institutional-surface/90 via-institutional-dark to-institutional-darker">
+                  <span className="text-xs font-space uppercase tracking-[0.25em] text-institutional-accent font-semibold mb-2">
+                    [ High-Resolution Archival Photograph ]
+                  </span>
+                  <h3 className="font-cormorant text-2xl sm:text-3xl font-bold text-white mb-2">
+                    {photo.title}
+                  </h3>
+                  <span className="text-xs font-space text-gray-300">
+                    {photo.location} • Year {photo.year}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

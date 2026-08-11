@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { CATEGORIES, MegaCategoryItem } from './MegaNavPanel';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { useRouter } from 'next/navigation';
 import {
   Accordion,
   AccordionItem,
@@ -18,6 +19,7 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+  const router = useRouter();
   const activeSection = useActiveSection();
 
   // Prevent background body scroll when mobile menu panel is open
@@ -34,25 +36,28 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onClose();
-    if (
-      typeof window !== 'undefined' &&
-      (window.location.pathname === '/about' ||
-        window.location.pathname === '/foundation' ||
-        window.location.pathname === '/work' ||
-        window.location.pathname === '/csr' ||
-        window.location.pathname === '/publications' ||
-        window.location.pathname === '/library' ||
-        window.location.pathname === '/get-involved') &&
-      href.includes('#')
-    ) {
-      const targetId = href.split('#')[1];
-      if (targetId) {
-        const el = document.getElementById(targetId);
+    if (typeof window !== 'undefined') {
+      const [path, hash] = href.includes('#') ? href.split('#') : [href, ''];
+      const isCurrentPage =
+        path === '' ||
+        path === window.location.pathname ||
+        (path === '/about' && window.location.pathname === '/foundation') ||
+        (path === '/foundation' && window.location.pathname === '/about') ||
+        (path === '/work' && window.location.pathname === '/csr') ||
+        (path === '/csr' && window.location.pathname === '/work');
+
+      if (isCurrentPage && hash) {
+        const el = document.getElementById(hash);
         if (el) {
           e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth' });
+          const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+          el.scrollIntoView({ behavior });
           window.history.pushState(null, '', href);
         }
+      } else {
+        // Intercept link click and route using client-side transition
+        e.preventDefault();
+        router.push(href);
       }
     }
   };

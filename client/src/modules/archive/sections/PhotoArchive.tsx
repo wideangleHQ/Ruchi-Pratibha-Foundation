@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ARCHIVE_PHOTOS } from '../data/archiveData';
 import { ArchivePhoto } from '../types';
@@ -47,8 +48,8 @@ export const PhotoArchive: React.FC = () => {
 
   return (
     <section
-      id="photo-archive"
-      className="py-24 sm:py-36 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24"
+      id="gallery"
+      className="py-24 sm:py-36 bg-institutional-cream dark:bg-institutional-surface/20 text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
@@ -121,19 +122,45 @@ export const PhotoArchive: React.FC = () => {
                           <span>{photo.year}</span>
                         </div>
 
-                        {/* Image Frame Placeholder with Variable Height */}
+                        {/* Image Frame with Variable Height */}
                         <div
-                          className={`w-full ${aspectClass} rounded-sm bg-gradient-to-br from-institutional-surface/95 via-institutional-dark to-institutional-darker border border-black/10 dark:border-white/10 p-5 flex flex-col items-center justify-center text-center text-white mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-300`}
+                          className={`w-full ${aspectClass} rounded-sm border border-black/10 dark:border-white/10 mb-4 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-300 bg-black/5 dark:bg-white/5`}
                         >
-                          <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                            [ Archival Capture • {photo.year} ]
-                          </span>
-                          <h4 className="font-cormorant text-xl font-bold text-white mb-1">
-                            {photo.title}
-                          </h4>
-                          <span className="text-[9px] font-space text-gray-400">
-                            {photo.location}
-                          </span>
+                          {photo.imageUrl ? (
+                            <>
+                              <Image
+                                src={photo.imageUrl}
+                                alt={photo.title}
+                                fill
+                                className="object-cover object-center"
+                                sizes="(max-w-768px) 100vw, 33vw"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 transition-opacity duration-300 z-10 pointer-events-none" />
+                              <div className="absolute inset-0 p-5 flex flex-col items-center justify-center text-center text-white z-10">
+                                <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                                  [ Archival Capture • {photo.year} ]
+                                </span>
+                                <h4 className="font-cormorant text-xl font-bold text-white mb-1">
+                                  {photo.title}
+                                </h4>
+                                <span className="text-[9px] font-space text-gray-300">
+                                  {photo.location}
+                                </span>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="w-full h-full p-5 flex flex-col items-center justify-center text-center text-white bg-gradient-to-br from-institutional-surface/95 via-institutional-dark to-institutional-darker">
+                              <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                                [ Archival Capture • {photo.year} ]
+                              </span>
+                              <h4 className="font-cormorant text-xl font-bold text-white mb-1">
+                                {photo.title}
+                              </h4>
+                              <span className="text-[9px] font-space text-gray-400">
+                                {photo.location}
+                              </span>
+                            </div>
+                          )}
                         </div>
 
                         {/* Title & Short Story Preview */}
@@ -184,11 +211,25 @@ export const PhotoArchive: React.FC = () => {
                     </div>
 
                     <div
-                      className={`w-full ${aspectClass} rounded-xs bg-gradient-to-br from-institutional-surface/95 via-institutional-dark to-institutional-darker border border-black/10 dark:border-white/10 p-2 flex flex-col items-center justify-center text-center text-white mb-2 overflow-hidden`}
+                      className={`w-full ${aspectClass} rounded-xs border border-black/10 dark:border-white/10 mb-2 overflow-hidden relative bg-black/5 dark:bg-white/5`}
                     >
-                      <span className="text-[8px] font-space uppercase text-institutional-accent font-semibold">
-                        [ Photo ]
-                      </span>
+                      {photo.imageUrl ? (
+                        <>
+                          <Image
+                            src={photo.imageUrl}
+                            alt={photo.title}
+                            fill
+                            className="object-cover object-center"
+                            sizes="45vw"
+                          />
+                        </>
+                      ) : (
+                        <div className="w-full h-full p-2 flex flex-col items-center justify-center text-center text-white bg-gradient-to-br from-institutional-surface/95 via-institutional-dark to-institutional-darker">
+                          <span className="text-[8px] font-space uppercase text-institutional-accent font-semibold">
+                            [ Photo ]
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <h4 className="font-cormorant text-sm font-bold text-institutional-dark dark:text-white leading-tight mb-1">

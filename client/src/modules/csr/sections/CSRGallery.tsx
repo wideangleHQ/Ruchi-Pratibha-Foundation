@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, Maximize2, X } from 'lucide-react';
 import { CSR_GALLERY_ITEMS } from '../data/csrData';
@@ -108,32 +109,57 @@ export const CSRGallery: React.FC = () => {
               className="group cursor-pointer"
             >
               <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-2 shadow-md hover:shadow-xl hover:border-institutional-accent transition-all duration-300">
-                <InteractiveImage className="w-full h-full rounded-sm">
-                  <div className="w-full h-full flex flex-col justify-between p-5 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
-                    <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
-                      <span>{item.category}</span>
-                      <span>{item.location}</span>
-                    </div>
+                <InteractiveImage className="w-full h-full rounded-sm relative">
+                  {item.imageUrl ? (
+                    <>
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                        sizes="(max-w-768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-85 pointer-events-none z-10" />
+                      <div className="absolute inset-0 p-5 flex flex-col justify-between text-white z-10">
+                        <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                          <span>{item.category}</span>
+                          <span>{item.location}</span>
+                        </div>
+                        <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-300 flex items-center justify-between">
+                          <span>ITEM #{item.id}</span>
+                          <span className="flex items-center gap-1 text-institutional-accent">
+                            <Maximize2 className="w-3 h-3" /> View Photo
+                          </span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="w-full h-full flex flex-col justify-between p-5 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
+                      <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                        <span>{item.category}</span>
+                        <span>{item.location}</span>
+                      </div>
 
-                    <div className="my-auto text-center py-4 px-2">
-                      <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                        [ Gallery Photo Placeholder ]
-                      </span>
-                      <h4 className="font-cormorant text-xl font-bold text-white mb-1">
-                        {item.title}
-                      </h4>
-                      <p className="font-manrope text-xs text-gray-300 line-clamp-2">
-                        {item.caption}
-                      </p>
-                    </div>
+                      <div className="my-auto text-center py-4 px-2">
+                        <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                          [ Gallery Photo Placeholder ]
+                        </span>
+                        <h4 className="font-cormorant text-xl font-bold text-white mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="font-manrope text-xs text-gray-300 line-clamp-2">
+                          {item.caption}
+                        </p>
+                      </div>
 
-                    <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-400 flex items-center justify-between">
-                      <span>ITEM #{item.id}</span>
-                      <span className="flex items-center gap-1 text-institutional-accent">
-                        <Maximize2 className="w-3 h-3" /> View Photo
-                      </span>
+                      <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-400 flex items-center justify-between">
+                        <span>ITEM #{item.id}</span>
+                        <span className="flex items-center gap-1 text-institutional-accent">
+                          <Maximize2 className="w-3 h-3" /> View Photo
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </InteractiveImage>
               </div>
             </motion.div>
@@ -153,32 +179,57 @@ export const CSRGallery: React.FC = () => {
                 onClick={() => setActiveLightboxItem(item)}
                 className="w-[78vw] shrink-0 snap-center cursor-pointer rounded-sm overflow-hidden border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-2 shadow-none"
               >
-                <InteractiveImage className="w-full h-full rounded-sm">
-                  <div className="w-full aspect-[4/3] flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white rounded-sm">
-                    <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
-                      <span>{item.category}</span>
-                      <span>{item.location}</span>
+                <InteractiveImage className="w-full h-full rounded-sm relative">
+                  {item.imageUrl ? (
+                    <div className="w-full aspect-[4/3] relative rounded-sm overflow-hidden">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-center"
+                        sizes="78vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 pointer-events-none z-10" />
+                      <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-10">
+                        <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                          <span>{item.category}</span>
+                          <span>{item.location}</span>
+                        </div>
+                        <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-300 flex items-center justify-between">
+                          <span>ITEM #{item.id}</span>
+                          <span className="flex items-center gap-1 text-institutional-accent">
+                            <Maximize2 className="w-3 h-3" /> View Photo
+                          </span>
+                        </div>
+                      </div>
                     </div>
+                  ) : (
+                    <div className="w-full aspect-[4/3] flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white rounded-sm">
+                      <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                        <span>{item.category}</span>
+                        <span>{item.location}</span>
+                      </div>
 
-                    <div className="my-auto text-center py-2 px-1">
-                      <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                        [ Photo Placeholder ]
-                      </span>
-                      <h4 className="font-cormorant text-lg font-bold text-white mb-1 leading-tight">
-                        {item.title}
-                      </h4>
-                      <p className="font-manrope text-xs text-gray-300 line-clamp-2">
-                        {item.caption}
-                      </p>
-                    </div>
+                      <div className="my-auto text-center py-2 px-1">
+                        <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                          [ Photo Placeholder ]
+                        </span>
+                        <h4 className="font-cormorant text-lg font-bold text-white mb-1 leading-tight">
+                          {item.title}
+                        </h4>
+                        <p className="font-manrope text-xs text-gray-300 line-clamp-2">
+                          {item.caption}
+                        </p>
+                      </div>
 
-                    <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex items-center justify-between">
-                      <span>ITEM #{item.id}</span>
-                      <span className="flex items-center gap-1 text-institutional-accent">
-                        <Maximize2 className="w-3 h-3" /> View Photo
-                      </span>
+                      <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex items-center justify-between">
+                        <span>ITEM #{item.id}</span>
+                        <span className="flex items-center gap-1 text-institutional-accent">
+                          <Maximize2 className="w-3 h-3" /> View Photo
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </InteractiveImage>
               </div>
             ))}
@@ -236,15 +287,29 @@ export const CSRGallery: React.FC = () => {
                   {activeLightboxItem.title}
                 </h3>
 
-                <div className="aspect-[16/9] w-full rounded bg-white/5 border border-white/15 p-6 flex flex-col justify-between mb-4 relative">
-                  <div className="my-auto text-center">
-                    <span className="text-sm font-space uppercase tracking-widest text-institutional-accent font-semibold block">
-                      [ High-Resolution Archival Photograph ]
-                    </span>
-                    <p className="text-xs text-gray-400 mt-2">
-                      TODO: Insert official photograph file from RPF media drive.
-                    </p>
-                  </div>
+                <div className="aspect-[16/9] w-full rounded border border-white/15 mb-4 relative overflow-hidden bg-black/5 dark:bg-white/5">
+                  {activeLightboxItem.imageUrl ? (
+                    <>
+                      <Image
+                        src={activeLightboxItem.imageUrl}
+                        alt={activeLightboxItem.title}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-w-768px) 100vw, 800px"
+                      />
+                    </>
+                  ) : (
+                    <div className="w-full h-full p-6 flex flex-col justify-between relative text-white bg-white/5">
+                      <div className="my-auto text-center">
+                        <span className="text-sm font-space uppercase tracking-widest text-institutional-accent font-semibold block">
+                          [ High-Resolution Archival Photograph ]
+                        </span>
+                        <p className="text-xs text-gray-400 mt-2">
+                          TODO: Insert official photograph file from RPF media drive.
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <p className="font-manrope text-sm text-gray-300 leading-relaxed mb-4">

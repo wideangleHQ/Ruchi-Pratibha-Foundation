@@ -81,7 +81,7 @@ export const AboutHero: React.FC = () => {
             className="flex flex-col gap-3.5 w-[70%] sm:w-full lg:w-auto lg:min-w-[280px]"
           >
             <a
-              href="#about-foundation"
+              href="#foundation"
               className="inline-flex items-center justify-center gap-2.5 w-full px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent min-h-[44px]"
             >
               <span>Explore Our Journey</span>

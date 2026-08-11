@@ -171,7 +171,7 @@ export const EventArchive: React.FC = () => {
                             <span>{folder.keyMoments.join(' • ')}</span>
                           </div>
                           <a
-                            href="#photo-archive"
+                            href="#gallery"
                             className="text-institutional-accent font-semibold hover:underline shrink-0"
                           >
                             Browse Year {folder.year} Vault Records &rarr;

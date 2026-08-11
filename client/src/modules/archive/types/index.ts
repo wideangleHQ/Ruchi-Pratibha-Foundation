@@ -12,6 +12,7 @@ export interface ArchivePhoto {
   relatedPublication?: string;
   relatedEventId?: string;
   downloadUrl?: string;
+  imageUrl?: string;
 }
 
 export interface ArchiveCollection {

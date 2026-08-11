@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { useRouter } from 'next/navigation';
 
 export interface NavLinkItem {
   label: string;
@@ -28,11 +29,11 @@ export const CATEGORIES: MegaCategoryItem[] = [
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'About Foundation', href: '/about#about-foundation', ariaLabel: 'About Ruchi Prativa Foundation' },
+      { label: 'About Foundation', href: '/about#foundation', ariaLabel: 'About Ruchi Prativa Foundation' },
       { label: 'Story Behind the Foundation', href: '/about#foundation-story', ariaLabel: 'The Story Behind the Foundation' },
-      { label: "Founder's Words", href: '/about#founders-words', ariaLabel: "Founder's Words" },
-      { label: 'Vision • Mission • Values', href: '/about#vision-mission-values', ariaLabel: 'Vision Mission Values' },
-      { label: 'Journey of an Institution', href: '/about#journey', ariaLabel: 'Journey of an Institution' },
+      { label: "Founder's Words", href: '/about#founder', ariaLabel: "Founder's Words" },
+      { label: 'Vision • Mission • Values', href: '/about#mission', ariaLabel: 'Vision Mission Values' },
+      { label: 'Journey of an Institution', href: '/about#timeline', ariaLabel: 'Journey of an Institution' },
       { label: 'Institutional Milestones', href: '/about#milestones', ariaLabel: 'Institutional Milestones' },
       { label: 'Leadership', href: '/about#leadership', ariaLabel: 'Foundation Leadership' },
       { label: 'Governance Charter', href: '/about#governance', ariaLabel: 'Governance Charter' },
@@ -67,11 +68,11 @@ export const CATEGORIES: MegaCategoryItem[] = [
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'About Award', href: '#sanman', ariaLabel: 'Ruchi Prativa Sanman Overview' },
-      { label: 'Award Categories', href: '#sanman', ariaLabel: 'Sanman Award Categories' },
-      { label: 'Laureates & Awardees', href: '#sanman', ariaLabel: 'Honored Laureates and Awardees' },
-      { label: 'Hall of Fame', href: '#sanman', ariaLabel: 'Hall of Fame Gallery' },
-      { label: 'Selection Jury', href: '#sanman', ariaLabel: 'Jury and Selection Committee' },
+      { label: 'About Award', href: '/#sanman', ariaLabel: 'Ruchi Prativa Sanman Overview' },
+      { label: 'Award Categories', href: '/#sanman', ariaLabel: 'Sanman Award Categories' },
+      { label: 'Laureates & Awardees', href: '/#sanman', ariaLabel: 'Honored Laureates and Awardees' },
+      { label: 'Hall of Fame', href: '/#sanman', ariaLabel: 'Hall of Fame Gallery' },
+      { label: 'Selection Jury', href: '/#sanman', ariaLabel: 'Jury and Selection Committee' },
     ],
   },
   {
@@ -82,13 +83,13 @@ export const CATEGORIES: MegaCategoryItem[] = [
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
       { label: 'Knowledge Centre Overview', href: '/publications#pub-hero', ariaLabel: 'Knowledge Centre Overview' },
-      { label: 'Our Collection (Amaruchi & Prativayana)', href: '/publications#pub-collection', ariaLabel: 'Our Collection' },
+      { label: 'Our Collection (Amaruchi & Prativayana)', href: '/publications#collection', ariaLabel: 'Our Collection' },
       { label: 'Featured Publications Bookshelf', href: '/publications#featured-publications', ariaLabel: 'Featured Publications' },
       { label: 'Digital Reader Interface', href: '/publications#digital-reader', ariaLabel: 'Digital Reader Interface' },
       { label: 'Publication Timeline', href: '/publications#publication-timeline', ariaLabel: 'Publication Timeline' },
-      { label: 'Editorial Archive & Articles', href: '/publications#editorial-archive', ariaLabel: 'Editorial Archive' },
-      { label: 'Institutional Reports', href: '/publications#institutional-reports', ariaLabel: 'Institutional Reports' },
-      { label: 'Knowledge Search Repository', href: '/publications#knowledge-search', ariaLabel: 'Knowledge Search' },
+      { label: 'Editorial Archive & Articles', href: '/publications#editorial', ariaLabel: 'Editorial Archive' },
+      { label: 'Institutional Reports', href: '/publications#reports', ariaLabel: 'Institutional Reports' },
+      { label: 'Knowledge Search Repository', href: '/publications#search', ariaLabel: 'Knowledge Search' },
     ],
   },
   {
@@ -98,14 +99,14 @@ export const CATEGORIES: MegaCategoryItem[] = [
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'Living Visual Archive Overview', href: '/visual-archive#archive-hero', ariaLabel: 'Visual Archive Overview' },
+      { label: 'Living Visual Archive Overview', href: '/visual-archive#archive', ariaLabel: 'Visual Archive Overview' },
       { label: 'Spotlight Archival Story', href: '/visual-archive#featured-story', ariaLabel: 'Spotlight Archival Story' },
-      { label: 'Journey Through Time (1997-2026)', href: '/visual-archive#journey-through-time', ariaLabel: 'Journey Through Time' },
-      { label: 'Explore Collections', href: '/visual-archive#explore-collections', ariaLabel: 'Explore Curated Collections' },
-      { label: 'Photo Archive & Lightbox', href: '/visual-archive#photo-archive', ariaLabel: 'Photo Archive' },
-      { label: 'Documentary Streaming Centre', href: '/visual-archive#documentary-centre', ariaLabel: 'Documentary Centre' },
+      { label: 'Journey Through Time (1997-2026)', href: '/visual-archive#timeline', ariaLabel: 'Journey Through Time' },
+      { label: 'Explore Collections', href: '/visual-archive#collections', ariaLabel: 'Explore Curated Collections' },
+      { label: 'Photo Archive & Lightbox', href: '/visual-archive#gallery', ariaLabel: 'Photo Archive' },
+      { label: 'Documentary Streaming Centre', href: '/visual-archive#documentaries', ariaLabel: 'Documentary Centre' },
       { label: 'Annual Convocation Folders', href: '/visual-archive#event-archive', ariaLabel: 'Annual Event Folders' },
-      { label: 'Museum Milestone Wall', href: '/visual-archive#historical-moments', ariaLabel: 'Historical Moments Wall' },
+      { label: 'Museum Milestone Wall', href: '/visual-archive#historical-moments', ariaLabel: 'Museum Milestone Wall' },
       { label: 'Newspaper Press Clippings', href: '/visual-archive#media-coverage', ariaLabel: 'Media Coverage' },
       { label: 'Odisha Memory Map', href: '/visual-archive#odisha-memory-map', ariaLabel: 'Odisha Memory Map' },
       { label: 'Media Resource Centre', href: '/visual-archive#media-resource', ariaLabel: 'Media Resource Centre' },
@@ -121,8 +122,8 @@ export const CATEGORIES: MegaCategoryItem[] = [
     links: [
       { label: 'Events & Workshops', href: '/get-involved#events', ariaLabel: 'Upcoming Events and Workshops' },
       { label: 'Volunteers', href: '/get-involved/volunteer', ariaLabel: 'Become a Foundation Volunteer' },
-      { label: 'Institutional Partners', href: '/get-involved#partner', ariaLabel: 'Governance & Institutional Partners' },
-      { label: 'Contact Us', href: '/contact#contact-hero', ariaLabel: 'Contact Foundation Office' },
+      { label: 'Institutional Partners', href: '/get-involved#partners', ariaLabel: 'Governance & Institutional Partners' },
+      { label: 'Contact Us', href: '/#contact', ariaLabel: 'Contact Foundation Office' },
       { label: 'Support & Giving', href: '/get-involved#support', ariaLabel: 'Support Foundation Programs' },
     ],
   },
@@ -134,6 +135,7 @@ interface MegaNavPanelProps {
 }
 
 export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) => {
+  const router = useRouter();
   const panelRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -187,23 +189,28 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onClose();
-    if (
-      typeof window !== 'undefined' &&
-      (window.location.pathname === '/about' ||
-        window.location.pathname === '/foundation' ||
-        window.location.pathname === '/work' ||
-        window.location.pathname === '/csr' ||
-        window.location.pathname === '/get-involved') &&
-      href.includes('#')
-    ) {
-      const targetId = href.split('#')[1];
-      if (targetId) {
-        const el = document.getElementById(targetId);
+    if (typeof window !== 'undefined') {
+      const [path, hash] = href.includes('#') ? href.split('#') : [href, ''];
+      const isCurrentPage =
+        path === '' ||
+        path === window.location.pathname ||
+        (path === '/about' && window.location.pathname === '/foundation') ||
+        (path === '/foundation' && window.location.pathname === '/about') ||
+        (path === '/work' && window.location.pathname === '/csr') ||
+        (path === '/csr' && window.location.pathname === '/work');
+
+      if (isCurrentPage && hash) {
+        const el = document.getElementById(hash);
         if (el) {
           e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth' });
+          const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+          el.scrollIntoView({ behavior });
           window.history.pushState(null, '', href);
         }
+      } else {
+        // Intercept link click and route using client-side transition
+        e.preventDefault();
+        router.push(href);
       }
     }
   };
@@ -218,7 +225,9 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
     <div
       ref={panelRef}
       aria-hidden={!isOpen}
-      className="hidden lg:block absolute top-full left-0 right-0 w-full bg-institutional-dark border-b border-white/15 shadow-2xl z-50 pointer-events-auto"
+      className={`${
+        isOpen ? 'lg:block' : 'lg:hidden'
+      } hidden absolute top-full left-0 right-0 w-full bg-institutional-dark border-b border-white/15 shadow-2xl z-50 pointer-events-auto`}
     >
       <div className="max-w-[1550px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-8 lg:py-12 xl:py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 lg:gap-6 xl:gap-7 2xl:gap-8 items-stretch">
         {CATEGORIES.map((item, idx) => (

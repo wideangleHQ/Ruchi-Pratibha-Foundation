@@ -35,7 +35,7 @@ export const GlobalUniversalSearch: React.FC<GlobalUniversalSearchProps> = ({
         year: p.year,
         category: p.category,
         snippet: `${p.caption} — ${p.location}`,
-        targetHash: '#photo-archive',
+        targetHash: '#gallery',
       });
     });
 
@@ -59,7 +59,7 @@ export const GlobalUniversalSearch: React.FC<GlobalUniversalSearchProps> = ({
         year: d.year,
         category: d.category,
         snippet: `${d.summary} — ${d.duration}`,
-        targetHash: '#documentary-centre',
+        targetHash: '#documentaries',
       });
     });
 

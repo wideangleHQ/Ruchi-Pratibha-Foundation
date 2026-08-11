@@ -31,6 +31,40 @@ export const FeaturedBookshelf: React.FC = () => {
     setActiveMobileIndex(idx);
   };
 
+  if (FEATURED_PUBLICATIONS.length === 0) {
+    return (
+      <section
+        id="featured-publications"
+        className="py-24 sm:py-32 bg-institutional-cream dark:bg-institutional-dark text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
+      >
+        <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+            <div className="inline-flex items-center gap-3 mb-3">
+              <span className="h-[1px] w-8 bg-institutional-accent" />
+              <span className="text-xs uppercase tracking-[0.25em] font-space text-institutional-accent font-semibold">
+                Digital Bookshelf
+              </span>
+              <span className="h-[1px] w-8 bg-institutional-accent" />
+            </div>
+            <h2 className="font-cormorant text-3xl sm:text-5xl font-bold tracking-tight text-institutional-dark dark:text-white">
+              Featured Publications
+            </h2>
+            <p className="font-manrope text-sm sm:text-base text-institutional-mutedLight dark:text-gray-300 mt-3 leading-relaxed">
+              Curated volumes naturally arranged on our institutional digital bookshelf. Inspect metadata, read online, or download archival PDF records.
+            </p>
+          </div>
+
+          <div className="border border-dashed border-black/10 dark:border-white/10 rounded-sm p-12 text-center max-w-2xl mx-auto bg-white/40 dark:bg-white/5">
+            <Book className="w-10 h-10 mx-auto text-institutional-accent mb-4 opacity-80" />
+            <p className="font-manrope text-sm sm:text-base text-institutional-mutedLight dark:text-gray-300">
+              Publications will appear here as they are added to the Foundation&apos;s digital archive.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       id="featured-publications"

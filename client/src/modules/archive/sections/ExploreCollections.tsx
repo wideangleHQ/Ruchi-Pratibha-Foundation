@@ -23,8 +23,8 @@ export const ExploreCollections: React.FC = () => {
 
   return (
     <section
-      id="explore-collections"
-      className="py-24 sm:py-36 bg-institutional-dark text-white border-b border-white/10 overflow-hidden relative scroll-mt-24"
+      id="collections"
+      className="py-24 sm:py-36 bg-institutional-dark text-white border-b border-white/10 overflow-hidden relative scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Header & Horizontal Controls */}

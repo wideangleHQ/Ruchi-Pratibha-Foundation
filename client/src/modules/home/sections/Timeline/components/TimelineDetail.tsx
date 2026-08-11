@@ -64,25 +64,7 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
                         )}
                       </div>
 
-                      {/* Card Image Placeholder for Card 1 */}
-                      {card.type === 'overview' && (
-                        <div className="relative w-full aspect-[16/10] rounded-sm bg-institutional-surface/5 dark:bg-white/5 border border-institutional-dark/10 dark:border-white/10 p-4 flex flex-col items-center justify-center mb-6 overflow-hidden">
-                          <div
-                            className="absolute inset-0 opacity-10 pointer-events-none"
-                            style={{
-                              backgroundImage:
-                                'linear-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 160, 89, 0.15) 1px, transparent 1px)',
-                              backgroundSize: '16px 16px',
-                            }}
-                          />
-                          <span className="text-[10px] uppercase tracking-[0.2em] font-space text-institutional-accent font-semibold mb-1">
-                            [ Historical Archive Placeholder ]
-                          </span>
-                          <span className="text-[9px] font-space text-institutional-mutedLight dark:text-gray-400">
-                            Archival Photo Record • {milestone.year}
-                          </span>
-                        </div>
-                      )}
+
 
                       {/* Card 2 & 3 Editorial Index Bar */}
                       {card.type !== 'overview' && (
@@ -202,25 +184,7 @@ export const TimelineDetail: React.FC<TimelineDetailProps> = ({ milestone }) => 
               </InteractiveCard>
             </motion.div>
 
-            {/* 3. Image Container: Historical Archive Placeholder (Placed BELOW Both Text Boxes) */}
-            <motion.div variants={cardVariants} className="w-full">
-              <div className="relative w-full aspect-[16/10] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-4 flex flex-col items-center justify-center overflow-hidden shadow-md hover:border-institutional-accent/50 transition-all duration-300">
-                <div
-                  className="absolute inset-0 opacity-10 pointer-events-none"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 160, 89, 0.15) 1px, transparent 1px)',
-                    backgroundSize: '16px 16px',
-                  }}
-                />
-                <span className="font-cormorant text-lg font-bold text-institutional-dark dark:text-white mb-1 text-center">
-                  {milestone.year} Historical Document Archive
-                </span>
-                <span className="text-[10px] uppercase tracking-widest font-space text-institutional-accent font-semibold">
-                  Ruchi Prativa Foundation Heritage
-                </span>
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
       </AnimatePresence>

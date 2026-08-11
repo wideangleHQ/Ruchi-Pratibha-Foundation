@@ -1,107 +1,10 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Book } from 'lucide-react';
 import { PublicationBook, PublicationItem } from './PublicationBook';
 
-export const PUBLICATIONS_DATA: PublicationItem[] = [
-  {
-    id: 'pub-1',
-    title: 'Amaruchi Journal',
-    subtitle: 'Literary & Cultural Anthology',
-    volume: 'Vol. XXVIII',
-    year: '2024 Edition',
-    category: 'Annual Anthology',
-    coverBg: '#1B1722',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#C5A059',
-    spineColor: '#120F18',
-    description:
-      'A celebrated annual anthology compiling critical essays, poetry, and research papers from Odisha’s premier literary figures, young scholars, and cultural historians.',
-    pages: 340,
-    pdfUrl: '#pdf-amaruchi-2024',
-  },
-  {
-    id: 'pub-2',
-    title: 'Prativayana Gazette',
-    subtitle: 'Historical & Social Reform',
-    volume: 'Special Edition',
-    year: '2023 Edition',
-    category: 'Historical Gazette',
-    coverBg: '#2A1E17',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#D4AF37',
-    spineColor: '#1F1510',
-    description:
-      'Documenting three decades of grassroots social initiatives, rural transformation, and educational milestones spearheaded by the Ruchi Prativa Foundation.',
-    pages: 280,
-    pdfUrl: '#pdf-prativayana-2023',
-  },
-  {
-    id: 'pub-3',
-    title: 'Odia Sahitya Smaraki',
-    subtitle: 'Classical Heritage Studies',
-    volume: 'Collector’s Vol. IX',
-    year: '2022 Edition',
-    category: 'Heritage Research',
-    coverBg: '#172421',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#76C7C0',
-    spineColor: '#0E1715',
-    description:
-      'In-depth academic monographs exploring ancient Odia palm-leaf manuscripts, folklore traditions, and classical literary preservation across Eastern India.',
-    pages: 410,
-    pdfUrl: '#pdf-odia-sahitya-2022',
-  },
-  {
-    id: 'pub-4',
-    title: 'Pratibha CSR Gazette',
-    subtitle: 'Grassroots Community Impact',
-    volume: 'Silver Jubilee Vol.',
-    year: '2023 Edition',
-    category: 'CSR Compendium',
-    coverBg: '#231B28',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#E5A93C',
-    spineColor: '#17111C',
-    description:
-      'A comprehensive impact report detailing 25+ years of rural healthcare outposts, afforestation drives, and women artisan empowerment programs in Odisha.',
-    pages: 220,
-    pdfUrl: '#pdf-csr-report',
-  },
-  {
-    id: 'pub-5',
-    title: 'Amaruchi Youth Edition',
-    subtitle: 'Emerging Rural Talent',
-    volume: 'Vol. XXVII',
-    year: '2023 Edition',
-    category: 'Youth Anthology',
-    coverBg: '#192231',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#6BB5FF',
-    spineColor: '#101621',
-    description:
-      'Showcasing original short stories, poetry, and essay entries from young Odia school and university scholars across rural districts.',
-    pages: 195,
-    pdfUrl: '#pdf-youth-edition',
-  },
-  {
-    id: 'pub-6',
-    title: 'Ruchi Monograph Series',
-    subtitle: 'Environment & Agriculture',
-    volume: 'Vol. IV Series',
-    year: '2024 Edition',
-    category: 'Environmental Monograph',
-    coverBg: '#1F291E',
-    coverTextColor: '#FFFFFF',
-    accentColor: '#82D173',
-    spineColor: '#131A12',
-    description:
-      'Scientific articles and community case studies on sustainable agriculture, native seed preservation, and sacred grove reforestation in Kendujhar.',
-    pages: 260,
-    pdfUrl: '#pdf-monograph-series',
-  },
-];
+export const PUBLICATIONS_DATA: PublicationItem[] = [];
 
 interface BookShelfProps {
   onSelectBook: (publication: PublicationItem) => void;
@@ -125,6 +28,25 @@ export const BookShelf: React.FC<BookShelfProps> = ({ onSelectBook }) => {
       shelfRef.current.scrollBy({ left: offset, behavior: 'smooth' });
     }
   };
+
+  if (PUBLICATIONS_DATA.length === 0) {
+    return (
+      <div className="relative w-full py-6">
+        <div className="flex items-center gap-2 mb-6">
+          <span className="h-2 w-2 rounded-full bg-institutional-accent animate-pulse" />
+          <span className="font-space text-[11px] uppercase tracking-widest text-institutional-accent font-semibold">
+            Interactive Hardcover Library
+          </span>
+        </div>
+        <div className="border border-dashed border-black/10 dark:border-white/10 rounded-sm p-12 text-center bg-white/40 dark:bg-white/5 max-w-2xl mx-auto">
+          <Book className="w-10 h-10 mx-auto text-institutional-accent mb-4 opacity-80" />
+          <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 leading-relaxed">
+            Publications will appear here as they are added to the Foundation&apos;s digital archive.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full py-1">

@@ -97,7 +97,8 @@ export const FeaturedImpactStory: React.FC = () => {
     if (sliderRef.current) {
       const activeEl = sliderRef.current.children[activeIndex] as HTMLElement;
       if (activeEl) {
-        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        activeEl.scrollIntoView({ behavior, block: 'nearest', inline: 'center' });
       }
     }
   }, [activeIndex]);

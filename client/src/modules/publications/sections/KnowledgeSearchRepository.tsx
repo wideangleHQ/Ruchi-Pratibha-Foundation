@@ -32,7 +32,7 @@ export const KnowledgeSearchRepository: React.FC = () => {
 
   return (
     <section
-      id="knowledge-search"
+      id="search"
       className="py-24 sm:py-32 bg-institutional-cream dark:bg-institutional-dark text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
@@ -116,61 +116,73 @@ export const KnowledgeSearchRepository: React.FC = () => {
         </div>
 
         {/* Search Results Display */}
-        {filteredResults.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResults.map((pub) => (
-              <motion.div
-                key={pub.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 hover:border-institutional-accent/50 transition-all duration-300 shadow-sm"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-black/5 dark:border-white/5 pb-2 mb-3">
-                    <span className="font-semibold">{pub.category}</span>
-                    <span className="text-gray-400">{pub.year}</span>
+        {FEATURED_PUBLICATIONS.length > 0 ? (
+          filteredResults.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredResults.map((pub) => (
+                <motion.div
+                  key={pub.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 hover:border-institutional-accent/50 transition-all duration-300 shadow-sm"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-black/5 dark:border-white/5 pb-2 mb-3">
+                      <span className="font-semibold">{pub.category}</span>
+                      <span className="text-gray-400">{pub.year}</span>
+                    </div>
+
+                    <h3 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2">
+                      {pub.title}
+                    </h3>
+
+                    <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-4">
+                      {pub.description}
+                    </p>
                   </div>
 
-                  <h3 className="font-cormorant text-xl font-bold text-institutional-dark dark:text-white mb-2">
-                    {pub.title}
-                  </h3>
-
-                  <p className="font-manrope text-xs text-institutional-mutedLight dark:text-gray-300 leading-relaxed mb-4">
-                    {pub.description}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs font-space text-institutional-accent font-semibold">
-                  <a href="#digital-reader" className="inline-flex items-center gap-1 hover:underline">
-                    <span>Inspect Record</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                  <span className="text-[9px] font-space text-gray-400">{pub.pages} PAGES</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  <div className="pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs font-space text-institutional-accent font-semibold">
+                    <a href="#digital-reader" className="inline-flex items-center gap-1 hover:underline">
+                      <span>Inspect Record</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                    <span className="text-[9px] font-space text-gray-400">{pub.pages} PAGES</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white dark:bg-institutional-surface/40 rounded-sm border border-black/10 dark:border-white/10 p-8">
+              <BookOpen className="w-8 h-8 text-institutional-accent mx-auto mb-3" />
+              <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-2">
+                No Repository Publications Found
+              </h3>
+              <p className="font-manrope text-xs text-gray-400 max-w-md mx-auto mb-4">
+                Try resetting your keyword, category, or language search criteria.
+              </p>
+              <button
+                onClick={() => {
+                  setKeyword('');
+                  setCategory('All Categories');
+                  setYear('All Years');
+                  setLanguage('All Languages');
+                }}
+                className="px-4 py-2 text-xs font-space uppercase tracking-widest bg-institutional-accent text-institutional-dark rounded-sm font-semibold min-h-[40px]"
+              >
+                Reset Search Filters
+              </button>
+            </div>
+          )
         ) : (
           <div className="text-center py-16 bg-white dark:bg-institutional-surface/40 rounded-sm border border-black/10 dark:border-white/10 p-8">
             <BookOpen className="w-8 h-8 text-institutional-accent mx-auto mb-3" />
             <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-2">
               No Repository Publications Found
             </h3>
-            <p className="font-manrope text-xs text-gray-400 max-w-md mx-auto mb-4">
-              Try resetting your keyword, category, or language search criteria.
+            <p className="font-manrope text-xs text-gray-400 max-w-md mx-auto">
+              Publications will appear here as they are added to the Foundation&apos;s digital archive.
             </p>
-            <button
-              onClick={() => {
-                setKeyword('');
-                setCategory('All Categories');
-                setYear('All Years');
-                setLanguage('All Languages');
-              }}
-              className="px-4 py-2 text-xs font-space uppercase tracking-widest bg-institutional-accent text-institutional-dark rounded-sm font-semibold min-h-[40px]"
-            >
-              Reset Search Filters
-            </button>
           </div>
         )}
       </div>

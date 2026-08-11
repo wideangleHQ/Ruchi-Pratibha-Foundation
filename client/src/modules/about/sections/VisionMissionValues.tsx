@@ -7,8 +7,8 @@ import { InteractiveCard } from '@/components/ui/InteractiveCard';
 export const VisionMissionValues: React.FC = () => {
   return (
     <section
-      id="vision-mission-values"
-      className="py-24 sm:py-32 bg-institutional-cream dark:bg-institutional-dark text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
+      id="mission"
+      className="py-24 sm:py-32 bg-institutional-cream dark:bg-[#121824] text-institutional-dark dark:text-white border-b border-black/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">

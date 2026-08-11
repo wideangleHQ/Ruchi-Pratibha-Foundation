@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { FEATURED_CSR_ACTIVITIES } from '../data/csrData';
@@ -70,27 +71,50 @@ export const FeaturedCSR: React.FC = () => {
               <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 sm:p-7 hover:border-institutional-accent/50 transition-all duration-300 shadow-md hover:shadow-xl">
                 <div>
                   <div className="w-full aspect-[16/10] rounded-sm overflow-hidden border border-black/10 dark:border-white/10 mb-6 group relative bg-black/5 dark:bg-white/5">
-                    <InteractiveImage className="w-full h-full rounded-sm">
-                      <div className="w-full h-full flex flex-col justify-between p-5 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
-                        <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
-                          <span>{act.category}</span>
-                          <span>{act.year}</span>
-                        </div>
+                    <InteractiveImage className="w-full h-full rounded-sm relative">
+                      {act.coverImage ? (
+                        <>
+                          <Image
+                            src={act.coverImage}
+                            alt={act.title}
+                            fill
+                            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                            sizes="(max-w-768px) 100vw, 33vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-85 pointer-events-none z-10" />
+                          <div className="absolute inset-0 p-5 flex flex-col justify-between text-white z-10">
+                            <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                              <span className="px-2 py-0.5 rounded bg-institutional-accent/15 border border-institutional-accent/30 font-semibold">{act.category}</span>
+                              <span>{act.year}</span>
+                            </div>
+                            <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-300 flex justify-between">
+                              <span>FEATURED RECORD</span>
+                              <span>RPF IMPACT ARCHIVE</span>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex flex-col justify-between p-5 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
+                          <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                            <span>{act.category}</span>
+                            <span>{act.year}</span>
+                          </div>
 
-                        <div className="my-auto text-center py-3">
-                          <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                            [ Feature Image Placeholder ]
-                          </span>
-                          <p className="font-manrope text-xs text-gray-300">
-                            {act.location}
-                          </p>
-                        </div>
+                          <div className="my-auto text-center py-3">
+                            <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                              [ Feature Image Placeholder ]
+                            </span>
+                            <p className="font-manrope text-xs text-gray-300">
+                              {act.location}
+                            </p>
+                          </div>
 
-                        <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-400 flex justify-between">
-                          <span>FEATURED RECORD</span>
-                          <span>RPF IMPACT ARCHIVE</span>
+                          <div className="pt-2 border-t border-white/15 text-[9px] font-space text-gray-400 flex justify-between">
+                            <span>FEATURED RECORD</span>
+                            <span>RPF IMPACT ARCHIVE</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </InteractiveImage>
                   </div>
 
@@ -130,27 +154,50 @@ export const FeaturedCSR: React.FC = () => {
               >
                 <div>
                   <div className="w-full aspect-[16/10] rounded-sm overflow-hidden border border-black/10 dark:border-white/10 mb-4 relative bg-black/5 dark:bg-white/5">
-                    <InteractiveImage className="w-full h-full rounded-sm">
-                      <div className="w-full h-full flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
-                        <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
-                          <span>{act.category}</span>
-                          <span>{act.year}</span>
-                        </div>
+                    <InteractiveImage className="w-full h-full rounded-sm relative">
+                      {act.coverImage ? (
+                        <>
+                          <Image
+                            src={act.coverImage}
+                            alt={act.title}
+                            fill
+                            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                            sizes="78vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-85 pointer-events-none z-10" />
+                          <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-10">
+                            <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                              <span className="px-1.5 py-0.5 rounded bg-institutional-accent/15 border border-institutional-accent/30 font-semibold">{act.category}</span>
+                              <span>{act.year}</span>
+                            </div>
+                            <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-300 flex justify-between">
+                              <span>FEATURED RECORD</span>
+                              <span>RPF IMPACT</span>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white">
+                          <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                            <span>{act.category}</span>
+                            <span>{act.year}</span>
+                          </div>
 
-                        <div className="my-auto text-center py-2">
-                          <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                            [ Feature Image Placeholder ]
-                          </span>
-                          <p className="font-manrope text-[11px] text-gray-300">
-                            {act.location}
-                          </p>
-                        </div>
+                          <div className="my-auto text-center py-2">
+                            <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                              [ Feature Image Placeholder ]
+                            </span>
+                            <p className="font-manrope text-[11px] text-gray-300">
+                              {act.location}
+                            </p>
+                          </div>
 
-                        <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex justify-between">
-                          <span>FEATURED RECORD</span>
-                          <span>RPF IMPACT</span>
+                          <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex justify-between">
+                            <span>FEATURED RECORD</span>
+                            <span>RPF IMPACT</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </InteractiveImage>
                   </div>
 

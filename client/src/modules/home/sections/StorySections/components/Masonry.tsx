@@ -93,7 +93,12 @@ export const Masonry: React.FC<MasonryProps> = ({
   const hasMounted = useRef(false);
 
   useEffect(() => {
-    preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
+    const urls = items.map((i) => i.img).filter(Boolean);
+    if (urls.length > 0) {
+      preloadImages(urls).then(() => setImagesReady(true));
+    } else {
+      setImagesReady(true);
+    }
   }, [items]);
 
   const grid = useMemo(() => {
@@ -203,15 +208,28 @@ export const Masonry: React.FC<MasonryProps> = ({
           onClick={() => window.open(item.url, '_blank', 'noopener')}
         >
           <InteractiveCard disableShadow className="group relative w-full h-full rounded-sm overflow-hidden border border-white/15 dark:border-white/10 p-0">
-            {/* Full-Bleed Edge-to-Edge Image */}
+            {/* Full-Bleed Edge-to-Edge Image or Neutral Placeholder */}
             <div className="absolute inset-0 z-0 overflow-hidden rounded-sm">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-                unoptimized
-                className="object-cover object-center transform group-hover:scale-105 group-hover:brightness-110 transition-all duration-500 ease-out"
-              />
+              {item.img ? (
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  unoptimized
+                  className="object-cover object-center transform group-hover:scale-105 group-hover:brightness-110 transition-all duration-500 ease-out"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-institutional-surface to-institutional-darker">
+                  <div
+                    className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                    style={{
+                      backgroundImage:
+                        'radial-gradient(circle at 1px 1px, rgba(197, 160, 89, 0.25) 1px, transparent 0)',
+                      backgroundSize: '24px 24px',
+                    }}
+                  />
+                </div>
+              )}
               {/* Soft Light Overlay in Light Mode & Rich Dark Gradient Overlay in Dark Mode */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent dark:from-black/95 dark:via-black/50 dark:to-transparent group-hover:from-black/85 transition-colors duration-300" />
             </div>

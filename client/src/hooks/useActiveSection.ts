@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 
 const SECTION_IDS = [
   'about-hero',
-  'about-foundation',
+  'foundation',
   'foundation-story',
-  'founders-words',
-  'vision-mission-values',
-  'journey',
+  'founder',
+  'mission',
+  'timeline',
   'milestones',
   'leadership',
   'governance',
@@ -19,7 +19,7 @@ const SECTION_IDS = [
   'gateway-hero',
   'events',
   'volunteer',
-  'partner',
+  'partners',
   'support',
 ];
 

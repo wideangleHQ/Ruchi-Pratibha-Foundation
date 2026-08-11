@@ -84,7 +84,7 @@ export const CollectionOverview: React.FC = () => {
 
   return (
     <section
-      id="pub-collection"
+      id="collection"
       className="py-24 sm:py-32 bg-institutional-light dark:bg-institutional-surface/20 text-institutional-dark dark:text-white border-b border-institutional-dark/10 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">

@@ -140,127 +140,81 @@ export const FOCUS_AREAS = [
 
 export const FEATURED_CSR_ACTIVITIES: CSRActivity[] = [
   {
-    id: 'blood-donation-camp',
-    title: 'Mega Blood Donation Camp',
+    id: 'odia-bazar',
+    title: 'Odia Bazar Community Welfare Initiative',
+    category: 'Community Welfare',
+    district: 'Cuttack',
+    location: 'Odia Bazar, Cuttack',
+    year: 2026,
+    dateStr: '2026 • Cuttack',
+    summary:
+      'Empowering local communities in Cuttack through direct outreach, educational resources, and seasonal social support drives.',
+    isFeatured: true,
+    coverImage: '/Odia Bazar/DSC05968.JPG',
+    objectives: [
+      'Provide immediate social welfare and seasonal support to underprivileged families.',
+      'Mobilize local youth volunteer networks for grassroots community service.',
+      'Strengthen regional socio-economic resilience through direct resource sharing.'
+    ],
+    possibleActivities: [
+      'Community Outreach',
+      'Resource Distribution',
+      'Youth Volunteering',
+      'Socio-economic Support'
+    ],
+  },
+  {
+    id: 'sutahat',
+    title: 'Sutahat Health & Wellness Outreach',
     category: 'Healthcare',
     district: 'Cuttack',
-    location: 'Cuttack Central Facility',
+    location: 'Sutahat, Cuttack',
     year: 2025,
     dateStr: '2025 • Cuttack',
     summary:
-      'Providing voluntary blood donation opportunities while promoting awareness about the importance of regular blood donation and community participation.',
+      'Organizing free medical consultation camps, diagnostic check-ups, and wellness workshops for families in Sutahat.',
     isFeatured: true,
-  },
-  {
-    id: 'green-odisha-plantation',
-    title: 'Green Odisha Plantation Drive',
-    category: 'Environment',
-    district: 'Khordha',
-    location: 'Bhubaneswar & Suburbs',
-    year: 2025,
-    dateStr: '2025 • Khordha',
-    summary:
-      'Encouraging environmental sustainability through large-scale plantation drives involving volunteers, students, and local communities.',
-    isFeatured: true,
-  },
-  {
-    id: 'student-recognition-programme',
-    title: 'Student Recognition Programme',
-    category: 'Education',
-    district: 'Cuttack',
-    location: 'Odisha State Assembly Hall',
-    year: 2024,
-    dateStr: '2024 • Odisha State',
-    summary:
-      'Recognising meritorious students and encouraging academic excellence through appreciation certificates, books, and scholarship guidance.',
-    isFeatured: true,
-  },
-  {
-    id: 'community-health-camp',
-    title: 'Rural Community Health Outreach',
-    category: 'Healthcare',
-    district: 'Puri',
-    location: 'Rural Health Center, Puri District',
-    year: 2024,
-    dateStr: '2024 • Puri',
-    summary:
-      'Free medical consultation, diagnostic screening, and preventive medicine distribution for rural families in coastal clusters.',
-    isFeatured: true,
-  },
-  {
-    id: 'amaruchi-literary-symposium',
-    title: 'Amaruchi Literary Heritage Symposium',
-    category: 'Culture',
-    district: 'Bhubaneswar',
-    location: 'State Library Auditorium',
-    year: 2023,
-    dateStr: '2023 • Bhubaneswar',
-    summary:
-      'Celebrating Odia literature, essays, and regional scholarly archives published under the Amaruchi journal mandate.',
-    isFeatured: true,
-  },
-  {
-    id: 'youth-civic-leadership-workshop',
-    title: 'Youth Civic Leadership Workshop',
-    category: 'Youth Engagement',
-    district: 'Khordha',
-    location: 'Khordha Community Center',
-    year: 2023,
-    dateStr: '2023 • Khordha',
-    summary:
-      'Training young volunteers in emergency community response, eco-stewardship, and grassroots social organisation.',
-    isFeatured: true,
+    coverImage: '/Sutahat/DSC05409.JPG',
+    objectives: [
+      'Deliver free diagnostic testing and professional health consultations.',
+      'Raise awareness for child wellness, preventive care, and healthy nutrition.',
+      'Facilitate voluntary blood donation drives in partnership with Cuttack health departments.'
+    ],
+    possibleActivities: [
+      'Health Camp',
+      'Medical Consultation',
+      'Nutrition Distribution',
+      'Blood Donation Camp'
+    ],
   },
 ];
 
 export const IMPACT_STORIES: CSRStory[] = [
   {
-    id: 'story-student',
-    title: 'Inspiring Academic Excellence in Young Minds',
-    category: 'Education',
-    role: 'Student',
-    quote:
-      'Receiving recognition from Ruchi Prativa Foundation gave me the confidence to pursue higher education with purpose and dedication.',
-    storyPreview:
-      'Through our annual academic recognition drives, high-performing students from modest backgrounds receive appreciation certificates, reference books, and mentorship encouragement.',
-    personName: 'Meritorious Youth Achiever',
-    location: 'Cuttack District',
-  },
-  {
-    id: 'story-healthcare',
-    title: 'Bringing Essential Care to Rural Clusters',
-    category: 'Healthcare',
-    role: 'Healthcare',
-    quote:
-      'The voluntary blood donation drive organised by the Foundation helped replenish critical blood bank supplies for regional emergency units.',
-    storyPreview:
-      'Working alongside medical teams and youth volunteers, our blood donation and preventive health camps ensure timely support for emergency patients.',
-    personName: 'Volunteer Blood Donor',
-    location: 'Central Red Cross Center, Cuttack',
-  },
-  {
-    id: 'story-environment',
-    title: 'Nurturing Green Canopies Across Odisha',
-    category: 'Environment',
-    role: 'Environment',
-    quote:
-      'Planting trees today ensures clean air, soil preservation, and a cooler habitat for our children tomorrow.',
-    storyPreview:
-      'Local communities, student volunteers, and municipal teams join hands during monsoon sapling drives to restore biodiversity across urban and rural belts.',
-    personName: 'Eco-Volunteer Lead',
-    location: 'Khordha Belt',
-  },
-  {
-    id: 'story-community',
-    title: 'Serving Communities During Crises',
+    id: 'story-odia-bazar',
+    title: 'Mobilizing Grassroots Hope at Odia Bazar',
     category: 'Community Welfare',
     role: 'Community',
     quote:
-      'When relief materials and warm meals reached our village during monsoon flooding, it restored our hope and dignity.',
+      'When the Ruchi Prativa Foundation youth volunteers reached our neighborhood with supplies, it showed us the power of community solidarity.',
     storyPreview:
-      'During regional natural distress, Foundation trustees and local volunteers coordinate immediate food, water, and essential welfare distribution.',
-    personName: 'Community Representative',
-    location: 'Coastal Odisha Cluster',
+      'Through local resource distribution and youth volunteer drives, our Odia Bazar initiative has supported dozens of families with essential materials and social encouragement.',
+    personName: 'Local Community Lead',
+    location: 'Odia Bazar, Cuttack',
+    imagePlaceholder: '/Odia Bazar/DSC05990.JPG',
+  },
+  {
+    id: 'story-sutahat',
+    title: 'Access to Essential Care at Sutahat',
+    category: 'Healthcare',
+    role: 'Healthcare',
+    quote:
+      'The healthcare drive at Sutahat brought professional medical consultation and diagnostic check-ups right to our doorstep.',
+    storyPreview:
+      'Our voluntary doctor teams and health coordinators worked in unison at Sutahat to provide diagnostic screenings, child wellness kits, and health education workshops.',
+    personName: 'Health Camp Beneficiary',
+    location: 'Sutahat, Cuttack',
+    imagePlaceholder: '/Sutahat/DSC05413.JPG',
   },
 ];
 
@@ -311,46 +265,52 @@ export const PARTNER_CATEGORIES: CSRPartnerCategory[] = [
 
 export const CSR_GALLERY_ITEMS = [
   {
-    id: 'gal-1',
-    category: 'Healthcare' as CSRCategory,
-    title: 'Voluntary Blood Donation Camp',
-    location: 'Cuttack',
-    caption: 'Volunteers and medical staff participating in annual blood donation drive.',
-  },
-  {
-    id: 'gal-2',
-    category: 'Environment' as CSRCategory,
-    title: 'Green Odisha Tree Sapling Drive',
-    location: 'Khordha',
-    caption: 'Planting native saplings along educational campus corridors.',
-  },
-  {
-    id: 'gal-3',
-    category: 'Education' as CSRCategory,
-    title: 'Student Merit Felicitations',
-    location: 'Odisha State',
-    caption: 'Awarding academic excellence certificates and book awards to meritorious students.',
-  },
-  {
-    id: 'gal-4',
-    category: 'Culture' as CSRCategory,
-    title: 'Amaruchi Literary Gathering',
-    location: 'Bhubaneswar',
-    caption: 'Authors, scholars, and editors gathered for regional Odia literature discussion.',
-  },
-  {
-    id: 'gal-5',
+    id: 'gal-odia-1',
     category: 'Community Welfare' as CSRCategory,
-    title: 'Community Welfare Distribution',
-    location: 'Puri District',
-    caption: 'Distributing relief kits and nutrition packs in rural clusters.',
+    title: 'Odia Bazar Direct Outreach',
+    location: 'Odia Bazar, Cuttack',
+    caption: 'Volunteers distributing essential packages and welfare kits to local families.',
+    imageUrl: '/Odia Bazar/DSC05968.JPG',
   },
   {
-    id: 'gal-6',
-    category: 'Youth Engagement' as CSRCategory,
-    title: 'Youth Volunteer Orientation',
-    location: 'Cuttack',
-    caption: 'Empowering young citizens for civic awareness and environmental stewardship.',
+    id: 'gal-odia-2',
+    category: 'Community Welfare' as CSRCategory,
+    title: 'Odia Bazar Youth Volunteer Mobilization',
+    location: 'Odia Bazar, Cuttack',
+    caption: 'Local youth volunteers participating in community support campaigns.',
+    imageUrl: '/Odia Bazar/DSC05990.JPG',
+  },
+  {
+    id: 'gal-odia-3',
+    category: 'Community Welfare' as CSRCategory,
+    title: 'Odia Bazar Resource Sharing',
+    location: 'Odia Bazar, Cuttack',
+    caption: 'Resource distribution camp organized by Ruchi Prativa Foundation.',
+    imageUrl: '/Odia Bazar/DSC06000.JPG',
+  },
+  {
+    id: 'gal-sutahat-1',
+    category: 'Healthcare' as CSRCategory,
+    title: 'Sutahat Medical Consultation',
+    location: 'Sutahat, Cuttack',
+    caption: 'Doctors conducting diagnostic screening and checkups at the free health camp.',
+    imageUrl: '/Sutahat/DSC05409.JPG',
+  },
+  {
+    id: 'gal-sutahat-2',
+    category: 'Healthcare' as CSRCategory,
+    title: 'Sutahat Health Check-up Camp',
+    location: 'Sutahat, Cuttack',
+    caption: 'Providing medical checkups and child health consultations to rural families.',
+    imageUrl: '/Sutahat/DSC05413.JPG',
+  },
+  {
+    id: 'gal-sutahat-3',
+    category: 'Healthcare' as CSRCategory,
+    title: 'Sutahat Wellness Outreach',
+    location: 'Sutahat, Cuttack',
+    caption: 'Volunteer healthcare workers distributing wellness supplies and medicine.',
+    imageUrl: '/Sutahat/DSC05416.JPG',
   },
 ];
 

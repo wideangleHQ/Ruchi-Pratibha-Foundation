@@ -5,7 +5,7 @@ import { ScrollIndicator } from './components/ScrollIndicator';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative h-[90vh] min-h-[90vh] sm:min-h-screen w-full bg-institutional-darker text-white overflow-hidden">
+    <section id="hero" className="relative h-[90vh] min-h-[90vh] sm:min-h-screen w-full bg-institutional-darker text-white overflow-hidden">
       <HeroBackground />
       <HeroContent />
       <ScrollIndicator />

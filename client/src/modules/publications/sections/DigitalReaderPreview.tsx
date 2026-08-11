@@ -14,6 +14,7 @@ import {
   Maximize2,
   Sparkles,
 } from 'lucide-react';
+import { FEATURED_PUBLICATIONS } from '../data/publicationsData';
 
 export const DigitalReaderPreview: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(24);
@@ -66,10 +67,14 @@ export const DigitalReaderPreview: React.FC = () => {
               </span>
               <div>
                 <h4 className="font-cormorant text-base sm:text-lg font-bold text-white leading-tight">
-                  Amaruchi Journal (2024 Edition) • Vol. XXVIII
+                  {FEATURED_PUBLICATIONS.length > 0
+                    ? 'Amaruchi Journal (2024 Edition) • Vol. XXVIII'
+                    : 'Digital Reader Interface'}
                 </h4>
                 <p className="font-space text-[10px] text-gray-400 uppercase tracking-wider">
-                  CHAPTER 3: ODIA LITERATURE &amp; HERITAGE STUDIES
+                  {FEATURED_PUBLICATIONS.length > 0
+                    ? 'CHAPTER 3: ODIA LITERATURE & HERITAGE STUDIES'
+                    : 'No active volume loaded'}
                 </p>
               </div>
             </div>
@@ -129,46 +134,55 @@ export const DigitalReaderPreview: React.FC = () => {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.08),transparent_70%)] pointer-events-none" />
 
             {/* Open Book Spread Simulation */}
-            <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-[#FDFBF7] text-institutional-dark rounded-sm border border-institutional-accent/40 shadow-2xl p-6 sm:p-8 relative">
-              {/* Center Spine Fold Shadow */}
-              <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-4 bg-gradient-to-r from-black/20 via-black/10 to-transparent pointer-events-none" />
+            {FEATURED_PUBLICATIONS.length > 0 ? (
+              <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-[#FDFBF7] text-institutional-dark rounded-sm border border-institutional-accent/40 shadow-2xl p-6 sm:p-8 relative">
+                {/* Center Spine Fold Shadow */}
+                <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-4 bg-gradient-to-r from-black/20 via-black/10 to-transparent pointer-events-none" />
 
-              {/* Left Page (Page N) */}
-              <div className="space-y-3 font-manrope text-xs sm:text-sm text-institutional-dark/90 leading-relaxed border-b sm:border-b-0 sm:border-r border-black/10 pb-4 sm:pb-0 sm:pr-6">
-                <div className="flex justify-between items-center text-[10px] font-space uppercase text-institutional-accent font-semibold border-b border-black/10 pb-2 mb-3">
-                  <span>AMARUCHI JOURNAL</span>
-                  <span>PAGE {currentPage}</span>
-                </div>
-                <h4 className="font-cormorant text-xl font-bold text-institutional-dark mb-2">
-                  Preserving Cultural Identity in Eastern India
-                </h4>
-                <p>
-                  &ldquo;Literature serves as the custodian of a society&apos;s memory. Through every recorded stanza, essay, and commentary, we pass down not merely words, but the living spirit of our ancestors.&rdquo;
-                </p>
-                <p className="text-xs text-gray-600 italic">
-                  — Shri Sarat Kumar Sahoo (Keynote Address, Amaruchi Release Ceremony 2024)
-                </p>
-              </div>
-
-              {/* Right Page (Page N+1) */}
-              <div className="space-y-3 font-manrope text-xs sm:text-sm text-institutional-dark/90 leading-relaxed pt-2 sm:pt-0 sm:pl-2">
-                <div className="flex justify-between items-center text-[10px] font-space uppercase text-institutional-accent font-semibold border-b border-black/10 pb-2 mb-3">
-                  <span>HISTORICAL ANTHOLOGY</span>
-                  <span>PAGE {currentPage + 1}</span>
-                </div>
-                <p>
-                  The Ruchi Prativa Foundation has consistently published historical monographs documenting classical Odia poetry, temple architecture, and grassroots educational campaigns.
-                </p>
-                <div className="p-3 bg-black/5 rounded border border-black/10 my-2">
-                  <span className="text-[10px] font-space uppercase text-institutional-accent font-semibold block mb-1">
-                    [ Archival Plate Illustration ]
-                  </span>
-                  <p className="text-[11px] text-gray-600">
-                    Odia Palm-Leaf Manuscript Replica • Circa 19th Century Research Documentation.
+                {/* Left Page (Page N) */}
+                <div className="space-y-3 font-manrope text-xs sm:text-sm text-institutional-dark/90 leading-relaxed border-b sm:border-b-0 sm:border-r border-black/10 pb-4 sm:pb-0 sm:pr-6">
+                  <div className="flex justify-between items-center text-[10px] font-space uppercase text-institutional-accent font-semibold border-b border-black/10 pb-2 mb-3">
+                    <span>AMARUCHI JOURNAL</span>
+                    <span>PAGE {currentPage}</span>
+                  </div>
+                  <h4 className="font-cormorant text-xl font-bold text-institutional-dark mb-2">
+                    Preserving Cultural Identity in Eastern India
+                  </h4>
+                  <p>
+                    &ldquo;Literature serves as the custodian of a society&apos;s memory. Through every recorded stanza, essay, and commentary, we pass down not merely words, but the living spirit of our ancestors.&rdquo;
+                  </p>
+                  <p className="text-xs text-gray-600 italic">
+                    — Shri Sarat Kumar Sahoo (Keynote Address, Amaruchi Release Ceremony 2024)
                   </p>
                 </div>
+
+                {/* Right Page (Page N+1) */}
+                <div className="space-y-3 font-manrope text-xs sm:text-sm text-institutional-dark/90 leading-relaxed pt-2 sm:pt-0 sm:pl-2">
+                  <div className="flex justify-between items-center text-[10px] font-space uppercase text-institutional-accent font-semibold border-b border-black/10 pb-2 mb-3">
+                    <span>HISTORICAL ANTHOLOGY</span>
+                    <span>PAGE {currentPage + 1}</span>
+                  </div>
+                  <p>
+                    The Ruchi Prativa Foundation has consistently published historical monographs documenting classical Odia poetry, temple architecture, and grassroots educational campaigns.
+                  </p>
+                  <div className="p-3 bg-black/5 rounded border border-black/10 my-2">
+                    <span className="text-[10px] font-space uppercase text-institutional-accent font-semibold block mb-1">
+                      [ Archival Plate Illustration ]
+                    </span>
+                    <p className="text-[11px] text-gray-600">
+                      Odia Palm-Leaf Manuscript Replica • Circa 19th Century Research Documentation.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="w-full max-w-4xl bg-[#FDFBF7] text-institutional-dark rounded-sm border border-institutional-accent/40 shadow-2xl p-12 text-center relative">
+                <BookOpen className="w-12 h-12 mx-auto text-institutional-accent mb-4 opacity-80" />
+                <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 leading-relaxed">
+                  Publications will appear here as they are added to the Foundation&apos;s digital archive.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Reader Bottom Navigation Bar */}
@@ -176,7 +190,7 @@ export const DigitalReaderPreview: React.FC = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={handlePrevPage}
-                disabled={currentPage <= 1}
+                disabled={FEATURED_PUBLICATIONS.length === 0 || currentPage <= 1}
                 className="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-white/5 border border-white/10 hover:bg-institutional-accent hover:text-institutional-dark disabled:opacity-40 transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -185,7 +199,7 @@ export const DigitalReaderPreview: React.FC = () => {
 
               <button
                 onClick={handleNextPage}
-                disabled={currentPage >= totalPages}
+                disabled={FEATURED_PUBLICATIONS.length === 0 || currentPage >= totalPages}
                 className="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-white/5 border border-white/10 hover:bg-institutional-accent hover:text-institutional-dark disabled:opacity-40 transition-colors cursor-pointer"
               >
                 <span>Next Spread</span>
@@ -195,11 +209,19 @@ export const DigitalReaderPreview: React.FC = () => {
 
             {/* Reading Progress Indicator */}
             <div className="flex items-center gap-3">
-              <span>SPREAD {currentPage}-{currentPage + 1} OF {totalPages}</span>
+              <span>
+                {FEATURED_PUBLICATIONS.length > 0
+                  ? `SPREAD ${currentPage}-${currentPage + 1} OF ${totalPages}`
+                  : 'SPREAD 0-0 OF 0'}
+              </span>
               <div className="w-32 sm:w-48 h-2 rounded-full bg-white/10 overflow-hidden">
                 <div
                   className="h-full bg-institutional-accent transition-all duration-300"
-                  style={{ width: `${(currentPage / totalPages) * 100}%` }}
+                  style={{
+                    width: FEATURED_PUBLICATIONS.length > 0
+                      ? `${(currentPage / totalPages) * 100}%`
+                      : '0%'
+                  }}
                 />
               </div>
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, MapPin, ArrowRight, BookOpen, X, CheckCircle2, Calendar, FileText } from 'lucide-react';
 import { FEATURED_CSR_ACTIVITIES } from '../data/csrData';
@@ -165,28 +166,55 @@ export const CSRArchive: React.FC = () => {
                 >
                   <InteractiveCard className="flex flex-col justify-between h-full bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-6 hover:border-institutional-accent/50 transition-all duration-300">
                     <div>
-                      {/* Cover Placeholder */}
-                      <div className="w-full aspect-[16/9] rounded-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-4 flex flex-col justify-between mb-5 relative overflow-hidden group">
-                        <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest">
-                          <span className="px-2 py-0.5 rounded bg-institutional-accent/15 border border-institutional-accent/30 font-semibold">
-                            {act.category}
-                          </span>
-                          <span>{act.year}</span>
-                        </div>
+                      {/* Cover Image */}
+                      <div className="w-full aspect-[16/9] rounded-sm border border-black/10 dark:border-white/10 mb-5 relative overflow-hidden group bg-black/5 dark:bg-white/5">
+                        {act.coverImage ? (
+                          <>
+                            <Image
+                              src={act.coverImage}
+                              alt={act.title}
+                              fill
+                              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                              sizes="(max-w-768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none z-10" />
+                            <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-10">
+                              <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest">
+                                <span className="px-2 py-0.5 rounded bg-institutional-accent/15 border border-institutional-accent/30 font-semibold">
+                                  {act.category}
+                                </span>
+                                <span>{act.year}</span>
+                              </div>
+                              <div className="text-[9px] font-space text-gray-300 flex justify-between border-t border-white/15 pt-1.5">
+                                <span>ITEM #{act.id}</span>
+                                <span>PUBLIC RECORD</span>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="w-full h-full p-4 flex flex-col justify-between relative text-white">
+                            <div className="flex items-center justify-between text-[10px] font-space text-institutional-accent uppercase tracking-widest">
+                              <span className="px-2 py-0.5 rounded bg-institutional-accent/15 border border-institutional-accent/30 font-semibold">
+                                {act.category}
+                              </span>
+                              <span>{act.year}</span>
+                            </div>
 
-                        <div className="my-auto text-center py-2">
-                          <span className="text-[10px] font-space uppercase text-institutional-accent tracking-widest block mb-1">
-                            [ Cover Image Placeholder ]
-                          </span>
-                          <p className="font-manrope text-[11px] text-gray-500 dark:text-gray-400">
-                            {act.location}
-                          </p>
-                        </div>
+                            <div className="my-auto text-center py-2">
+                              <span className="text-[10px] font-space uppercase text-institutional-accent tracking-widest block mb-1">
+                                [ Cover Image Placeholder ]
+                              </span>
+                              <p className="font-manrope text-[11px] text-gray-500 dark:text-gray-400">
+                                {act.location}
+                              </p>
+                            </div>
 
-                        <div className="text-[9px] font-space text-gray-400 flex justify-between border-t border-black/5 dark:border-white/10 pt-1.5">
-                          <span>ITEM #{act.id}</span>
-                          <span>PUBLIC RECORD</span>
-                        </div>
+                            <div className="text-[9px] font-space text-gray-400 flex justify-between border-t border-black/5 dark:border-white/10 pt-1.5">
+                              <span>ITEM #{act.id}</span>
+                              <span>PUBLIC RECORD</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       <h3 className="font-cormorant text-2xl font-bold text-institutional-dark dark:text-white mb-2">
@@ -226,25 +254,50 @@ export const CSRArchive: React.FC = () => {
                 >
                   <div>
                     {/* Top Image Box */}
-                    <div className="w-full aspect-[4/3] rounded-sm bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker border border-black/10 dark:border-white/10 p-2.5 flex flex-col justify-between mb-3 relative overflow-hidden text-white">
-                      <div className="flex items-center justify-between text-[8px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1">
-                        <span className="truncate max-w-[70px]">{act.category}</span>
-                        <span>{act.year}</span>
-                      </div>
+                    <div className="w-full aspect-[4/3] rounded-sm border border-black/10 dark:border-white/10 mb-3 relative overflow-hidden text-white bg-black/5 dark:bg-white/5">
+                      {act.coverImage ? (
+                        <>
+                          <Image
+                            src={act.coverImage}
+                            alt={act.title}
+                            fill
+                            className="object-cover object-center"
+                            sizes="45vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 pointer-events-none z-10" />
+                          <div className="absolute inset-0 p-2.5 flex flex-col justify-between text-white z-10">
+                            <div className="flex items-center justify-between text-[8px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1">
+                              <span className="truncate max-w-[70px]">{act.category}</span>
+                              <span>{act.year}</span>
+                            </div>
+                            <div className="text-[7px] font-space text-gray-300 flex justify-between border-t border-white/15 pt-1">
+                              <span>#{act.id}</span>
+                              <span>RPF ARCHIVE</span>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full p-2.5 flex flex-col justify-between relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker">
+                          <div className="flex items-center justify-between text-[8px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1">
+                            <span className="truncate max-w-[70px]">{act.category}</span>
+                            <span>{act.year}</span>
+                          </div>
 
-                      <div className="my-auto text-center py-1">
-                        <span className="text-[9px] font-space uppercase text-institutional-accent tracking-widest block mb-0.5">
-                          [ Image ]
-                        </span>
-                        <p className="font-manrope text-[9px] text-gray-300 truncate">
-                          {act.district}
-                        </p>
-                      </div>
+                          <div className="my-auto text-center py-1">
+                            <span className="text-[9px] font-space uppercase text-institutional-accent tracking-widest block mb-0.5">
+                              [ Image ]
+                            </span>
+                            <p className="font-manrope text-[9px] text-gray-300 truncate">
+                              {act.district}
+                            </p>
+                          </div>
 
-                      <div className="text-[7px] font-space text-gray-400 flex justify-between border-t border-white/15 pt-1">
-                        <span>#{act.id}</span>
-                        <span>RPF ARCHIVE</span>
-                      </div>
+                          <div className="text-[7px] font-space text-gray-400 flex justify-between border-t border-white/15 pt-1">
+                            <span>#{act.id}</span>
+                            <span>RPF ARCHIVE</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Middle Title */}
@@ -315,29 +368,56 @@ export const CSRArchive: React.FC = () => {
                   <X className="w-5 h-5" />
                 </button>
 
-                {/* Cover Image Placeholder Box */}
-                <div className="w-full aspect-[16/9] rounded-sm bg-gradient-to-br from-institutional-surface/90 via-institutional-dark to-institutional-darker border border-white/15 p-5 flex flex-col justify-between text-white mb-6">
-                  <div className="flex items-center justify-between text-xs font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
-                    <span className="px-2.5 py-0.5 rounded bg-institutional-accent/20 border border-institutional-accent/40 font-semibold">
-                      {selectedActivity.category}
-                    </span>
-                    <span>{selectedActivity.year}</span>
-                  </div>
+                {/* Cover Image Box */}
+                <div className="w-full aspect-[16/9] rounded-sm border border-white/15 mb-6 relative overflow-hidden bg-black/5 dark:bg-white/5">
+                  {selectedActivity.coverImage ? (
+                    <>
+                      <Image
+                        src={selectedActivity.coverImage}
+                        alt={selectedActivity.title}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-w-768px) 100vw, 600px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-95 pointer-events-none z-10" />
+                      <div className="absolute inset-0 p-5 flex flex-col justify-between text-white z-10">
+                        <div className="flex items-center justify-between text-xs font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                          <span className="px-2.5 py-0.5 rounded bg-institutional-accent/20 border border-institutional-accent/40 font-semibold">
+                            {selectedActivity.category}
+                          </span>
+                          <span>{selectedActivity.year}</span>
+                        </div>
+                        <div className="pt-2 border-t border-white/15 text-[10px] font-space text-gray-300 flex justify-between">
+                          <span>RECORD #{selectedActivity.id}</span>
+                          <span>RPF PUBLIC ARCHIVE</span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="w-full h-full p-5 flex flex-col justify-between text-white bg-gradient-to-br from-institutional-surface/90 via-institutional-dark to-institutional-darker">
+                      <div className="flex items-center justify-between text-xs font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-2">
+                        <span className="px-2.5 py-0.5 rounded bg-institutional-accent/20 border border-institutional-accent/40 font-semibold">
+                          {selectedActivity.category}
+                        </span>
+                        <span>{selectedActivity.year}</span>
+                      </div>
 
-                  <div className="my-auto text-center py-3">
-                    <FileText className="w-8 h-8 text-institutional-accent mx-auto mb-2 opacity-80" />
-                    <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                      [ Archival Activity Image ]
-                    </span>
-                    <p className="font-manrope text-xs text-gray-300">
-                      {selectedActivity.location} • {selectedActivity.district} District
-                    </p>
-                  </div>
+                      <div className="my-auto text-center py-3">
+                        <FileText className="w-8 h-8 text-institutional-accent mx-auto mb-2 opacity-80" />
+                        <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
+                          [ Archival Activity Image ]
+                        </span>
+                        <p className="font-manrope text-xs text-gray-300">
+                          {selectedActivity.location} • {selectedActivity.district} District
+                        </p>
+                      </div>
 
-                  <div className="pt-2 border-t border-white/15 text-[10px] font-space text-gray-400 flex justify-between">
-                    <span>RECORD #{selectedActivity.id}</span>
-                    <span>RPF PUBLIC ARCHIVE</span>
-                  </div>
+                      <div className="pt-2 border-t border-white/15 text-[10px] font-space text-gray-400 flex justify-between">
+                        <span>RECORD #{selectedActivity.id}</span>
+                        <span>RPF PUBLIC ARCHIVE</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Category & Date Badge */}

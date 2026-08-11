@@ -30,7 +30,7 @@ const PARTNER_TYPES = [
 
 export const PartnerWithPurpose: React.FC = () => {
   return (
-    <section id="partner" className="py-16 lg:py-20 bg-institutional-light dark:bg-[#0D121B] border-b border-gray-200 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28 min-h-[75vh] flex flex-col justify-center">
+    <section id="partners" className="py-16 lg:py-20 bg-institutional-light dark:bg-[#0D121B] border-b border-gray-200 dark:border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28 min-h-[75vh] flex flex-col justify-center">
       <div className="max-w-[1500px] w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Editorial Layout: Title Left, Text Right */}

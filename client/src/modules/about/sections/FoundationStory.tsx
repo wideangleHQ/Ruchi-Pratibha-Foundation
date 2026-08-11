@@ -151,7 +151,7 @@ export const FoundationStory: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <a
-              href="#founders-words"
+              href="#founder"
               className="group inline-flex items-center gap-3 px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md"
             >
               <span>Discover Our Legacy</span>

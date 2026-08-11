@@ -4,17 +4,17 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Foundation',
     links: [
-      { label: 'About Foundation', href: '/foundation#about-foundation' },
-      { label: 'Our Legacy', href: '/foundation#foundation-story' },
-      { label: 'Vision & Mission', href: '/foundation#vision-mission-values' },
-      { label: 'Leadership', href: '/foundation#leadership' },
-      { label: 'Journey', href: '/foundation#journey' },
-      { label: 'Milestones', href: '/foundation#milestones' },
-      { label: "Founder's Words", href: '/foundation#founders-words' },
-      { label: 'Governance Charter', href: '/foundation#governance' },
-      { label: 'Our Philosophy', href: '/foundation#philosophy' },
-      { label: 'Why We Matter', href: '/foundation#why-we-matter' },
-      { label: 'Future Vision', href: '/foundation#future' },
+      { label: 'About Foundation', href: '/about#foundation' },
+      { label: 'Our Legacy', href: '/about#foundation-story' },
+      { label: 'Vision & Mission', href: '/about#mission' },
+      { label: 'Leadership', href: '/about#leadership' },
+      { label: 'Journey', href: '/about#timeline' },
+      { label: 'Milestones', href: '/about#milestones' },
+      { label: "Founder's Words", href: '/about#founder' },
+      { label: 'Governance Charter', href: '/about#governance' },
+      { label: 'Our Philosophy', href: '/about#philosophy' },
+      { label: 'Why We Matter', href: '/about#why-we-matter' },
+      { label: 'Future Vision', href: '/about#future' },
     ],
   },
   {
@@ -33,29 +33,29 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Recognition',
     links: [
-      { label: 'Ruchi Prativa Sanman', href: '#sanman' },
-      { label: 'Hall of Fame', href: '#fame' },
-      { label: 'Award Categories', href: '#categories' },
-      { label: 'Award Archives', href: '#archives' },
+      { label: 'Ruchi Prativa Sanman', href: '/#sanman' },
+      { label: 'Hall of Fame', href: '/#sanman' },
+      { label: 'Award Categories', href: '/#sanman' },
+      { label: 'Award Archives', href: '/#sanman' },
     ],
   },
   {
     title: 'Knowledge',
     links: [
       { label: 'Knowledge Centre', href: '/publications#pub-hero' },
-      { label: 'Our Collection', href: '/publications#pub-collection' },
+      { label: 'Our Collection', href: '/publications#collection' },
       { label: 'Featured Bookshelf', href: '/publications#featured-publications' },
-      { label: 'Editorial Archive', href: '/publications#editorial-archive' },
-      { label: 'Institutional Reports', href: '/publications#institutional-reports' },
-      { label: 'Knowledge Search', href: '/publications#knowledge-search' },
+      { label: 'Editorial Archive', href: '/publications#editorial' },
+      { label: 'Institutional Reports', href: '/publications#reports' },
+      { label: 'Knowledge Search', href: '/publications#search' },
     ],
   },
   {
     title: 'Archive',
     links: [
-      { label: 'Living Visual Archive', href: '/visual-archive#archive-hero' },
-      { label: 'Photo Archive', href: '/visual-archive#photo-archive' },
-      { label: 'Documentary Centre', href: '/visual-archive#documentary-centre' },
+      { label: 'Living Visual Archive', href: '/visual-archive#archive' },
+      { label: 'Photo Archive', href: '/visual-archive#gallery' },
+      { label: 'Documentary Centre', href: '/visual-archive#documentaries' },
       { label: 'Event Folders (1997-2026)', href: '/visual-archive#event-archive' },
       { label: 'Museum Milestone Wall', href: '/visual-archive#historical-moments' },
       { label: 'Newspaper Clippings', href: '/visual-archive#media-coverage' },
@@ -68,8 +68,8 @@ export const FOOTER_SECTIONS: FooterSection[] = [
     title: 'Get Involved',
     links: [
       { label: 'Volunteer', href: '/get-involved/volunteer' },
-      { label: 'CSR Partnership', href: '/get-involved#partner' },
-      { label: 'Contact', href: '/contact#contact-hero' },
+      { label: 'CSR Partnership', href: '/get-involved#partners' },
+      { label: 'Contact', href: '/#contact' },
       { label: 'Future Donations', href: '/get-involved#support', badge: 'Coming Soon' },
     ],
   },
@@ -91,8 +91,8 @@ export const SOCIAL_LINKS = [
 ];
 
 export const BOTTOM_BAR_LINKS = [
-  { label: 'Privacy Policy', href: '#privacy' },
-  { label: 'Terms & Conditions', href: '#terms' },
-  { label: 'Accessibility', href: '#accessibility' },
-  { label: 'Sitemap', href: '#sitemap' },
+  { label: 'Privacy Policy', href: '/about#governance' },
+  { label: 'Terms & Conditions', href: '/about#governance' },
+  { label: 'Accessibility', href: '/about#governance' },
+  { label: 'Sitemap', href: '/#contact' },
 ];

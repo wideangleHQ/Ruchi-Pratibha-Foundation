@@ -3,16 +3,36 @@
 import React, { useEffect } from 'react';
 import { Navigation } from '@/modules/home/sections/Navigation';
 import { Footer } from '@/modules/home/sections/Footer';
+import dynamic from 'next/dynamic';
 import { PublicationsHero } from './sections/PublicationsHero';
-import { CollectionOverview } from './sections/CollectionOverview';
-import { FeaturedBookshelf } from './sections/FeaturedBookshelf';
-import { DigitalReaderPreview } from './sections/DigitalReaderPreview';
-import { PublicationTimeline } from './sections/PublicationTimeline';
-import { EditorialArchive } from './sections/EditorialArchive';
-import { InstitutionalReports } from './sections/InstitutionalReports';
-import { KnowledgeSearchRepository } from './sections/KnowledgeSearchRepository';
-import { RelatedKnowledgeGraph } from './sections/RelatedKnowledgeGraph';
-import { PublicationsNewsletter } from './sections/PublicationsNewsletter';
+
+const CollectionOverview = dynamic(() => import('./sections/CollectionOverview').then(mod => mod.CollectionOverview), {
+  loading: () => <div className="py-24 bg-institutional-light dark:bg-institutional-surface/10 min-h-[300px]" />,
+});
+const FeaturedBookshelf = dynamic(() => import('./sections/FeaturedBookshelf').then(mod => mod.FeaturedBookshelf), {
+  loading: () => <div className="py-24 bg-institutional-cream dark:bg-institutional-surface/5 min-h-[400px]" />,
+});
+const DigitalReaderPreview = dynamic(() => import('./sections/DigitalReaderPreview').then(mod => mod.DigitalReaderPreview), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[500px]" />,
+});
+const PublicationTimeline = dynamic(() => import('./sections/PublicationTimeline').then(mod => mod.PublicationTimeline), {
+  loading: () => <div className="py-24 bg-institutional-light dark:bg-institutional-surface/10 min-h-[400px]" />,
+});
+const EditorialArchive = dynamic(() => import('./sections/EditorialArchive').then(mod => mod.EditorialArchive), {
+  loading: () => <div className="py-24 bg-institutional-cream dark:bg-institutional-surface/5 min-h-[400px]" />,
+});
+const InstitutionalReports = dynamic(() => import('./sections/InstitutionalReports').then(mod => mod.InstitutionalReports), {
+  loading: () => <div className="py-24 bg-institutional-light dark:bg-institutional-surface/10 min-h-[350px]" />,
+});
+const KnowledgeSearchRepository = dynamic(() => import('./sections/KnowledgeSearchRepository').then(mod => mod.KnowledgeSearchRepository), {
+  loading: () => <div className="py-24 bg-institutional-cream dark:bg-institutional-surface/5 min-h-[400px]" />,
+});
+const RelatedKnowledgeGraph = dynamic(() => import('./sections/RelatedKnowledgeGraph').then(mod => mod.RelatedKnowledgeGraph), {
+  loading: () => <div className="py-24 bg-institutional-light dark:bg-institutional-surface/10 min-h-[400px]" />,
+});
+const PublicationsNewsletter = dynamic(() => import('./sections/PublicationsNewsletter').then(mod => mod.PublicationsNewsletter), {
+  loading: () => <div className="py-20 bg-institutional-darker min-h-[250px]" />,
+});
 
 export default function PublicationsPage() {
   useEffect(() => {
@@ -22,11 +42,13 @@ export default function PublicationsPage() {
         const element = document.getElementById(targetId);
         if (element) {
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            element.scrollIntoView({ behavior });
           }, 100);
         }
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        window.scrollTo({ top: 0, behavior });
       }
     }
   }, []);

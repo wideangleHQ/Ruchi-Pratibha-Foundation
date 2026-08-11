@@ -2,20 +2,46 @@
 
 import React, { useEffect } from 'react';
 import Navigation from '../home/sections/Navigation';
+import dynamic from 'next/dynamic';
 import { AboutHero } from './sections/AboutHero';
 import { WhoWeAre } from './sections/WhoWeAre';
-import { FoundationStory } from './sections/FoundationStory';
-import { ChairmanMessage } from '../home/sections/StorySections/components/ChairmanMessage';
-import { VisionMissionValues } from './sections/VisionMissionValues';
-import Timeline from '../home/sections/Timeline';
-import { InstitutionalMilestones } from './sections/InstitutionalMilestones';
-import { Leadership } from './sections/Leadership';
-import { GovernanceTransparency } from './sections/GovernanceTransparency';
-import { OurPhilosophy } from './sections/OurPhilosophy';
-import { WhyWeMatter } from './sections/WhyWeMatter';
-import { NextChapter } from './sections/NextChapter';
-import { SignatureScrollQuote } from './sections/SignatureScrollQuote';
-import { AboutCTA } from './sections/AboutCTA';
+
+const SignatureScrollQuote = dynamic(() => import('./sections/SignatureScrollQuote').then(mod => mod.SignatureScrollQuote), {
+  loading: () => <div className="py-20 bg-institutional-cream min-h-[250px]" />,
+});
+const FoundationStory = dynamic(() => import('./sections/FoundationStory').then(mod => mod.FoundationStory), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const ChairmanMessage = dynamic(() => import('../home/sections/StorySections/components/ChairmanMessage').then(mod => mod.ChairmanMessage), {
+  loading: () => <div className="py-24 bg-institutional-cream min-h-[400px]" />,
+});
+const VisionMissionValues = dynamic(() => import('./sections/VisionMissionValues').then(mod => mod.VisionMissionValues), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const Timeline = dynamic(() => import('../home/sections/Timeline'), {
+  loading: () => <div className="py-28 bg-institutional-light min-h-[600px]" />,
+});
+const InstitutionalMilestones = dynamic(() => import('./sections/InstitutionalMilestones').then(mod => mod.InstitutionalMilestones), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const Leadership = dynamic(() => import('./sections/Leadership').then(mod => mod.Leadership), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const GovernanceTransparency = dynamic(() => import('./sections/GovernanceTransparency').then(mod => mod.GovernanceTransparency), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const OurPhilosophy = dynamic(() => import('./sections/OurPhilosophy').then(mod => mod.OurPhilosophy), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const WhyWeMatter = dynamic(() => import('./sections/WhyWeMatter').then(mod => mod.WhyWeMatter), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const NextChapter = dynamic(() => import('./sections/NextChapter').then(mod => mod.NextChapter), {
+  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
+});
+const AboutCTA = dynamic(() => import('./sections/AboutCTA').then(mod => mod.AboutCTA), {
+  loading: () => <div className="py-20 bg-institutional-darker min-h-[250px]" />,
+});
 import Footer from '../home/sections/Footer';
 
 export default function AboutPage() {
@@ -26,7 +52,8 @@ export default function AboutPage() {
         const element = document.getElementById(targetId);
         if (element) {
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            element.scrollIntoView({ behavior });
           }, 150);
           return;
         }

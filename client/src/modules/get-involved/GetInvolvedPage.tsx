@@ -21,7 +21,8 @@ export default function GetInvolvedPage() {
         const element = document.getElementById(targetId);
         if (element) {
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            element.scrollIntoView({ behavior });
           }, 150);
           return;
         }

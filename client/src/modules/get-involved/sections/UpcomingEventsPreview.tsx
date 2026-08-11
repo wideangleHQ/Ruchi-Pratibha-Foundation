@@ -17,7 +17,7 @@ const EVENTS = [
     summary: 'A three-day intensive workshop aimed at developing leadership skills while preserving traditional Odia cultural heritage.',
     date: '10 January 2027',
     venue: 'Foundation Campus, Cuttack',
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+    image: '/Odia Bazar/DSC05968.JPG',
   },
   {
     title: 'Odia Literature & Heritage Conclave',
@@ -31,7 +31,7 @@ const EVENTS = [
     summary: 'Providing free health check-ups, awareness sessions, and wellness support for underserved rural areas of Odisha.',
     date: '05 March 2027',
     venue: 'Rural Development Center, Jagatsinghpur',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
+    image: '/Sutahat/DSC05413.JPG',
   },
 ];
 

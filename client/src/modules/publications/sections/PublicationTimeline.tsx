@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 
 const PUBLICATION_TIMELINE_MILESTONES = [
   {
@@ -174,19 +174,7 @@ export const PublicationTimeline: React.FC = () => {
                     {currentMilestone.description}
                   </p>
 
-                  {/* Archival Cover Placeholder Box */}
-                  <div className="w-full aspect-[16/8] rounded-sm bg-gradient-to-r from-institutional-surface/90 via-institutional-dark to-institutional-darker border border-black/10 dark:border-white/10 p-5 flex items-center justify-between text-white mb-6">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-space uppercase text-institutional-accent font-semibold block">
-                        [ Archival Milestone Cover ]
-                      </span>
-                      <h4 className="font-cormorant text-lg font-bold text-white">
-                        {currentMilestone.title} ({currentMilestone.year})
-                      </h4>
-                    </div>
 
-                    <BookOpen className="w-8 h-8 text-institutional-accent opacity-80 shrink-0" />
-                  </div>
                 </div>
 
                 {/* Footer Action */}

@@ -1,11 +1,32 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const NavLogo: React.FC = () => {
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      const heroEl = document.getElementById('hero');
+      if (heroEl) {
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        heroEl.scrollIntoView({ behavior });
+        window.history.pushState(null, '', '/#hero');
+      } else {
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        window.scrollTo({ top: 0, behavior });
+      }
+    }
+  };
+
   return (
     <Link
       href="/"
+      onClick={handleLogoClick}
       aria-label="Ruchi Prativa Foundation Home"
       className="group flex items-center gap-3 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm"
     >
