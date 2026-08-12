@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { useHeroAnimation } from '../hooks/useHeroAnimation';
 import { HERO_CONTENT } from '../constants';
 
@@ -10,13 +11,13 @@ export const HeroContent: React.FC = () => {
 
   return (
     <div className="relative z-10 w-full h-full flex items-end px-6 sm:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-20">
-      <div className="max-w-[1500px] w-full mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12">
+      <div className="max-w-[1500px] w-full mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12 xl:gap-16">
         {/* Left: Text Content Block */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-start max-w-[70%] sm:max-w-full lg:max-w-[65%]"
+          className="flex flex-col items-start w-full lg:max-w-[55%] xl:max-w-[60%] 2xl:max-w-[65%]"
         >
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="inline-flex items-center gap-3 mb-6">
@@ -54,20 +55,20 @@ export const HeroContent: React.FC = () => {
           variants={itemVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-3.5 w-[70%] sm:w-full lg:w-auto lg:min-w-[280px]"
+          className="flex flex-col gap-3.5 w-full sm:max-w-[340px] lg:w-[280px] xl:w-[320px] shrink-0"
         >
-          <a
-            href="/coming-soon"
-            className="w-full px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap"
+          <Link
+            href="/damdaar-odia"
+            className="w-full px-6 py-3.5 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-lg text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap cursor-pointer"
           >
             {HERO_CONTENT.primaryCta}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/get-involved/volunteer"
-            className="w-full px-6 py-3 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/20 hover:border-institutional-accent hover:text-institutional-accent transition-colors duration-200 rounded-sm text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap"
+            className="w-full px-6 py-3.5 sm:px-8 sm:py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/20 hover:border-institutional-accent hover:text-institutional-accent transition-colors duration-200 rounded-sm text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent focus-visible:ring-offset-2 whitespace-nowrap cursor-pointer"
           >
             {HERO_CONTENT.secondaryCta}
-          </a>
+          </Link>
         </motion.div>
       </div>
     </div>

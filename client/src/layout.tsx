@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { cormorantGaramond, manrope, spaceGrotesk } from '@/core/fonts';
+import { cormorantGaramond, manrope, spaceGrotesk, playfairDisplay, poppins, hatalekha } from '@/core/fonts';
 import { ReactQueryProvider } from '@/core/providers/query-provider';
 import '@/styles/globals.css';
 
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorantGaramond.variable} ${manrope.variable} ${spaceGrotesk.variable}`}
+      className={`${cormorantGaramond.variable} ${manrope.variable} ${spaceGrotesk.variable} ${playfairDisplay.variable} ${poppins.variable} ${hatalekha.variable}`}
     >
       <body className="font-manrope antialiased bg-institutional-light text-institutional-dark selection:bg-institutional-accent selection:text-white">
         <ReactQueryProvider>{children}</ReactQueryProvider>
