@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -11,15 +11,85 @@ import { DAMDAAR_DOMAINS, DAMDAAR_TIMELINE } from './data/damdaarData';
 import damdaarBg from '@/assets/Damdaar Odia Background.png';
 import damdaarBgMobile from '@/assets/Backgroudn Mobile Screen.png';
 import { AccordionGallery } from '@/components/ui/AccordionGallery/AccordionGallery';
+import artCultureImg from '@/assets/Categories/Art and Culture.png';
+import techImg from '@/assets/Categories/Tech .png';
+import entrepreneurshipImg from '@/assets/Categories/Entrepeneurship.png';
+import culinaryImg from '@/assets/Categories/Cooking.png';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const DamdaarOdiaPage: React.FC = () => {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  const scrollSectionRef = useRef<HTMLDivElement>(null);
+  const line1Ref = useRef<HTMLParagraphElement>(null);
+  const line2Ref = useRef<HTMLParagraphElement>(null);
+  const line3Ref = useRef<HTMLParagraphElement>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+
+    const line1 = line1Ref.current;
+    const line2 = line2Ref.current;
+    const line3 = line3Ref.current;
+    const section = scrollSectionRef.current;
+
+    if (!line1 || !line2 || !line3 || !section) return;
+
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set([line1, line2, line3], { color: '#D1D5DB', y: 15 }); // text-gray-300 equivalent
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1,
+        }
+      });
+
+      // Line 1: transition color to Deep Green and highlight spans to Gold
+      tl.to(line1, { color: '#343D0F', y: 0, duration: 1.8 }, 0)
+        .to(line1.querySelectorAll('.highlight-text'), { color: '#CF8A12', duration: 0.9 }, 0.9);
+
+      // Line 1 dims slightly, Line 2 reveals
+      tl.to(line1, { color: '#9CA3AF', duration: 1.35 }, 2.7)
+        .to(line2, { color: '#343D0F', y: 0, duration: 1.8 }, 3.15)
+        .to(line2.querySelectorAll('.highlight-text'), { color: '#4D6B1F', duration: 0.9 }, 4.05); // Fresh Green
+
+      // Line 2 dims slightly, Line 3 reveals
+      tl.to(line2, { color: '#9CA3AF', duration: 1.35 }, 5.85)
+        .to(line3, { color: '#343D0F', y: 0, duration: 1.8 }, 6.3)
+        .to(line3.querySelectorAll('.highlight-text'), {
+          color: (index) => index === 0 ? '#D55E33' : '#CF8A12', // Warm Orange for heritage, Gold for digital
+          duration: 0.9
+        }, 7.2);
+
+      // Keep them all fully revealed and highlighted at the end of the scroll (from 8.1 to 10)
+      tl.to([line1, line2, line3], { color: '#343D0F', duration: 0.9 }, 8.1)
+        .to(line1.querySelectorAll('.highlight-text'), { color: '#CF8A12', duration: 0.9 }, 8.1)
+        .to(line2.querySelectorAll('.highlight-text'), { color: '#4D6B1F', duration: 0.9 }, 8.1)
+        .to(line3.querySelectorAll('.highlight-text'), {
+          color: (index) => index === 0 ? '#D55E33' : '#CF8A12',
+          duration: 0.9
+        }, 8.1);
+    });
+
+    return () => ctx.revert();
+  }, [shouldReduceMotion]);
 
   return (
     <div 
@@ -145,32 +215,72 @@ export const DamdaarOdiaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* The Movement Section */}
-      <section id="movement" className="relative h-[50vh] min-h-[50vh] flex items-center justify-center bg-white border-b border-black/5 scroll-mt-20 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="space-y-3"
-          >
-            <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE CONCEPT</span>
-            <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-institutional-dark">
-              A Movement for Odisha&apos;s Talent
-            </h2>
-            <div className="w-16 h-0.5 bg-damdaar-gold mx-auto mt-4" />
-          </motion.div>
+      {/* The Movement Section - Immersive Pinned Scroll Storytelling */}
+      <section 
+        ref={scrollSectionRef} 
+        id="movement" 
+        className="relative w-full h-[115vh] bg-white border-b border-black/5 scroll-mt-20"
+      >
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center bg-white px-4 sm:px-6 overflow-hidden">
+          <div className="max-w-5xl w-full mx-auto text-center space-y-10 sm:space-y-14">
+            {/* Top Concept badge */}
+            <div className="space-y-3 select-none">
+              <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE CONCEPT</span>
+              <h2 className="font-playfair text-xl sm:text-2xl font-bold tracking-widest text-[#343D0F] uppercase">
+                A Movement for Odisha&apos;s Talent
+              </h2>
+              <div className="w-16 h-0.5 bg-damdaar-gold mx-auto mt-2" />
+            </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-            className="font-poppins text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto"
-          >
-            &ldquo;We stand at the threshold of potential and possibility. DUMDAAR ODIA is an incubator designed to foster talent that fuses cultural heritage with digital advancements.&rdquo;
-          </motion.p>
+            {/* Cinematic editorial statements */}
+            <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-12">
+              <p 
+                ref={line1Ref} 
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
+                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                }`}
+              >
+                We stand at the threshold of{' '}
+                <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#CF8A12]' : ''}`}>
+                  potential
+                </span>{' '}
+                and{' '}
+                <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#CF8A12]' : ''}`}>
+                  possibility
+                </span>
+                .
+              </p>
+              
+              <p 
+                ref={line2Ref} 
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
+                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                }`}
+              >
+                DUMDAAR ODIA is an incubator designed to{' '}
+                <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#4D6B1F]' : ''}`}>
+                  foster talent
+                </span>
+              </p>
+              
+              <p 
+                ref={line3Ref} 
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
+                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                }`}
+              >
+                fusing{' '}
+                <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#D55E33]' : ''}`}>
+                  cultural heritage
+                </span>{' '}
+                with{' '}
+                <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#CF8A12]' : ''}`}>
+                  digital advancements
+                </span>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -189,10 +299,10 @@ export const DamdaarOdiaPage: React.FC = () => {
           <div className="w-full relative mt-8">
             <AccordionGallery
               items={[
-                { image: '/Odia Bazar/DSC05968.JPG', label: 'Art & Culture (Heritage)', link: '/damdaar-odia/domains/art-culture' },
-                { image: '/Sutahat/DSC05409.JPG', label: 'Technology (Digital)', link: '/damdaar-odia/domains/technology' },
-                { image: '/Odia Bazar/DSC05990.JPG', label: 'Entrepreneurship (Enterprise)', link: '/damdaar-odia/domains/entrepreneurship' },
-                { image: '/Sutahat/DSC05413.JPG', label: 'Culinary Excellence (Cuisine)', link: '/damdaar-odia/domains/culinary-excellence' }
+                { image: artCultureImg.src, label: 'Art & Culture (Heritage)', link: '/damdaar-odia/domains/art-culture' },
+                { image: techImg.src, label: 'Technology (Digital)', link: '/damdaar-odia/domains/technology' },
+                { image: entrepreneurshipImg.src, label: 'Entrepreneurship (Enterprise)', link: '/damdaar-odia/domains/entrepreneurship' },
+                { image: culinaryImg.src, label: 'Culinary Excellence (Cuisine)', link: '/damdaar-odia/domains/culinary-excellence' }
               ]}
               defaultIndex={0}
               expandRatio={0.45}
@@ -207,63 +317,168 @@ export const DamdaarOdiaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* How it Works Section */}
+      {/* How to Register Section */}
       <section className="py-24 bg-white border-b border-black/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
           <div className="text-center space-y-3">
-            <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE PIPELINE</span>
+            <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE REGISTRATION PROCESS</span>
             <h2 className="font-playfair text-3xl sm:text-4xl font-bold">
-              How the Campaign Works
+              How to Register
             </h2>
             <div className="w-16 h-0.5 bg-damdaar-gold mx-auto mt-4" />
           </div>
 
-          {/* Pipeline Path Graphic representation */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
-            {/* Step 1 */}
-            <div className="space-y-3 relative text-center md:text-left">
-              <span className="w-8 h-8 rounded-full bg-damdaar-gold/15 text-damdaar-gold flex items-center justify-center font-bold text-sm mx-auto md:mx-0">1</span>
-              <h4 className="font-playfair text-lg font-bold">Choose</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Evaluate the four domains and choose the profile category that matches your skills.
-              </p>
-            </div>
+          {/* Interactive Aligned Asymmetric Card Grid */}
+          <div className="grid grid-cols-12 gap-6 lg:gap-8 items-start">
+            {[
+              {
+                step: '01',
+                title: 'CHOOSE YOUR DOMAIN',
+                description: 'Choose the domain where your talent belongs.',
+                color: '#4D6B1F', // Fresh Green
+                bg: artCultureImg.src,
+                overlayDefault: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.82), rgba(15, 23, 10, 0.95))',
+                overlayHover: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.72), rgba(15, 23, 10, 0.9))',
+                gridClasses: 'col-span-12 md:col-span-6 lg:col-span-7 lg:h-[360px] md:h-[340px]',
+              },
+              {
+                step: '02',
+                title: 'REGISTER YOUR DETAILS',
+                description: 'Complete the registration form.',
+                color: '#343D0F', // Deep Green
+                bg: techImg.src,
+                overlayDefault: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.85), rgba(10, 12, 3, 0.95))',
+                overlayHover: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.75), rgba(10, 12, 3, 0.9))',
+                gridClasses: 'col-span-12 md:col-span-6 lg:col-span-5 lg:h-[360px] md:h-[340px]',
+              },
+              {
+                step: '03',
+                title: 'SHOWCASE YOUR TALENT',
+                description: 'Submit your idea, project, performance, portfolio, recipe or relevant entry.',
+                color: '#D55E33', // Warm Orange
+                bg: entrepreneurshipImg.src,
+                overlayDefault: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.85), rgba(35, 12, 5, 0.95))',
+                overlayHover: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.75), rgba(35, 12, 5, 0.9))',
+                gridClasses: 'col-span-12 md:col-span-6 lg:col-span-5 lg:h-[360px] md:h-[340px]',
+              },
+              {
+                step: '04',
+                title: 'PARTICIPATE & RISE',
+                description: 'Enter the evaluation/competition journey and move forward.',
+                color: '#CF8A12', // Gold
+                bg: culinaryImg.src,
+                overlayDefault: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.85), rgba(30, 20, 3, 0.95))',
+                overlayHover: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.75), rgba(30, 20, 3, 0.9))',
+                gridClasses: 'col-span-12 md:col-span-6 lg:col-span-7 lg:h-[360px] md:h-[340px]',
+              }
+            ].map((item, idx) => {
+              const isHovered = hoveredCard === idx;
+              return (
+                <div
+                  key={item.step}
+                  className={`group relative overflow-hidden rounded-sm transition-all duration-500 ease-out flex flex-col justify-between p-8 select-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12] ${item.gridClasses} h-auto min-h-[280px] md:min-h-0`}
+                  tabIndex={0}
+                  onMouseEnter={() => !shouldReduceMotion && setHoveredCard(idx)}
+                  onMouseLeave={() => !shouldReduceMotion && setHoveredCard(null)}
+                  onFocus={() => setHoveredCard(idx)}
+                  onBlur={() => setHoveredCard(null)}
+                  onClick={() => {
+                    if (shouldReduceMotion) return;
+                    setHoveredCard(hoveredCard === idx ? null : idx);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setHoveredCard(hoveredCard === idx ? null : idx);
+                    }
+                  }}
+                  style={{
+                    borderTop: `4px solid ${item.color}`,
+                    transform: isHovered ? 'translateY(-6px)' : 'translateY(0)',
+                    boxShadow: isHovered ? '0 12px 24px -10px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.02)',
+                    borderColor: isHovered ? `${item.color}40` : 'rgba(0,0,0,0.05)',
+                  }}
+                >
+                  {/* Background Image with Hover Scale */}
+                  <div 
+                    className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out pointer-events-none z-0"
+                    style={{
+                      backgroundImage: `url(${item.bg})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      transform: isHovered ? 'scale(1.04) translateY(2px)' : 'scale(1) translateY(0)',
+                    }}
+                  />
 
-            {/* Step 2 */}
-            <div className="space-y-3 relative text-center md:text-left">
-              <span className="w-8 h-8 rounded-full bg-damdaar-gold/15 text-damdaar-gold flex items-center justify-center font-bold text-sm mx-auto md:mx-0">2</span>
-              <h4 className="font-playfair text-lg font-bold">Register</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Complete the customized digital application and verify credentials.
-              </p>
-            </div>
+                  {/* Gradient Overlay */}
+                  <div 
+                    className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none z-10"
+                    style={{
+                      background: isHovered ? item.overlayHover : item.overlayDefault,
+                    }}
+                  />
 
-            {/* Step 3 */}
-            <div className="space-y-3 relative text-center md:text-left">
-              <span className="w-8 h-8 rounded-full bg-damdaar-gold/15 text-damdaar-gold flex items-center justify-center font-bold text-sm mx-auto md:mx-0">3</span>
-              <h4 className="font-playfair text-lg font-bold">Showcase</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Submit recipes, prototypes, pitch decks, or performance recordings to the portal.
-              </p>
-            </div>
+                  {/* Subtle traditional decorative icon overlay */}
+                  <div 
+                    className="absolute right-4 bottom-4 w-16 h-16 pointer-events-none z-20 transition-all duration-500"
+                    style={{
+                      transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)',
+                      opacity: isHovered ? 0.12 : 0.05,
+                    }}
+                  >
+                    <svg viewBox="0 0 100 100" fill="none" stroke={item.color} strokeWidth="2.5">
+                      <circle cx="50" cy="50" r="40" />
+                      <circle cx="50" cy="50" r="25" />
+                      <line x1="10" y1="50" x2="90" y2="50" />
+                      <line x1="50" y1="10" x2="50" y2="90" />
+                    </svg>
+                  </div>
 
-            {/* Step 4 */}
-            <div className="space-y-3 relative text-center md:text-left">
-              <span className="w-8 h-8 rounded-full bg-damdaar-gold/15 text-damdaar-gold flex items-center justify-center font-bold text-sm mx-auto md:mx-0">4</span>
-              <h4 className="font-playfair text-lg font-bold">Participate</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Engage in regional live showcases, hackathons, or cook-offs with subject matter experts.
-              </p>
-            </div>
+                  {/* Card Content wrapper */}
+                  <div className="space-y-4 relative z-20">
+                    {/* Step Number */}
+                    <span 
+                      className="font-playfair text-5xl font-black block transition-all duration-500 origin-left"
+                      style={{ 
+                        color: '#ffffff', 
+                        opacity: isHovered ? 0.55 : 0.3,
+                        transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+                      }}
+                    >
+                      {item.step}
+                    </span>
 
-            {/* Step 5 */}
-            <div className="space-y-3 relative text-center md:text-left">
-              <span className="w-8 h-8 rounded-full bg-damdaar-gold text-white flex items-center justify-center font-bold text-sm mx-auto md:mx-0 shadow-sm">5</span>
-              <h4 className="font-playfair text-lg font-bold text-damdaar-gold">Rise</h4>
-              <p className="text-xs text-gray-500 leading-relaxed">
-                Receive grant opportunities, direct recognition, and enter Odisha&apos;s talent ecosystem.
-              </p>
-            </div>
+                    {/* Title */}
+                    <h3 className="font-playfair text-xl sm:text-2xl font-bold tracking-wide text-white leading-snug">
+                      {item.title}
+                    </h3>
+
+                    {/* Hidden/Revealed Description */}
+                    <div 
+                      className={`font-poppins text-xs text-gray-200 leading-relaxed transition-all duration-500 ease-out ${
+                        isHovered ? 'max-h-32 opacity-100 translate-y-0 mt-3' : 'max-h-0 opacity-0 translate-y-4 overflow-hidden'
+                      }`}
+                    >
+                      {item.description}
+                    </div>
+                  </div>
+
+                  {/* Card footer arrow button */}
+                  <div className="pt-6 flex justify-end relative z-20">
+                    <span 
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-500"
+                      style={{
+                        borderColor: isHovered ? item.color : 'rgba(255,255,255,0.25)',
+                        backgroundColor: isHovered ? item.color : 'transparent',
+                        color: '#ffffff',
+                      }}
+                    >
+                      <ChevronRight className={`w-4 h-4 transition-transform duration-500 ${isHovered ? 'translate-x-0.5' : ''}`} />
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

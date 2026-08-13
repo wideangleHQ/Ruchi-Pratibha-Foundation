@@ -120,7 +120,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
               </p>
             </div>
             <a
-              href="#hall-of-fame"
+              href="/pratibha-sanman"
               className="inline-flex items-center gap-2 text-xs font-space uppercase tracking-widest text-institutional-accent hover:text-white transition-colors duration-300 whitespace-nowrap"
             >
               <span>Explore Full Hall of Fame</span>

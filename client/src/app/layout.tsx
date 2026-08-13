@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { cormorantGaramond, manrope, spaceGrotesk, playfairDisplay, poppins, hatalekha } from '@/core/fonts';
 import { ReactQueryProvider } from '@/core/providers/query-provider';
 import { ThemeProvider } from '@/core/providers/theme-provider';
+import { PageTransitionProvider } from '@/core/providers/page-transition-provider';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -22,7 +23,9 @@ export default function RootLayout({
     >
       <body className="font-manrope antialiased bg-institutional-light dark:bg-institutional-dark text-institutional-dark dark:text-institutional-light selection:bg-institutional-accent selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <ReactQueryProvider>{children}</ReactQueryProvider>
+          <ReactQueryProvider>
+            <PageTransitionProvider>{children}</PageTransitionProvider>
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>

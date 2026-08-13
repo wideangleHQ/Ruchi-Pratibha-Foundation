@@ -33,7 +33,8 @@ export const FOOTER_SECTIONS: FooterSection[] = [
   {
     title: 'Recognition',
     links: [
-      { label: 'Ruchi Prativa Sanman', href: '/#sanman' },
+      { label: 'Pratibha Sanman', href: '/pratibha-sanman' },
+      { label: 'Dumdaar Odia', href: '/damdaar-odia' },
       { label: 'Hall of Fame', href: '/#sanman' },
       { label: 'Award Categories', href: '/#sanman' },
       { label: 'Award Archives', href: '/#sanman' },

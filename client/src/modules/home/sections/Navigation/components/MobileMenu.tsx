@@ -6,6 +6,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { CATEGORIES, MegaCategoryItem } from './MegaNavPanel';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useRouter } from 'next/navigation';
+import { usePageTransition } from '@/core/providers/page-transition-provider';
 import {
   Accordion,
   AccordionItem,
@@ -21,6 +22,7 @@ interface MobileMenuProps {
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const router = useRouter();
   const activeSection = useActiveSection();
+  const { startTransition } = usePageTransition();
 
   // Prevent background body scroll when mobile menu panel is open
   useEffect(() => {
@@ -57,7 +59,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       } else {
         // Intercept link click and route using client-side transition
         e.preventDefault();
-        router.push(href);
+        startTransition(href);
       }
     }
   };

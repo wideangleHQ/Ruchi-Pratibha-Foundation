@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useRouter } from 'next/navigation';
+import { usePageTransition } from '@/core/providers/page-transition-provider';
 
 export interface NavLinkItem {
   label: string;
@@ -62,18 +63,14 @@ export const CATEGORIES: MegaCategoryItem[] = [
     ],
   },
   {
-    label: 'DUMDAAR ODIA',
-    tag: 'TALENT INCUBATION',
+    label: 'Awards',
+    tag: 'RECOGNITION',
     bgColor: '#121824',
     textColor: '#FFFFFF',
-    borderColor: 'rgba(207, 138, 18, 0.3)',
+    borderColor: 'rgba(197, 160, 89, 0.3)',
     links: [
-      { label: 'Campaign Overview', href: '/damdaar-odia', ariaLabel: 'Dumdaar Odia Campaign Overview' },
-      { label: 'Art & Culture Domain', href: '/damdaar-odia/domains/art-culture', ariaLabel: 'Art and Culture Domain' },
-      { label: 'Technology Domain', href: '/damdaar-odia/domains/technology', ariaLabel: 'Technology Domain' },
-      { label: 'Entrepreneurship Domain', href: '/damdaar-odia/domains/entrepreneurship', ariaLabel: 'Entrepreneurship Domain' },
-      { label: 'Culinary Excellence Domain', href: '/damdaar-odia/domains/culinary-excellence', ariaLabel: 'Culinary Excellence Domain' },
-      { label: 'Campaign Roadmap', href: '/damdaar-odia#timeline', ariaLabel: 'Important Dates and Timeline' },
+      { label: 'Pratibha Sanman', href: '/pratibha-sanman', ariaLabel: 'Pratibha Sanman' },
+      { label: 'Dumdaar Odia', href: '/damdaar-odia', ariaLabel: 'Dumdaar Odia' },
     ],
   },
   {
@@ -141,6 +138,7 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const activeSection = useActiveSection();
+  const { startTransition } = usePageTransition();
 
   useLayoutEffect(() => {
     const panelEl = panelRef.current;
@@ -211,7 +209,7 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
       } else {
         // Intercept link click and route using client-side transition
         e.preventDefault();
-        router.push(href);
+        startTransition(href);
       }
     }
   };

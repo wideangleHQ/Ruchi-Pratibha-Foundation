@@ -46,17 +46,14 @@ const DEFAULT_ITEMS: CardNavItem[] = [
     ],
   },
   {
-    label: 'Recognition',
-    tag: 'SANMAN & HALL OF FAME',
+    label: 'Awards',
+    tag: 'RECOGNITION',
     bgColor: 'rgba(24, 30, 44, 0.96)',
     textColor: '#FFFFFF',
     borderColor: 'rgba(197, 160, 89, 0.25)',
     links: [
-      { label: 'Ruchi Prativa Sanman', href: '#sanman', ariaLabel: 'Ruchi Prativa Sanman Overview' },
-      { label: 'Award Categories', href: '#sanman', ariaLabel: 'Sanman Award Categories' },
-      { label: 'Honor Roll & Awardees', href: '#sanman', ariaLabel: 'Laureates and Awardees' },
-      { label: 'Hall of Fame', href: '#sanman', ariaLabel: 'Hall of Fame Gallery' },
-      { label: 'Selection Jury', href: '#sanman', ariaLabel: 'Jury and Selection Committee' },
+      { label: 'Pratibha Sanman', href: '/pratibha-sanman', ariaLabel: 'Pratibha Sanman' },
+      { label: 'Dumdaar Odia', href: '/damdaar-odia', ariaLabel: 'Dumdaar Odia' },
     ],
   },
   {

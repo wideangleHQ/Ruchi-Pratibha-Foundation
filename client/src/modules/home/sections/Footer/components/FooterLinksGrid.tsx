@@ -2,12 +2,14 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { usePageTransition } from '@/core/providers/page-transition-provider';
 import { FOOTER_SECTIONS } from '../constants';
-import { useRouter } from 'next/navigation';
 
 export const FooterLinksGrid: React.FC = () => {
-  const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const pathname = usePathname();
+  const { startTransition } = usePageTransition();
 
   const toggleAccordion = (title: string) => {
     setOpenAccordion((prev) => (prev === title ? null : title));
@@ -35,7 +37,7 @@ export const FooterLinksGrid: React.FC = () => {
       } else {
         // Intercept link click and route using client-side transition
         e.preventDefault();
-        router.push(href);
+        startTransition(href);
       }
     }
   };

@@ -9,7 +9,7 @@ export const PILLARS: PillarItem[] = [
     description:
       'Honouring individuals whose extraordinary contributions inspire society and strengthen the cultural and intellectual heritage of Odisha.',
     ctaText: 'Explore Recognition',
-    href: '#sanman',
+    href: '/pratibha-sanman',
     aspectRatio: '16:10',
   },
   {
