@@ -57,14 +57,14 @@ export const CSRCTA: React.FC = () => {
             className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
           >
             <a
-              href="#contact"
+              href="/get-involved/volunteer"
               className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover transition-colors duration-200 rounded-sm shadow-md min-w-[200px] min-h-[44px]"
             >
               <span>Become a Volunteer</span>
             </a>
 
             <a
-              href="#contact"
+              href="/get-involved"
               className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 text-xs uppercase tracking-widest font-space font-semibold text-white border border-white/30 hover:bg-white hover:text-institutional-dark transition-all duration-300 rounded-sm min-w-[200px] min-h-[44px]"
             >
               <span>Partner With Us</span>

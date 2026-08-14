@@ -101,7 +101,7 @@ export const TransparencyAndPartners: React.FC = () => {
                     {report.size}
                   </span>
                   <a
-                    href="#download"
+                    href="/publications"
                     aria-label={`Download ${report.title}`}
                     className="inline-flex items-center gap-1 text-xs font-space text-institutional-accent hover:text-institutional-dark dark:hover:text-white font-semibold transition-colors duration-300"
                   >

@@ -130,7 +130,7 @@ export const FeaturedCSR: React.FC = () => {
                 </div>
 
                 <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11px] font-space text-institutional-accent font-semibold">
-                  <a href="#csr-archive" className="inline-flex items-center gap-1 hover:underline">
+                  <a href="/work" className="inline-flex items-center gap-1 hover:underline">
                     <span>Explore Archive Item</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
@@ -213,7 +213,7 @@ export const FeaturedCSR: React.FC = () => {
                 </div>
 
                 <div className="pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-[11px] font-space text-institutional-accent font-semibold">
-                  <a href="#csr-archive" className="inline-flex items-center gap-1 hover:underline">
+                  <a href="/work" className="inline-flex items-center gap-1 hover:underline">
                     <span>Explore Archive Item</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>

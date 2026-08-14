@@ -132,7 +132,7 @@ export const BookPreview: React.FC<BookPreviewProps> = ({ publication, onClose }
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-institutional-dark/10 dark:border-white/10">
                 <a
-                  href={publication.pdfUrl || '#read'}
+                  href={publication.pdfUrl || '/publications'}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-wider uppercase rounded-sm shadow transition-all duration-200 cursor-pointer"
                 >
                   <BookOpen className="w-4 h-4" />
@@ -140,7 +140,7 @@ export const BookPreview: React.FC<BookPreviewProps> = ({ publication, onClose }
                 </a>
 
                 <a
-                  href={publication.pdfUrl || '#download'}
+                  href={publication.pdfUrl || '/publications'}
                   className="inline-flex items-center gap-2 px-6 py-3 border border-institutional-dark/20 dark:border-white/20 hover:border-institutional-accent text-institutional-dark dark:text-white hover:text-institutional-accent font-space text-xs font-semibold tracking-wider uppercase rounded-sm transition-all duration-200 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
@@ -148,7 +148,7 @@ export const BookPreview: React.FC<BookPreviewProps> = ({ publication, onClose }
                 </a>
 
                 <a
-                  href="#archive"
+                  href="/publications"
                   className="inline-flex items-center gap-1.5 text-xs font-space font-semibold text-institutional-accent hover:underline ml-auto"
                 >
                   <span>View Archive</span>

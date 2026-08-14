@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
         {/* Brand Header */}
         <div className="flex flex-col md:flex-row items-center md:items-center text-center md:text-left justify-between pb-10 border-b border-white/10 gap-6">
           <a
-            href="#"
+            href="/"
             className="group flex flex-col sm:flex-row items-center gap-3.5 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm"
             aria-label="Ruchi Prativa Foundation Home"
           >

@@ -85,7 +85,7 @@ export const GatewayHero: React.FC = () => {
               <ArrowDown className="w-4 h-4 text-institutional-dark" />
             </a>
             <a
-              href="#support"
+              href="/get-involved"
               className="inline-flex items-center justify-center gap-2.5 w-full px-7 py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-white bg-white/5 border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-200 rounded-sm text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 min-h-[44px]"
             >
               <span>Donate Now</span>

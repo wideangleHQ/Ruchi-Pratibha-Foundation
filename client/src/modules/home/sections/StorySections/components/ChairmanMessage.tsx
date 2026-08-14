@@ -168,7 +168,7 @@ export const ChairmanMessage: React.FC = () => {
             {/* Action CTA */}
             <div>
               <a
-                href="#message-full"
+                href="/about"
                 className="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-black dark:text-white border border-black/30 dark:border-white/30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent"
               >
                 <span>Read Full Message</span>

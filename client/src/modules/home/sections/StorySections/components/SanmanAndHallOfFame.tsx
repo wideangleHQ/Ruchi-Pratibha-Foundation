@@ -97,7 +97,7 @@ export const SanmanAndHallOfFame: React.FC = () => {
                   Annual Honors Assembly
                 </span>
                 <a
-                  href="#biography"
+                  href="/pratibha-sanman"
                   className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest font-space font-semibold text-institutional-accent hover:text-white transition-colors duration-300"
                 >
                   <span>Read Laureate Biography</span>

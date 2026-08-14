@@ -225,7 +225,7 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
                     transition={{ duration: 0.4, ease: 'easeOut' }}
                     className="font-cormorant text-2xl sm:text-3xl font-bold tracking-tight leading-relaxed max-w-xs sm:max-w-md text-institutional-dark dark:text-white"
                   >
-                    "{phrase}"
+                    &ldquo;{phrase}&rdquo;
                   </motion.h2>
                 </AnimatePresence>
               </div>

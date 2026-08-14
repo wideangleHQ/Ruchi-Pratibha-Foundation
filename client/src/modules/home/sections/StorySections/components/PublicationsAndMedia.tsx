@@ -40,7 +40,7 @@ export const PublicationsAndMedia: React.FC = () => {
         {/* View All Publications CTA Button */}
         <div className="text-center">
           <a
-            href="#publications-archive"
+            href="/publications"
             className="group inline-flex items-center gap-2.5 px-6 py-3 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow transition-all duration-300 cursor-pointer"
           >
             <span>Explore Publications</span>

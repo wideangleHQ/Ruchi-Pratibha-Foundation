@@ -329,16 +329,16 @@ export const DamdaarOdiaPage: React.FC = () => {
           </div>
 
           {/* Interactive Aligned Asymmetric Card Grid */}
-          <div className="grid grid-cols-12 gap-6 lg:gap-8 items-start">
+          <div className="grid grid-cols-12 gap-3 items-start">
             {[
               {
                 step: '01',
                 title: 'CHOOSE YOUR DOMAIN',
                 description: 'Choose the domain where your talent belongs.',
                 color: '#4D6B1F', // Fresh Green
-                bg: artCultureImg.src,
-                overlayDefault: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.82), rgba(15, 23, 10, 0.95))',
-                overlayHover: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.72), rgba(15, 23, 10, 0.9))',
+                bg: artCultureImg,
+                overlayDefault: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.65), rgba(15, 23, 10, 0.85))',
+                overlayHover: 'linear-gradient(to bottom, rgba(77, 107, 31, 0.55), rgba(15, 23, 10, 0.75))',
                 gridClasses: 'col-span-12 md:col-span-6 lg:col-span-7 lg:h-[360px] md:h-[340px]',
               },
               {
@@ -346,9 +346,9 @@ export const DamdaarOdiaPage: React.FC = () => {
                 title: 'REGISTER YOUR DETAILS',
                 description: 'Complete the registration form.',
                 color: '#343D0F', // Deep Green
-                bg: techImg.src,
-                overlayDefault: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.85), rgba(10, 12, 3, 0.95))',
-                overlayHover: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.75), rgba(10, 12, 3, 0.9))',
+                bg: techImg,
+                overlayDefault: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.65), rgba(10, 12, 3, 0.85))',
+                overlayHover: 'linear-gradient(to bottom, rgba(52, 61, 15, 0.55), rgba(10, 12, 3, 0.75))',
                 gridClasses: 'col-span-12 md:col-span-6 lg:col-span-5 lg:h-[360px] md:h-[340px]',
               },
               {
@@ -356,9 +356,9 @@ export const DamdaarOdiaPage: React.FC = () => {
                 title: 'SHOWCASE YOUR TALENT',
                 description: 'Submit your idea, project, performance, portfolio, recipe or relevant entry.',
                 color: '#D55E33', // Warm Orange
-                bg: entrepreneurshipImg.src,
-                overlayDefault: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.85), rgba(35, 12, 5, 0.95))',
-                overlayHover: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.75), rgba(35, 12, 5, 0.9))',
+                bg: entrepreneurshipImg,
+                overlayDefault: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.65), rgba(35, 12, 5, 0.85))',
+                overlayHover: 'linear-gradient(to bottom, rgba(213, 94, 51, 0.55), rgba(35, 12, 5, 0.75))',
                 gridClasses: 'col-span-12 md:col-span-6 lg:col-span-5 lg:h-[360px] md:h-[340px]',
               },
               {
@@ -366,9 +366,9 @@ export const DamdaarOdiaPage: React.FC = () => {
                 title: 'PARTICIPATE & RISE',
                 description: 'Enter the evaluation/competition journey and move forward.',
                 color: '#CF8A12', // Gold
-                bg: culinaryImg.src,
-                overlayDefault: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.85), rgba(30, 20, 3, 0.95))',
-                overlayHover: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.75), rgba(30, 20, 3, 0.9))',
+                bg: culinaryImg,
+                overlayDefault: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.65), rgba(30, 20, 3, 0.85))',
+                overlayHover: 'linear-gradient(to bottom, rgba(207, 138, 18, 0.55), rgba(30, 20, 3, 0.75))',
                 gridClasses: 'col-span-12 md:col-span-6 lg:col-span-7 lg:h-[360px] md:h-[340px]',
               }
             ].map((item, idx) => {
@@ -376,7 +376,7 @@ export const DamdaarOdiaPage: React.FC = () => {
               return (
                 <div
                   key={item.step}
-                  className={`group relative overflow-hidden rounded-sm transition-all duration-500 ease-out flex flex-col justify-between p-8 select-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12] ${item.gridClasses} h-auto min-h-[280px] md:min-h-0`}
+                  className={`group relative overflow-hidden rounded-lg transition-all duration-500 ease-out flex flex-col justify-between p-8 select-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12] ${item.gridClasses} h-auto min-h-[280px] md:min-h-0`}
                   tabIndex={0}
                   onMouseEnter={() => !shouldReduceMotion && setHoveredCard(idx)}
                   onMouseLeave={() => !shouldReduceMotion && setHoveredCard(null)}
@@ -401,18 +401,20 @@ export const DamdaarOdiaPage: React.FC = () => {
                 >
                   {/* Background Image with Hover Scale */}
                   <div 
-                    className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out pointer-events-none z-0"
-                    style={{
-                      backgroundImage: `url(${item.bg})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      transform: isHovered ? 'scale(1.04) translateY(2px)' : 'scale(1) translateY(0)',
-                    }}
-                  />
+                    className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out pointer-events-none z-0 overflow-hidden rounded-lg"
+                  >
+                    <Image
+                      src={item.bg}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 rounded-lg"
+                    />
+                  </div>
 
                   {/* Gradient Overlay */}
                   <div 
-                    className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none z-10"
+                    className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none z-10 rounded-lg"
                     style={{
                       background: isHovered ? item.overlayHover : item.overlayDefault,
                     }}

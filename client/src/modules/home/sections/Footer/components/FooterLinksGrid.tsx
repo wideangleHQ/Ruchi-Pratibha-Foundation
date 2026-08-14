@@ -20,11 +20,7 @@ export const FooterLinksGrid: React.FC = () => {
       const [path, hash] = href.includes('#') ? href.split('#') : [href, ''];
       const isCurrentPage =
         path === '' ||
-        path === window.location.pathname ||
-        (path === '/about' && window.location.pathname === '/foundation') ||
-        (path === '/foundation' && window.location.pathname === '/about') ||
-        (path === '/work' && window.location.pathname === '/csr') ||
-        (path === '/csr' && window.location.pathname === '/work');
+        path === window.location.pathname;
 
       if (isCurrentPage && hash) {
         const el = document.getElementById(hash);

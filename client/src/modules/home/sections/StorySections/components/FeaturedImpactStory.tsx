@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import Image from 'next/image';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
 
@@ -169,17 +168,35 @@ export const FeaturedImpactStory: React.FC = () => {
                 className="snap-center shrink-0 w-[72vw] sm:w-[320px] md:w-[360px] lg:w-[400px] transition-opacity duration-300"
               >
                 <InteractiveCard className="group relative h-[420px] sm:h-[520px] rounded-sm overflow-hidden shadow-lg border border-white/15 dark:border-white/10 p-0">
-                  {/* Full-Card Edge-to-Edge Background Image with Smooth Hover Brightening & Scale */}
-                  <div className="absolute inset-0 z-0 overflow-hidden rounded-sm">
-                    <Image
-                      src={story.image}
-                      alt={story.title}
-                      fill
-                      unoptimized
-                      className="object-cover object-center transform group-hover:scale-105 group-hover:brightness-110 transition-all duration-500 ease-out"
+                  {/* Full-Card Edge-to-Edge Premium Placeholder Background */}
+                  <div className="absolute inset-0 z-0 overflow-hidden rounded-sm bg-gradient-to-br from-institutional-surface/90 to-institutional-darker">
+                    {/* Subtle dot matrix pattern to add texture */}
+                    <div
+                      className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                      style={{
+                        backgroundImage:
+                          'radial-gradient(circle at 1px 1px, rgba(197, 160, 89, 0.25) 1px, transparent 0)',
+                        backgroundSize: '24px 24px',
+                      }}
                     />
-                    {/* Soft Light Overlay in Light Mode & Rich Dark Gradient in Dark Mode */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/25 dark:from-black/95 dark:via-black/70 dark:to-black/35 group-hover:from-black/90 transition-colors duration-300" />
+                    
+                    {/* Decorative Institutional Corner Frames */}
+                    <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-institutional-accent/20 z-10 pointer-events-none" />
+                    <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-institutional-accent/20 z-10 pointer-events-none" />
+
+                    {/* Subtle Institutional Emblem Backdrop */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 opacity-[0.06] group-hover:opacity-[0.09] transition-opacity duration-500 select-none">
+                      <span className="font-space text-[11px] uppercase tracking-[0.25em] text-institutional-accent font-semibold mb-2">
+                        Ruchi Prativa Foundation
+                      </span>
+                      <div className="w-12 h-[1px] bg-institutional-accent" />
+                      <span className="font-space text-[8px] uppercase tracking-widest text-institutional-accent mt-2">
+                        Est. 1997
+                      </span>
+                    </div>
+
+                    {/* Soft Vignette & Rich Dark Gradient for Content Contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/35 group-hover:from-black/90 transition-colors duration-300" />
                   </div>
 
                   {/* Inner Overlay Content Container with Generous Padding */}
@@ -217,7 +234,7 @@ export const FeaturedImpactStory: React.FC = () => {
                           {story.narrativeNumber}
                         </span>
                         <a
-                          href="#story-detail"
+                          href="/about"
                           className="inline-flex items-center gap-1.5 text-xs font-space font-semibold uppercase tracking-wider text-white group-hover:text-institutional-accent transition-colors cursor-pointer"
                         >
                           <span>Read Story</span>

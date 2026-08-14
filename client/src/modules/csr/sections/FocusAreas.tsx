@@ -168,7 +168,7 @@ export const FocusAreas: React.FC = () => {
                     {/* Footer CTA */}
                     <div className="relative z-10 pt-4 border-t border-institutional-accent/20 flex items-center justify-between">
                       <a
-                        href="#csr-archive"
+                        href="/work"
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1.5 text-xs font-space uppercase tracking-wider text-institutional-accent hover:text-institutional-dark dark:hover:text-white font-semibold transition-colors duration-200"
                       >
@@ -293,7 +293,7 @@ export const FocusAreas: React.FC = () => {
 
                     <div className="relative z-10 pt-3 border-t border-institutional-accent/20 flex items-center justify-between">
                       <a
-                        href="#csr-archive"
+                        href="/work"
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1 text-[11px] font-space uppercase tracking-wider text-institutional-accent font-semibold"
                       >

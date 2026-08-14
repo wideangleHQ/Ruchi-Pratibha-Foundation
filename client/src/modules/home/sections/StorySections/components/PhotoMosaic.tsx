@@ -175,7 +175,7 @@ export const PhotoMosaic: React.FC = () => {
         {/* Integrated Bottom CTA Button: View More Moments */}
         <div className="-mt-16 sm:-mt-20 lg:-mt-24 text-center relative z-30">
           <a
-            href="#full-gallery"
+            href="/visual-archive"
             className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
             <span>Explore Gallery</span>

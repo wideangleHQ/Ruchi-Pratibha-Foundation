@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Filter, Maximize2, X } from 'lucide-react';
@@ -20,35 +20,20 @@ const GALLERY_CATEGORIES = [
 export const CSRGallery: React.FC = () => {
   const [selectedCat, setSelectedCat] = useState<string>('All');
   const [activeLightboxItem, setActiveLightboxItem] = useState<(typeof CSR_GALLERY_ITEMS)[0] | null>(null);
-  const [activeMobileIndex, setActiveMobileIndex] = useState<number>(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredItems = useMemo(() => {
     if (selectedCat === 'All') return CSR_GALLERY_ITEMS;
     return CSR_GALLERY_ITEMS.filter((item) => item.category === selectedCat);
   }, [selectedCat]);
 
-  const handleScroll = () => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-    const cardWidth = container.scrollWidth / filteredItems.length;
-    const scrollPos = container.scrollLeft;
-    const index = Math.round(scrollPos / cardWidth);
-    if (index >= 0 && index < filteredItems.length) {
-      setActiveMobileIndex(index);
-    }
-  };
-
-  const scrollToIndex = (idx: number) => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-    const cardWidth = container.scrollWidth / filteredItems.length;
-    container.scrollTo({
-      left: idx * cardWidth,
-      behavior: 'smooth',
+  // Distribute items into 2 columns for mobile masonry staggered grid
+  const mobileCols = useMemo(() => {
+    const cols: (typeof CSR_GALLERY_ITEMS)[0][][] = [[], []];
+    filteredItems.forEach((item, idx) => {
+      cols[idx % 2].push(item);
     });
-    setActiveMobileIndex(idx);
-  };
+    return cols;
+  }, [filteredItems]);
 
   return (
     <section
@@ -166,93 +151,87 @@ export const CSRGallery: React.FC = () => {
           ))}
         </div>
 
-        {/* 2. MOBILE FULL-BLEED HORIZONTAL CAROUSEL (320px-480px, visible on md:hidden) */}
-        <div className="block md:hidden">
-          <div
-            ref={scrollContainerRef}
-            onScroll={handleScroll}
-            className="w-[100vw] -ml-6 px-6 overflow-x-auto overflow-y-hidden scrollbar-none snap-x snap-mandatory flex gap-4 pt-2 pb-4 touch-pan-x"
-          >
-            {filteredItems.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setActiveLightboxItem(item)}
-                className="w-[78vw] shrink-0 snap-center cursor-pointer rounded-sm overflow-hidden border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-2 shadow-none"
-              >
-                <InteractiveImage className="w-full h-full rounded-sm relative">
-                  {item.imageUrl ? (
-                    <div className="w-full aspect-[4/3] relative rounded-sm overflow-hidden">
-                      <Image
-                        src={item.imageUrl}
-                        alt={item.title}
-                        fill
-                        className="object-cover object-center"
-                        sizes="78vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 pointer-events-none z-10" />
-                      <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-10">
-                        <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
-                          <span>{item.category}</span>
-                          <span>{item.location}</span>
+        {/* 2. MOBILE PINTEREST-STYLE MASONRY GRID (visible on md:hidden) */}
+        <div className="grid grid-cols-2 md:hidden gap-3 items-start">
+          {mobileCols.map((colItems, colIdx) => (
+            <div key={`m-col-${colIdx}`} className="flex flex-col gap-3">
+              {colItems.map((item) => {
+                const globalIndex = CSR_GALLERY_ITEMS.findIndex((p) => p.id === item.id);
+                // Stagger aspect ratios programmatically
+                const aspectClass =
+                  globalIndex % 3 === 0
+                    ? 'aspect-[4/3]'
+                    : globalIndex % 3 === 1
+                    ? 'aspect-square'
+                    : 'aspect-[3/4]';
+
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => setActiveLightboxItem(item)}
+                    className="cursor-pointer group bg-white dark:bg-institutional-surface/40 border border-black/10 dark:border-white/10 rounded-sm p-2 shadow-xs"
+                  >
+                    <InteractiveImage className="w-full rounded-sm relative overflow-hidden">
+                      {item.imageUrl ? (
+                        <div className={`w-full ${aspectClass} relative rounded-sm overflow-hidden`}>
+                          <Image
+                            src={item.imageUrl}
+                            alt={item.title}
+                            fill
+                            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                            sizes="(max-width: 768px) 50vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent opacity-90 pointer-events-none z-10" />
+                          <div className="absolute inset-0 p-3 flex flex-col justify-between text-white z-10">
+                            <div className="flex items-center justify-between text-[8px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1">
+                              <span>{item.category.split(' ')[0]}</span>
+                              <span>{item.location.split(',')[0]}</span>
+                            </div>
+                            <div className="pt-1 border-t border-white/15 text-[7px] font-space text-gray-300 flex items-center justify-between">
+                              <span>ITEM #{item.id.replace('gal-', '')}</span>
+                              <span className="flex items-center gap-0.5 text-institutional-accent font-semibold">
+                                <Maximize2 className="w-2.5 h-2.5" /> View
+                              </span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-300 flex items-center justify-between">
-                          <span>ITEM #{item.id}</span>
-                          <span className="flex items-center gap-1 text-institutional-accent">
-                            <Maximize2 className="w-3 h-3" /> View Photo
-                          </span>
+                      ) : (
+                        <div className={`w-full ${aspectClass} flex flex-col justify-between p-3 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white rounded-sm`}>
+                          <div className="flex items-center justify-between text-[8px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1">
+                            <span>{item.category.split(' ')[0]}</span>
+                            <span>{item.location.split(',')[0]}</span>
+                          </div>
+
+                          <div className="my-auto text-center py-1">
+                            <h4 className="font-cormorant text-sm font-bold text-white mb-0.5 leading-tight">
+                              {item.title}
+                            </h4>
+                          </div>
+
+                          <div className="pt-1 border-t border-white/15 text-[7px] font-space text-gray-400 flex items-center justify-between">
+                            <span>ITEM #{item.id.replace('gal-', '')}</span>
+                            <span className="flex items-center gap-0.5 text-institutional-accent font-semibold">
+                              <Maximize2 className="w-2.5 h-2.5" /> View
+                            </span>
+                          </div>
                         </div>
-                      </div>
+                      )}
+                    </InteractiveImage>
+                    
+                    {/* Natural height staggered content details below the image */}
+                    <div className="pt-2">
+                      <h4 className="font-cormorant text-xs font-bold text-institutional-dark dark:text-white leading-tight mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="font-manrope text-[10px] text-institutional-mutedLight dark:text-gray-300 line-clamp-2 leading-tight">
+                        {item.caption}
+                      </p>
                     </div>
-                  ) : (
-                    <div className="w-full aspect-[4/3] flex flex-col justify-between p-4 relative bg-gradient-to-b from-institutional-surface/90 via-institutional-dark to-institutional-darker text-white rounded-sm">
-                      <div className="flex items-center justify-between text-[9px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
-                        <span>{item.category}</span>
-                        <span>{item.location}</span>
-                      </div>
-
-                      <div className="my-auto text-center py-2 px-1">
-                        <span className="text-[10px] font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                          [ Photo Placeholder ]
-                        </span>
-                        <h4 className="font-cormorant text-lg font-bold text-white mb-1 leading-tight">
-                          {item.title}
-                        </h4>
-                        <p className="font-manrope text-xs text-gray-300 line-clamp-2">
-                          {item.caption}
-                        </p>
-                      </div>
-
-                      <div className="pt-1.5 border-t border-white/15 text-[8px] font-space text-gray-400 flex items-center justify-between">
-                        <span>ITEM #{item.id}</span>
-                        <span className="flex items-center gap-1 text-institutional-accent">
-                          <Maximize2 className="w-3 h-3" /> View Photo
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                </InteractiveImage>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Pagination Indicator Dots */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {filteredItems.map((item, idx) => {
-              const active = activeMobileIndex === idx;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToIndex(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
-                    active
-                      ? 'w-6 h-2 bg-institutional-accent shadow-sm'
-                      : 'w-2 h-2 bg-black/20 dark:bg-white/20 hover:bg-institutional-accent/50'
-                  }`}
-                />
-              );
-            })}
-          </div>
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </div>
 
         {/* Lightbox Modal */}

@@ -20,11 +20,11 @@ export const EditorialImageContainer: React.FC = () => {
       <div className="relative w-full max-h-[380px] sm:max-h-[520px] lg:max-h-[540px] xl:max-h-[600px] aspect-[4/5] rounded-sm bg-white dark:bg-institutional-surface/40 border border-institutional-dark/15 dark:border-white/15 p-2 sm:p-2.5 shadow-xl hover:shadow-2xl hover:border-institutional-accent transition-all duration-500 ease-out">
         <InteractiveImage className="w-full h-full rounded-sm">
           <Image
-            src="/founder_portrait.png"
-            alt="Ruchi Prativa Foundation Living Archive & Heritage"
+            src="/Odia Bazar/DSC05968.JPG"
+            alt="Ruchi Prativa Foundation CSR Event - Odia Bazar"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 45vw"
-            className="object-cover object-top rounded-sm"
+            className="object-cover object-center rounded-sm"
             priority
           />
 
