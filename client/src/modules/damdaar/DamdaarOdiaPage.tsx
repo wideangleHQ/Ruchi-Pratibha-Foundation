@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Calendar, Users, Award, Shield, Sparkles, Star, Check } from 'lucide-react';
+import { ArrowRight, ChevronRight, Users, Award, Shield, Sparkles, Star, Check } from 'lucide-react';
 import { Navigation } from '@/modules/home/sections/Navigation';
 import { Footer } from '@/modules/home/sections/Footer';
-import { DAMDAAR_DOMAINS, DAMDAAR_TIMELINE } from './data/damdaarData';
+import { DumdaarTimeline } from './components/DumdaarTimeline';
 import damdaarBg from '@/assets/Damdaar Odia Background.png';
 import damdaarBgMobile from '@/assets/Backgroudn Mobile Screen.png';
 import { AccordionGallery } from '@/components/ui/AccordionGallery/AccordionGallery';
@@ -23,7 +22,6 @@ if (typeof window !== 'undefined') {
 }
 
 export const DamdaarOdiaPage: React.FC = () => {
-  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -485,47 +483,8 @@ export const DamdaarOdiaPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Important Dates Timeline Section */}
-      <section id="timeline" className="py-24 bg-[#FDFBF7] border-b border-black/5 scroll-mt-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
-          <div className="text-center space-y-3">
-            <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE ROADMAP</span>
-            <h2 className="font-playfair text-3xl sm:text-4xl font-bold">
-              Important Roadmap Dates
-            </h2>
-            <div className="w-16 h-0.5 bg-damdaar-gold mx-auto mt-4" />
-          </div>
-
-          {/* Interactive timeline list */}
-          <div className="space-y-8 relative before:absolute before:left-4 md:before:left-1/2 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200">
-            {DAMDAAR_TIMELINE.map((event) => {
-              return (
-                <div key={event.id} className="relative flex flex-col md:flex-row items-start md:items-center justify-between md:even:flex-row-reverse gap-4">
-                  {/* Timeline bullet dot */}
-                  <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-damdaar-gold z-10 flex items-center justify-center">
-                    {event.status === 'current' && <span className="w-1.5 h-1.5 rounded-full bg-damdaar-gold animate-ping" />}
-                  </div>
-
-                  {/* Empty side space for desktop grid balancing */}
-                  <div className="hidden md:block w-[45%]" />
-
-                  {/* Date Card Panel */}
-                  <div className="w-full md:w-[45%] pl-10 md:pl-0">
-                    <div className="bg-white border border-black/5 rounded-sm p-6 shadow-sm space-y-2 hover:border-damdaar-gold/30 transition-all duration-200">
-                      <div className="flex items-center gap-2 text-xs font-semibold text-damdaar-gold font-space">
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>{event.date}</span>
-                      </div>
-                      <h4 className="font-playfair text-lg font-bold text-institutional-dark">{event.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed font-poppins">{event.description}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* Interactive Horizontal Dumdaar Timeline Section */}
+      <DumdaarTimeline />
 
       {/* Why Participate Section */}
       <section className="py-24 bg-white border-b border-black/5">
