@@ -3,9 +3,8 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { CATEGORIES, MegaCategoryItem } from './MegaNavPanel';
+import { DIRECTORY_CATEGORIES, NavCategoryItem } from '../constants/navigationConfig';
 import { useActiveSection } from '@/hooks/useActiveSection';
-import { useRouter } from 'next/navigation';
 import { usePageTransition } from '@/core/providers/page-transition-provider';
 import {
   Accordion,
@@ -20,19 +19,18 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-  const router = useRouter();
   const activeSection = useActiveSection();
   const { startTransition } = usePageTransition();
 
   // Prevent background body scroll when mobile menu panel is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    if (!isOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = originalOverflow;
     };
   }, [isOpen]);
 
@@ -40,17 +38,31 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     onClose();
     if (typeof window !== 'undefined') {
       const [path, hash] = href.includes('#') ? href.split('#') : [href, ''];
-      const isCurrentPage =
-        path === '' ||
-        path === window.location.pathname;
+      const isHomePage = path === '' || path === '/';
+      const isCurrentPage = isHomePage
+        ? window.location.pathname === '/'
+        : path === window.location.pathname;
 
-      if (isCurrentPage && hash) {
-        const el = document.getElementById(hash);
-        if (el) {
-          e.preventDefault();
-          const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-          el.scrollIntoView({ behavior });
-          window.history.pushState(null, '', href);
+      if (isCurrentPage) {
+        e.preventDefault();
+        if (isHomePage && (!hash || hash === 'hero')) {
+          const heroEl = document.getElementById('hero');
+          if (heroEl) {
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            heroEl.scrollIntoView({ behavior });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+          window.history.pushState(null, '', '/');
+        } else if (hash) {
+          const el = document.getElementById(hash);
+          if (el) {
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            el.scrollIntoView({ behavior });
+            window.history.pushState(null, '', href);
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
         // Intercept link click and route using client-side transition
@@ -77,30 +89,32 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             onClick={onClose}
-            className="fixed inset-0 top-[58px] sm:top-[64px] bg-black/60 backdrop-blur-xs z-30 lg:hidden"
+            className="fixed inset-0 top-[52px] sm:top-[58px] bg-black/60 backdrop-blur-xs z-30 lg:hidden"
             aria-hidden="true"
           />
 
-          {/* Sticky Opaque Mobile Navigation Panel Attached Directly Beneath Header */}
+          {/* Opaque Mobile Navigation Panel Attached Directly Beneath Header */}
           <motion.div
             id="mobile-navigation-drawer"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Directory"
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[58px] sm:top-[64px] left-0 right-0 bottom-0 z-40 bg-institutional-dark border-b border-white/15 shadow-2xl lg:hidden flex flex-col pointer-events-auto overflow-hidden"
+            className="fixed top-[52px] sm:top-[58px] left-0 right-0 bottom-0 z-40 bg-institutional-dark border-b border-white/15 shadow-2xl lg:hidden flex flex-col pointer-events-auto overflow-hidden"
           >
             {/* Scrollable Content Container */}
-            <div className="flex-1 overflow-y-auto scrollbar-none p-5 sm:p-6 space-y-6 pb-12">
+            <div className="flex-1 overflow-y-auto scrollbar-none p-4 sm:p-6 space-y-6 pb-12">
               {/* Accordion Navigation Groups */}
               <nav aria-label="Mobile Directory Navigation" className="w-full">
                 <Accordion type="single" collapsible defaultValue="Foundation" className="w-full">
-                  {CATEGORIES.map((item: MegaCategoryItem) => (
+                  {DIRECTORY_CATEGORIES.map((item: NavCategoryItem) => (
                     <AccordionItem key={item.label} value={item.label}>
-                      <AccordionTrigger tag={item.tag}>{item.label}</AccordionTrigger>
+                      <AccordionTrigger className="text-white hover:text-institutional-accent text-lg font-bold font-cormorant">
+                        {item.label}
+                      </AccordionTrigger>
                       <AccordionContent>
                         <div className="flex flex-col gap-1">
                           {item.links.map((lnk) => {
@@ -113,17 +127,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                                 aria-label={lnk.ariaLabel}
                                 className={`group/link flex items-center justify-between py-2 px-2.5 min-h-[44px] text-xs font-manrope rounded-sm transition-all duration-150 ${
                                   active
-                                    ? 'text-institutional-accent bg-white/10 font-semibold'
-                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                    ? 'text-institutional-accent bg-white/10 font-bold'
+                                    : 'text-gray-200 hover:text-white hover:bg-white/10'
                                 }`}
                               >
                                 <span className="flex items-center gap-2 group-hover/link:translate-x-1 transition-transform duration-150">
                                   {active && (
                                     <span className="w-1.5 h-1.5 rounded-full bg-institutional-accent shrink-0 animate-pulse" />
                                   )}
-                                  <span>{lnk.label}</span>
+                                  <span className="text-white font-medium">{lnk.label}</span>
                                 </span>
-                                <ArrowUpRight className={`w-3.5 h-3.5 transition-all duration-150 ${active ? 'text-institutional-accent opacity-100' : 'text-institutional-accent opacity-70 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5'}`} />
+                                <ArrowUpRight className={`w-3.5 h-3.5 transition-all duration-150 ${active ? 'text-institutional-accent opacity-100' : 'text-institutional-accent opacity-80 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5'}`} />
                               </a>
                             );
                           })}
@@ -134,23 +148,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 </Accordion>
               </nav>
 
-              {/* Primary CTA & Explore Section */}
+              {/* Primary CTA Section */}
               <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
                 <a
                   href="/get-involved/volunteer"
                   onClick={onClose}
-                  className="w-full text-center py-3.5 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent shadow-md cursor-pointer whitespace-nowrap min-h-[48px] flex items-center justify-center"
+                  className="w-full text-center py-3 text-xs uppercase tracking-widest font-space font-semibold text-institutional-dark bg-institutional-accent hover:bg-institutional-accentHover rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent shadow-md cursor-pointer whitespace-nowrap min-h-[44px] flex items-center justify-center"
                 >
                   Become a Volunteer
-                </a>
-
-                <a
-                  href="/about#about-hero"
-                  onClick={(e) => handleLinkClick(e, '/about#about-hero')}
-                  className="w-full text-center py-2.5 text-[11px] uppercase tracking-widest font-space font-semibold text-gray-300 hover:text-white border border-white/10 hover:border-institutional-accent/40 rounded-sm transition-colors duration-150 cursor-pointer min-h-[40px] flex items-center justify-center gap-1.5"
-                >
-                  <span>Explore Hero</span>
-                  <span className="text-institutional-accent font-semibold">EXPLORE →</span>
                 </a>
               </div>
 

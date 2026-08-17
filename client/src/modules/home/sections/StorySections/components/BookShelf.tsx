@@ -7,7 +7,7 @@ import { PublicationBook, PublicationItem } from './PublicationBook';
 export const PUBLICATIONS_DATA: PublicationItem[] = [];
 
 interface BookShelfProps {
-  onSelectBook: (publication: PublicationItem) => void;
+  onSelectBook: (_publication: PublicationItem) => void;
 }
 
 export const BookShelf: React.FC<BookShelfProps> = ({ onSelectBook }) => {

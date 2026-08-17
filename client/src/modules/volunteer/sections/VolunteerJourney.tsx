@@ -46,7 +46,7 @@ export const VolunteerJourney: React.FC = () => {
           />
           
           <div className="flex justify-between relative z-10">
-            {STEPS.map((step, idx) => (
+            {STEPS.map((step) => (
               <div key={step.id} className="flex flex-col items-center w-32 relative group">
                 <div className="w-8 h-8 rounded-full bg-white dark:bg-[#121824] border-2 border-gray-200 dark:border-white/20 flex items-center justify-center font-space text-[10px] font-bold text-gray-400 group-hover:border-institutional-accent group-hover:text-institutional-accent transition-colors duration-300 z-10">
                   {step.id}
@@ -73,7 +73,7 @@ export const VolunteerJourney: React.FC = () => {
           />
           
           <div className="flex flex-col gap-10 relative z-10">
-            {STEPS.map((step, idx) => (
+            {STEPS.map((step) => (
               <div key={step.id} className="flex items-start gap-6 group">
                 <div className="w-8 h-8 shrink-0 rounded-full bg-white dark:bg-[#121824] border-2 border-gray-200 dark:border-white/20 flex items-center justify-center font-space text-[10px] font-bold text-gray-400 group-hover:border-institutional-accent group-hover:text-institutional-accent transition-colors duration-300">
                   {step.id}

@@ -1,17 +1,35 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Navigation from '../home/sections/Navigation';
 import { GatewayHero } from './sections/GatewayHero';
-import { JourneyCards } from './sections/JourneyCards';
-import { OpportunitiesPreview } from './sections/OpportunitiesPreview';
-import { UpcomingEventsPreview } from './sections/UpcomingEventsPreview';
-import { PartnerWithPurpose } from './sections/PartnerWithPurpose';
-import { SupportAndGiving } from './sections/SupportAndGiving';
-import { StoriesPreview } from './sections/StoriesPreview';
-import { FAQSection } from './sections/FAQSection';
-import { FinalCTA } from './sections/FinalCTA';
 import Footer from '../home/sections/Footer';
+
+const JourneyCards = dynamic(() => import('./sections/JourneyCards').then((m) => m.JourneyCards), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const OpportunitiesPreview = dynamic(() => import('./sections/OpportunitiesPreview').then((m) => m.OpportunitiesPreview), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[400px]" />,
+});
+const UpcomingEventsPreview = dynamic(() => import('./sections/UpcomingEventsPreview').then((m) => m.UpcomingEventsPreview), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[400px]" />,
+});
+const PartnerWithPurpose = dynamic(() => import('./sections/PartnerWithPurpose').then((m) => m.PartnerWithPurpose), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const SupportAndGiving = dynamic(() => import('./sections/SupportAndGiving').then((m) => m.SupportAndGiving), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const StoriesPreview = dynamic(() => import('./sections/StoriesPreview').then((m) => m.StoriesPreview), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const FAQSection = dynamic(() => import('./sections/FAQSection').then((m) => m.FAQSection), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[300px]" />,
+});
+const FinalCTA = dynamic(() => import('./sections/FinalCTA').then((m) => m.FinalCTA), {
+  loading: () => <div className="py-20 bg-institutional-darker min-h-[250px]" />,
+});
 
 export default function GetInvolvedPage() {
   useEffect(() => {

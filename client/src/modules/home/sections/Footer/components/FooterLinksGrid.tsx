@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 import { usePageTransition } from '@/core/providers/page-transition-provider';
 import { FOOTER_SECTIONS } from '../constants';
 
 export const FooterLinksGrid: React.FC = () => {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-  const pathname = usePathname();
   const { startTransition } = usePageTransition();
 
   const toggleAccordion = (title: string) => {
@@ -18,17 +16,31 @@ export const FooterLinksGrid: React.FC = () => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (typeof window !== 'undefined') {
       const [path, hash] = href.includes('#') ? href.split('#') : [href, ''];
-      const isCurrentPage =
-        path === '' ||
-        path === window.location.pathname;
+      const isHomePage = path === '' || path === '/';
+      const isCurrentPage = isHomePage
+        ? window.location.pathname === '/'
+        : path === window.location.pathname;
 
-      if (isCurrentPage && hash) {
-        const el = document.getElementById(hash);
-        if (el) {
-          e.preventDefault();
-          const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-          el.scrollIntoView({ behavior });
-          window.history.pushState(null, '', href);
+      if (isCurrentPage) {
+        e.preventDefault();
+        if (isHomePage && (!hash || hash === 'hero')) {
+          const heroEl = document.getElementById('hero');
+          if (heroEl) {
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            heroEl.scrollIntoView({ behavior });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+          window.history.pushState(null, '', '/');
+        } else if (hash) {
+          const el = document.getElementById(hash);
+          if (el) {
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            el.scrollIntoView({ behavior });
+            window.history.pushState(null, '', href);
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
         // Intercept link click and route using client-side transition

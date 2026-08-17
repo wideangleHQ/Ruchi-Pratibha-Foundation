@@ -61,18 +61,6 @@ const useMeasure = (): [React.RefObject<HTMLDivElement | null>, { width: number;
   return [ref, size];
 };
 
-const preloadImages = async (urls: string[]) => {
-  await Promise.all(
-    urls.map(
-      (src) =>
-        new Promise<void>((resolve) => {
-          const img = new window.Image();
-          img.src = src;
-          img.onload = img.onerror = () => resolve();
-        })
-    )
-  );
-};
 
 export const Masonry: React.FC<MasonryProps> = ({
   items,
@@ -93,12 +81,7 @@ export const Masonry: React.FC<MasonryProps> = ({
   const hasMounted = useRef(false);
 
   useEffect(() => {
-    const urls = items.map((i) => i.img).filter(Boolean);
-    if (urls.length > 0) {
-      preloadImages(urls).then(() => setImagesReady(true));
-    } else {
-      setImagesReady(true);
-    }
+    setImagesReady(true);
   }, [items]);
 
   const grid = useMemo(() => {

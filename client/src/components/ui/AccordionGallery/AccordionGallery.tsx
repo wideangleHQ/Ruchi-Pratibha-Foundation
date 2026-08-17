@@ -9,6 +9,8 @@ export interface AccordionGalleryItem {
   label?: string;
   link?: string;
   alt?: string;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 export interface AccordionGalleryProps {
@@ -127,9 +129,9 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
 
         if (showLabels && bar && text) {
           if (isActive) {
-            tl.to([bar, text], { opacity: 1, x: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
+            tl.to([bar, text], { opacity: 1, y: 0, duration: dur, ease, stagger: prefersReduced ? 0 : stagger }, 0);
           } else {
-            tl.to([bar, text], { opacity: 0, x: -14, duration: dur * 0.6, ease }, 0);
+            tl.to([bar, text], { opacity: 0, y: 12, duration: dur * 0.6, ease }, 0);
           }
         }
       });
@@ -254,8 +256,15 @@ export const AccordionGallery: React.FC<AccordionGalleryProps> = ({
             {showLabels && (
               <span className="ag-panel__label" aria-hidden="true">
                 <span className="ag-panel__bar" ref={el => { barRefs.current[i] = el; }} />
-                <span className="ag-panel__text" ref={el => { textRefs.current[i] = el; }}>
-                  {item.label}
+                <span className="ag-panel__content flex flex-col items-start gap-0.5" ref={el => { textRefs.current[i] = el; }}>
+                  <span className="ag-panel__text">
+                    {item.label}
+                  </span>
+                  {item.ctaText && (
+                    <span className="ag-panel__cta inline-flex items-center gap-1.5 text-xs font-bold text-[#CF8A12] uppercase tracking-wider font-space mt-1">
+                      <span>{item.ctaText}</span>
+                    </span>
+                  )}
                 </span>
               </span>
             )}

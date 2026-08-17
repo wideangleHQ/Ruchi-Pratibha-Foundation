@@ -7,7 +7,7 @@ import { cn } from '@/lib';
 
 interface AccordionContextValue {
   activeItem: string | null;
-  toggleItem: (_itemVal: string) => void;
+  toggleItem: (itemVal: string) => void;
 }
 
 const AccordionContext = React.createContext<AccordionContextValue>({
@@ -20,7 +20,7 @@ export interface AccordionProps extends Omit<React.HTMLAttributes<HTMLDivElement
   collapsible?: boolean;
   defaultValue?: string;
   value?: string;
-  onValueChange?: (_val: string | null) => void;
+  onValueChange?: (val: string | null) => void;
 }
 
 export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(

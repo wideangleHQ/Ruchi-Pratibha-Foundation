@@ -1,4 +1,4 @@
-import { Palette, Cpu, Landmark, Utensils } from 'lucide-react';
+
 
 export interface DomainItem {
   id: string;

@@ -14,7 +14,15 @@ const HERO_SLIDES = [
  
 export const HeroBackground: React.FC = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [loadedIndices, setLoadedIndices] = useState<number[]>([0, 1]);
+  const [loadedIndices, setLoadedIndices] = useState<number[]>([0]);
+
+  // Preload second slide progressively after first slide mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadedIndices((prev) => (prev.includes(1) ? prev : [...prev, 1]));
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,7 +59,8 @@ export const HeroBackground: React.FC = () => {
               alt="Ruchi Prativa Foundation CSR Event Slide"
               fill
               className="object-cover object-center"
-              priority={idx === 0 || idx === 1} // Preload slide 0 and 1
+              priority={idx === 0}
+              loading={idx === 0 ? 'eager' : 'lazy'}
               sizes="100vw"
               quality={85}
             />

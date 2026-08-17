@@ -3,10 +3,12 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { ARCHIVE_PHOTOS } from '../data/archiveData';
 import { ArchivePhoto } from '../types';
-import { LightboxModal } from './LightboxModal';
 import { InteractiveCard } from '@/components/ui/InteractiveCard';
+
+const LightboxModal = dynamic(() => import('./LightboxModal').then((m) => m.LightboxModal));
 
 const PHOTO_CATEGORIES = ['All', 'Award Ceremonies', 'Education', 'Healthcare', 'Environment', 'Foundation History'];
 

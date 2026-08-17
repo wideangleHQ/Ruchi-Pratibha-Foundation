@@ -22,7 +22,7 @@ export interface PublicationItem {
 
 interface PublicationBookProps {
   publication: PublicationItem;
-  onSelect: (publication: PublicationItem) => void;
+  onSelect: (_publication: PublicationItem) => void;
 }
 
 export const PublicationBook: React.FC<PublicationBookProps> = ({ publication, onSelect }) => {

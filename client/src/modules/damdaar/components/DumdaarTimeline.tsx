@@ -212,15 +212,15 @@ export const DumdaarTimeline: React.FC = () => {
       {/* Pinned Viewport Container - Header Clearance + Single Frame Layout */}
       <div
         ref={pinWrapperRef}
-        className="w-full h-screen max-h-screen lg:h-dvh lg:max-h-dvh flex flex-col justify-between pt-16 sm:pt-20 lg:pt-20 pb-4 sm:pb-6 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-[#FDFBF7]"
+        className="w-full h-screen max-h-screen lg:h-dvh lg:max-h-dvh flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 pb-4 sm:pb-6 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-[#FDFBF7]"
       >
         {/* 1. TOP HEADER IDENTITY & COUNTER PILL */}
         <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-4 z-10 select-none shrink-0">
-          <div className="space-y-0.5">
-            <h2 className="font-playfair text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[#343D0F] uppercase leading-tight">
+          <div className="space-y-1">
+            <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#343D0F] uppercase leading-none">
               THE DUMDAAR JOURNEY
             </h2>
-            <p className="font-poppins text-[11px] sm:text-xs text-gray-500 font-normal">
+            <p className="font-poppins text-xs sm:text-sm text-gray-500 font-normal mt-1 sm:mt-1.5">
               Every milestone brings Odisha&apos;s talent one step closer.
             </p>
           </div>
@@ -235,12 +235,12 @@ export const DumdaarTimeline: React.FC = () => {
         </div>
 
         {/* 2. EDITORIAL DISPLAY STAGE (ENLARGED IMAGE & PROPORTIONED CONTENT) */}
-        <div className="max-w-6xl w-full mx-auto my-auto py-2 sm:py-3 lg:py-4 z-10 flex-1 flex flex-col justify-center overflow-hidden">
+        <div className="max-w-6xl w-full mx-auto my-auto py-1 sm:py-2 lg:py-3 z-10 flex-1 flex flex-col justify-center overflow-hidden">
           
           {/* MOBILE VIEW (STACKED: ENLARGED IMAGE FIRST) */}
-          <div className="block lg:hidden space-y-3 sm:space-y-4 my-auto">
+          <div className="block lg:hidden space-y-2 sm:space-y-3 my-auto">
             {/* Mobile Image */}
-            <div className="relative w-full h-[170px] sm:h-[220px] max-h-[28vh] rounded-2xl overflow-hidden shadow-lg border border-black/5 bg-gray-100 shrink-0">
+            <div className="relative w-full h-[140px] sm:h-[180px] max-h-[22vh] rounded-2xl overflow-hidden shadow-lg border border-black/5 bg-gray-100 shrink-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeEvent.id}

@@ -3,13 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { VolunteerHero } from './sections/VolunteerHero';
-import { WhyVolunteer } from './sections/WhyVolunteer';
-import { VolunteerJourney } from './sections/VolunteerJourney';
-import { VolunteerFAQ } from './sections/VolunteerFAQ';
-import { VolunteerCTA } from './sections/VolunteerCTA';
-import { RegistrationWizard } from './components/wizard/RegistrationWizard';
 import { WizardProvider, useWizard } from './components/wizard/WizardContext';
+
+const WhyVolunteer = dynamic(() => import('./sections/WhyVolunteer').then((m) => m.WhyVolunteer), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const VolunteerJourney = dynamic(() => import('./sections/VolunteerJourney').then((m) => m.VolunteerJourney), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[350px]" />,
+});
+const VolunteerFAQ = dynamic(() => import('./sections/VolunteerFAQ').then((m) => m.VolunteerFAQ), {
+  loading: () => <div className="py-20 bg-institutional-light dark:bg-institutional-dark min-h-[300px]" />,
+});
+const VolunteerCTA = dynamic(() => import('./sections/VolunteerCTA').then((m) => m.VolunteerCTA), {
+  loading: () => <div className="py-20 bg-institutional-darker min-h-[250px]" />,
+});
+const RegistrationWizard = dynamic(() => import('./components/wizard/RegistrationWizard').then((m) => m.RegistrationWizard));
 
 const WizardOpener: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const searchParams = useSearchParams();

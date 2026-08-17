@@ -23,8 +23,9 @@ export const GlobalUniversalSearch: React.FC<GlobalUniversalSearchProps> = ({
 }) => {
   const [query, setQuery] = useState('');
 
-  // Index all archive items into a unified search dataset
+  // Index all archive items into a unified search dataset only when modal is open
   const searchDataset = useMemo<SearchQueryResult[]>(() => {
+    if (!isOpen) return [];
     const results: SearchQueryResult[] = [];
 
     ARCHIVE_PHOTOS.forEach((p) => {
@@ -88,9 +89,10 @@ export const GlobalUniversalSearch: React.FC<GlobalUniversalSearchProps> = ({
     });
 
     return results;
-  }, []);
+  }, [isOpen]);
 
   const searchResults = useMemo(() => {
+    if (!isOpen) return [];
     if (!query.trim()) return searchDataset.slice(0, 5);
     const q = query.toLowerCase();
     return searchDataset.filter(
@@ -100,7 +102,7 @@ export const GlobalUniversalSearch: React.FC<GlobalUniversalSearchProps> = ({
         item.category.toLowerCase().includes(q) ||
         item.year.toString().toLowerCase().includes(q)
     );
-  }, [query, searchDataset]);
+  }, [query, searchDataset, isOpen]);
 
   if (!isOpen) return null;
 

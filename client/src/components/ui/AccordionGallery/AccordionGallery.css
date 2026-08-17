@@ -81,9 +81,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--ag-overlay) 78%, transparent) 100%),
-    color-mix(in srgb, var(--ag-overlay) calc(var(--ag-dim, 0.35) * 100%), transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.88) 100%);
+  z-index: 1;
 }
 
 .ag-panel__label {
@@ -95,7 +94,7 @@
   align-items: center;
   gap: 12px;
   pointer-events: none;
-  z-index: 2;
+  z-index: 10;
 }
 
 .ag-panel__bar {
@@ -104,36 +103,50 @@
   height: 26px;
   border-radius: 3px;
   background: var(--ag-accent);
-  opacity: 0;
+  opacity: 1;
   box-shadow: 0 0 12px color-mix(in srgb, var(--ag-accent) 60%, transparent);
 }
 
 .ag-panel__text {
-  color: var(--ag-text);
-  font-family: inherit;
-  font-weight: 600;
-  font-size: clamp(1rem, 1.4vw, 1.4rem);
-  letter-spacing: 0.01em;
+  color: #ffffff !important;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  opacity: 0;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
   .accordion-gallery {
     flex-direction: column;
     perspective: none;
     height: auto !important;
   }
   .ag-panel {
-    min-height: 84px;
+    min-height: 90px;
     transform: none !important;
   }
   .accordion-gallery .ag-panel__media {
     width: 100%;
     height: var(--ag-media-size);
+  }
+  .ag-panel--active .ag-panel__bar,
+  .ag-panel--active .ag-panel__content,
+  .ag-panel--active .ag-panel__text,
+  .ag-panel--active .ag-panel__cta {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ag-panel__text {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  }
+  .ag-panel__overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.8) 100%) !important;
   }
 }
 

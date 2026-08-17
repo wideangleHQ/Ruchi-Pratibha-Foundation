@@ -1,11 +1,11 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, Suspense } from 'react';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const PageTransitionContext = createContext<{
-  startTransition: (_targetHref: string) => void;
+  startTransition: (targetHref: string) => void;
   isLoading: boolean;
 } | null>(null);
 
@@ -26,9 +26,16 @@ const PHRASES = [
   "Where Legacy Meets Tomorrow."
 ];
 
+const SearchParamsHandler: React.FC<{ onChange: () => void }> = ({ onChange }) => {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    onChange();
+  }, [searchParams, onChange]);
+  return null;
+};
+
 export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const prefersReduced = useReducedMotion();
 
@@ -38,18 +45,22 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
   const isTransitioningRef = useRef(false);
   const targetPathnameRef = useRef<string | null>(null);
 
-  // End transition when URL changes
-  useEffect(() => {
+  const handleUrlChange = React.useCallback(() => {
     if (isTransitioningRef.current) {
       setProgress(100);
       const timer = setTimeout(() => {
         setIsLoading(false);
         isTransitioningRef.current = false;
         targetPathnameRef.current = null;
-      }, 350); // Wait for progress bar fill and exit animation
+      }, 50); // Fast exit animation without artificial delay
       return () => clearTimeout(timer);
     }
-  }, [pathname, searchParams]);
+  }, []);
+
+  // End transition when pathname changes
+  useEffect(() => {
+    handleUrlChange();
+  }, [pathname, handleUrlChange]);
 
   // Simulate progress loading (0% -> 90%)
   useEffect(() => {
@@ -175,6 +186,9 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
 
   return (
     <PageTransitionContext.Provider value={{ startTransition, isLoading }}>
+      <Suspense fallback={null}>
+        <SearchParamsHandler onChange={handleUrlChange} />
+      </Suspense>
       {children}
 
       <AnimatePresence>

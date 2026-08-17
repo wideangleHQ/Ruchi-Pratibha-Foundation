@@ -15,10 +15,11 @@ export const NavLogo: React.FC = () => {
       if (heroEl) {
         const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
         heroEl.scrollIntoView({ behavior });
-        window.history.pushState(null, '', '/#hero');
+        window.history.pushState(null, '', '/');
       } else {
         const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
         window.scrollTo({ top: 0, behavior });
+        window.history.pushState(null, '', '/');
       }
     }
   };

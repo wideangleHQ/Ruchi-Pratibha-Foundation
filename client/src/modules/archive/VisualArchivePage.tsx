@@ -1,21 +1,45 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Navigation from '@/modules/home/sections/Navigation';
 import Footer from '@/modules/home/sections/Footer';
 import { ArchiveHero } from './sections/ArchiveHero';
-import { FeaturedStory } from './sections/FeaturedStory';
-import { JourneyThroughTime } from './sections/JourneyThroughTime';
-import { ExploreCollections } from './sections/ExploreCollections';
-import { PhotoArchive } from './sections/PhotoArchive';
-import { DocumentaryCentre } from './sections/DocumentaryCentre';
-import { EventArchive } from './sections/EventArchive';
-import { HistoricalMoments } from './sections/HistoricalMoments';
-import { MediaCoverage } from './sections/MediaCoverage';
-import { OdishaMemoryMap } from './sections/OdishaMemoryMap';
-import { MediaResourceCentre } from './sections/MediaResourceCentre';
-import { ShareYourMemory } from './sections/ShareYourMemory';
-import { GlobalUniversalSearch } from './sections/GlobalUniversalSearch';
+
+const FeaturedStory = dynamic(() => import('./sections/FeaturedStory').then((m) => m.FeaturedStory), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const JourneyThroughTime = dynamic(() => import('./sections/JourneyThroughTime').then((m) => m.JourneyThroughTime), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[450px]" />,
+});
+const ExploreCollections = dynamic(() => import('./sections/ExploreCollections').then((m) => m.ExploreCollections), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const PhotoArchive = dynamic(() => import('./sections/PhotoArchive').then((m) => m.PhotoArchive), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[500px]" />,
+});
+const DocumentaryCentre = dynamic(() => import('./sections/DocumentaryCentre').then((m) => m.DocumentaryCentre), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const EventArchive = dynamic(() => import('./sections/EventArchive').then((m) => m.EventArchive), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const HistoricalMoments = dynamic(() => import('./sections/HistoricalMoments').then((m) => m.HistoricalMoments), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const MediaCoverage = dynamic(() => import('./sections/MediaCoverage').then((m) => m.MediaCoverage), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const OdishaMemoryMap = dynamic(() => import('./sections/OdishaMemoryMap').then((m) => m.OdishaMemoryMap), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const MediaResourceCentre = dynamic(() => import('./sections/MediaResourceCentre').then((m) => m.MediaResourceCentre), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[300px]" />,
+});
+const ShareYourMemory = dynamic(() => import('./sections/ShareYourMemory').then((m) => m.ShareYourMemory), {
+  loading: () => <div className="py-24 bg-institutional-dark min-h-[400px]" />,
+});
+const GlobalUniversalSearch = dynamic(() => import('./sections/GlobalUniversalSearch').then((m) => m.GlobalUniversalSearch));
 
 export const VisualArchivePage: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);

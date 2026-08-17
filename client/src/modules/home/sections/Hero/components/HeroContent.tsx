@@ -10,7 +10,7 @@ export const HeroContent: React.FC = () => {
   const { containerVariants, itemVariants } = useHeroAnimation();
 
   return (
-    <div className="relative z-10 w-full h-full flex items-end px-6 sm:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-20">
+    <div className="relative z-10 w-full flex items-end px-6 sm:px-8 lg:px-12 xl:px-16 pb-8 sm:pb-12 lg:pb-16">
       <div className="max-w-[1500px] w-full mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12 xl:gap-16">
         {/* Left: Text Content Block */}
         <motion.div

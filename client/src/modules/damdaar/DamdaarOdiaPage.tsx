@@ -3,13 +3,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Users, Award, Shield, Sparkles, Star, Check } from 'lucide-react';
+import { ArrowRight, ChevronRight, Users, Award, Shield, Sparkles, Star } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { Navigation } from '@/modules/home/sections/Navigation';
 import { Footer } from '@/modules/home/sections/Footer';
-import { DumdaarTimeline } from './components/DumdaarTimeline';
 import damdaarBg from '@/assets/Damdaar Odia Background.png';
 import damdaarBgMobile from '@/assets/Backgroudn Mobile Screen.png';
 import { AccordionGallery } from '@/components/ui/AccordionGallery/AccordionGallery';
+
+const DumdaarTimeline = dynamic(() => import('./components/DumdaarTimeline').then((m) => m.DumdaarTimeline), {
+  loading: () => <div className="py-24 bg-[#121824] min-h-[450px]" />,
+});
 import artCultureImg from '@/assets/Categories/Art and Culture.png';
 import techImg from '@/assets/Categories/Tech .png';
 import entrepreneurshipImg from '@/assets/Categories/Entrepeneurship.png';
@@ -217,9 +221,9 @@ export const DamdaarOdiaPage: React.FC = () => {
       <section 
         ref={scrollSectionRef} 
         id="movement" 
-        className="relative w-full h-[115vh] bg-white border-b border-black/5 scroll-mt-20"
+        className="relative w-full h-[115dvh] bg-white border-b border-black/5 scroll-mt-20"
       >
-        <div className="sticky top-0 h-screen w-full flex items-center justify-center bg-white px-4 sm:px-6 overflow-hidden">
+        <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center bg-white px-4 sm:px-6 overflow-hidden">
           <div className="max-w-5xl w-full mx-auto text-center space-y-10 sm:space-y-14">
             {/* Top Concept badge */}
             <div className="space-y-3 select-none">
@@ -297,17 +301,17 @@ export const DamdaarOdiaPage: React.FC = () => {
           <div className="w-full relative mt-8">
             <AccordionGallery
               items={[
-                { image: artCultureImg.src, label: 'Art & Culture (Heritage)', link: '/damdaar-odia/domains/art-culture' },
-                { image: techImg.src, label: 'Technology (Digital)', link: '/damdaar-odia/domains/technology' },
-                { image: entrepreneurshipImg.src, label: 'Entrepreneurship (Enterprise)', link: '/damdaar-odia/domains/entrepreneurship' },
-                { image: culinaryImg.src, label: 'Culinary Excellence (Cuisine)', link: '/damdaar-odia/domains/culinary-excellence' }
+                { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'ENROLL NOW →' },
+                { image: techImg.src, label: 'TECHNOLOGY', link: '/damdaar-odia/domains/technology', ctaText: 'ENROLL NOW →' },
+                { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'ENROLL NOW →' },
+                { image: culinaryImg.src, label: 'CULINARY EXCELLENCE', link: '/damdaar-odia/domains/culinary-excellence', ctaText: 'ENROLL NOW →' }
               ]}
               defaultIndex={0}
               expandRatio={0.45}
               accentColor="#CF8A12"
               overlayColor="#0B0F17"
               gap={12}
-              radius={8}
+              radius={12}
               height={440}
               trigger="hover"
             />
@@ -486,103 +490,180 @@ export const DamdaarOdiaPage: React.FC = () => {
       {/* Interactive Horizontal Dumdaar Timeline Section */}
       <DumdaarTimeline />
 
-      {/* Why Participate Section */}
-      <section className="py-24 bg-white border-b border-black/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-16">
+      {/* Why Participate Section — Interactive Editorial Cards */}
+      <section className="py-24 bg-[#FDFBF7] border-b border-black/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
           <div className="text-center space-y-3">
-            <span className="text-xs uppercase tracking-widest font-bold text-damdaar-gold block font-space">THE REWARDS</span>
-            <h2 className="font-playfair text-3xl sm:text-4xl font-bold">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#CF8A12] block font-space">THE REWARDS</span>
+            <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold text-[#343D0F]">
               Why Participate in Damdaar Odisha?
             </h2>
-            <div className="w-16 h-0.5 bg-damdaar-gold mx-auto mt-4" />
+            <p className="text-xs sm:text-sm text-gray-600 font-poppins max-w-lg mx-auto leading-relaxed">
+              Empowering participants through institutional backing, direct mentorship, financial grants, and statewide recognition.
+            </p>
+            <div className="w-16 h-0.5 bg-[#CF8A12] mx-auto mt-3" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* 1 */}
-            <div className="space-y-3 text-center md:text-left bg-[#FDFBF7] p-6 border border-black/5 rounded-sm">
-              <div className="w-10 h-10 rounded-full bg-damdaar-gold/10 text-damdaar-gold flex items-center justify-center mx-auto md:mx-0">
-                <Award className="w-5 h-5" />
-              </div>
-              <h4 className="font-playfair text-lg font-bold">Research Grants</h4>
-              <p className="text-xs text-gray-500 leading-relaxed font-poppins">
-                Financial support and infrastructure stipends for promising projects and developmental innovations.
-              </p>
-            </div>
+          {/* Interactive Editorial Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            {[
+              {
+                num: '01',
+                title: 'Get Upto 30,000/- of Winning Prize',
+                description: 'Substantial cash reward pool to celebrate and empower top performing innovators, artists, and creators.',
+                image: techImg,
+                accent: '#CF8A12',
+                icon: Award,
+                span: 'lg:col-span-7',
+              },
+              {
+                num: '02',
+                title: 'Global Recognition',
+                description: 'Statewide and national platform visibility across prominent media outlets, institutional forums, and summits.',
+                image: artCultureImg,
+                accent: '#4D6B1F',
+                icon: Star,
+                span: 'lg:col-span-5',
+              },
+              {
+                num: '03',
+                title: 'Grants',
+                description: 'Financial support and infrastructure stipends to scale developmental innovations and enterprise ideas.',
+                image: entrepreneurshipImg,
+                accent: '#D55E33',
+                icon: Users,
+                span: 'lg:col-span-5',
+              },
+              {
+                num: '04',
+                title: 'Prizes',
+                description: 'Exclusive trophies, commendation certificates, and institutional honors backed by Ruchi Prativa Foundation.',
+                image: culinaryImg,
+                accent: '#B1320A',
+                icon: Shield,
+                span: 'lg:col-span-7',
+              },
+            ].map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={item.num}
+                  tabIndex={0}
+                  className={`${item.span} group relative rounded-2xl overflow-hidden border border-black/10 bg-[#0B0F17] shadow-lg transition-all duration-500 hover:shadow-2xl cursor-pointer min-h-[220px] sm:min-h-[260px] flex flex-col justify-between p-6 sm:p-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12]`}
+                >
+                  {/* Background Image with Zoom & Dark Overlay */}
+                  <div className="absolute inset-0 z-0 overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover object-center opacity-40 transition-transform duration-700 ease-out group-hover:scale-110 group-focus:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/70 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
+                  </div>
 
-            {/* 2 */}
-            <div className="space-y-3 text-center md:text-left bg-[#FDFBF7] p-6 border border-black/5 rounded-sm">
-              <div className="w-10 h-10 rounded-full bg-damdaar-gold/10 text-damdaar-gold flex items-center justify-center mx-auto md:mx-0">
-                <Users className="w-5 h-5" />
-              </div>
-              <h4 className="font-playfair text-lg font-bold">Mentorship Access</h4>
-              <p className="text-xs text-gray-500 leading-relaxed font-poppins">
-                Direct exposure to top startup mentors, institutional administrators, tech executives, and master chefs.
-              </p>
-            </div>
+                  {/* Top Bar: Number Badge & Icon */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="font-space text-xs font-bold px-3 py-1 rounded-full bg-white/10 text-white backdrop-blur-xs border border-white/15">
+                      {item.num}
+                    </span>
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: item.accent }}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                  </div>
 
-            {/* 3 */}
-            <div className="space-y-3 text-center md:text-left bg-[#FDFBF7] p-6 border border-black/5 rounded-sm">
-              <div className="w-10 h-10 rounded-full bg-damdaar-gold/10 text-damdaar-gold flex items-center justify-center mx-auto md:mx-0">
-                <Star className="w-5 h-5" />
-              </div>
-              <h4 className="font-playfair text-lg font-bold">Global Exposure</h4>
-              <p className="text-xs text-gray-500 leading-relaxed font-poppins">
-                Showcase opportunities in national conventions, corporate platforms, and cultural exchange summits.
-              </p>
-            </div>
+                  {/* Bottom Content: Title, Revealed Description & Arrow */}
+                  <div className="relative z-10 space-y-2 mt-auto pt-6">
+                    <div className="flex items-center justify-between gap-4">
+                      <h3 className="font-playfair text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                        {item.title}
+                      </h3>
+                      <ArrowRight className="w-5 h-5 text-white/80 transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[#CF8A12] shrink-0" />
+                    </div>
 
-            {/* 4 */}
-            <div className="space-y-3 text-center md:text-left bg-[#FDFBF7] p-6 border border-black/5 rounded-sm">
-              <div className="w-10 h-10 rounded-full bg-damdaar-gold/10 text-damdaar-gold flex items-center justify-center mx-auto md:mx-0">
-                <Shield className="w-5 h-5" />
-              </div>
-              <h4 className="font-playfair text-lg font-bold">Trust Endorsement</h4>
-              <p className="text-xs text-gray-500 leading-relaxed font-poppins">
-                Validation by the prestigious Ruchi Prativa Foundation, serving as a gateway to commercial and academic ecosystems.
-              </p>
-            </div>
+                    <p className="font-poppins text-xs sm:text-sm text-gray-300 leading-relaxed max-w-xl transition-all duration-300 opacity-95 group-hover:opacity-100">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Final Call to Action Section */}
-      <section className="py-28 bg-[#121824] text-white relative overflow-hidden">
-        {/* Subtle Background radial overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(207,138,18,0.08),transparent_70%)] pointer-events-none" />
+      {/* Light, Cultural & Premium Pre-Footer Closing CTA Section */}
+      <section className="relative py-20 lg:py-28 bg-[#FAF7F2] text-[#343D0F] border-t border-black/5 overflow-hidden flex flex-col justify-center items-center">
+        {/* Approved Desktop DUMDAAR ODIA Background Image */}
+        <div className="hidden sm:block absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <Image
+            src={damdaarBg}
+            alt="Dumdaar Odia Cultural Motif Background"
+            fill
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-center opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2] via-[#FAF7F2]/80 to-[#FAF7F2]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,247,242,0.6)_0%,rgba(250,247,242,0.95)_100%)]" />
+        </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8 relative z-10">
-          <span className="text-[10px] uppercase tracking-widest font-bold text-damdaar-gold block font-space">JOIN THE MOVEMENT</span>
-          
-          <h2 className="font-playfair text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl mx-auto">
-            The next chapter of Odisha starts with you.
-          </h2>
+        {/* Approved Mobile 9:16 DUMDAAR ODIA Background Image */}
+        <div className="block sm:hidden absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <Image
+            src={damdaarBgMobile}
+            alt="Dumdaar Odia Mobile Background Motif"
+            fill
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-center opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2] via-[#FAF7F2]/85 to-[#FAF7F2]" />
+        </div>
 
-          <p className="font-poppins text-xs sm:text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">
+        {/* Editorial Content Container */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
+          <div className="inline-flex items-center gap-3">
+            <span className="h-[1px] w-8 sm:w-12 bg-[#CF8A12]/60" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] font-space text-[#CF8A12] font-bold">
+              THE FINAL CHAPTER
+            </span>
+            <span className="h-[1px] w-8 sm:w-12 bg-[#CF8A12]/60" />
+          </div>
+
+          <div className="space-y-3">
+            <h2 className="font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#343D0F] uppercase leading-none max-w-3xl mx-auto">
+              YOUR TALENT HAS A PLACE.
+            </h2>
+            <p className="font-playfair text-lg sm:text-2xl italic font-semibold text-[#855B08]">
+              Be part of the next chapter of Odisha.
+            </p>
+          </div>
+
+          <p className="font-poppins text-xs sm:text-sm text-gray-600 max-w-lg mx-auto leading-relaxed">
             Choose your domain, complete the registration framework, and showcase your talent to the region.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center items-center">
+          {/* Primary CTA Button */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#domains"
-              className="w-full sm:w-auto px-8 py-3.5 text-xs font-semibold text-institutional-dark bg-damdaar-gold hover:bg-damdaar-gold/95 rounded-sm shadow-md transition-colors duration-200 flex items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-damdaar-gold whitespace-nowrap min-h-[44px]"
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#CF8A12] hover:bg-[#B7780E] text-white text-xs sm:text-sm font-bold uppercase tracking-widest rounded-lg shadow-md hover:shadow-xl transition-all duration-300 font-space cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12] min-h-[48px] w-full sm:w-auto"
             >
-              <span>Register Now</span>
-              <Check className="w-4 h-4" />
-            </a>
-            <a
-              href="#domains"
-              className="w-full sm:w-auto px-8 py-3.5 text-xs font-semibold text-white hover:text-damdaar-gold uppercase tracking-widest border border-white/20 hover:border-damdaar-gold/40 rounded-sm transition-colors duration-200 flex items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white whitespace-nowrap min-h-[44px]"
-            >
-              <span>Explore Domains</span>
+              <span>REGISTER NOW</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
 
-          {/* Simple Vector convergence symbol element centered */}
-          <div className="pt-10 flex justify-center opacity-40">
-            <svg viewBox="0 0 100 100" className="w-16 h-16">
-              <path d="M 15 50 A 35 35 0 1 0 85 50" stroke="#CF8A12" strokeWidth="2.5" fill="none" />
-              <circle cx="50" cy="50" r="6" fill="#CF8A12" />
-            </svg>
+          {/* Subtle Traditional Divider Line */}
+          <div className="pt-6 flex justify-center items-center gap-3 opacity-60">
+            <span className="h-[1px] w-12 bg-[#CF8A12]/40" />
+            <span className="w-2 h-2 rounded-full bg-[#CF8A12]" />
+            <span className="h-[1px] w-12 bg-[#CF8A12]/40" />
           </div>
         </div>
       </section>

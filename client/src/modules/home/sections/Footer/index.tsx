@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FooterLinksGrid } from './components/FooterLinksGrid';
 import { ContactAndNewsletter } from './components/ContactAndNewsletter';
 import { FooterBottomBar } from './components/FooterBottomBar';
@@ -10,8 +11,9 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         {/* Brand Header */}
         <div className="flex flex-col md:flex-row items-center md:items-center text-center md:text-left justify-between pb-10 border-b border-white/10 gap-6">
-          <a
+          <Link
             href="/"
+            prefetch={false}
             className="group flex flex-col sm:flex-row items-center gap-3.5 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-institutional-accent rounded-sm"
             aria-label="Ruchi Prativa Foundation Home"
           >
@@ -32,7 +34,7 @@ export const Footer: React.FC = () => {
                 Honouring Excellence • Preserving Heritage • Since 1997
               </span>
             </div>
-          </a>
+          </Link>
 
           <div className="text-xs font-space text-gray-400 max-w-sm leading-relaxed text-center md:text-left">
             A registered public charitable trust dedicated to recognising excellence, promoting education, preserving cultural heritage, and serving society.

@@ -6,7 +6,7 @@ import { TimelineMilestone } from '../types';
 interface TimelineTrackProps {
   milestones: TimelineMilestone[];
   selectedId: string;
-  onSelect: (id: string) => void;
+  onSelect: (_id: string) => void;
 }
 
 export const TimelineTrack: React.FC<TimelineTrackProps> = ({

@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import { Menu, Search, Sun, Moon, Globe } from 'lucide-react';
 import { useScrollNavigation } from './hooks/useScrollNavigation';
 import { NavLogo } from './components/NavLogo';
+import { NavLinks } from './components/NavLinks';
 import { NavActions } from './components/NavActions';
 import { MegaNavPanel } from './components/MegaNavPanel';
 import { MobileMenu } from './components/MobileMenu';
@@ -39,7 +40,7 @@ export const Navigation: React.FC = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full bg-institutional-dark border-b border-white/10 py-3.5 sm:py-4 shadow-xl"
+      className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 w-full bg-institutional-dark border-b border-white/10 py-3 sm:py-3.5 shadow-xl"
     >
       {/* Fixed Header Content Container Aligned to Global Site Grid */}
       <div className="max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between gap-3 sm:gap-6">
@@ -48,7 +49,10 @@ export const Navigation: React.FC = () => {
           <NavLogo />
         </div>
 
-        {/* 2. Right: Utility Controls (Search, Directory Hamburger, Theme, Lang, CTA) */}
+        {/* 2. Center: Desktop Primary Header Items */}
+        <NavLinks />
+
+        {/* 3. Right: Utility Controls (Search, Directory Hamburger, Theme, Lang, CTA) */}
         <div className="flex items-center justify-end flex-shrink-0 gap-1.5 sm:gap-2.5 z-50">
           <NavActions isMegaOpen={megaOpen} onToggleMega={toggleMega} />
 
