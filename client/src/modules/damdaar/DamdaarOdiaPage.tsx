@@ -302,7 +302,7 @@ export const DamdaarOdiaPage: React.FC = () => {
             <AccordionGallery
               items={[
                 { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'ENROLL NOW →' },
-                { image: techImg.src, label: 'TECHNOLOGY', link: '/damdaar-odia/domains/technology', ctaText: 'ENROLL NOW →' },
+                { image: techImg.src, label: 'TECHNOLOGY', link: '/damdaar-odia/project-nirman', ctaText: 'ENROLL NOW →' },
                 { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'ENROLL NOW →' },
                 { image: culinaryImg.src, label: 'CULINARY EXCELLENCE', link: '/damdaar-odia/domains/culinary-excellence', ctaText: 'ENROLL NOW →' }
               ]}

@@ -1,0 +1,3 @@
+export const PROJECT_NIRMAN_REGISTRATION_URL =
+  process.env.NEXT_PUBLIC_PROJECT_NIRMAN_REGISTRATION_URL ||
+  'https://forms.gle/k4XXUCBEpR4KtsEKA';

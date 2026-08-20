@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { DomainDetailsPage } from '@/modules/damdaar/domain/DomainDetailsPage';
 
 interface PageProps {
@@ -8,6 +9,12 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
+  if (slug === 'technology') {
+    return {
+      title: 'Project NIRMAN | Technology Innovation Competition | DUMDAAR ODIA',
+      description: 'Discover the Idea. Build the Future. The official Technology wing initiative under DUMDAAR ODIA.',
+    };
+  }
   const capitalized = slug
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -20,5 +27,8 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
+  if (slug === 'technology') {
+    redirect('/damdaar-odia/project-nirman');
+  }
   return <DomainDetailsPage slug={slug} />;
 }
