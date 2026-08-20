@@ -32,98 +32,99 @@ export interface TimelineEventItem {
   image: any;
   nodeDate: string;
   nodeTitle: string;
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 export const DUMDAAR_JOURNEY_EVENTS: TimelineEventItem[] = [
   {
     id: 't-1',
     stepNumber: '01',
-    title: 'CAMPAIGN ANNOUNCEMENT & LAUNCH',
-    date: 'August 15, 2026',
-    day: '15',
+    title: 'DUMDAAR ODIA CAMPAIGN LAUNCH',
+    date: '17 August 2026',
+    day: '17',
     monthYear: 'AUGUST 2026',
-    description: 'Official launch of the DUMDAAR ODIA movement across regional media, digital ecosystem, and state-wide registration portal activation.',
+    description: 'Official launch of the Dumdaar Odia campaign and the beginning of the Project NIRMAN and Kitchen Queen journey.',
     status: 'current',
     category: 'MOVEMENT LAUNCH',
-    location: 'Bhubaneswar, Odisha',
     image: artCultureImg,
-    nodeDate: 'AUGUST 15, 2026',
-    nodeTitle: 'CAMPAIGN ANNOUNCEMENT'
+    nodeDate: '17 AUGUST 2026',
+    nodeTitle: 'CAMPAIGN LAUNCH'
   },
   {
     id: 't-2',
     stepNumber: '02',
-    title: 'ONLINE REGISTRATION PHASE',
-    date: 'August 15 – September 30, 2026',
-    day: '15',
-    monthYear: 'AUG – SEP 2026',
-    description: 'Talented Odias across four domains choose their category and submit project proposals, creative portfolios, code repositories, or culinary recipes.',
+    title: 'APPLICATION & REGISTRATION PERIOD',
+    date: '17–27 August 2026',
+    day: '17–27',
+    monthYear: 'AUGUST 2026',
+    description: 'Project NIRMAN applications circulate across colleges and digital channels while participants begin their submissions.',
     status: 'future',
-    category: 'REGISTRATION OPEN',
-    location: 'State-wide Digital Portal',
+    category: 'APPLICATIONS OPEN',
     image: techImg,
-    nodeDate: 'AUGUST 15',
-    nodeTitle: 'ONLINE REGISTRATION'
+    nodeDate: '17–27 AUGUST',
+    nodeTitle: 'APPLICATION & REGISTRATION',
+    ctaText: 'START YOUR REGISTRATION →',
+    ctaLink: '/damdaar-odia/project-nirman'
   },
   {
     id: 't-3',
     stepNumber: '03',
-    title: 'INITIAL SCREENING & SHORTLIST',
-    date: 'October 1 – October 15, 2026',
-    day: '01',
-    monthYear: 'OCTOBER 2026',
-    description: 'A distinguished jury panel of domain veterans evaluates all verified entries to select regional semifinalists and digital innovators.',
+    title: 'PROJECT NIRMAN APPLICATION CLOSING',
+    date: '27 August 2026',
+    day: '27',
+    monthYear: 'AUGUST 2026',
+    description: 'Project NIRMAN applications close with the campaign targeting up to 150 applications.',
     status: 'future',
-    category: 'JURY EVALUATION',
-    location: 'State Review Panel',
-    image: educationThumb,
-    nodeDate: 'OCTOBER 1',
-    nodeTitle: 'INITIAL SCREENING'
+    category: 'APPLICATION DEADLINE',
+    image: techImg,
+    nodeDate: '27 AUGUST',
+    nodeTitle: 'PROJECT NIRMAN CLOSING'
   },
   {
     id: 't-4',
     stepNumber: '04',
-    title: 'REGIONAL LIVE ROUNDS',
-    date: 'October 20 – November 10, 2026',
-    day: '20',
-    monthYear: 'OCT – NOV 2026',
-    description: 'Semifinalists present their work live in front of audience panels in four major hubs: Bhubaneswar, Cuttack, Sambalpur, and Rourkela.',
+    title: 'SCREENING & EVALUATION',
+    date: '28–29 August 2026',
+    day: '28–29',
+    monthYear: 'AUGUST 2026',
+    description: 'Submitted Project NIRMAN applications undergo internal screening and evaluation.',
     status: 'future',
-    category: 'LIVE SHOWCASES',
-    location: 'Regional Hubs (Odisha)',
-    image: entrepreneurshipImg,
-    nodeDate: 'OCTOBER 20',
-    nodeTitle: 'REGIONAL LIVE ROUNDS'
+    category: 'SELECTION STAGE',
+    image: educationThumb,
+    nodeDate: '28–29 AUGUST',
+    nodeTitle: 'SCREENING & EVALUATION'
   },
   {
     id: 't-5',
     stepNumber: '05',
-    title: 'GRAND FINALE SHOWCASE',
-    date: 'November 25, 2026',
-    day: '25',
-    monthYear: 'NOVEMBER 2026',
-    description: 'Top finalists demonstrate live hacks, culinary cook-offs, entrepreneurial pitches, and grand cultural performances in a mega public showcase.',
+    title: 'PROJECT NIRMAN WINNER & KITCHEN QUEEN DEADLINE',
+    date: '30 August 2026',
+    day: '30',
+    monthYear: 'AUGUST 2026',
+    description: 'The Project NIRMAN winner is announced, while Global Odia Kitchen Queen entries close at 11:59 PM.',
     status: 'future',
-    category: 'GRAND FINALE',
-    location: 'Kalinga Stadium Complex',
+    category: 'MILESTONE DAY',
     image: culinaryImg,
-    nodeDate: 'NOVEMBER 25, 2026',
-    nodeTitle: 'GRAND FINALE SHOW'
+    nodeDate: '30 AUGUST',
+    nodeTitle: 'WINNER + KITCHEN QUEEN DEADLINE',
+    ctaText: 'PARTICIPATE IN KITCHEN QUEEN →',
+    ctaLink: '/damdaar-odia/kitchen-queen'
   },
   {
     id: 't-6',
     stepNumber: '06',
-    title: 'DUMDAAR ODIA AWARDS CEREMONY',
-    date: 'November 26, 2026',
-    day: '26',
-    monthYear: 'NOVEMBER 2026',
-    description: 'Felicitating the state champions with prestigious Ruchi Prativa Foundation grants, incubation mentorships, and global exposure honors.',
+    title: 'RUCHI PRATIVA SAMMAN SAMAROH',
+    date: '12 September 2026',
+    day: '12',
+    monthYear: 'SEPTEMBER 2026',
+    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh in Bhubaneswar.',
     status: 'future',
-    category: 'FELICITATION & GRANTS',
-    location: 'Convention Center, BBSR',
+    category: 'RECOGNITION',
+    location: 'Bhubaneswar, Odisha',
     image: cultureHeritageThumb,
-    nodeDate: 'NOVEMBER 26, 2026',
-    nodeTitle: 'DUMDAAR ODIA AWARDS'
+    nodeDate: '12 SEPTEMBER 2026',
+    nodeTitle: 'SAMMAN SAMAROH'
   }
 ];
 
@@ -139,114 +140,95 @@ export const DumdaarTimeline: React.FC = () => {
   const totalItems = DUMDAAR_JOURNEY_EVENTS.length;
   const activeEvent = DUMDAAR_JOURNEY_EVENTS[activeIndex];
 
-  // Set up GSAP Pinned ScrollTrigger
+  // Sync index from scroll position
   useEffect(() => {
     if (shouldReduceMotion) return;
 
-    const section = sectionRef.current;
     const pinWrapper = pinWrapperRef.current;
+    const section = sectionRef.current;
 
-    if (!section || !pinWrapper) return;
+    if (!pinWrapper || !section) return;
 
     const ctx = gsap.context(() => {
-      const scrollDistance = window.innerHeight * 2.2;
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          pin: pinWrapper,
-          start: 'top top',
-          end: () => `+=${scrollDistance}`,
-          scrub: 0.8,
-          anticipatePin: 1,
-          onUpdate: (self) => {
-            const prog = self.progress;
-
-            // Compute active index based on progress segments
-            const step = 1 / totalItems;
-            const computedIndex = Math.min(
-              totalItems - 1,
-              Math.max(0, Math.floor(prog / step))
-            );
-
-            setActiveIndex((prev) => (prev !== computedIndex ? computedIndex : prev));
-
-            // Highlight progress line on track
-            if (activeLineRef.current) {
-              const fillPercent = Math.min(100, Math.max(0, (computedIndex / (totalItems - 1)) * 100));
-              gsap.set(activeLineRef.current, { width: `${fillPercent}%` });
-            }
-          }
-        }
+      stInstanceRef.current = ScrollTrigger.create({
+        trigger: section,
+        pin: pinWrapper,
+        start: 'top top',
+        end: '+=2500',
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const newIdx = Math.min(
+            Math.floor(progress * totalItems),
+            totalItems - 1
+          );
+          setActiveIndex(newIdx);
+        },
       });
+    });
 
-      if (tl.scrollTrigger) {
-        stInstanceRef.current = tl.scrollTrigger;
-      }
-    }, section);
-
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, [shouldReduceMotion, totalItems]);
 
-  // Click handler to jump directly to a milestone index
   const handleNodeClick = (index: number) => {
     setActiveIndex(index);
     if (stInstanceRef.current) {
-      const st = stInstanceRef.current;
-      const targetProgress = (index + 0.1) / totalItems;
-      const targetScroll = st.start + targetProgress * (st.end - st.start);
-      window.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth'
-      });
+      const targetProgress = index / (totalItems - 1);
+      const start = stInstanceRef.current.start;
+      const end = stInstanceRef.current.end;
+      const scrollPos = start + targetProgress * (end - start);
+      window.scrollTo({ top: scrollPos, behavior: 'smooth' });
     }
   };
 
   return (
     <section
       ref={sectionRef}
-      id="timeline"
+      className="relative min-h-[3500px] bg-[#FDFBF7] border-b border-black/5"
       aria-label="The Dumdaar Journey Timeline"
-      className="relative w-full bg-[#FDFBF7] text-institutional-dark border-b border-black/5 selection:bg-[#CF8A12] selection:text-white"
     >
-      {/* Pinned Viewport Container - Header Clearance + Single Frame Layout */}
       <div
         ref={pinWrapperRef}
-        className="w-full h-screen max-h-screen lg:h-dvh lg:max-h-dvh flex flex-col justify-between pt-20 sm:pt-24 lg:pt-24 pb-4 sm:pb-6 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-[#FDFBF7]"
+        className="w-full h-screen sticky top-0 flex flex-col justify-between pt-16 sm:pt-20 pb-4 overflow-hidden bg-[#FDFBF7]"
       >
-        {/* 1. TOP HEADER IDENTITY & COUNTER PILL */}
-        <div className="max-w-6xl w-full mx-auto flex items-center justify-between gap-4 z-10 select-none shrink-0">
-          <div className="space-y-1">
-            <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#343D0F] uppercase leading-none">
+        {/* 1. TOP HEADER ROW */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 z-20 shrink-0">
+          <div>
+            <h2 className="font-playfair text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#343D0F] tracking-wide uppercase">
               THE DUMDAAR JOURNEY
             </h2>
-            <p className="font-poppins text-xs sm:text-sm text-gray-500 font-normal mt-1 sm:mt-1.5">
-              Every milestone brings Odisha&apos;s talent one step closer.
+            <p className="text-xs sm:text-sm md:text-base text-[#855B08] font-space font-semibold mt-1">
+              Every milestone brings Odisha’s talent one step closer.
             </p>
           </div>
 
-          {/* Numerical Counter Pill */}
-          <div className="px-3.5 py-1 bg-white border border-black/10 rounded-full shadow-2xs flex items-center justify-center shrink-0">
-            <span className="font-space text-xs font-bold text-gray-700">
-              {String(activeIndex + 1).padStart(2, '0')}{' '}
-              <span className="text-gray-400 font-normal">/ {String(totalItems).padStart(2, '0')}</span>
+          {/* Sync Counter Badge */}
+          <div className="flex items-center gap-2 bg-[#EFECE6] px-3.5 py-1.5 rounded-full border border-black/5 self-start sm:self-auto">
+            <span className="text-xs font-bold font-space text-[#855B08]">
+              {activeEvent.stepNumber}
+            </span>
+            <span className="text-xs text-gray-400 font-space">/</span>
+            <span className="text-xs font-bold font-space text-gray-500">
+              0{totalItems}
             </span>
           </div>
         </div>
 
-        {/* 2. EDITORIAL DISPLAY STAGE (ENLARGED IMAGE & PROPORTIONED CONTENT) */}
-        <div className="max-w-6xl w-full mx-auto my-auto py-1 sm:py-2 lg:py-3 z-10 flex-1 flex flex-col justify-center overflow-hidden">
+        {/* 2. MIDDLE CONTENT SECTION */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col justify-center my-auto z-10 py-1">
           
-          {/* MOBILE VIEW (STACKED: ENLARGED IMAGE FIRST) */}
-          <div className="block lg:hidden space-y-2 sm:space-y-3 my-auto">
-            {/* Mobile Image */}
-            <div className="relative w-full h-[140px] sm:h-[180px] max-h-[22vh] rounded-2xl overflow-hidden shadow-lg border border-black/5 bg-gray-100 shrink-0">
+          {/* MOBILE VIEW */}
+          <div className="block lg:hidden space-y-3">
+            {/* Mobile Image Card */}
+            <div className="relative w-full aspect-[16/9] max-h-[220px] rounded-xl overflow-hidden shadow-lg border border-black/10 bg-gray-100">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeEvent.id}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 w-full h-full"
                 >
@@ -313,7 +295,7 @@ export const DumdaarTimeline: React.FC = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-playfair text-base sm:text-xl font-bold text-[#343D0F] leading-tight uppercase line-clamp-1">
+                <h3 className="font-playfair text-base sm:text-xl font-bold text-[#343D0F] leading-tight uppercase line-clamp-2">
                   {activeEvent.title}
                 </h3>
 
@@ -322,24 +304,26 @@ export const DumdaarTimeline: React.FC = () => {
                   {activeEvent.description}
                 </p>
 
-                {/* Adjusted CTA Button */}
-                <div className="pt-1">
-                  <a
-                    href="#domains"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#2A3410] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#855B08] transition-all duration-300 shadow-md font-space group"
-                  >
-                    <span>PREPARE YOUR ENTRY</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </div>
+                {/* CTA Button */}
+                {activeEvent.ctaLink && (
+                  <div className="pt-1">
+                    <a
+                      href={activeEvent.ctaLink}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#2A3410] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#855B08] transition-all duration-300 shadow-md font-space group"
+                    >
+                      <span>{activeEvent.ctaText || 'EXPLORE NOW →'}</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* DESKTOP VIEW (ENLARGED RIGHT IMAGE & VERTICALLY CENTERED CONTENT) */}
+          {/* DESKTOP VIEW */}
           <div className="hidden lg:grid grid-cols-12 gap-8 xl:gap-12 items-center my-auto">
             
-            {/* Left Column: Event Details (Vertically Centered & Richer Size) */}
+            {/* Left Column: Event Details */}
             <div className="col-span-6 space-y-4 xl:space-y-5 flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -367,7 +351,7 @@ export const DumdaarTimeline: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Large Prominent Date Display */}
+                  {/* Date Display */}
                   <div className="font-playfair text-3xl lg:text-4xl xl:text-5xl font-bold text-[#855B08] leading-none tracking-tight select-none">
                     {activeEvent.day} {activeEvent.monthYear}
                   </div>
@@ -382,21 +366,23 @@ export const DumdaarTimeline: React.FC = () => {
                     {activeEvent.description}
                   </p>
 
-                  {/* Prominent Adjusted CTA Button */}
-                  <div className="pt-2">
-                    <a
-                      href="#domains"
-                      className="inline-flex items-center gap-2.5 px-7 py-3 bg-[#2A3410] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#855B08] transition-all duration-300 shadow-md hover:shadow-lg group font-space"
-                    >
-                      <span>PREPARE YOUR ENTRY</span>
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </a>
-                  </div>
+                  {/* CTA Button */}
+                  {activeEvent.ctaLink && (
+                    <div className="pt-2">
+                      <a
+                        href={activeEvent.ctaLink}
+                        className="inline-flex items-center gap-2.5 px-7 py-3 bg-[#2A3410] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#855B08] transition-all duration-300 shadow-md hover:shadow-lg group font-space"
+                      >
+                        <span>{activeEvent.ctaText || 'EXPLORE NOW →'}</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                    </div>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Right Column: Prominent Enlarged Event Image Card */}
+            {/* Right Column: Event Image Card */}
             <div className="col-span-6 flex justify-end items-center">
               <div className="relative w-full max-w-[480px] xl:max-w-[520px] h-[260px] lg:h-[300px] xl:h-[340px] max-h-[40vh] rounded-2xl overflow-hidden shadow-xl border border-black/10 bg-gray-100 group">
                 <AnimatePresence mode="wait">
@@ -441,9 +427,8 @@ export const DumdaarTimeline: React.FC = () => {
           </div>
         </div>
 
-        {/* 3. TIMELINE TRACK NAVIGATOR — 80% CENTERED INTEGRATED CONTROL */}
+        {/* 3. TIMELINE TRACK NAVIGATOR */}
         <div className="w-full relative pt-1 pb-1 z-20 select-none shrink-0">
-          {/* Centered 80% Width Container */}
           <div className="w-full lg:w-[80%] mx-auto relative px-2">
             
             {/* Background Connecting Line */}

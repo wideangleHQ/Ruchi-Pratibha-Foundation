@@ -147,44 +147,44 @@ export interface TimelineEvent {
 export const DAMDAAR_TIMELINE: TimelineEvent[] = [
   {
     id: 't-1',
-    title: 'Campaign Announcement & Launch',
-    date: 'August 15, 2026',
-    description: 'Official launch of the DUMDAAR ODIA movement across regional media and portal activation.',
+    title: 'DUMDAAR ODIA CAMPAIGN LAUNCH',
+    date: '17 August 2026',
+    description: 'Official launch of the Dumdaar Odia campaign and the beginning of the Project NIRMAN and Kitchen Queen journey.',
     status: 'current'
   },
   {
     id: 't-2',
-    title: 'Online Registration Phase',
-    date: 'August 15 – September 30, 2026',
-    description: 'Participants choose their domain and submit their details, portfolios, and initial entry files.',
+    title: 'APPLICATION & REGISTRATION PERIOD',
+    date: '17–27 August 2026',
+    description: 'Project NIRMAN applications circulate across colleges and digital channels while participants begin their submissions.',
     status: 'future'
   },
   {
     id: 't-3',
-    title: 'Initial Screening & Shortlist',
-    date: 'October 1 – October 15, 2026',
-    description: 'Expert panel evaluates entries to select domain-wise regional and digital semifinalists.',
+    title: 'PROJECT NIRMAN APPLICATION CLOSING',
+    date: '27 August 2026',
+    description: 'Project NIRMAN applications close with the campaign targeting up to 150 applications.',
     status: 'future'
   },
   {
     id: 't-4',
-    title: 'Regional Live Rounds',
-    date: 'October 20 – November 10, 2026',
-    description: 'Semifinalists showcase talent live in multiple cities (Bhubaneswar, Cuttack, Sambalpur, Rourkela).',
+    title: 'SCREENING & EVALUATION',
+    date: '28–29 August 2026',
+    description: 'Submitted Project NIRMAN applications undergo internal screening and evaluation.',
     status: 'future'
   },
   {
     id: 't-5',
-    title: 'Grand Finale Showcase',
-    date: 'November 25, 2026',
-    description: 'Finalists showcase their projects, recipes, tech solutions, and performances in a public forum.',
+    title: 'PROJECT NIRMAN WINNER & KITCHEN QUEEN DEADLINE',
+    date: '30 August 2026',
+    description: 'The Project NIRMAN winner is announced, while Global Odia Kitchen Queen entries close at 11:59 PM.',
     status: 'future'
   },
   {
     id: 't-6',
-    title: 'DUMDAAR ODIA Awards Ceremony',
-    date: 'November 26, 2026',
-    description: 'Announcement of winners, presentation of research grants, and recognition of Odisha\'s rising stars.',
+    title: 'RUCHI PRATIVA SAMMAN SAMAROH',
+    date: '12 September 2026',
+    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh in Bhubaneswar.',
     status: 'future'
   }
 ];
