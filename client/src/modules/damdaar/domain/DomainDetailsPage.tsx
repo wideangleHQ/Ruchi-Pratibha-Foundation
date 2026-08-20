@@ -253,7 +253,7 @@ export const DomainDetailsPage: React.FC<DomainDetailsPageProps> = ({ slug }) =>
                           PROJECT NIRMAN — Technology Innovation Competition
                         </h4>
                         <p className="text-xs text-gray-600 font-poppins">
-                          Discover the Idea. Build the Future. ₹30,000 Seed Support &amp; Dedicated Project Manager.
+                          Discover the Idea. Build the Future. Submit your project details and get funded.
                         </p>
                       </div>
                       <a
@@ -261,6 +261,30 @@ export const DomainDetailsPage: React.FC<DomainDetailsPageProps> = ({ slug }) =>
                         className="shrink-0 px-5 py-2.5 bg-damdaar-deepGreen text-white rounded-md text-xs font-space font-bold uppercase tracking-wider hover:bg-damdaar-deepGreen/90 transition-all shadow"
                       >
                         EXPLORE PROJECT NIRMAN →
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {domain.id === 'culinary-excellence' && (
+                  <div className="mt-6 pt-6 border-t border-damdaar-burntOrange/20">
+                    <div className="bg-white/80 backdrop-blur rounded-xl p-6 border border-damdaar-burntOrange/30 shadow-md text-left flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold font-space text-damdaar-gold uppercase tracking-widest block">
+                          FLAGSHIP INITIATIVE
+                        </span>
+                        <h4 className="font-playfair text-xl font-bold text-institutional-dark">
+                          GLOBAL ODIA KITCHEN QUEEN CONTEST
+                        </h4>
+                        <p className="text-xs text-gray-600 font-poppins">
+                          Cook. Inspire. Be the Queen. Win 1 Gram Gold-Plated Crown + Trophy + 2 Days Stay in Odisha.
+                        </p>
+                      </div>
+                      <a
+                        href="/damdaar-odia/kitchen-queen"
+                        className="shrink-0 px-5 py-2.5 bg-damdaar-burntOrange text-white rounded-md text-xs font-space font-bold uppercase tracking-wider hover:bg-damdaar-burntOrange/90 transition-all shadow"
+                      >
+                        EXPLORE KITCHEN QUEEN →
                       </a>
                     </div>
                   </div>

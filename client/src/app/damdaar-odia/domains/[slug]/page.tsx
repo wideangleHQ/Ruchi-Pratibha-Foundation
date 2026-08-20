@@ -15,6 +15,12 @@ export async function generateMetadata({ params }: PageProps) {
       description: 'Discover the Idea. Build the Future. The official Technology wing initiative under DUMDAAR ODIA.',
     };
   }
+  if (slug === 'culinary-excellence') {
+    return {
+      title: 'Global Odia Kitchen Queen Contest | Ruchi Masala | DUMDAAR ODIA',
+      description: 'Cook. Create. Represent Odia. The official Global Odia Kitchen Queen Contest under DUMDAAR ODIA.',
+    };
+  }
   const capitalized = slug
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -29,6 +35,9 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   if (slug === 'technology') {
     redirect('/damdaar-odia/project-nirman');
+  }
+  if (slug === 'culinary-excellence') {
+    redirect('/damdaar-odia/kitchen-queen');
   }
   return <DomainDetailsPage slug={slug} />;
 }

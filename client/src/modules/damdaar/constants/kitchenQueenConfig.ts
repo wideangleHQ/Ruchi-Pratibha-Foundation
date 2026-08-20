@@ -1,0 +1,3 @@
+export const KITCHEN_QUEEN_REGISTRATION_URL =
+  process.env.NEXT_PUBLIC_KITCHEN_QUEEN_REGISTRATION_URL ||
+  'https://forms.gle/NvX5KgCqnmJG12NK7';

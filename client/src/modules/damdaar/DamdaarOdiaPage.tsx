@@ -304,7 +304,7 @@ export const DamdaarOdiaPage: React.FC = () => {
                 { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'ENROLL NOW →' },
                 { image: techImg.src, label: 'TECHNOLOGY', link: '/damdaar-odia/project-nirman', ctaText: 'ENROLL NOW →' },
                 { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'ENROLL NOW →' },
-                { image: culinaryImg.src, label: 'CULINARY EXCELLENCE', link: '/damdaar-odia/domains/culinary-excellence', ctaText: 'ENROLL NOW →' }
+                { image: culinaryImg.src, label: 'KITCHEN QUEEN', link: '/damdaar-odia/kitchen-queen', ctaText: 'ENROLL NOW →' }
               ]}
               defaultIndex={0}
               expandRatio={0.45}

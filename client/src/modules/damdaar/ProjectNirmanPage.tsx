@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Cpu, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Cpu, FileText, CheckCircle2, ArrowDown, Upload, ShieldCheck, Award } from 'lucide-react';
 import { Navigation } from '@/modules/home/sections/Navigation';
 import { Footer } from '@/modules/home/sections/Footer';
 import techImg from '@/assets/Categories/Tech .png';
@@ -11,72 +11,35 @@ import damdaarBg from '@/assets/Damdaar Odia Background.png';
 import { PROJECT_NIRMAN_REGISTRATION_URL } from './constants/projectNirmanConfig';
 
 // ----------------------------------------------------------------------
-// DATA DEFINITIONS (ULTRA-CONCISE 4-SECTION LAYOUT)
+// DATA DEFINITIONS (SIMPLIFIED 4-SECTION FLOW)
 // ----------------------------------------------------------------------
 
-const OPPORTUNITY_CARDS = [
+const SUBMISSION_CARDS = [
   {
     num: '01',
-    title: 'INNOVATION',
-    desc: 'Meaningful ideas.',
+    title: 'PROJECT DETAILS',
+    desc: 'Your project name, concept and key details.',
     image: techImg.src,
   },
   {
     num: '02',
-    title: 'TECHNOLOGY',
-    desc: 'Build with technology.',
+    title: 'ABOUT YOUR PROJECT',
+    desc: 'Explain the problem, solution and what makes your project meaningful.',
     image: techImg.src,
   },
   {
     num: '03',
-    title: 'IMPACT',
-    desc: 'Solve real problems.',
-    image: techImg.src,
-  },
-  {
-    num: '04',
-    title: 'POTENTIAL',
-    desc: 'Take the idea further.',
+    title: 'PROJECT IMAGES / PRESENTATION',
+    desc: 'Upload your project presentation as PPT or PDF (Maximum file size: 100 MB).',
     image: techImg.src,
   },
 ];
 
-const REWARD_CARDS = [
-  {
-    num: '01',
-    stat: '₹30,000/-',
-    title: 'WINNING AMOUNT',
-    desc: 'Winner receives ₹30,000/- to support further development of the selected project.',
-    highlight: true,
-  },
-  {
-    num: '02',
-    stat: 'OFFICIAL AWARD',
-    title: 'PROJECT NIRMAN TROPHY',
-    desc: 'Recognition through DUMDAAR ODIA.',
-    highlight: false,
-  },
-  {
-    num: '03',
-    stat: '1-ON-1 GUIDE',
-    title: 'PROJECT MANAGER / PROJECT GUIDE',
-    desc: 'Dedicated guidance throughout development.',
-    highlight: false,
-  },
-  {
-    num: '04',
-    stat: 'DEMO & GROWTH',
-    title: 'PROJECT DEVELOPMENT & RECOGNITION',
-    desc: 'Opportunity to develop and demonstrate the project.',
-    highlight: false,
-  },
-];
-
-const TIMELINE_STEPS = [
-  { date: '17 AUG', label: 'APPLICATIONS OPEN' },
-  { date: '17–27 AUG', label: 'APPLICATION WINDOW' },
-  { date: '28–29 AUG', label: 'SCREENING' },
-  { date: '30 AUG', label: 'WINNER ANNOUNCEMENT', highlight: true },
+const REVIEW_FLOW_STEPS = [
+  { step: '01', label: 'SUBMIT', desc: 'Submit your project details' },
+  { step: '02', label: 'PROFESSIONAL REVIEW', desc: 'Evaluated by professionals' },
+  { step: '03', label: 'SELECTED PROJECTS', desc: 'Identified for backing' },
+  { step: '04', label: 'FUNDING + SUPPORT', desc: 'Receive funding & development' },
 ];
 
 // ----------------------------------------------------------------------
@@ -97,7 +60,7 @@ export const ProjectNirmanPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-institutional-dark font-poppins relative overflow-x-hidden selection:bg-damdaar-gold selection:text-white">
-      {/* GLOBAL HEADER */}
+      {/* GLOBAL NAVIGATION */}
       <Navigation />
 
       <main>
@@ -143,20 +106,23 @@ export const ProjectNirmanPage: React.FC = () => {
                     PROJECT <br />
                     <span className="text-damdaar-deepGreen">NIRMAN</span>
                   </h1>
-                  <h2 className="mt-2 font-cormorant text-xl sm:text-2xl md:text-3xl lg:text-4xl italic text-damdaar-gold font-semibold">
-                    Technology Innovation Competition
-                  </h2>
                 </motion.div>
 
-                <motion.p
+                {/* Primary Value Proposition Banner */}
+                <motion.div
                   initial="hidden"
                   animate="visible"
                   variants={fadeInVariants}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="font-cormorant text-lg sm:text-2xl lg:text-3xl text-institutional-dark font-medium italic border-l-4 border-damdaar-gold pl-3 py-0.5"
+                  className="p-4 sm:p-5 rounded-xl bg-damdaar-deepGreen text-white border-2 border-damdaar-gold/50 shadow-lg space-y-1"
                 >
-                  &ldquo;Discover the Idea. Build the Future.&rdquo;
-                </motion.p>
+                  <h2 className="font-playfair text-xl sm:text-3xl md:text-4xl font-bold text-damdaar-gold leading-tight">
+                    WIN ₹30,000/- CASH PRIZE
+                  </h2>
+                  <p className="font-space text-xs sm:text-base font-semibold uppercase tracking-wider text-gray-200">
+                    AND GET FUTURE SUPPORT FOR DEVELOPMENT
+                  </p>
+                </motion.div>
 
                 <motion.p
                   initial="hidden"
@@ -165,7 +131,7 @@ export const ProjectNirmanPage: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="text-xs sm:text-sm md:text-base text-gray-700 font-poppins leading-relaxed max-w-xl"
                 >
-                  A technology innovation initiative under DUMDAAR ODIA that discovers promising student projects and helps selected innovators take their ideas further.
+                  Have a technology project worth building? Submit it to Project NIRMAN and let professionals evaluate its potential.
                 </motion.p>
 
                 {/* Primary CTA */}
@@ -188,7 +154,7 @@ export const ProjectNirmanPage: React.FC = () => {
                 </motion.div>
               </div>
 
-              {/* Right Image */}
+              {/* Right Column Image */}
               <div className="lg:col-span-5 hidden sm:block">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
@@ -219,22 +185,25 @@ export const ProjectNirmanPage: React.FC = () => {
         </section>
 
         {/* ============================================================ */}
-        {/* SECTION 02 — THE OPPORTUNITY */}
+        {/* SECTION 02 — WHAT YOU NEED TO SUBMIT */}
         {/* ============================================================ */}
         <section className="py-14 md:py-20 bg-white border-b border-institutional-borderLight">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-10">
             <div className="max-w-3xl space-y-2">
               <span className="text-xs font-bold uppercase tracking-widest text-damdaar-gold font-space block">
-                02 — THE OPPORTUNITY
+                02 — SUBMISSION REQUIREMENTS
               </span>
               <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-institutional-dark">
-                BUILD SOMETHING THAT MATTERS.
+                JUST SUBMIT YOUR PROJECT.
               </h2>
+              <p className="text-gray-600 text-sm sm:text-base font-poppins">
+                Tell us about your idea, your project and what you have built.
+              </p>
             </div>
 
-            {/* Visual 4-card layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {OPPORTUNITY_CARDS.map((card) => (
+            {/* 3 Visual Imagery Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {SUBMISSION_CARDS.map((card) => (
                 <div
                   key={card.num}
                   className="group relative rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-[#FDFBF7] flex flex-col justify-between"
@@ -251,11 +220,11 @@ export const ProjectNirmanPage: React.FC = () => {
                       {card.num}
                     </span>
                   </div>
-                  <div className="p-6 space-y-1">
+                  <div className="p-6 space-y-2">
                     <h3 className="font-space font-bold text-base text-institutional-dark tracking-wide uppercase">
                       {card.title}
                     </h3>
-                    <p className="text-xs text-gray-600 font-poppins">
+                    <p className="text-xs text-gray-600 font-poppins leading-relaxed">
                       {card.desc}
                     </p>
                   </div>
@@ -263,133 +232,118 @@ export const ProjectNirmanPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Compact Statement */}
-            <div className="pt-4 text-center border-t border-gray-100">
-              <p className="font-cormorant text-xl sm:text-2xl italic font-semibold text-damdaar-deepGreen">
-                &ldquo;Open to students across colleges and educational institutions throughout Odisha.&rdquo;
-              </p>
-            </div>
-          </div>
-        </section>
+            {/* Note & CTA */}
+            <div className="p-6 bg-[#FDFBF7] rounded-xl border border-damdaar-gold/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-damdaar-gold shrink-0 mt-0.5" />
+                <p className="text-xs sm:text-sm text-gray-700 font-poppins">
+                  <strong>Submission Note: </strong>
+                  Upload your project details, about and images in PPT or PDF format (maximum 100 MB).
+                </p>
+              </div>
 
-        {/* ============================================================ */}
-        {/* SECTION 03 — REWARDS & SUPPORT */}
-        {/* ============================================================ */}
-        <section className="py-14 md:py-20 bg-[#FDFBF7] border-b border-institutional-borderLight">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-10">
-            <div className="max-w-3xl space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-damdaar-gold font-space block">
-                03 — REWARDS &amp; SUPPORT
-              </span>
-              <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-institutional-dark">
-                MORE THAN A PRIZE.
-              </h2>
-            </div>
-
-            {/* 4 Premium Cards featuring ₹30,000 WINNING AMOUNT */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {REWARD_CARDS.map((item) => (
-                <div
-                  key={item.num}
-                  className={`p-6 sm:p-8 rounded-2xl border transition-all duration-300 flex flex-col justify-between space-y-4 ${
-                    item.highlight
-                      ? 'bg-institutional-dark text-white border-damdaar-gold shadow-xl relative overflow-hidden'
-                      : 'bg-white text-institutional-dark border-gray-200 shadow-sm'
-                  }`}
-                >
-                  <div className="space-y-3">
-                    <span
-                      className={`text-[10px] font-space font-bold uppercase tracking-widest px-2.5 py-1 rounded inline-block ${
-                        item.highlight
-                          ? 'bg-damdaar-gold text-institutional-dark'
-                          : 'bg-damdaar-deepGreen/10 text-damdaar-deepGreen'
-                      }`}
-                    >
-                      {item.stat}
-                    </span>
-                    <h3
-                      className={`font-space font-bold ${
-                        item.highlight ? 'text-2xl text-damdaar-gold' : 'text-lg text-institutional-dark'
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className={`text-xs font-poppins leading-relaxed ${
-                        item.highlight ? 'text-gray-200' : 'text-gray-600'
-                      }`}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-gray-200/20 text-[10px] font-space text-damdaar-gold uppercase tracking-wider flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                    <span>Selected Innovator Benefit</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Subtle Further Opportunities Note */}
-            <div className="text-center pt-2">
-              <p className="text-xs text-gray-500 font-poppins">
-                Potential further opportunities may include mentorship, industry exposure, incubation, partnerships and advanced funding.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* SECTION 04 — REGISTER / KEY DATES */}
-        {/* ============================================================ */}
-        <section className="py-14 md:py-20 bg-institutional-dark text-white relative overflow-hidden">
-          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center space-y-10 relative z-10">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-damdaar-gold font-space block">
-                04 — TIMELINE &amp; REGISTRATION
-              </span>
-              <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-                HOW IT WORKS
-              </h2>
-            </div>
-
-            {/* Simple Visual Timeline */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
-              {TIMELINE_STEPS.map((step, idx) => (
-                <div
-                  key={idx}
-                  className={`p-5 rounded-xl border space-y-1.5 ${
-                    step.highlight
-                      ? 'bg-damdaar-deepGreen border-damdaar-gold text-white'
-                      : 'bg-white/5 border-white/10 text-white'
-                  }`}
-                >
-                  <span className="text-xs font-space font-bold text-damdaar-gold block">
-                    {step.date}
-                  </span>
-                  <h3 className="font-space text-xs font-bold tracking-wider uppercase">
-                    {step.label}
-                  </h3>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-sm text-gray-300 font-poppins max-w-xl mx-auto">
-              Selected innovators move forward with seed funding and guided project development.
-            </p>
-
-            {/* Large CTA */}
-            <div>
               <a
                 href={PROJECT_NIRMAN_REGISTRATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-damdaar-gold text-institutional-dark hover:bg-damdaar-gold/90 transition-all rounded-md font-bold text-base tracking-wider uppercase font-space shadow-xl hover:shadow-2xl group"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-damdaar-deepGreen text-white rounded-md text-xs font-space font-bold uppercase tracking-wider hover:bg-damdaar-deepGreen/90 transition-all shadow"
               >
-                <span>START REGISTRATION</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Upload className="w-4 h-4 text-damdaar-gold" />
+                <span>UPLOAD YOUR PROJECT →</span>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* SECTION 03 — PROFESSIONAL REVIEW + REWARD */}
+        {/* ============================================================ */}
+        <section className="py-14 md:py-20 bg-[#FDFBF7] border-b border-institutional-borderLight">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-10">
+            <div className="max-w-3xl space-y-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-damdaar-gold font-space block">
+                03 — EVALUATION &amp; BACKING
+              </span>
+              <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-institutional-dark">
+                YOUR PROJECT. REVIEWED BY PROFESSIONALS.
+              </h2>
+            </div>
+
+            {/* Prominent Highlighted Statement */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border-2 border-damdaar-deepGreen text-center shadow-md space-y-2">
+              <span className="text-xs font-space font-bold uppercase tracking-widest text-damdaar-gold block">
+                SELECTION GUARANTEE
+              </span>
+              <h3 className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-damdaar-deepGreen">
+                PROFESSIONALS WILL REVIEW YOUR PROJECT AND FUND THE SELECTED ONES.
+              </h3>
+            </div>
+
+            {/* Simple Visual Flow */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              {REVIEW_FLOW_STEPS.map((item) => (
+                <div key={item.step} className="p-5 rounded-xl bg-white border border-gray-200 shadow-sm space-y-2">
+                  <span className="w-8 h-8 rounded-full bg-damdaar-deepGreen text-white font-space font-bold text-xs flex items-center justify-center mx-auto">
+                    {item.step}
+                  </span>
+                  <h4 className="font-space font-bold text-xs text-institutional-dark uppercase tracking-wider">
+                    {item.label}
+                  </h4>
+                  <p className="text-[11px] text-gray-500 font-poppins">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-xs sm:text-sm text-gray-600 font-poppins italic">
+              &ldquo;Selected projects will receive the opportunity to move forward with financial and development support.&rdquo;
+            </p>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* SECTION 04 — FINAL REWARD + CTA */}
+        {/* ============================================================ */}
+        <section className="py-14 md:py-20 bg-institutional-dark text-white relative overflow-hidden">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center space-y-10 relative z-10">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-damdaar-gold/20 text-damdaar-gold border border-damdaar-gold/40 text-xs font-space font-bold uppercase tracking-widest">
+              OFFICIAL REWARD &amp; SUPPORT
+            </span>
+
+            {/* Large Typography Reward Display */}
+            <div className="space-y-2">
+              <p className="font-playfair text-6xl sm:text-7xl lg:text-8xl font-bold text-damdaar-gold tracking-tight">
+                ₹30,000/-
+              </p>
+              <h2 className="font-space text-2xl sm:text-3xl font-bold text-white uppercase tracking-widest">
+                CASH PRIZE
+              </h2>
+              <p className="font-space text-base sm:text-lg font-semibold text-gray-300 uppercase tracking-wider pt-2">
+                FUTURE SUPPORT FOR DEVELOPMENT
+              </p>
+            </div>
+
+            <p className="text-sm text-gray-300 font-poppins max-w-xl mx-auto">
+              Selected projects can receive support to take their ideas further.
+            </p>
+
+            {/* Primary CTA */}
+            <div className="space-y-3">
+              <div>
+                <a
+                  href={PROJECT_NIRMAN_REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-damdaar-gold text-institutional-dark hover:bg-damdaar-gold/90 transition-all rounded-md font-bold text-base tracking-wider uppercase font-space shadow-xl hover:shadow-2xl group"
+                >
+                  <span>START YOUR REGISTRATION</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+              <p className="text-xs text-gray-400 font-poppins">
+                Submit your project details through the Google Form.
+              </p>
             </div>
           </div>
         </section>
