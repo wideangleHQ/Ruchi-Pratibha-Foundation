@@ -22,10 +22,6 @@ const Timeline = dynamic(() => import('./sections/Timeline'), {
   loading: () => <div className="py-28 bg-institutional-light min-h-[600px]" />,
 });
 
-const FeaturedImpactStory = dynamic(() => import('./sections/StorySections').then(mod => mod.FeaturedImpactStory), {
-  loading: () => <div className="py-24 bg-institutional-light min-h-[400px]" />,
-});
-
 const PhotoMosaic = dynamic(() => import('./sections/StorySections').then(mod => mod.PhotoMosaic), {
   loading: () => <div className="py-24 bg-institutional-cream min-h-[400px]" />,
 });
@@ -80,9 +76,6 @@ export default function HomePage() {
 
         {/* 06 Interactive Journey Through Time */}
         <Timeline />
-
-        {/* 07 Featured Impact Story */}
-        <FeaturedImpactStory />
 
         {/* 08 Moments in Time Photo Mosaic */}
         <PhotoMosaic />
