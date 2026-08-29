@@ -8,6 +8,14 @@ import '@/styles/globals.css';
 export const metadata: Metadata = {
   title: 'Ruchi Prativa Foundation | Institutional Platform',
   description: 'Celebrating Excellence. Empowering Communities. Inspiring Generations. Official digital identity of the Ruchi Prativa Foundation.',
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
 };
 
 export default function RootLayout({

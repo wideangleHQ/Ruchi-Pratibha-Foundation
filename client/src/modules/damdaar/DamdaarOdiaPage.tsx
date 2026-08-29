@@ -9,6 +9,7 @@ import { Navigation } from '@/modules/home/sections/Navigation';
 import { Footer } from '@/modules/home/sections/Footer';
 import damdaarBg from '@/assets/Damdaar Odia Background.png';
 import damdaarBgMobile from '@/assets/Backgroudn Mobile Screen.png';
+import dumdaarLogo from '@/assets/Dumdaar Odia Png.png';
 import { AccordionGallery } from '@/components/ui/AccordionGallery/AccordionGallery';
 
 const DumdaarTimeline = dynamic(() => import('./components/DumdaarTimeline').then((m) => m.DumdaarTimeline), {
@@ -94,7 +95,7 @@ export const DamdaarOdiaPage: React.FC = () => {
   }, [shouldReduceMotion]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="min-h-screen bg-[#FDFBF7] text-institutional-dark font-poppins relative overflow-x-hidden selection:bg-damdaar-gold selection:text-white"
     >
@@ -102,7 +103,7 @@ export const DamdaarOdiaPage: React.FC = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative h-screen min-h-screen lg:h-dvh lg:min-h-dvh flex items-center justify-center px-4 sm:px-6 lg:px-8 border-b border-black/5 bg-[#FDFBF7] overflow-hidden">
+      <section className="relative h-dvh max-h-dvh flex items-center justify-center px-4 sm:px-6 lg:px-8 border-b border-black/5 bg-[#FDFBF7] overflow-hidden">
         {/* Full-width Responsive Cultural Background Image Asset */}
         <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
           {/* Desktop/Tablet viewports */}
@@ -113,7 +114,6 @@ export const DamdaarOdiaPage: React.FC = () => {
               fill
               priority
               sizes="100vw"
-              quality={95}
               className="object-cover object-center"
             />
           </div>
@@ -125,7 +125,6 @@ export const DamdaarOdiaPage: React.FC = () => {
               fill
               priority
               sizes="100vw"
-              quality={95}
               className="object-cover object-center"
             />
           </div>
@@ -134,29 +133,29 @@ export const DamdaarOdiaPage: React.FC = () => {
         </div>
 
         {/* Central Clean Typography Container */}
-        <div className="max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center space-y-6 sm:space-y-8 pt-16 relative z-10">
+        <div className="max-w-4xl w-full mx-auto flex flex-col items-center justify-center text-center space-y-3.5 sm:space-y-4 md:space-y-5 pt-12 sm:pt-14 pb-4 sm:pb-6 relative z-10 my-auto h-full justify-center">
           {/* Top Pill Eyebrow Badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 border border-black/10 rounded-full text-[10px] sm:text-xs font-bold tracking-widest text-[#343D0F] uppercase bg-white/40 backdrop-blur-sm shadow-sm font-space"
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1 sm:py-1.5 border border-black/10 rounded-full text-[9px] sm:text-xs font-bold tracking-widest text-[#343D0F] uppercase bg-[#FAF7F2]/80 backdrop-blur-xs shadow-xs font-space shrink-0"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#CF8A12]" />
             <span>THE NEXT CHAPTER OF ODISHA</span>
           </motion.div>
 
-          {/* DUMDAAR ଓଡ଼ିଆ stacked title */}
+          {/* Title Block: DUMDAAR on top, Calligraphic ଓଡ଼ିଆ directly below in Hatalekha font */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col items-center justify-center space-y-0 leading-none select-none"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col items-center justify-center text-center select-none shrink-0 py-1 sm:py-2 leading-none"
           >
-            <span className="font-playfair text-6xl sm:text-8xl lg:text-9xl font-bold uppercase tracking-tight text-[#343D0F]">
+            <h1 className="font-playfair text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-wider text-[#343D0F] uppercase leading-none">
               DUMDAAR
-            </span>
-            <span className="font-hatalekha text-6xl sm:text-8xl lg:text-9xl xl:text-[9.5rem] text-[#CF8A12] leading-[0.85] relative -top-1 sm:-top-3 block">
+            </h1>
+            <span className="font-hatalekha text-[#CF8A12] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-snug pt-1 sm:pt-2 drop-shadow-xs">
               ଓଡ଼ିଆ
             </span>
           </motion.div>
@@ -166,15 +165,15 @@ export const DamdaarOdiaPage: React.FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.18 }}
-            className="flex items-center justify-center gap-3 sm:gap-4 w-full select-none"
+            className="flex items-center justify-center gap-2.5 sm:gap-4 w-full select-none shrink-0"
           >
-            <span className="h-[1px] w-8 sm:w-16 bg-[#CF8A12]/30" />
-            <span className="text-[#CF8A12] text-xs sm:text-sm">✦</span>
-            <h2 className="font-playfair text-sm sm:text-base lg:text-lg font-bold tracking-widest text-[#343D0F] uppercase">
+            <span className="h-[1px] w-6 sm:w-16 bg-[#CF8A12]/40" />
+            <span className="text-[#CF8A12] text-[10px] sm:text-xs">✦</span>
+            <h2 className="font-playfair text-[11px] sm:text-base lg:text-lg font-bold tracking-[0.18em] text-[#343D0F] uppercase">
               THE NEXT CHAPTER OF ODISHA.
             </h2>
-            <span className="text-[#CF8A12] text-xs sm:text-sm">✦</span>
-            <span className="h-[1px] w-8 sm:w-16 bg-[#CF8A12]/30" />
+            <span className="text-[#CF8A12] text-[10px] sm:text-xs">✦</span>
+            <span className="h-[1px] w-6 sm:w-16 bg-[#CF8A12]/40" />
           </motion.div>
 
           {/* Concise Supporting Description */}
@@ -182,7 +181,7 @@ export const DamdaarOdiaPage: React.FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="font-poppins text-xs sm:text-sm lg:text-base text-gray-700 max-w-xl leading-relaxed"
+            className="font-poppins text-[11px] sm:text-sm lg:text-base text-gray-700 max-w-md sm:max-w-xl leading-snug sm:leading-relaxed shrink-0 px-3"
           >
             A celebration of Odisha&apos;s limitless potential — discovering, nurturing and empowering extraordinary talent across diverse fields.
           </motion.p>
@@ -192,35 +191,30 @@ export const DamdaarOdiaPage: React.FC = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.32 }}
-            className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto justify-center items-center"
+            className="flex flex-row gap-3 sm:gap-4 pt-2 sm:pt-3 w-auto justify-center items-center shrink-0 font-space"
           >
-            <motion.a
+            <a
               href="#domains"
-              whileHover={{ scale: 1.03, y: -2, boxShadow: '0 10px 25px -5px rgba(207,138,18,0.4)' }}
-              whileTap={{ scale: 0.98 }}
-              className="group px-8 py-3.5 text-xs font-semibold text-white uppercase tracking-widest bg-[#CF8A12] rounded-sm shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF8A12] min-h-[46px] w-full sm:w-auto relative overflow-hidden"
+              className="group px-6 sm:px-8 py-3 sm:py-3.5 text-[10px] sm:text-xs font-bold text-white uppercase tracking-widest bg-[#D58C0B] hover:bg-[#B87708] rounded-xs shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer min-h-[42px] sm:min-h-[46px]"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span>Register Now</span>
+              <span>REGISTER NOW</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="#movement"
-              whileHover={{ scale: 1.02, y: -1, backgroundColor: 'rgba(255, 255, 255, 0.7)', borderColor: '#343D0F' }}
-              whileTap={{ scale: 0.98 }}
-              className="group px-8 py-3.5 text-xs font-semibold text-[#343D0F] uppercase tracking-widest border border-[#343D0F]/30 bg-white/30 backdrop-blur-sm rounded-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#343D0F] min-h-[46px] w-full sm:w-auto shadow-sm"
+              className="group px-6 sm:px-8 py-3 sm:py-3.5 text-[10px] sm:text-xs font-bold text-[#343D0F] uppercase tracking-widest border border-[#343D0F]/25 bg-[#FAF7F2]/60 hover:bg-white rounded-xs shadow-2xs transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer min-h-[42px] sm:min-h-[46px]"
             >
-              <span>Know More</span>
+              <span>KNOW MORE</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#343D0F]/70 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.a>
+            </a>
           </motion.div>
         </div>
       </section>
 
       {/* The Movement Section - Immersive Pinned Scroll Storytelling */}
-      <section 
-        ref={scrollSectionRef} 
-        id="movement" 
+      <section
+        ref={scrollSectionRef}
+        id="movement"
         className="relative w-full h-[115dvh] bg-white border-b border-black/5 scroll-mt-20"
       >
         <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center bg-white px-4 sm:px-6 overflow-hidden">
@@ -236,11 +230,10 @@ export const DamdaarOdiaPage: React.FC = () => {
 
             {/* Cinematic editorial statements */}
             <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-12">
-              <p 
-                ref={line1Ref} 
-                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
-                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
-                }`}
+              <p
+                ref={line1Ref}
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                  }`}
               >
                 We stand at the threshold of{' '}
                 <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#CF8A12]' : ''}`}>
@@ -252,24 +245,22 @@ export const DamdaarOdiaPage: React.FC = () => {
                 </span>
                 .
               </p>
-              
-              <p 
-                ref={line2Ref} 
-                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
-                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
-                }`}
+
+              <p
+                ref={line2Ref}
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                  }`}
               >
                 DUMDAAR ODIA is an incubator designed to{' '}
                 <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#4D6B1F]' : ''}`}>
                   foster talent
                 </span>
               </p>
-              
-              <p 
-                ref={line3Ref} 
-                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${
-                  shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
-                }`}
+
+              <p
+                ref={line3Ref}
+                className={`scroll-story-line font-playfair text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight transition-colors duration-500 ${shouldReduceMotion ? 'text-[#343D0F]' : 'text-gray-300'
+                  }`}
               >
                 fusing{' '}
                 <span className={`highlight-text block sm:inline ${shouldReduceMotion ? 'text-[#D55E33]' : ''}`}>
@@ -301,10 +292,10 @@ export const DamdaarOdiaPage: React.FC = () => {
           <div className="w-full relative mt-8">
             <AccordionGallery
               items={[
-                { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'ENROLL NOW →' },
-                { image: techImg.src, label: 'TECHNOLOGY', link: '/damdaar-odia/project-nirman', ctaText: 'ENROLL NOW →' },
-                { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'ENROLL NOW →' },
-                { image: culinaryImg.src, label: 'KITCHEN QUEEN', link: '/damdaar-odia/kitchen-queen', ctaText: 'ENROLL NOW →' }
+                { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'COMING SOON →' },
+                { image: techImg.src, label: 'PROJECT NIRMAN', link: '/damdaar-odia/project-nirman', ctaText: 'REGISTER NOW →' },
+                { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'COMING SOON →' },
+                { image: culinaryImg.src, label: 'KITCHEN QUEEN', link: '/damdaar-odia/kitchen-queen', ctaText: 'REGISTER NOW →' }
               ]}
               defaultIndex={0}
               expandRatio={0.45}
@@ -402,7 +393,7 @@ export const DamdaarOdiaPage: React.FC = () => {
                   }}
                 >
                   {/* Background Image with Hover Scale */}
-                  <div 
+                  <div
                     className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out pointer-events-none z-0 overflow-hidden rounded-lg"
                   >
                     <Image
@@ -415,7 +406,7 @@ export const DamdaarOdiaPage: React.FC = () => {
                   </div>
 
                   {/* Gradient Overlay */}
-                  <div 
+                  <div
                     className="absolute inset-0 transition-all duration-500 ease-out pointer-events-none z-10 rounded-lg"
                     style={{
                       background: isHovered ? item.overlayHover : item.overlayDefault,
@@ -423,7 +414,7 @@ export const DamdaarOdiaPage: React.FC = () => {
                   />
 
                   {/* Subtle traditional decorative icon overlay */}
-                  <div 
+                  <div
                     className="absolute right-4 bottom-4 w-16 h-16 pointer-events-none z-20 transition-all duration-500"
                     style={{
                       transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)',
@@ -441,10 +432,10 @@ export const DamdaarOdiaPage: React.FC = () => {
                   {/* Card Content wrapper */}
                   <div className="space-y-4 relative z-20">
                     {/* Step Number */}
-                    <span 
+                    <span
                       className="font-playfair text-5xl font-black block transition-all duration-500 origin-left"
-                      style={{ 
-                        color: '#ffffff', 
+                      style={{
+                        color: '#ffffff',
                         opacity: isHovered ? 0.55 : 0.3,
                         transform: isHovered ? 'scale(1.05)' : 'scale(1)'
                       }}
@@ -458,10 +449,9 @@ export const DamdaarOdiaPage: React.FC = () => {
                     </h3>
 
                     {/* Hidden/Revealed Description */}
-                    <div 
-                      className={`font-poppins text-xs text-gray-200 leading-relaxed transition-all duration-500 ease-out ${
-                        isHovered ? 'max-h-32 opacity-100 translate-y-0 mt-3' : 'max-h-0 opacity-0 translate-y-4 overflow-hidden'
-                      }`}
+                    <div
+                      className={`font-poppins text-xs text-gray-200 leading-relaxed transition-all duration-500 ease-out ${isHovered ? 'max-h-32 opacity-100 translate-y-0 mt-3' : 'max-h-0 opacity-0 translate-y-4 overflow-hidden'
+                        }`}
                     >
                       {item.description}
                     </div>
@@ -469,7 +459,7 @@ export const DamdaarOdiaPage: React.FC = () => {
 
                   {/* Card footer arrow button */}
                   <div className="pt-6 flex justify-end relative z-20">
-                    <span 
+                    <span
                       className="inline-flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-500"
                       style={{
                         borderColor: isHovered ? item.color : 'rgba(255,255,255,0.25)',

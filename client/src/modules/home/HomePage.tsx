@@ -53,6 +53,10 @@ export default function HomePage() {
         window.history.scrollRestoration = 'manual';
       }
       window.scrollTo(0, 0);
+      const heroEl = document.getElementById('hero');
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: 'auto' });
+      }
     }
   }, []);
   return (

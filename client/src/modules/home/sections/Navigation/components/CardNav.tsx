@@ -2,7 +2,9 @@
 
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react';
+import dumdaarLogo from '@/assets/Dumdaar Odia Png.png';
 
 export interface NavLinkItem {
   label: string;
@@ -295,22 +297,34 @@ export const CardNav: React.FC<CardNavProps> = ({
 
                 {/* Card Links List */}
                 <div className="flex flex-col gap-1.5 pt-1 border-t border-white/10">
-                  {item.links.map((lnk, i) => (
-                    <a
-                      key={`${lnk.label}-${i}`}
-                      href={lnk.href}
-                      onClick={() => {
-                        if (isExpanded) toggleMenu();
-                      }}
-                      aria-label={lnk.ariaLabel}
-                      className="group/link flex items-center justify-between py-1 text-xs font-manrope text-gray-300 hover:text-white transition-colors duration-200"
-                    >
-                      <span className="group-hover/link:translate-x-1 transition-transform duration-200">
-                        {lnk.label}
-                      </span>
-                      <ArrowUpRight className="w-3 h-3 text-institutional-accent opacity-60 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-200" />
-                    </a>
-                  ))}
+                  {item.links.map((lnk, i) => {
+                    const isDumdaar = lnk.label.toLowerCase().includes('dumdaar');
+                    return (
+                      <a
+                        key={`${lnk.label}-${i}`}
+                        href={lnk.href}
+                        onClick={() => {
+                          if (isExpanded) toggleMenu();
+                        }}
+                        aria-label={lnk.ariaLabel}
+                        className="group/link flex items-center justify-between py-1 text-xs font-manrope text-gray-300 hover:text-white transition-colors duration-200"
+                      >
+                        <span className="group-hover/link:translate-x-1 transition-transform duration-200 flex items-center gap-1.5">
+                          {isDumdaar && (
+                            <Image
+                              src={dumdaarLogo}
+                              alt="Dumdaar Odia Logo"
+                              width={16}
+                              height={16}
+                              className="w-4 h-4 object-contain shrink-0"
+                            />
+                          )}
+                          <span>{lnk.label}</span>
+                        </span>
+                        <ArrowUpRight className="w-3 h-3 text-institutional-accent opacity-60 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-200" />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
 

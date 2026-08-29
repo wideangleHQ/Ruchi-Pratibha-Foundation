@@ -140,81 +140,126 @@ export const FOCUS_AREAS = [
 
 export const FEATURED_CSR_ACTIVITIES: CSRActivity[] = [
   {
-    id: 'odia-bazar',
-    title: 'Odia Bazar Community Welfare Initiative',
-    category: 'Community Welfare',
-    district: 'Cuttack',
-    location: 'Odia Bazar, Cuttack',
-    year: 2026,
-    dateStr: '2026 • Cuttack',
+    id: 'covid-precaution',
+    title: 'COVID Precaution & Community Safety Drive',
+    category: 'Healthcare',
+    district: 'Khordha',
+    location: 'Bhubaneswar & Rural Odisha',
+    year: 2021,
+    dateStr: '2021 • Odisha',
     summary:
-      'Empowering local communities in Cuttack through direct outreach, educational resources, and seasonal social support drives.',
+      'Community-focused precaution and awareness efforts during the COVID period.',
     isFeatured: true,
-    coverImage: '/Odia Bazar/DSC05968.JPG',
+    coverImage: '/CSR Activites/Covid Precaution Shooting/DSC_1154.JPG',
     objectives: [
-      'Provide immediate social welfare and seasonal support to underprivileged families.',
-      'Mobilize local youth volunteer networks for grassroots community service.',
-      'Strengthen regional socio-economic resilience through direct resource sharing.'
+      'Conduct community safety and hygiene awareness drives across rural and semi-urban clusters.',
+      'Distribute preventive care materials and safety guidelines to vulnerable households.',
+      'Support local health workers with essential protective kits and safety information.'
     ],
     possibleActivities: [
-      'Community Outreach',
-      'Resource Distribution',
-      'Youth Volunteering',
-      'Socio-economic Support'
+      'Hygiene Awareness',
+      'Community Safety Drives',
+      'Health Guidance',
+      'Preventive Support'
     ],
   },
   {
-    id: 'sutahat',
-    title: 'Sutahat Health & Wellness Outreach',
-    category: 'Healthcare',
-    district: 'Cuttack',
-    location: 'Sutahat, Cuttack',
-    year: 2025,
-    dateStr: '2025 • Cuttack',
+    id: 'bajpur-corona-warriors',
+    title: 'Salute to Corona Warriors — Bajpur',
+    category: 'Community Welfare',
+    district: 'Jajpur',
+    location: 'Bajpur, Jajpur',
+    year: 2021,
+    dateStr: '2021 • Bajpur',
     summary:
-      'Organizing free medical consultation camps, diagnostic check-ups, and wellness workshops for families in Sutahat.',
+      'Salute and appreciation for frontline Corona warriors in Bajpur.',
     isFeatured: true,
-    coverImage: '/Sutahat/DSC05409.JPG',
+    coverImage: '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.JPG',
     objectives: [
-      'Deliver free diagnostic testing and professional health consultations.',
-      'Raise awareness for child wellness, preventive care, and healthy nutrition.',
-      'Facilitate voluntary blood donation drives in partnership with Cuttack health departments.'
+      'Honor and express solidarity with frontline healthcare staff, sanitation workers, and volunteers.',
+      'Provide encouragement, nutrition, and welfare support to pandemic first-responders.',
+      'Strengthen grassroots community volunteer networks in Bajpur.'
     ],
     possibleActivities: [
-      'Health Camp',
-      'Medical Consultation',
-      'Nutrition Distribution',
-      'Blood Donation Camp'
+      'Warrior Felicitations',
+      'Frontline Support',
+      'Community Solidarity',
+      'Volunteer Mobilization'
+    ],
+  },
+  {
+    id: 'dhenkanal-corona-warriors',
+    title: 'Salute to Corona Warriors — Dhenkanal',
+    category: 'Community Welfare',
+    district: 'Dhenkanal',
+    location: 'Dhenkanal District',
+    year: 2021,
+    dateStr: '2021 • Dhenkanal',
+    summary:
+      'Salute and appreciation for Corona warriors in Dhenkanal.',
+    isFeatured: true,
+    coverImage: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.JPG',
+    objectives: [
+      'Acknowledge the selfless service of healthcare teams and emergency civic personnel in Dhenkanal.',
+      'Distribute safety essentials and health supplements to frontline workers.',
+      'Promote public gratitude and civic responsibility during community health crises.'
+    ],
+    possibleActivities: [
+      'Civic Felicitations',
+      'Resource Support',
+      'Community Awareness',
+      'Frontline Outreach'
+    ],
+  },
+  {
+    id: 'our-work-csr',
+    title: 'Foundation Community & CSR Portfolio',
+    category: 'Community Welfare',
+    district: 'Cuttack',
+    location: 'Across Odisha',
+    year: 2024,
+    dateStr: '2024 • Across Odisha',
+    summary:
+      'A visual collection of the Foundation\'s community and CSR initiatives.',
+    isFeatured: true,
+    objectives: [
+      'Empower students and youth through educational awareness and merit recognition drives.',
+      'Promote sustainable environmental stewardship and rural community welfare programs.',
+      'Build long-term partnerships with grassroots organizations across Odisha.'
+    ],
+    possibleActivities: [
+      'Student Recognition',
+      'Environmental Drives',
+      'Community Outreach',
+      'Grassroots Development'
     ],
   },
 ];
 
 export const IMPACT_STORIES: CSRStory[] = [
   {
-    id: 'story-odia-bazar',
-    title: 'Mobilizing Grassroots Hope at Odia Bazar',
-    category: 'Community Welfare',
-    role: 'Community',
-    quote:
-      'When the Ruchi Prativa Foundation youth volunteers reached our neighborhood with supplies, it showed us the power of community solidarity.',
-    storyPreview:
-      'Through local resource distribution and youth volunteer drives, our Odia Bazar initiative has supported dozens of families with essential materials and social encouragement.',
-    personName: 'Local Community Lead',
-    location: 'Odia Bazar, Cuttack',
-    imagePlaceholder: '/Odia Bazar/DSC05990.JPG',
-  },
-  {
-    id: 'story-sutahat',
-    title: 'Access to Essential Care at Sutahat',
+    id: 'story-covid-precaution',
+    title: 'Spreading Lifesaving Awareness & Safety',
     category: 'Healthcare',
     role: 'Healthcare',
     quote:
-      'The healthcare drive at Sutahat brought professional medical consultation and diagnostic check-ups right to our doorstep.',
+      'During critical moments, prompt distribution of safety awareness materials and health kits gave families assurance and essential guidance.',
     storyPreview:
-      'Our voluntary doctor teams and health coordinators worked in unison at Sutahat to provide diagnostic screenings, child wellness kits, and health education workshops.',
-    personName: 'Health Camp Beneficiary',
-    location: 'Sutahat, Cuttack',
-    imagePlaceholder: '/Sutahat/DSC05413.JPG',
+      'Our team organized localized precaution awareness campaigns and distributed safety kits to ensure community preparedness across regional clusters.',
+    personName: 'Community Health Coordinator',
+    location: 'Bhubaneswar & Rural Odisha',
+  },
+  {
+    id: 'story-corona-warriors',
+    title: 'Honoring Frontline Heroes Across Districts',
+    category: 'Community Welfare',
+    role: 'Volunteer',
+    quote:
+      'Standing together with frontline workers in Bajpur and Dhenkanal reminded us that community strength lies in recognizing selfless service.',
+    storyPreview:
+      'Through our Corona Warriors appreciation initiatives, Ruchi Prativa Foundation honored hundreds of frontline heroes across Bajpur and Dhenkanal.',
+    personName: 'Foundation Volunteer Lead',
+    location: 'Bajpur & Dhenkanal',
   },
 ];
 
@@ -265,52 +310,44 @@ export const PARTNER_CATEGORIES: CSRPartnerCategory[] = [
 
 export const CSR_GALLERY_ITEMS = [
   {
-    id: 'gal-odia-1',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Odia Bazar Direct Outreach',
-    location: 'Odia Bazar, Cuttack',
-    caption: 'Volunteers distributing essential packages and welfare kits to local families.',
-    imageUrl: '/Odia Bazar/DSC05968.JPG',
-  },
-  {
-    id: 'gal-odia-2',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Odia Bazar Youth Volunteer Mobilization',
-    location: 'Odia Bazar, Cuttack',
-    caption: 'Local youth volunteers participating in community support campaigns.',
-    imageUrl: '/Odia Bazar/DSC05990.JPG',
-  },
-  {
-    id: 'gal-odia-3',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Odia Bazar Resource Sharing',
-    location: 'Odia Bazar, Cuttack',
-    caption: 'Resource distribution camp organized by Ruchi Prativa Foundation.',
-    imageUrl: '/Odia Bazar/DSC06000.JPG',
-  },
-  {
-    id: 'gal-sutahat-1',
+    id: 'gal-covid-1',
     category: 'Healthcare' as CSRCategory,
-    title: 'Sutahat Medical Consultation',
-    location: 'Sutahat, Cuttack',
-    caption: 'Doctors conducting diagnostic screening and checkups at the free health camp.',
-    imageUrl: '/Sutahat/DSC05409.JPG',
+    title: 'Covid Precaution Shooting',
+    location: 'Covid Precaution Shooting',
+    caption: 'Covid Precaution Shooting',
+    imageUrl: '/CSR/Covid Precaution Shooting/DSC_1187.JPG',
   },
   {
-    id: 'gal-sutahat-2',
-    category: 'Healthcare' as CSRCategory,
-    title: 'Sutahat Health Check-up Camp',
-    location: 'Sutahat, Cuttack',
-    caption: 'Providing medical checkups and child health consultations to rural families.',
-    imageUrl: '/Sutahat/DSC05413.JPG',
+    id: 'gal-bajpur-1',
+    category: 'Community Welfare' as CSRCategory,
+    title: 'Jajpur salute to corona warrior',
+    location: 'Jajpur salute to corona warrior',
+    caption: 'Jajpur salute to corona warrior',
+    imageUrl: '/CSR/Jajpur salute to corona warrior/DSC_0889.JPG',
   },
   {
-    id: 'gal-sutahat-3',
+    id: 'gal-dhenkanal-1',
+    category: 'Community Welfare' as CSRCategory,
+    title: 'Salute to corona warrioir Dhenkanal',
+    location: 'Salute to corona warrioir Dhenkanal',
+    caption: 'Salute to corona warrioir Dhenkanal',
+    imageUrl: '/CSR/Salute to corona warrioir Dhenkanal/DSC_3201.JPG',
+  },
+  {
+    id: 'gal-csr-odia-1',
+    category: 'Community Welfare' as CSRCategory,
+    title: 'Odia Bazar',
+    location: 'Odia Bazar',
+    caption: 'Odia Bazar',
+    imageUrl: '/CSR/Odia Bazar/DSC05968.JPG',
+  },
+  {
+    id: 'gal-csr-sutahat-1',
     category: 'Healthcare' as CSRCategory,
-    title: 'Sutahat Wellness Outreach',
-    location: 'Sutahat, Cuttack',
-    caption: 'Volunteer healthcare workers distributing wellness supplies and medicine.',
-    imageUrl: '/Sutahat/DSC05416.JPG',
+    title: 'Sutahat',
+    location: 'Sutahat',
+    caption: 'Sutahat',
+    imageUrl: '/CSR/Sutahat/DSC05409.JPG',
   },
 ];
 

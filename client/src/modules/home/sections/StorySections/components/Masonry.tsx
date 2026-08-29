@@ -188,7 +188,13 @@ export const Masonry: React.FC<MasonryProps> = ({
           data-key={item.id}
           className="absolute top-0 left-0 will-change-transform cursor-pointer"
           style={{ width: `${item.w}px`, height: `${item.h}px` }}
-          onClick={() => window.open(item.url, '_blank', 'noopener')}
+          onClick={() => {
+            if (item.url.startsWith('/')) {
+              window.location.href = item.url;
+            } else {
+              window.open(item.url, '_blank', 'noopener');
+            }
+          }}
         >
           <InteractiveCard disableShadow className="group relative w-full h-full rounded-sm overflow-hidden border border-white/15 dark:border-white/10 p-0">
             {/* Full-Bleed Edge-to-Edge Image or Neutral Placeholder */}

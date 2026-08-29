@@ -5,131 +5,149 @@ import { ArrowRight } from 'lucide-react';
 import { Masonry, MasonryItem } from './Masonry';
 
 const GALLERY_ITEMS: MasonryItem[] = [
+  // Covid Precaution Shooting
   {
-    id: '1',
-    title: 'Award Ceremony & Honors Assembly',
-    category: 'Culture',
-    badge: 'Sanman Laureates 2024',
-    img: '',
+    id: 'covid-1',
+    title: 'Covid Precaution Shooting',
+    category: 'Healthcare',
+    badge: 'Covid Precaution Shooting',
+    img: '/CSR/Covid Precaution Shooting/DSC_1200.JPG',
     height: 520,
-    url: '#gallery-1',
+    url: '/work#csr-gallery',
   },
   {
-    id: '2',
-    title: 'Rural Healthcare & Mobile Vision Clinics',
-    category: 'Health',
-    badge: 'Ganjam Belt Outpost',
-    img: '',
-    height: 380,
-    url: '#gallery-2',
+    id: 'covid-2',
+    title: 'Covid Precaution Shooting',
+    category: 'Healthcare',
+    badge: 'Covid Precaution Shooting',
+    img: '/CSR/Covid Precaution Shooting/DSC_1154.JPG',
+    height: 440,
+    url: '/work#csr-gallery',
   },
   {
-    id: '3',
-    title: 'Empowering Young Rural Scholars',
-    category: 'Education',
-    badge: 'Mayurbhanj District',
-    img: '',
-    height: 580,
-    url: '#gallery-3',
-  },
-  {
-    id: '4',
-    title: 'Volunteer Community Reforestation Drive',
-    category: 'Environment',
-    badge: 'Kendujhar Sacred Groves',
-    img: '',
-    height: 420,
-    url: '#gallery-4',
-  },
-  {
-    id: '5',
-    title: 'Amaruchi Journal Flagship Launch',
-    category: 'Knowledge',
-    badge: 'Annual Publications',
-    img: '',
-    height: 460,
-    url: '#gallery-5',
-  },
-  {
-    id: '6',
-    title: 'Grassroots Tribal Dialogue & Heritage',
-    category: 'Heritage',
-    badge: 'Koraput Weavers Guild',
-    img: '',
-    height: 540,
-    url: '#gallery-6',
-  },
-  {
-    id: '7',
-    title: 'Youth Digital Skill & Tech Workshops',
-    category: 'Technology',
-    badge: 'Sundargarh Skill Hub',
-    img: '',
-    height: 390,
-    url: '#gallery-7',
-  },
-  {
-    id: '8',
-    title: 'Women Artisan Fair-Trade Assembly',
-    category: 'Empowerment',
-    badge: 'Asha Handicrafts',
-    img: '',
-    height: 500,
-    url: '#gallery-8',
-  },
-  {
-    id: '9',
-    title: 'Clean Water Micro-Pumping Stations',
-    category: 'Infrastructure',
-    badge: 'Bhadrak Coastal Belt',
-    img: '',
-    height: 340,
-    url: '#gallery-9',
-  },
-  {
-    id: '10',
-    title: 'Youth Leadership & Civic Engagement',
-    category: 'Governance',
-    badge: 'Bhubaneswar Assembly',
-    img: '',
+    id: 'covid-3',
+    title: 'Covid Precaution Shooting',
+    category: 'Healthcare',
+    badge: 'Covid Precaution Shooting',
+    img: '/CSR/Covid Precaution Shooting/DSC_1187.JPG',
     height: 480,
-    url: '#gallery-10',
+    url: '/work#csr-gallery',
+  },
+
+  // Jajpur salute to corona warrior
+  {
+    id: 'jajpur-1',
+    title: 'Jajpur salute to corona warrior',
+    category: 'Community Welfare',
+    badge: 'Jajpur salute to corona warrior',
+    img: '/CSR/Jajpur salute to corona warrior/DSC_0892.JPG',
+    height: 380,
+    url: '/work#csr-gallery',
   },
   {
-    id: '11',
-    title: 'Organic Farming & Seed Preservation',
-    category: 'Agriculture',
-    badge: 'Kalahandi Collective',
-    img: '',
+    id: 'jajpur-2',
+    title: 'Jajpur salute to corona warrior',
+    category: 'Community Welfare',
+    badge: 'Jajpur salute to corona warrior',
+    img: '/CSR/Jajpur salute to corona warrior/DSC_0874.JPG',
+    height: 460,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'jajpur-3',
+    title: 'Jajpur salute to corona warrior',
+    category: 'Community Welfare',
+    badge: 'Jajpur salute to corona warrior',
+    img: '/CSR/Jajpur salute to corona warrior/DSC_0889.JPG',
+    height: 400,
+    url: '/work#csr-gallery',
+  },
+
+  // Salute to corona warrioir Dhenkanal
+  {
+    id: 'dhenkanal-1',
+    title: 'Salute to corona warrioir Dhenkanal',
+    category: 'Community Welfare',
+    badge: 'Salute to corona warrioir Dhenkanal',
+    img: '/CSR/Salute to corona warrioir Dhenkanal/DSC_3226.JPG',
+    height: 580,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'dhenkanal-2',
+    title: 'Salute to corona warrioir Dhenkanal',
+    category: 'Community Welfare',
+    badge: 'Salute to corona warrioir Dhenkanal',
+    img: '/CSR/Salute to corona warrioir Dhenkanal/DSC_3162.JPG',
+    height: 420,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'dhenkanal-3',
+    title: 'Salute to corona warrioir Dhenkanal',
+    category: 'Community Welfare',
+    badge: 'Salute to corona warrioir Dhenkanal',
+    img: '/CSR/Salute to corona warrioir Dhenkanal/DSC_3201.JPG',
+    height: 490,
+    url: '/work#csr-gallery',
+  },
+
+  // Odia Bazar
+  {
+    id: 'odia-bazar-1',
+    title: 'Odia Bazar',
+    category: 'Community Welfare',
+    badge: 'Odia Bazar',
+    img: '/CSR/Odia Bazar/DSC05968.JPG',
+    height: 390,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'odia-bazar-2',
+    title: 'Odia Bazar',
+    category: 'Community Welfare',
+    badge: 'Odia Bazar',
+    img: '/CSR/Odia Bazar/DSC05990.JPG',
+    height: 500,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'odia-bazar-3',
+    title: 'Odia Bazar',
+    category: 'Community Welfare',
+    badge: 'Odia Bazar',
+    img: '/CSR/Odia Bazar/DSC06000.JPG',
+    height: 340,
+    url: '/work#csr-gallery',
+  },
+
+  // Sutahat
+  {
+    id: 'sutahat-1',
+    title: 'Sutahat',
+    category: 'Healthcare',
+    badge: 'Sutahat',
+    img: '/CSR/Sutahat/DSC05409.JPG',
+    height: 480,
+    url: '/work#csr-gallery',
+  },
+  {
+    id: 'sutahat-2',
+    title: 'Sutahat',
+    category: 'Healthcare',
+    badge: 'Sutahat',
+    img: '/CSR/Sutahat/DSC05413.JPG',
     height: 410,
-    url: '#gallery-11',
+    url: '/work#csr-gallery',
   },
   {
-    id: '12',
-    title: 'Maternal Wellness & Nutritional Support',
-    category: 'Health',
-    badge: 'Rayagada Outpost',
-    img: '',
+    id: 'sutahat-3',
+    title: 'Sutahat',
+    category: 'Healthcare',
+    badge: 'Sutahat',
+    img: '/CSR/Sutahat/DSC05416.JPG',
     height: 530,
-    url: '#gallery-12',
-  },
-  {
-    id: '13',
-    title: 'Solar Lanterns for Remote Classrooms',
-    category: 'Energy',
-    badge: 'Malkangiri Frontier',
-    img: '',
-    height: 360,
-    url: '#gallery-13',
-  },
-  {
-    id: '14',
-    title: 'Community Folk Music & Cultural Revival',
-    category: 'Culture',
-    badge: 'Puri District Guild',
-    img: '',
-    height: 470,
-    url: '#gallery-14',
+    url: '/work#csr-gallery',
   },
 ];
 
@@ -153,7 +171,7 @@ export const PhotoMosaic: React.FC = () => {
             Moments That Define Our Journey
           </h2>
           <p className="font-manrope text-sm text-institutional-mutedLight dark:text-gray-300 mt-3 leading-relaxed">
-            Discover memorable moments from award ceremonies, educational initiatives, literary gatherings, cultural celebrations, and Foundation activities spanning nearly three decades.
+            A visual archive showcasing community participation, healthcare outreach, educational initiatives, environmental campaigns, cultural programmes, and volunteer activities.
           </p>
         </div>
 
@@ -168,14 +186,14 @@ export const PhotoMosaic: React.FC = () => {
             blurToFocus={true}
           />
 
-          {/* Cinematic Bottom Gradient Fade-Out (Starts 200px Higher with Seamless Blend) */}
+          {/* Cinematic Bottom Gradient Fade-Out */}
           <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-80 sm:h-[380px] lg:h-[450px] bg-gradient-to-t from-institutional-cream via-institutional-cream/85 dark:from-[#0B0F17] dark:via-[#0B0F17]/85 to-transparent z-20" />
         </div>
 
-        {/* Integrated Bottom CTA Button: View More Moments */}
+        {/* Integrated Bottom CTA Button */}
         <div className="-mt-16 sm:-mt-20 lg:-mt-24 text-center relative z-30">
           <a
-            href="/visual-archive"
+            href="/work#csr-gallery"
             className="group inline-flex items-center gap-2.5 px-6 py-3 sm:px-8 sm:py-4 bg-institutional-dark dark:bg-white text-white dark:text-institutional-dark hover:bg-institutional-accent hover:text-institutional-dark dark:hover:bg-institutional-accent dark:hover:text-institutional-dark font-space text-xs font-semibold tracking-widest uppercase rounded-sm shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
           >
             <span>Explore Gallery</span>

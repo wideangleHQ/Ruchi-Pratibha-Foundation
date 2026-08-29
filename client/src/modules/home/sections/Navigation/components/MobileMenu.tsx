@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import dumdaarLogo from '@/assets/Dumdaar Odia Png.png';
 import { DIRECTORY_CATEGORIES, NavCategoryItem } from '../constants/navigationConfig';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { usePageTransition } from '@/core/providers/page-transition-provider';
@@ -119,6 +121,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                         <div className="flex flex-col gap-1">
                           {item.links.map((lnk) => {
                             const active = isLinkActive(lnk.href);
+                            const isDumdaar = lnk.label.toLowerCase().includes('dumdaar');
                             return (
                               <a
                                 key={lnk.label}
@@ -134,6 +137,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                                 <span className="flex items-center gap-2 group-hover/link:translate-x-1 transition-transform duration-150">
                                   {active && (
                                     <span className="w-1.5 h-1.5 rounded-full bg-institutional-accent shrink-0 animate-pulse" />
+                                  )}
+                                  {isDumdaar && (
+                                    <Image
+                                      src={dumdaarLogo}
+                                      alt="Dumdaar Odia Logo"
+                                      width={16}
+                                      height={16}
+                                      className="w-4 h-4 object-contain shrink-0"
+                                    />
                                   )}
                                   <span className="text-white font-medium">{lnk.label}</span>
                                 </span>

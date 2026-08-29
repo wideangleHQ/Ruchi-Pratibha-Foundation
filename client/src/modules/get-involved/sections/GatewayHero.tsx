@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { CSRHeroSlideshow } from '@/components/ui/CSRHeroSlideshow';
 
 export const GatewayHero: React.FC = () => {
   return (
@@ -10,24 +11,11 @@ export const GatewayHero: React.FC = () => {
       id="gateway-hero"
       className="relative z-10 min-h-[90vh] sm:min-h-screen w-full bg-institutional-dark text-white border-b border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28 flex items-end"
     >
-      {/* Background Image & Overlays */}
+      {/* Background CSR Slideshow & Overlays */}
+      <CSRHeroSlideshow opacity={0.45} />
       <div className="absolute inset-0 pointer-events-none">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40 scale-105"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=2000&q=80")' }}
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-institutional-dark via-institutional-dark/80 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-institutional-dark/90 via-institutional-dark/50 to-transparent" />
-        
-        {/* Pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-15"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, rgba(197, 160, 89, 0.25) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
       </div>
 
       {/* Hero Content */}

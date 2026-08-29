@@ -298,7 +298,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Volunteers distributing essential packages and welfare kits to local families.',
     description: 'Empowering local communities in Cuttack through direct outreach and seasonal welfare drives organized by Ruchi Prativa Foundation.',
     aspectRatio: 'wide',
-    imageUrl: '/Odia Bazar/DSC05968.JPG',
+    imageUrl: '/CSR Activites/Odia Bazar/DSC05968.JPG',
     peopleTagged: ['Foundation Volunteers', 'Community Members'],
   },
   {
@@ -310,7 +310,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Local youth volunteers participating in community support campaigns.',
     description: 'Engaging regional youth in social development activities and grassroots volunteer mobilizations.',
     aspectRatio: 'portrait',
-    imageUrl: '/Odia Bazar/DSC05990.JPG',
+    imageUrl: '/CSR Activites/Odia Bazar/DSC05990.JPG',
     peopleTagged: ['Youth Brigade', 'Local Volunteers'],
   },
   {
@@ -322,7 +322,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Resource distribution camp organized by Ruchi Prativa Foundation.',
     description: 'Distributing scholastic kits, blankets, and essential resources directly to village clusters.',
     aspectRatio: 'square',
-    imageUrl: '/Odia Bazar/DSC06000.JPG',
+    imageUrl: '/CSR Activites/Odia Bazar/DSC06000.JPG',
     peopleTagged: ['Trustees', 'Volunteers'],
   },
   {
@@ -334,7 +334,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Doctors conducting diagnostic screening and checkups at the free health camp.',
     description: 'Certified medical professionals volunteering their time to provide diagnostic screening for rural families.',
     aspectRatio: 'wide',
-    imageUrl: '/Sutahat/DSC05409.JPG',
+    imageUrl: '/CSR Activites/Sutahat/DSC05409.JPG',
     peopleTagged: ['Volunteer Doctors', 'Medical Team'],
   },
   {
@@ -346,7 +346,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Providing medical checkups and child health consultations to rural families.',
     description: 'Bringing essential wellness drives and primary checkups directly to underserved neighborhoods.',
     aspectRatio: 'portrait',
-    imageUrl: '/Sutahat/DSC05413.JPG',
+    imageUrl: '/CSR Activites/Sutahat/DSC05413.JPG',
     peopleTagged: ['Beneficiary Families', 'Health Workers'],
   },
   {
@@ -358,7 +358,7 @@ export const ARCHIVE_PHOTOS: ArchivePhoto[] = [
     caption: 'Volunteer healthcare workers distributing wellness supplies and medicine.',
     description: 'Providing preventive health guidelines, medicine, and nutritional kits to children and elderly individuals.',
     aspectRatio: 'square',
-    imageUrl: '/Sutahat/DSC05416.JPG',
+    imageUrl: '/CSR Activites/Sutahat/DSC05416.JPG',
     peopleTagged: ['Volunteer Nurse', 'Elderly Beneficiaries'],
   },
 ];

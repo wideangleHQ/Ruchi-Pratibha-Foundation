@@ -127,26 +127,37 @@
     height: auto !important;
   }
   .ag-panel {
-    min-height: 90px;
+    min-height: 100px;
     transform: none !important;
   }
   .accordion-gallery .ag-panel__media {
     width: 100%;
     height: var(--ag-media-size);
   }
-  .ag-panel--active .ag-panel__bar,
-  .ag-panel--active .ag-panel__content,
-  .ag-panel--active .ag-panel__text,
+  /* ALWAYS display accent bar, label content and event title on mobile cards so every event title is visible */
+  .accordion-gallery .ag-panel__bar,
+  .accordion-gallery .ag-panel__content,
+  .accordion-gallery .ag-panel__text {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  .ag-panel:not(.ag-panel--active) .ag-panel__cta {
+    display: none !important;
+  }
   .ag-panel--active .ag-panel__cta {
+    display: flex !important;
     opacity: 1 !important;
     transform: none !important;
   }
   .ag-panel__text {
     color: #ffffff !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
   }
   .ag-panel__overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.8) 100%) !important;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%) !important;
   }
 }
 

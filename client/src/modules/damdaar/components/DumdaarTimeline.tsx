@@ -118,10 +118,10 @@ export const DUMDAAR_JOURNEY_EVENTS: TimelineEventItem[] = [
     date: '12 September 2026',
     day: '12',
     monthYear: 'SEPTEMBER 2026',
-    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh in Bhubaneswar.',
+    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh at Saheed Bhawan, Cuttack.',
     status: 'future',
     category: 'RECOGNITION',
-    location: 'Bhubaneswar, Odisha',
+    location: 'Saheed Bhawan, Cuttack',
     image: cultureHeritageThumb,
     nodeDate: '12 SEPTEMBER 2026',
     nodeTitle: 'SAMMAN SAMAROH'
@@ -218,7 +218,7 @@ export const DumdaarTimeline: React.FC = () => {
 
         {/* 2. MIDDLE CONTENT SECTION */}
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col justify-center my-auto z-10 py-1">
-          
+
           {/* MOBILE VIEW */}
           <div className="block lg:hidden space-y-3">
             {/* Mobile Image Card */}
@@ -242,7 +242,7 @@ export const DumdaarTimeline: React.FC = () => {
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  
+
                   {/* Image Bottom Overlay Labels */}
                   <div className="absolute bottom-3 left-3.5 right-3.5 flex items-end justify-between text-white select-none">
                     <div>
@@ -322,7 +322,7 @@ export const DumdaarTimeline: React.FC = () => {
 
           {/* DESKTOP VIEW */}
           <div className="hidden lg:grid grid-cols-12 gap-8 xl:gap-12 items-center my-auto">
-            
+
             {/* Left Column: Event Details */}
             <div className="col-span-6 space-y-4 xl:space-y-5 flex flex-col justify-center">
               <AnimatePresence mode="wait">
@@ -399,7 +399,6 @@ export const DumdaarTimeline: React.FC = () => {
                       alt={activeEvent.title}
                       fill
                       sizes="50vw"
-                      quality={95}
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                       priority
                     />
@@ -430,7 +429,7 @@ export const DumdaarTimeline: React.FC = () => {
         {/* 3. TIMELINE TRACK NAVIGATOR */}
         <div className="w-full relative pt-1 pb-1 z-20 select-none shrink-0">
           <div className="w-full lg:w-[80%] mx-auto relative px-2">
-            
+
             {/* Background Connecting Line */}
             <div className="absolute top-[15px] sm:top-[18px] left-[8%] right-[8%] h-[2px] bg-gray-200 z-0" />
 
@@ -457,11 +456,10 @@ export const DumdaarTimeline: React.FC = () => {
                   >
                     {/* Node Card Button */}
                     <div
-                      className={`px-3 py-1 sm:px-4 sm:py-1 rounded-md font-space font-bold text-[10px] sm:text-xs transition-all duration-300 shadow-2xs ${
-                        isActive
+                      className={`px-3 py-1 sm:px-4 sm:py-1 rounded-md font-space font-bold text-[10px] sm:text-xs transition-all duration-300 shadow-2xs ${isActive
                           ? 'bg-[#855B08] text-white scale-105 shadow-md ring-2 ring-[#855B08]/30'
                           : 'bg-white text-gray-600 border border-gray-200 hover:border-[#855B08] hover:text-[#855B08]'
-                      }`}
+                        }`}
                     >
                       {item.stepNumber}
                     </div>
@@ -469,16 +467,14 @@ export const DumdaarTimeline: React.FC = () => {
                     {/* Label Below Node */}
                     <div className="mt-1 text-center w-full px-0.5">
                       <span
-                        className={`text-[8px] sm:text-[10px] font-bold uppercase tracking-wider block truncate transition-colors duration-300 ${
-                          isActive ? 'text-[#855B08]' : 'text-gray-500'
-                        }`}
+                        className={`text-[8px] sm:text-[10px] font-bold uppercase tracking-wider block truncate transition-colors duration-300 ${isActive ? 'text-[#855B08]' : 'text-gray-500'
+                          }`}
                       >
                         {item.nodeDate}
                       </span>
                       <span
-                        className={`text-[7px] sm:text-[9px] font-semibold block uppercase leading-tight transition-colors duration-300 mt-0.5 hidden sm:block ${
-                          isActive ? 'text-[#343D0F]' : 'text-gray-400'
-                        }`}
+                        className={`text-[7px] sm:text-[9px] font-semibold block uppercase leading-tight transition-colors duration-300 mt-0.5 hidden sm:block ${isActive ? 'text-[#343D0F]' : 'text-gray-400'
+                          }`}
                       >
                         {item.nodeTitle}
                       </span>

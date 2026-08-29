@@ -5,6 +5,8 @@ import { gsap } from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { usePageTransition } from '@/core/providers/page-transition-provider';
+import Image from 'next/image';
+import dumdaarLogo from '@/assets/Dumdaar Odia Png.png';
 import { DIRECTORY_CATEGORIES, NavCategoryItem, NavLinkItem } from '../constants/navigationConfig';
 
 export type { NavCategoryItem, NavLinkItem };
@@ -142,6 +144,7 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
               <div className="flex flex-col gap-2 pt-3 border-t border-white/10">
                 {item.links.map((lnk) => {
                   const active = isLinkActive(lnk.href);
+                  const isDumdaar = lnk.label.toLowerCase().includes('dumdaar');
                   return (
                     <a
                       key={lnk.label}
@@ -156,6 +159,15 @@ export const MegaNavPanel: React.FC<MegaNavPanelProps> = ({ isOpen, onClose }) =
                     >
                       <span className="flex items-center gap-2 group-hover/link:translate-x-1 transition-transform duration-150">
                         {active && <span className="w-1.5 h-1.5 rounded-full bg-institutional-accent shrink-0 animate-pulse" />}
+                        {isDumdaar && (
+                          <Image
+                            src={dumdaarLogo}
+                            alt="Dumdaar Odia Logo"
+                            width={16}
+                            height={16}
+                            className="w-4 h-4 object-contain shrink-0"
+                          />
+                        )}
                         <span>{lnk.label}</span>
                       </span>
                       <ArrowUpRight className={`w-3.5 h-3.5 transition-all duration-150 ${active ? 'text-institutional-accent opacity-100' : 'text-institutional-accent opacity-50 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5'}`} />

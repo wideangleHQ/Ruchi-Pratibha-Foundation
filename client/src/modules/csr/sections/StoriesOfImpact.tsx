@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Quote, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { IMPACT_STORIES } from '../data/csrData';
@@ -74,25 +75,44 @@ export const StoriesOfImpact: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
               >
-                {/* Left: Image Placeholder */}
-                <div className="md:col-span-5 aspect-[4/5] rounded-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-4 flex flex-col justify-between relative overflow-hidden">
-                  <div className="text-[10px] font-space text-institutional-accent uppercase tracking-widest">
-                    <span>{currentStory.category}</span>
-                  </div>
-
-                  <div className="my-auto text-center py-4">
-                    <span className="text-xs font-space uppercase tracking-[0.2em] text-institutional-accent font-semibold block mb-1">
-                      [ Story Image Placeholder ]
-                    </span>
-                    <p className="font-manrope text-xs text-gray-400">
-                      {currentStory.personName} • {currentStory.location}
-                    </p>
-                  </div>
-
-                  <div className="text-[9px] font-space text-gray-400 flex justify-between border-t border-black/5 dark:border-white/10 pt-2">
-                    <span>VERIFIED RECORD</span>
-                    <span>IMPACT NARRATIVE</span>
-                  </div>
+                {/* Left: Image Container */}
+                <div className="md:col-span-5 aspect-[4/5] rounded-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 relative overflow-hidden group">
+                  {currentStory.imagePlaceholder ? (
+                    <>
+                      <Image
+                        src={currentStory.imagePlaceholder}
+                        alt={currentStory.title}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none z-10" />
+                      <div className="absolute inset-0 p-4 flex flex-col justify-between text-white z-10">
+                        <div className="text-[10px] font-space text-institutional-accent uppercase tracking-widest border-b border-white/15 pb-1.5">
+                          <span>{currentStory.category}</span>
+                        </div>
+                        <div className="text-[9px] font-space text-gray-300 flex justify-between border-t border-white/15 pt-2">
+                          <span>{currentStory.personName}</span>
+                          <span>{currentStory.location}</span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="p-4 flex flex-col justify-between h-full">
+                      <div className="text-[10px] font-space text-institutional-accent uppercase tracking-widest">
+                        <span>{currentStory.category}</span>
+                      </div>
+                      <div className="my-auto text-center py-4">
+                        <p className="font-manrope text-xs text-gray-400">
+                          {currentStory.personName} • {currentStory.location}
+                        </p>
+                      </div>
+                      <div className="text-[9px] font-space text-gray-400 flex justify-between border-t border-black/5 dark:border-white/10 pt-2">
+                        <span>VERIFIED RECORD</span>
+                        <span>IMPACT NARRATIVE</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right: Story Details & Quote */}

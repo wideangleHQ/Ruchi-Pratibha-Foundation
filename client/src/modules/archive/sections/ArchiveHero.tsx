@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, Search } from 'lucide-react';
 import { ARCHIVE_HERO_SLIDES } from '../data/archiveData';
+import { CSRHeroSlideshow } from '@/components/ui/CSRHeroSlideshow';
 
 interface ArchiveHeroProps {
   onOpenSearch?: () => void;
@@ -26,7 +27,8 @@ export const ArchiveHero: React.FC<ArchiveHeroProps> = ({ onOpenSearch }) => {
       id="archive-hero"
       className="relative min-h-[90vh] sm:min-h-screen w-full flex items-end bg-institutional-dark text-white overflow-hidden border-b border-white/10"
     >
-      {/* Background Slow Crossfade Slideshow */}
+      {/* Background CSR Slideshow & Archival Layer */}
+      <CSRHeroSlideshow opacity={0.3} />
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <AnimatePresence mode="wait">
           <motion.div

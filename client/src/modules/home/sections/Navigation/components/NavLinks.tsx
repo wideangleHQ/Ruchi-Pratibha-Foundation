@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { usePageTransition } from '@/core/providers/page-transition-provider';
 import { NAV_ITEMS } from '../constants';
+import dumdaarLogo from '@/assets/Dumdaar Odia Png.png';
 
 export const NavLinks: React.FC = () => {
   const pathname = usePathname();
@@ -47,17 +49,29 @@ export const NavLinks: React.FC = () => {
 
   return (
     <ul className="hidden lg:flex items-center gap-5 lg:gap-6 xl:gap-8">
-      {NAV_ITEMS.map((item) => (
-        <li key={item.label} className="flex-shrink-0">
-          <a
-            href={item.href}
-            onClick={(e) => handleLinkClick(e, item.href)}
-            className="whitespace-nowrap text-xs uppercase tracking-wider font-space font-medium text-gray-200 hover:text-institutional-accent transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-institutional-accent py-1 block"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
+      {NAV_ITEMS.map((item) => {
+        const isDumdaar = item.label.toLowerCase().includes('dumdaar');
+        return (
+          <li key={item.label} className="flex-shrink-0">
+            <a
+              href={item.href}
+              onClick={(e) => handleLinkClick(e, item.href)}
+              className="inline-flex items-center gap-1.5 whitespace-nowrap text-xs uppercase tracking-wider font-space font-medium text-gray-200 hover:text-institutional-accent transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-institutional-accent py-1 block"
+            >
+              {isDumdaar && (
+                <Image
+                  src={dumdaarLogo}
+                  alt="Dumdaar Odia Logo"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4 sm:w-5 sm:h-5 object-contain shrink-0"
+                />
+              )}
+              <span>{item.label}</span>
+            </a>
+          </li>
+        );
+      })}
     </ul>
   );
 };

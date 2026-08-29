@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import { CSRHeroSlideshow } from '@/components/ui/CSRHeroSlideshow';
 
 export const CSRHero: React.FC = () => {
   return (
@@ -10,16 +11,9 @@ export const CSRHero: React.FC = () => {
       id="csr-hero"
       className="relative z-10 min-h-[90vh] sm:min-h-screen w-full bg-institutional-dark text-white border-b border-white/10 overflow-hidden scroll-mt-24 sm:scroll-mt-28 flex items-end"
     >
-      {/* Background Pattern */}
+      {/* Background Slideshow & Pattern */}
+      <CSRHeroSlideshow opacity={0.4} />
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-15"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 1px 1px, rgba(197, 160, 89, 0.25) 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-institutional-dark via-transparent to-institutional-dark/80" />
       </div>
 

@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
  
 const HERO_SLIDES = [
-  '/Odia Bazar/DSC05968.JPG',
-  '/Odia Bazar/DSC05990.JPG',
-  '/Odia Bazar/DSC06000.JPG',
-  '/Sutahat/DSC05409.JPG',
-  '/Sutahat/DSC05413.JPG',
-  '/Sutahat/DSC05416.JPG',
+  '/CSR Activites/Covid Precaution Shooting/DSC_1154.JPG',
+  '/CSR Activites/Covid Precaution Shooting/DSC_1187.JPG',
+  '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.JPG',
+  '/CSR Activites/Jajpur salute to corona warrior/DSC_0889.JPG',
+  '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.JPG',
+  '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3201.JPG',
 ];
  
 export const HeroBackground: React.FC = () => {

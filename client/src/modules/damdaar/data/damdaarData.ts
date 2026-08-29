@@ -184,7 +184,7 @@ export const DAMDAAR_TIMELINE: TimelineEvent[] = [
     id: 't-6',
     title: 'RUCHI PRATIVA SAMMAN SAMAROH',
     date: '12 September 2026',
-    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh in Bhubaneswar.',
+    description: 'Winners and recognised talent are felicitated at the Ruchi Prativa Samman Samaroh at Saheed Bhawan, Cuttack.',
     status: 'future'
   }
 ];

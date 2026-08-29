@@ -19,7 +19,7 @@ export interface HeaderNavItem {
 }
 
 export const HEADER_NAV_ITEMS: HeaderNavItem[] = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/#hero' },
   { label: 'About Us', href: '/about' },
   { label: 'Dumdaar Odia', href: '/damdaar-odia' },
 ];
