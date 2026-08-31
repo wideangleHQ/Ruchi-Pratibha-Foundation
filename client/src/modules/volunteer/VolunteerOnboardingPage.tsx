@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { Navigation } from '@/modules/home/sections/Navigation';
+import { Footer } from '@/modules/home/sections/Footer';
 import { VolunteerHero } from './sections/VolunteerHero';
 import { WizardProvider, useWizard } from './components/wizard/WizardContext';
 
@@ -73,13 +75,16 @@ export const VolunteerOnboardingPage: React.FC = () => {
   return (
     <WizardProvider>
       <main className="flex flex-col min-h-screen bg-institutional-light dark:bg-institutional-dark">
+        <Navigation />
         <VolunteerHero onOpenWizard={openWizard} />
         <WhyVolunteer />
         <VolunteerJourney />
         <VolunteerFAQ />
         <VolunteerCTA onOpenWizard={openWizard} />
+        <Footer />
         <WizardOpener isOpen={isWizardOpen} onClose={closeWizard} />
       </main>
     </WizardProvider>
   );
 };
+

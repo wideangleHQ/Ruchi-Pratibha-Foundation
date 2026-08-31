@@ -20,7 +20,7 @@ const OPPORTUNITIES = [
     category: 'Education',
     date: '02 September 2026',
     seats: 12,
-    image: '/Odia Bazar/DSC06000.JPG',
+    image: '/CSR Activites/Odia Bazar/DSC06000.webp',
   },
   {
     title: 'Community Health Camp',
@@ -28,7 +28,7 @@ const OPPORTUNITIES = [
     category: 'Healthcare',
     date: '15 September 2026',
     seats: 20,
-    image: '/Sutahat/DSC05409.JPG',
+    image: '/CSR Activites/Sutahat/DSC05409.webp',
   },
 ];
 

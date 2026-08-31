@@ -2,15 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { ALL_CSR_IMAGES, shuffleCSRImages } from '@/constants/csrImages';
 
-export const CSR_HERO_SLIDES = [
-  '/CSR Activites/Covid Precaution Shooting/DSC_1154.JPG',
-  '/CSR Activites/Covid Precaution Shooting/DSC_1187.JPG',
-  '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.JPG',
-  '/CSR Activites/Jajpur salute to corona warrior/DSC_0889.JPG',
-  '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.JPG',
-  '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3201.JPG',
-];
+export { ALL_CSR_IMAGES as CSR_HERO_SLIDES };
 
 interface CSRHeroSlideshowProps {
   opacity?: number;
@@ -25,8 +19,15 @@ export const CSRHeroSlideshow: React.FC<CSRHeroSlideshowProps> = ({
   darkOverlay = true,
   className = '',
 }) => {
+  const [slides, setSlides] = useState<string[]>(ALL_CSR_IMAGES);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [loadedIndices, setLoadedIndices] = useState<number[]>([0]);
+
+  // Shuffle images on client mount so every page visit gets a fresh shuffled slideshow
+  useEffect(() => {
+    const shuffled = shuffleCSRImages(ALL_CSR_IMAGES);
+    setSlides(shuffled);
+  }, []);
 
   // Preload second slide progressively after first slide mounts
   useEffect(() => {
@@ -37,27 +38,29 @@ export const CSRHeroSlideshow: React.FC<CSRHeroSlideshowProps> = ({
   }, []);
 
   useEffect(() => {
+    if (slides.length === 0) return;
     const interval = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % CSR_HERO_SLIDES.length);
+      setCurrentIdx((prev) => (prev + 1) % slides.length);
     }, intervalMs);
     return () => clearInterval(interval);
-  }, [intervalMs]);
+  }, [intervalMs, slides.length]);
 
   useEffect(() => {
-    const nextIdx = (currentIdx + 1) % CSR_HERO_SLIDES.length;
+    if (slides.length === 0) return;
+    const nextIdx = (currentIdx + 1) % slides.length;
     if (!loadedIndices.includes(nextIdx)) {
       setLoadedIndices((prev) => [...prev, nextIdx]);
     }
-  }, [currentIdx, loadedIndices]);
+  }, [currentIdx, loadedIndices, slides.length]);
 
   return (
     <div className={`absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0 ${className}`}>
-      {CSR_HERO_SLIDES.map((src, idx) => {
+      {slides.map((src, idx) => {
         const isLoaded = loadedIndices.includes(idx);
         if (!isLoaded) return null;
         return (
           <div
-            key={src}
+            key={`${src}-${idx}`}
             className="absolute inset-0 w-full h-full transition-opacity ease-in-out duration-1000"
             style={{
               opacity: currentIdx === idx ? opacity : 0,
@@ -99,3 +102,4 @@ export const CSRHeroSlideshow: React.FC<CSRHeroSlideshowProps> = ({
 };
 
 export default CSRHeroSlideshow;
+

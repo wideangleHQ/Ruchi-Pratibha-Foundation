@@ -150,7 +150,7 @@ export const FEATURED_CSR_ACTIVITIES: CSRActivity[] = [
     summary:
       'Community-focused precaution and awareness efforts during the COVID period.',
     isFeatured: true,
-    coverImage: '/CSR Activites/Covid Precaution Shooting/DSC_1154.JPG',
+    coverImage: '/CSR Activites/Covid Precaution Shooting/DSC_1154.webp',
     objectives: [
       'Conduct community safety and hygiene awareness drives across rural and semi-urban clusters.',
       'Distribute preventive care materials and safety guidelines to vulnerable households.',
@@ -174,7 +174,7 @@ export const FEATURED_CSR_ACTIVITIES: CSRActivity[] = [
     summary:
       'Salute and appreciation for frontline Corona warriors in Bajpur.',
     isFeatured: true,
-    coverImage: '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.JPG',
+    coverImage: '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.webp',
     objectives: [
       'Honor and express solidarity with frontline healthcare staff, sanitation workers, and volunteers.',
       'Provide encouragement, nutrition, and welfare support to pandemic first-responders.',
@@ -198,7 +198,7 @@ export const FEATURED_CSR_ACTIVITIES: CSRActivity[] = [
     summary:
       'Salute and appreciation for Corona warriors in Dhenkanal.',
     isFeatured: true,
-    coverImage: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.JPG',
+    coverImage: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.webp',
     objectives: [
       'Acknowledge the selfless service of healthcare teams and emergency civic personnel in Dhenkanal.',
       'Distribute safety essentials and health supplements to frontline workers.',
@@ -309,46 +309,50 @@ export const PARTNER_CATEGORIES: CSRPartnerCategory[] = [
 ];
 
 export const CSR_GALLERY_ITEMS = [
-  {
-    id: 'gal-covid-1',
-    category: 'Healthcare' as CSRCategory,
-    title: 'Covid Precaution Shooting',
-    location: 'Covid Precaution Shooting',
-    caption: 'Covid Precaution Shooting',
-    imageUrl: '/CSR/Covid Precaution Shooting/DSC_1187.JPG',
-  },
-  {
-    id: 'gal-bajpur-1',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Jajpur salute to corona warrior',
-    location: 'Jajpur salute to corona warrior',
-    caption: 'Jajpur salute to corona warrior',
-    imageUrl: '/CSR/Jajpur salute to corona warrior/DSC_0889.JPG',
-  },
-  {
-    id: 'gal-dhenkanal-1',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Salute to corona warrioir Dhenkanal',
-    location: 'Salute to corona warrioir Dhenkanal',
-    caption: 'Salute to corona warrioir Dhenkanal',
-    imageUrl: '/CSR/Salute to corona warrioir Dhenkanal/DSC_3201.JPG',
-  },
-  {
-    id: 'gal-csr-odia-1',
-    category: 'Community Welfare' as CSRCategory,
-    title: 'Odia Bazar',
-    location: 'Odia Bazar',
-    caption: 'Odia Bazar',
-    imageUrl: '/CSR/Odia Bazar/DSC05968.JPG',
-  },
-  {
-    id: 'gal-csr-sutahat-1',
-    category: 'Healthcare' as CSRCategory,
-    title: 'Sutahat',
-    location: 'Sutahat',
-    caption: 'Sutahat',
-    imageUrl: '/CSR/Sutahat/DSC05409.JPG',
-  },
+  // Covid Precaution Shooting (8)
+  { id: 'gal-covid-1154', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Community hygiene awareness', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1154.webp' },
+  { id: 'gal-covid-1187', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Safety material distribution', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1187.webp' },
+  { id: 'gal-covid-1200', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Community safety outreach', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1200.webp' },
+  { id: 'gal-covid-1234', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Volunteer safety briefing', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1234.webp' },
+  { id: 'gal-covid-1399', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Mask & sanitizer distribution', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1399.webp' },
+  { id: 'gal-covid-1429', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Door-to-door health guidance', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1429.webp' },
+  { id: 'gal-covid-1473', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Preventive healthcare awareness', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1473.webp' },
+  { id: 'gal-covid-1488', category: 'Healthcare' as CSRCategory, title: 'COVID Precaution Drive', location: 'Khordha & Rural Odisha', caption: 'Health volunteer field drive', imageUrl: '/CSR Activites/Covid Precaution Shooting/DSC_1488.webp' },
+
+  // Jajpur Salute to Corona Warrior (10)
+  { id: 'gal-jajpur-0874', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Frontline warrior felicitation', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_0874.webp' },
+  { id: 'gal-jajpur-0880', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Honoring healthcare responders', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_0880.webp' },
+  { id: 'gal-jajpur-0889', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Sanitation team felicitation', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_0889.webp' },
+  { id: 'gal-jajpur-0892', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Civic personnel honoring ceremony', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_0892.webp' },
+  { id: 'gal-jajpur-0925', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Community solidarity gathering', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_0925.webp' },
+  { id: 'gal-jajpur-1044', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Health worker appreciation drive', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_1044.webp' },
+  { id: 'gal-jajpur-1071', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Community leader commendations', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_1071.webp' },
+  { id: 'gal-jajpur-1081', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Warrior tribute plaque ceremony', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_1081.webp' },
+  { id: 'gal-jajpur-1099', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Youth volunteer certificate distribution', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_1099.webp' },
+  { id: 'gal-jajpur-1103', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Jajpur District', caption: 'Grassroots welfare support assembly', imageUrl: '/CSR Activites/Jajpur salute to corona warrior/DSC_1103.webp' },
+
+  // Odia Bazar (3)
+  { id: 'gal-odia-5968', category: 'Community Welfare' as CSRCategory, title: 'Odia Bazar Outreach', location: 'Odia Bazar, Cuttack', caption: 'Community resource package distribution', imageUrl: '/CSR Activites/Odia Bazar/DSC05968.webp' },
+  { id: 'gal-odia-5990', category: 'Community Welfare' as CSRCategory, title: 'Odia Bazar Outreach', location: 'Odia Bazar, Cuttack', caption: 'Youth volunteer mobilization', imageUrl: '/CSR Activites/Odia Bazar/DSC05990.webp' },
+  { id: 'gal-odia-6000', category: 'Community Welfare' as CSRCategory, title: 'Odia Bazar Outreach', location: 'Odia Bazar, Cuttack', caption: 'Resource distribution drive', imageUrl: '/CSR Activites/Odia Bazar/DSC06000.webp' },
+
+  // Salute to Corona Warrior Dhenkanal (11)
+  { id: 'gal-dhenk-3162', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Emergency worker honoring ceremony', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3162.webp' },
+  { id: 'gal-dhenk-3201', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Frontline medical staff appreciation', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3201.webp' },
+  { id: 'gal-dhenk-3226', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Safety kit & nutrition distribution', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3226.webp' },
+  { id: 'gal-dhenk-3249', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Civic personnel commendation', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3249.webp' },
+  { id: 'gal-dhenk-3265', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Community volunteer encouragement', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3265.webp' },
+  { id: 'gal-dhenk-3277', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'First responder felicitation drive', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3277.webp' },
+  { id: 'gal-dhenk-3286', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Public health warrior recognition', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3286.webp' },
+  { id: 'gal-dhenk-3294', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Voluntary service certificate presentation', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3294.webp' },
+  { id: 'gal-dhenk-3306', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Grassroots medical team honoring', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3306.webp' },
+  { id: 'gal-dhenk-3372', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Sanitation worker tribute assembly', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3372.webp' },
+  { id: 'gal-dhenk-3385', category: 'Community Welfare' as CSRCategory, title: 'Salute to Corona Warriors', location: 'Dhenkanal District', caption: 'Civic leadership commendation ceremony', imageUrl: '/CSR Activites/Salute to corona warrioir Dhenkanal/DSC_3385.webp' },
+
+  // Sutahat (3)
+  { id: 'gal-suta-5409', category: 'Healthcare' as CSRCategory, title: 'Sutahat Health Camp', location: 'Sutahat, Cuttack', caption: 'Free medical consultation camp', imageUrl: '/CSR Activites/Sutahat/DSC05409.webp' },
+  { id: 'gal-suta-5413', category: 'Healthcare' as CSRCategory, title: 'Sutahat Health Camp', location: 'Sutahat, Cuttack', caption: 'Diagnostic screening & consultation', imageUrl: '/CSR Activites/Sutahat/DSC05413.webp' },
+  { id: 'gal-suta-5416', category: 'Healthcare' as CSRCategory, title: 'Sutahat Health Camp', location: 'Sutahat, Cuttack', caption: 'Wellness supplies & medicine distribution', imageUrl: '/CSR Activites/Sutahat/DSC05416.webp' },
 ];
 
 export const CSR_REPORTS: CSRReport[] = [

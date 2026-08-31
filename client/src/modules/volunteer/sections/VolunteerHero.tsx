@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { CSRHeroSlideshow } from '@/components/ui/CSRHeroSlideshow';
 
 interface VolunteerHeroProps {
   onOpenWizard: () => void;
@@ -11,15 +12,9 @@ interface VolunteerHeroProps {
 export const VolunteerHero: React.FC<VolunteerHeroProps> = ({ onOpenWizard }) => {
   return (
     <section className="relative z-10 min-h-[90vh] sm:min-h-screen w-full bg-institutional-dark text-white border-b border-white/10 overflow-hidden flex items-end">
-      {/* Background Image & Overlays */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-50 scale-105"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1593113580332-ceb47bf28cb4?auto=format&fit=crop&w=2000&q=80")' }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-institutional-dark via-institutional-dark/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-institutional-dark/90 via-institutional-dark/50 to-transparent" />
-      </div>
+      {/* Background Image Slideshow & Overlays */}
+      <CSRHeroSlideshow opacity={0.4} />
+
 
       {/* Hero Content */}
       <div className="relative z-10 w-full px-6 sm:px-8 lg:px-12 xl:px-16 pb-12 sm:pb-16 lg:pb-24 pt-32">
