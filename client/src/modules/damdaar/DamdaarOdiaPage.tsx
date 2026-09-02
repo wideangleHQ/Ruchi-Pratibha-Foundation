@@ -292,9 +292,9 @@ export const DamdaarOdiaPage: React.FC = () => {
           <div className="w-full relative mt-8">
             <AccordionGallery
               items={[
-                { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/domains/art-culture', ctaText: 'COMING SOON →' },
+                { image: artCultureImg.src, label: 'ART & CULTURE', link: '/damdaar-odia/art-culture', ctaText: 'REGISTER NOW →' },
                 { image: techImg.src, label: 'PROJECT NIRMAN', link: '/damdaar-odia/project-nirman', ctaText: 'REGISTER NOW →' },
-                { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/domains/entrepreneurship', ctaText: 'COMING SOON →' },
+                { image: entrepreneurshipImg.src, label: 'ENTREPRENEURSHIP', link: '/damdaar-odia/entrepreneurship', ctaText: 'REGISTER NOW →' },
                 { image: culinaryImg.src, label: 'KITCHEN QUEEN', link: '/damdaar-odia/kitchen-queen', ctaText: 'REGISTER NOW →' }
               ]}
               defaultIndex={0}

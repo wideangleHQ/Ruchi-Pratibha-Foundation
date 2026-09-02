@@ -39,5 +39,11 @@ export default async function Page({ params }: PageProps) {
   if (slug === 'culinary-excellence') {
     redirect('/damdaar-odia/kitchen-queen');
   }
+  if (slug === 'art-culture') {
+    redirect('/damdaar-odia/art-culture');
+  }
+  if (slug === 'entrepreneurship') {
+    redirect('/damdaar-odia/entrepreneurship');
+  }
   return <DomainDetailsPage slug={slug} />;
 }
